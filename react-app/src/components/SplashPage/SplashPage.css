@@ -1,0 +1,54 @@
+.splash-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.splash-header {
+    font-size: 30px;
+    font-weight: bold;
+    align-self: center;
+}
+
+
+.splash-image-container {
+    display: grid;
+    /* grid-auto-rows: minmax(125px, auto); */
+    /* grid-auto-columns: minmax(125px, auto); */
+
+    grid-template-columns: 125px 125px 125px 125px 125px;
+    grid-gap: 10rem;
+    justify-content: center;
+}
+
+img {
+    width: 250px;
+    height: 250px;
+    border-radius: 12px;
+}
+
+.splash-image {
+    display: grid;
+    grid-gap: 2rem;
+}
+
+#col-1 {
+    margin-top: 0px;
+}
+
+#col-2 {
+    margin-top: 120px;
+}
+
+#col-3 {
+    margin-top: 220px;
+}
+
+#col-4 {
+    margin-top: 120px;
+}
+
+#col-5 {
+    margin-top: 0px;
+}
