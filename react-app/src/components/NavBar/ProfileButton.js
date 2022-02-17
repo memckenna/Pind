@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import LogoutButton from "../../components/auth/LogoutButton";
-
+import './NavBar.css'
 
 function ProfileButton({ user }) {
 const sessionUser = useSelector((state) => state.session.user);
@@ -25,10 +25,12 @@ const sessionUser = useSelector((state) => state.session.user);
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
+  console.log(sessionUser
+    )
 
   return (
     <div className="profile-btn-container">
-      <img className="profile-pic-nav" src={sessionUser?.profile_image_url} alt="cat" onClick={openMenu} />
+      <img className="profile-pic-nav" src={sessionUser?.profile_img_url} alt="" onClick={openMenu} />
       {showMenu && (
         <div className="profile-pic-dropdown">
           <div className="profile">

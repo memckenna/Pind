@@ -10,14 +10,14 @@ board_routes = Blueprint('boards', __name__)
 
 
 #Grad all boards
-@board_routes.route('/')
-@login_required
-def get_all_boards():
+# @board_routes.route('/')
+# @login_required
+# def get_all_boards():
 
-    boards = Board.query.all()
-    print(boards)
+#     boards = Board.query.all()
+#     print(boards)
 
-    return {'boards': [board.to_dict() for board in boards]}
+#     return {'boards': [board.to_dict() for board in boards]}
 
     # newObj = {}
     # for board in boards:

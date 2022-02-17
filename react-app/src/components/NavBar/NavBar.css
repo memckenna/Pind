@@ -89,3 +89,30 @@ nav {
     font-size: 16px;
     font-weight: bold;
 }
+
+
+.profile-pic-nav {
+    border-radius: 50%;
+    height: 3.5rem;
+    width: 3.5rem;
+    /* margin: 2rem 5rem; */
+    object-fit: cover;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-size: cover;
+  }
+
+  .profile-pic-dropdown {
+    position: absolute;
+    /* position: fixed; */
+    display: flex;
+    flex-direction: column;
+    /* border: var(--border-light); */
+    border-radius: 20%;
+    background-color: white;
+    /* margin: 10px 10px 0px -1px; */
+    padding: 12px;
+    /* transform: translate(-100px -10px); */
+    transition: all 0.2s;
+    box-shadow: 2px 2px 5px lightgray;
+  }

@@ -35,8 +35,8 @@ export const getBoardsByUser = (id) => async (dispatch) => {
 
     if(response.ok) {
         const data = await response.json()
+        console.log("THESE ARE MY BOARDS", data)
         dispatch(getUserBoard(data))
-        console.log(data)
         return data
     }
 }
@@ -53,6 +53,7 @@ export const getAllBoard = (payload) => async (dispatch) => {
 }
 
 export const getASingleBoard = (payload) => async (dispatch) => {
+    // const response = await fetch(`/api/boards/${payload.board_id}`)
     const response = await fetch(`/api/boards/${payload.board_id}`)
 
     if(response.ok) {
@@ -61,6 +62,16 @@ export const getASingleBoard = (payload) => async (dispatch) => {
         return board;
     }
 }
+
+// export const getASingleBoard = (payload) => async (dispatch) => {
+//     const response = await fetch(`/api/boards/${payload.board_id}`)
+
+//     if(response.ok) {
+//         const board = await response.json();
+//         dispatch(getASingleBoard(board))
+//         return board;
+//     }
+// }
 
 //CREATE
 export const createBoard = (formData) => async(dispatch) => {
@@ -88,6 +99,10 @@ export const createBoard = (formData) => async(dispatch) => {
 const boardReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
+        case GET_BOARD_BY_USER:
+            newState = {...state, ...action.boards}
+            console.log(action.boards)
+            return newState
         // case GET_BOARD:
         //     const allBoards = []
         //     for (let board of action.boards['boards']) {

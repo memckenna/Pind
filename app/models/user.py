@@ -48,5 +48,6 @@ class User(db.Model, UserMixin):
             'age': self.age,
             'profile_img_url': self.profile_img_url,
             'created_at': self.created_at,
-            
+            'boards': [board.to_dict() for board in self.boards],
+            'pins': [pin.to_dict() for pin in self.pins]
         }

@@ -19,7 +19,7 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
-
+#Get all the boards created by user
 @user_routes.route('/<int:id>/boards')
 @login_required
 def get_boards_by_user(id):
