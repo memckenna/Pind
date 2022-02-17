@@ -88,25 +88,25 @@ export const createBoard = (formData) => async(dispatch) => {
 const boardReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
-        case GET_BOARD:
-            const allBoards = []
-            for (let board of action.boards['boards']) {
-                allBoards.push(board)
-            }
-            console.log("ALL BOARDS", allBoards)
-            return { ...state, 'posts': allBoards }
-        case GET_BOARD_BY_USER:
-            action.boards.forEach(board => {
-                newState[board.id] = board
-            })
-            return newState
-        case GET_SINGLE_BOARD:
-            newState = { ...state }
-            const newBoard = [...state.boards, action.board]
-            newState.boards = newBoard
-            return newState
+        // case GET_BOARD:
+        //     const allBoards = []
+        //     for (let board of action.boards['boards']) {
+        //         allBoards.push(board)
+        //     }
+        //     console.log("ALL BOARDS", allBoards)
+        //     return { ...state, 'posts': allBoards }
+        // case GET_BOARD_BY_USER:
+        //     action.boards.forEach(board => {
+        //         newState[board.id] = board
+        //     })
+        //     return newState
+        // case GET_SINGLE_BOARD:
+        //     newState = { ...state }
+        //     const newBoard = [...state.boards, action.board]
+        //     newState.boards = newBoard
+        //     return newState
 
-        case ADD_BOARD:
+        // case ADD_BOARD:
 
         default:
             return state

@@ -1,0 +1,66 @@
+.signup-form-container {
+    height: 618px;
+    width: 484px;
+}
+
+.login-input-container {
+    margin: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "SFMono-Medium","SF Mono","Segoe UI Mono","Roboto Mono","Ubuntu Mono","Menlo,Consolas",Courier,monospace;
+}
+
+.welcome-header {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.input-container {
+    margin: 2px 2px;
+    padding-bottom: 10px;
+}
+
+.form-input {
+    box-sizing: border-box;
+    min-height: 48px;
+    padding: 8px 16px;
+    /* width: 100%; */
+    width: 268px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    line-height: normal;
+
+}
+
+
+.form-button {
+    box-sizing: border-box;
+    height: 40px;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 0 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    vertical-align: middle;
+    text-align: center;
+    background-color: rgb(230, 0, 35);
+    color: white;
+    width: 286px;
+    -webkit-font-smoothing: antialiased;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.small-text {
+    font-size: 11px;
+    font-weight: normal;
+    text-align: center;
+    color: rgb(118, 118, 118);
+    width: 232px;
+
+}
