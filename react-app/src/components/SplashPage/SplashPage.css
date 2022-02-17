@@ -2,13 +2,17 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    /* top: 20%; */
+    position: relative;
+    margin-top: 10%;
 
 }
 
 .splash-header {
-    font-size: 30px;
+    font-size: 60px;
     font-weight: bold;
     align-self: center;
+
 }
 
 
@@ -18,35 +22,38 @@
     /* grid-auto-columns: minmax(125px, auto); */
 
     grid-template-columns: 125px 125px 125px 125px 125px;
-    grid-gap: 10rem;
-    justify-content: center;
+    grid-gap: 10.3rem;
+    /* justify-content: center; */
+    align-items: center;
 }
 
 img {
     width: 250px;
-    height: 250px;
+    height: 350px;
     border-radius: 12px;
 }
 
 .splash-image {
     display: grid;
     grid-gap: 2rem;
+
 }
 
 #col-1 {
     margin-top: 0px;
+
 }
 
 #col-2 {
-    margin-top: 120px;
+    margin-top: 200px;
 }
 
 #col-3 {
-    margin-top: 220px;
+    margin-top: 350px;
 }
 
 #col-4 {
-    margin-top: 120px;
+    margin-top: 200px;
 }
 
 #col-5 {

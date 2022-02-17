@@ -29,7 +29,9 @@ class Board(db.Model):
             'id': self.id,
             'title': self.title,
             'description': self.description,
-            'public': self.public,
             'user_id': self.user_id,
             'created_at': self.created_at,
+            # 'pins': [pin.to_dict() for pin in self.pins],
+            # 'users': self.user.to_dict()
+            # 'public': self.public,
         }

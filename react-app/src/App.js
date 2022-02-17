@@ -3,12 +3,13 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+import UsersList from './components/UserProfile/UsersList';
+import User from './components/UserProfile/User';
 import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage/SplashPage';
+import GetUserBoards from './components/UserProfile/UserBoards/GetUserBoards';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+          <GetUserBoards />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
