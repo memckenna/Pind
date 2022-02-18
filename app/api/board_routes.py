@@ -38,7 +38,7 @@ def get_single_board(id):
 
 
 @board_routes.route('/create_board', methods=["POST"])
-@login_required
+# @login_required
 def create_board():
     form = CreateBoardForm()
 

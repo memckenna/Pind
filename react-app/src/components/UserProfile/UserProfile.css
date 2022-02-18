@@ -19,6 +19,16 @@
     height: 100px;
 }
 
+.full-name {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.username {
+    font-size: 14px;
+    color: #767676;
+}
 
 
 /* Boards */
@@ -65,5 +75,5 @@
     font-weight: 700;
     margin-top: 40px;
     margin-bottom: 80px;
-    
+
 }

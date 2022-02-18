@@ -1,10 +1,10 @@
 const GET_BOARD_BY_USER = 'userBoard/GET_BOARD_BY_USER';
+const GET_SINGLE_BOARD = 'userBoard/GET_SINGLE_BOARD';
 
 const ADD_BOARD = 'userBoard/ADD_BOARD';
 
 
 const GET_BOARD = 'board/GET_BOARD';
-const GET_SINGLE_BOARD = 'userBoard/GET_SINGLE_BOARD';
 
 const getUserBoard = (boards) => ({
     type: GET_BOARD_BY_USER,
@@ -75,7 +75,7 @@ export const getASingleBoard = (id) => async (dispatch) => {
     const response = await fetch(`/api/boards/${id}`)
     if(response.ok) {
         const board = await response.json();
-        console.log("THUNK SINGLE BOARD", board)
+        // console.log("THUNK SINGLE BOARD", board)
         dispatch(getSingleBoard(board))
         return board;
     }
@@ -127,12 +127,15 @@ const boardReducer = (state = {}, action) => {
         case GET_SINGLE_BOARD:
             newState = { ...state }
             newState[action.board.id] = action.board
-            // console.log(newState)
+            // console.log("NEWSTATE: ", newState)
             // const newBoard = [...state.boards, action.board]
             // newState.boards = newBoard
-            // return newState
+            return newState
 
-        // case ADD_BOARD:
+        case ADD_BOARD:
+            newState = { ...state, [action.board.id]: action.board }
+            return newState;
+
 
         default:
             return state

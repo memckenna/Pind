@@ -18,7 +18,7 @@ function App() {
   const user = useSelector(state => state.session.user);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -35,6 +35,9 @@ function App() {
         <Route path="/" exact={true}>
           <SplashPage />
         </Route>
+        <Route path="/boards/:boardId" exact={true}>
+          <SingleBoard />
+        </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />
         </Route> */}
@@ -42,7 +45,7 @@ function App() {
           <SignUpForm />
         </Route> */}
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -51,9 +54,6 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <Route path="/boards/:boardId" exact={true}>
-            <SingleBoard />
-        </Route>
       </Switch>
     </BrowserRouter>
   );

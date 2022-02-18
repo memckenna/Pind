@@ -42,18 +42,18 @@ function User() {
           <li>
             <img className='profile-img' src={user.profile_img_url} />
           </li>
-          <li>
+          {/* <li>
             <strong>User Id</strong> {userId}
+          </li> */}
+          <li className='full-name'>
+            {user.first_name} {user.last_name}
           </li>
-          <li>
-            <strong>Name</strong> {user.first_name} {user.last_name}
+          <li className='username'>
+            @{user.username}
           </li>
-          <li>
-            <strong>Username</strong> {user.username}
-          </li>
-          <li>
-            <strong>Email</strong> {user.email}
-          </li>
+          {/* <li>
+             {user.email}
+          </li> */}
         </ul>
       </div>
       <div>

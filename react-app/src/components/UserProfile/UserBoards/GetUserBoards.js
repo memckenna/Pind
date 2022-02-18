@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"; //useState,
 import { NavLink, Redirect, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import CreateBoardModal from "../../Board/CreateABoard";
 
 import { getASingleBoard, getBoardsByUser } from "../../../store/board";
 import SingleBoard from "../../Board/SingleBoard";
@@ -33,10 +34,13 @@ function GetUserBoards({id}) {
 
     return (
         <>
+            <div className="create-board-profile-modal">
+                <CreateBoardModal />
+            </div>
             <div className="board-container">
                 {boards.boards?.map(board => (
                     <div key={board.id} className="board-card">
-                        {console.log(board)}
+                        {/* {console.log(board)} */}
                         <div className="board-img">
                             <NavLink to={`/boards/${board.id}`}>
                                 <img src={board.pins[0].photo_url} />
@@ -47,7 +51,6 @@ function GetUserBoards({id}) {
                     // <SingleBoard id={id} />
                 ))}
             </div>
-
         </>
     )
 }

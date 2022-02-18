@@ -17,22 +17,25 @@ const SingleBoard = () => {
     // let board = boards.boards.filter((e) => console.log(e))
     console.log("SINGLE BOARD", boards.boards)
 
-    console.log(boardId)
     useEffect(() => {
+
         dispatch(getASingleBoard(boardId))
 
     }, [dispatch, boardId])
 
     return (
-        <div className="single-board">
-            <div>PLEASE SHOW UPPPPPP</div>
-            {/* <li>{boards.boards.pins}</li> */}
-            {boards?.boards?.map(board => (
-                console.log(board.pins[0])
-
-
-            ))}
-        </div>
+        <>
+            <div className="single-board">
+                <div>PLEASE SHOW UPPPPPP</div>
+                {/* ADD PINS  */}
+                {/* {boards.boards?.map((board) => (
+                    <div>
+                        {console.log(board.id.pins.id.title)}
+                        {board.id.pins.id.title}
+                    </div>
+                ))} */}
+            </div>
+        </>
     )
 
 }
