@@ -25,7 +25,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-top: 70px;
+    margin-top: 35px;
     margin-right: 10px;
 }
 
@@ -36,5 +36,34 @@
     border: none;
     font-size: 18px;
     font-weight: bold;
-    color: gray;
+    color: white;
+    background-color: #e60023;
+}
+
+.delete-btn-div {
+    display: flex;
+    justify-content: flex-start;
+    /* align-items: center; */
+    flex-direction: column;
+}
+
+.delete-board-btn {
+    width: 150px;
+    height: 48px;
+    /* border-radius: 24px; */
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+}
+.delete-text {
+    font-size: 16px;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 15px;
+    color: #767676;
+    font-weight: normal;
+    /* align-items: center; */
+    /* flex-direction: column; */
 }

@@ -13,6 +13,8 @@ const EditUserBoardModal = ({id}) => {
 
         // }
     }
+
+    console.log("MODAL", id)
     return (
         <>
             <div className="edit-board-modal">

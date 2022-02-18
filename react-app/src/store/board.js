@@ -5,6 +5,8 @@ const ADD_BOARD = 'userBoard/ADD_BOARD';
 
 const EDIT_USER_BOARD = 'userBoard/EDIT_USER_BOARD';
 
+const DELETE_USER_BOARD = 'userBoard/DELETE_USER_BOARD';
+
 const GET_BOARD = 'board/GET_BOARD';
 
 const getUserBoard = (boards) => ({
@@ -30,6 +32,11 @@ const addBoard = (board) => ({
 
 const editBoard = (board) => ({
     type: EDIT_USER_BOARD,
+    board
+})
+
+const deleteBoard = (board) => ({
+    type: DELETE_USER_BOARD,
     board
 })
 
@@ -135,6 +142,22 @@ export const updateUserBoard = (id, title) => async (dispatch) => {
     }
 }
 
+//DELETE BOARD
+
+export const deleteUserBoard = (id) => async (dispatch) => {
+    const response = await fetch(`/api/boards/${id}/delete`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id })
+    })
+    const data = await response.json()
+    if(data.message === "Deleted") {
+        dispatch(deleteBoard(id))
+    }
+}
+
 
 const boardReducer = (state = {}, action) => {
     let newState = {}
@@ -149,13 +172,7 @@ const boardReducer = (state = {}, action) => {
         //     for (let board of action.boards['boards']) {
         //         allBoards.push(board)
         //     }
-        //     console.log("ALL BOARDS", allBoards)
         //     return { ...state, 'posts': allBoards }
-        // case GET_BOARD_BY_USER:
-        //     action.boards.forEach(board => {
-        //         newState[board.id] = board
-        //     })
-        //     return newState
         case GET_SINGLE_BOARD:
             newState = { ...state }
             // let singleBoard = [ ...newState.boards]
@@ -176,6 +193,14 @@ const boardReducer = (state = {}, action) => {
             return newState;
         case EDIT_USER_BOARD:
             newState = { ...state }
+            console.log("EDITT REDUCER BOARD", newState)
+            newState[action.board.boards.id] = action.board.boards
+            return newState
+        case DELETE_USER_BOARD:
+            newState = { ...state }
+            delete newState[action.board.id]
+            return newState
+
             // let editBoard = [ ...newState.boards ]
             // editBoard.push(action.board.id)
             // newState.boards = editBoard
@@ -186,11 +211,6 @@ const boardReducer = (state = {}, action) => {
             //         editBoard[i] = action.editBoard;
             //     }
             // }
-            console.log("EDITT REDUCER BOARD", newState)
-
-            newState[action.board.boards.id] = action.board.boards
-            return newState
-
         default:
             return state
     }
