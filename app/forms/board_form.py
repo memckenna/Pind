@@ -6,8 +6,8 @@ from wtforms.fields import FileField
 
 class CreateBoardForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(message='Please provide a title')])
-    description = TextAreaField('Description')
+    # description = TextAreaField('Description')
 
 class EditBoardForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(message='Please provide a title')])
-    description = TextAreaField('Description')
+    # description = TextAreaField('Description')

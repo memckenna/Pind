@@ -3,6 +3,7 @@ const GET_SINGLE_BOARD = 'userBoard/GET_SINGLE_BOARD';
 
 const ADD_BOARD = 'userBoard/ADD_BOARD';
 
+const EDIT_USER_BOARD = 'userBoard/EDIT_USER_BOARD';
 
 const GET_BOARD = 'board/GET_BOARD';
 
@@ -27,6 +28,10 @@ const addBoard = (board) => ({
     board
 })
 
+const editBoard = (board) => ({
+    type: EDIT_USER_BOARD,
+    board
+})
 
 // CRUD FEATRURE WITH REDUX
 // GET
@@ -81,7 +86,7 @@ export const getASingleBoard = (id) => async (dispatch) => {
     }
 }
 
-//CREATE
+//CREATE BOARD
 export const createBoard = (formData) => async(dispatch) => {
     const response = await fetch(`/api/boards/create_board`, {
         method: 'POST',
@@ -90,9 +95,10 @@ export const createBoard = (formData) => async(dispatch) => {
 
     if(response.ok) {
         const data = await response.json()
+        console.log("CREATE", data)
         dispatch(addBoard(data))
         // dispatch(getBoardsByUser(data))
-        return null
+        return data
     } else if (response.status < 500) {
         const data = await response.json()
         if(data.errors) {
@@ -100,6 +106,32 @@ export const createBoard = (formData) => async(dispatch) => {
         }
     } else {
         return ['An error occured. Please try again']
+    }
+}
+
+//EDIT BOARD
+
+export const updateUserBoard = (id, title) => async (dispatch) => {
+    const response = await fetch(`/api/boards/${id}/edit`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ title })
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        console.log("EDITT", data)
+        dispatch(editBoard(data))
+        return null
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
     }
 }
 
@@ -127,15 +159,17 @@ const boardReducer = (state = {}, action) => {
         case GET_SINGLE_BOARD:
             newState = { ...state }
             newState[action.board.id] = action.board
+            return newState
             // console.log("NEWSTATE: ", newState)
             // const newBoard = [...state.boards, action.board]
             // newState.boards = newBoard
-            return newState
-
         case ADD_BOARD:
             newState = { ...state, [action.board.id]: action.board }
+            console.log("ADDD BOARD", newState)
             return newState;
-
+        case EDIT_USER_BOARD:
+            newState = { ...state, [action.board.id]: action.board }
+            return newState
 
         default:
             return state

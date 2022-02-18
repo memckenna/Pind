@@ -29,4 +29,4 @@ function CreateBoardModal() {
     )
 }
 
-export default CreateBoardModal
+export default CreateBoardModal;

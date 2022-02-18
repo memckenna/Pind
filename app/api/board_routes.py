@@ -36,22 +36,24 @@ def get_single_board(id):
 
 
 
-
+#Create Board
 @board_routes.route('/create_board', methods=["POST"])
-# @login_required
+@login_required
 def create_board():
     form = CreateBoardForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if "title" not in request.files:
-        return {"errors": ["Please provide a title"]}
+    # if "title" not in request.files:
+    #     return {"errors": ["Please provide a title"]}
 
     if form.validate_on_submit():
         new_board = Board(title=form.data["title"], user_id=current_user.id)
-
+        # new_board = Board(description=form.data["description"], user_id=current_user.id)
         db.session.add(new_board)
         db.session.commit()
+        # print("BACKEND NEWBAORD", new_board.to_dict())
+        return new_board.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -75,6 +77,7 @@ def edit_board(id):
         update_board.title = form.data['title']
         db.session.add(update_board)
         db.session.commit()
+        print("BACKEND EDIT BAORD", update_board.to_dict())
         return update_board.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -83,8 +86,8 @@ def edit_board(id):
 @board_routes.route('/<int:id>/delete', methods=["DELETE"])
 @login_required
 def delete_board(id):
-    del_board = Board.query.get(id)
+    del_board = Board.query.get(id) # grabs the post you want to delete
 
-    db.session.delete(del_board)
-    db.session.commit()
+    db.session.delete(del_board) # deletes the post from data base
+    db.session.commit() # commits the changes in database
     return {"message": "Deleted"}

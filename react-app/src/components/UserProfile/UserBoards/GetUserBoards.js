@@ -3,6 +3,7 @@ import { NavLink, Redirect, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CreateBoardModal from "../../Board/CreateABoard";
 
+import EditUserBoardModal from "../../Board/EditABoard";
 import { getASingleBoard, getBoardsByUser } from "../../../store/board";
 import SingleBoard from "../../Board/SingleBoard";
 import '../UserProfile.css'
@@ -40,10 +41,12 @@ function GetUserBoards({id}) {
             <div className="board-container">
                 {boards.boards?.map(board => (
                     <div key={board.id} className="board-card">
-                        {/* {console.log(board)} */}
+
+                        {/* {console.log(board.id)} */}
                         <div className="board-img">
+                            <EditUserBoardModal id={board.id} />
                             <NavLink to={`/boards/${board.id}`}>
-                                <img src={board.pins[0].photo_url} />
+                                <img src={board.pins[0]?.photo_url} />
                             </NavLink>
                         </div>
                         <div className="board-title">{board.title}</div>
