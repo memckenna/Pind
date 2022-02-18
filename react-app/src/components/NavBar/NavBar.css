@@ -1,0 +1,118 @@
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background-color: white;
+    transform: translateY(0px) translateZ(0px);
+
+
+}
+
+.nav-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+
+    height: 80px;
+    /* max-width: 2000px; */
+    /* width: 100%; */
+    /* border-bottom: 1px solid lightgrey; */
+    box-shadow: rgb(0 0 0 / 10%) 0px 8px 28px;
+    align-items: center;
+}
+
+
+
+.left-bar {
+    display: flex;
+    /* flex-direction: row; */
+    /* justify-content: flex-start; */
+    /* align-self:flex-start; */
+    margin-left: 24px;
+}
+
+.right-bar {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: flex-end;
+
+    /* padding-left: 20px;
+    padding-right: 20px; */
+
+}
+
+
+.logo {
+    height: 50px;
+    width: 50px;
+}
+
+
+.login {
+    background-color: #e60023;
+    border-radius: 24px;
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    color: white;
+    min-width: 60px;
+    box-sizing: border-box;
+    min-height: 40px;
+    /* display: block; */
+    cursor: pointer;
+    line-height: normal;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.signup {
+    background-color: rgb(238, 238, 238);
+    color: black;
+    border-radius: 24px;
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    min-width: 60px;
+    box-sizing: border-box;
+    min-height: 40px;
+    /* display: block; */
+    cursor: pointer;
+    line-height: normal;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.profile-pic-nav {
+    border-radius: 50%;
+    height: 3.5rem;
+    width: 3.5rem;
+    /* margin: 2rem 5rem; */
+    object-fit: cover;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-size: cover;
+  }
+
+  .profile-pic-dropdown {
+    position: absolute;
+    /* position: fixed; */
+    display: flex;
+    flex-direction: column;
+    /* border: var(--border-light); */
+    border-radius: 20%;
+    background-color: white;
+    /* margin: 10px 10px 0px -1px; */
+    padding: 12px;
+    /* transform: translate(-100px -10px); */
+    transition: all 0.2s;
+    box-shadow: 2px 2px 5px lightgray;
+  }

@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import User
+from flask import Blueprint, jsonify, session
+from flask_login import login_required, current_user
+from app.models import User, db, Board, Pin, Board_Pins
+from sqlalchemy.orm import joinedload
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,3 +18,39 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+#Get all the boards created by user
+@user_routes.route('/<int:id>/boards')
+# @login_required
+def get_boards_by_user(id):
+    print('in route ****************************************')
+    user = User.query.get(id)
+
+    boards_by_id = db.session.query(Board) \
+                        .filter(Board.user_id == user.id)\
+                        .options(joinedload(Board.pins)).all()
+
+    print("\n\n\nALLLLLLLL BOARDS\n\n\n\n", boards_by_id)
+    # for board in boards_by_id:
+    #     print(board.to_dict(), '\n\n********NEW BOARD*********\n\n')
+    return {'boards': [board.to_dict() for board in boards_by_id]}
+
+# @user_routes.route('/<int:id>/boards/<int:board_id>')
+# # @login_required
+# def get_single_board_by_user(id):
+
+#     board = Board.query.get(id)
+#     print("\n\n\n\n")
+#     print("SINGLE BE", board)
+#     print()
+#     return board.to_dict()
+
+
+
+@user_routes.route('/<int:id>/pins')
+@login_required
+def get_pin_by_user(id):
+    pins_by_id = Pin.query.filter(Pin.user_id == id).all()
+    for pin in pins_by_id:
+        print(pin.to_dict(), '******new pin******')
+    return {'pins': [pin.to_dict()['pin'] for pin in pins_by_id]}

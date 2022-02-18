@@ -1,0 +1,114 @@
+#modal {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    min-height: 400px;
+  }
+
+  #modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  #modal-content {
+    /* position: absolute; */
+    position: relative;
+    background-color:white;
+    border-radius: 32px;
+    width: 484px;
+    height: 618px;
+    /* min-height: 400px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    padding: 20px 10px 24px;
+    text-align: center;
+  }
+
+
+
+#board-modal {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  min-height: 400px;
+}
+
+#board-modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#board-modal-content {
+  position: relative;
+  background-color:white;
+  border-radius: 32px;
+  width: 540px;
+  height: 361px;
+  /* min-height: 400px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 20px 10px 24px;
+  text-align: center;
+}
+
+
+#edit-board-modal {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  min-height: 400px;
+}
+
+#edit-board-modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#edit-board-modal-content {
+  position: relative;
+  background-color:white;
+  border-radius: 32px;
+  width: 540px;
+  height: 361px;
+  /* min-height: 400px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 20px 10px 24px;
+  text-align: center;
+}
