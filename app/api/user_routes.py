@@ -21,19 +21,30 @@ def user(id):
 
 #Get all the boards created by user
 @user_routes.route('/<int:id>/boards')
-@login_required
+# @login_required
 def get_boards_by_user(id):
     print('in route ****************************************')
+    user = User.query.get(id)
+
     boards_by_id = db.session.query(Board) \
-                        .filter(Board.user_id == id)\
+                        .filter(Board.user_id == user.id)\
                         .options(joinedload(Board.pins)).all()
 
-    print("ALLLLLLLL BOARDS", boards_by_id)
-    for board in boards_by_id:
-        print(board.to_dict(), '********NEW BOARD*********')
+    print("\n\n\nALLLLLLLL BOARDS\n\n\n\n", boards_by_id)
+    # for board in boards_by_id:
+    #     print(board.to_dict(), '\n\n********NEW BOARD*********\n\n')
+    return {'boards': [board.to_dict() for board in boards_by_id]}
 
-    print({'boards': [board.to_dict()] for board in boards_by_id})
-    return {'boards': [board.to_dict()] for board in boards_by_id}
+# @user_routes.route('/<int:id>/boards/<int:board_id>')
+# # @login_required
+# def get_single_board_by_user(id):
+
+#     board = Board.query.get(id)
+#     print("\n\n\n\n")
+#     print("SINGLE BE", board)
+#     print()
+#     return board.to_dict()
+
 
 
 @user_routes.route('/<int:id>/pins')

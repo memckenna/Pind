@@ -12,13 +12,12 @@ function User() {
   const sessionUser = useSelector(state => state.session.user)
   const dispatch = useDispatch()
 
-
-  useEffect(() => {
-    const payload = {
-      id: sessionUser?.id
-  }
-    dispatch(getBoardsByUser(payload))
-  }, [dispatch, sessionUser])
+  // useEffect(() => {
+  //   const payload = {
+  //     id: sessionUser?.id
+  // }
+  //   dispatch(getBoardsByUser(payload))
+  // }, [dispatch, sessionUser])
 
 
   useEffect(() => {
@@ -59,7 +58,7 @@ function User() {
       </div>
       <div>
         <div className='saved-boards'>Saved</div>
-        <GetUserBoards />
+        <GetUserBoards id={userId} />
       </div>
 
     </>

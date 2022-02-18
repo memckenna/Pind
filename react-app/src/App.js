@@ -10,6 +10,7 @@ import User from './components/UserProfile/User';
 import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage/SplashPage';
 import GetUserBoards from './components/UserProfile/UserBoards/GetUserBoards';
+import SingleBoard from './components/Board/SingleBoard';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,6 +51,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
+        <Route path="/boards/:boardId" exact={true}>
+            <SingleBoard />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

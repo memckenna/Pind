@@ -1,34 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { getASingleBoard } from "../../store/board";
+
+import "./SingleBoard.css"
 
 
-import { getBoardsByUser } from "../../store/board";
 
-
-const SingleBoard = (id) => {
+const SingleBoard = () => {
     const dispatch = useDispatch();
 
-    const boards = useSelector(state => state.board.boards)
-    const sessionUser = useSelector((state) => state.session.user);
+    const boards = useSelector(state => state.board)
+    // const sessionUser = useSelector((state) => state.session.user);
+    const { boardId } = useParams()
 
-    let board = boards.filter((e) => e.id === id.id)
-    // console.log("SINGLE BOARD", board)
+    // let board = boards.boards.filter((e) => console.log(e))
+    console.log("SINGLE BOARD", boards.boards)
 
+    console.log(boardId)
     useEffect(() => {
-        dispatch(getBoardsByUser())
+        dispatch(getASingleBoard(boardId))
 
-
-    }, [dispatch])
+    }, [dispatch, boardId])
 
     return (
-        <div>
-            <ul>
-                <li>{board.title}</li>
-                <li>{board.description}</li>
-                <li><img src={board[0]?.users?.pins.photo_url} /></li>
-            </ul>
-            <img src={board[0]?.users?.pins.photo_url} />
+        <div className="single-board">
+            <div>PLEASE SHOW UPPPPPP</div>
+            {/* <li>{boards.boards.pins}</li> */}
+            {boards?.boards?.map(board => (
+                console.log(board.pins[0])
+
+
+            ))}
         </div>
     )
 

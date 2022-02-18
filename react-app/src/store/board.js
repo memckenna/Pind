@@ -4,11 +4,12 @@ const ADD_BOARD = 'userBoard/ADD_BOARD';
 
 
 const GET_BOARD = 'board/GET_BOARD';
-const GET_SINGLE_BOARD = 'board/GET_SINGLE_BOARD';
+const GET_SINGLE_BOARD = 'userBoard/GET_SINGLE_BOARD';
 
 const getUserBoard = (boards) => ({
     type: GET_BOARD_BY_USER,
     boards
+
 })
 
 const getBoards = (boards) => ({
@@ -31,47 +32,54 @@ const addBoard = (board) => ({
 // GET
 // Get All User Boards
 export const getBoardsByUser = (id) => async (dispatch) => {
+    // console.log(id)
     const response = await fetch(`/api/users/${id}/boards`)
 
     if(response.ok) {
         const data = await response.json()
-        console.log("THESE ARE MY BOARDS", data)
+        console.log()
+        console.log("BOARDDS IN THUNK", data)
+        console.log()
         dispatch(getUserBoard(data))
         return data
     }
 }
 
-export const getAllBoard = (payload) => async (dispatch) => {
-    const response = await fetch(`/api/boards/${payload.user_id}`)
+// export const getAllBoard = (payload) => async (dispatch) => {
+//     const response = await fetch(`/api/boards/${payload.user_id}`)
 
-    if(response.ok) {
-        const boards = await response.json()
-        dispatch(getBoards(boards))
-        console.log(boards)
-        return boards
-    }
-}
-
-export const getASingleBoard = (payload) => async (dispatch) => {
-    // const response = await fetch(`/api/boards/${payload.board_id}`)
-    const response = await fetch(`/api/boards/${payload.board_id}`)
-
-    if(response.ok) {
-        const board = await response.json();
-        dispatch(getASingleBoard(board))
-        return board;
-    }
-}
+//     if(response.ok) {
+//         const boards = await response.json()
+//         dispatch(getBoards(boards))
+//         // console.log()
+//         // console.log("BOARDDS IN THUNK", boards)
+//         // console.log()
+//         return boards
+//     }
+// }
 
 // export const getASingleBoard = (payload) => async (dispatch) => {
-//     const response = await fetch(`/api/boards/${payload.board_id}`)
+//     // const response = await fetch(`/api/boards/${payload.board_id}`)
+//     const response = await fetch(`/api/users/${payload.id}/boards/${payload.board_id}`)
 
 //     if(response.ok) {
 //         const board = await response.json();
-//         dispatch(getASingleBoard(board))
+//         dispatch(getSingleBoard(board))
+//         console.log("THUNK SINGLE BOARD", board)
 //         return board;
 //     }
 // }
+
+export const getASingleBoard = (id) => async (dispatch) => {
+
+    const response = await fetch(`/api/boards/${id}`)
+    if(response.ok) {
+        const board = await response.json();
+        console.log("THUNK SINGLE BOARD", board)
+        dispatch(getSingleBoard(board))
+        return board;
+    }
+}
 
 //CREATE
 export const createBoard = (formData) => async(dispatch) => {
@@ -101,7 +109,8 @@ const boardReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_BOARD_BY_USER:
             newState = {...state, ...action.boards}
-            console.log(action.boards)
+
+            console.log("ALLBOARDS?", action.boards)
             return newState
         // case GET_BOARD:
         //     const allBoards = []
@@ -115,11 +124,13 @@ const boardReducer = (state = {}, action) => {
         //         newState[board.id] = board
         //     })
         //     return newState
-        // case GET_SINGLE_BOARD:
-        //     newState = { ...state }
-        //     const newBoard = [...state.boards, action.board]
-        //     newState.boards = newBoard
-        //     return newState
+        case GET_SINGLE_BOARD:
+            newState = { ...state }
+            newState[action.board.id] = action.board
+            // console.log(newState)
+            // const newBoard = [...state.boards, action.board]
+            // newState.boards = newBoard
+            // return newState
 
         // case ADD_BOARD:
 

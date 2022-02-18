@@ -27,10 +27,13 @@ board_routes = Blueprint('boards', __name__)
 
 #Grab a single board by id
 @board_routes.route('/<int:id>')
-@login_required
-def get_single_board():
+# @login_required
+def get_single_board(id):
     board = Board.query.get(id)
+    print("!!!!!!!!!!!!************!!!!!!!!!!!!!!", board)
+    print("!!!!!!!!!!!!************!!!!!!!!!!!!!!", id)
     return board.to_dict()
+
 
 
 
