@@ -8,7 +8,8 @@ import "../SplashPage/SignupFormModal/SignUpForm.css"
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
-  const [full_name, setFullName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeat_password, setRepeatPassword] = useState("");
@@ -21,26 +22,30 @@ const SignUpForm = () => {
       email.includes("@") &&
       password.length >= 6 &&
       username.length >= 2 &&
-      full_name.length >= 4 &&
+      first_name.length >= 4 &&
+      last_name.length >= 3 &&
       repeat_password === password
     ) {
       setDisableButton(false);
     } else {
       setDisableButton(true);
     }
-  }, [disableButton, email, password, repeat_password, username, full_name]);
+  }, [disableButton, email, password, repeat_password, username, first_name, last_name]);
 
   const onSignUp = async (e) => {
     e.preventDefault();
     // if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(first_name, last_name, username, email, password, repeat_password));
       if (data) {
         setErrors(data)
       }
     // }
   };
-  const updateFullName = (e) => {
-    setFullName(e.target.value);
+  const updateFirstlName = (e) => {
+    setFirstName(e.target.value);
+  };
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const updateUsername = (e) => {
@@ -76,12 +81,23 @@ const SignUpForm = () => {
       <div className="login-input-container">
         <div className="input-container">
           <input
-            placeholder="Full Name"
+            placeholder="First Name"
             className="form-input"
             type="text"
-            name="full_name"
-            onChange={updateFullName}
-            value={full_name}
+            name="last_name"
+            onChange={updateFirstlName}
+            value={first_name}
+          ></input>
+          <label className="form-label"></label>
+        </div>
+        <div className="input-container">
+          <input
+            placeholder="Last Name"
+            className="form-input"
+            type="text"
+            name="first_name"
+            onChange={updateLastName}
+            value={last_name}
           ></input>
           <label className="form-label"></label>
         </div>
