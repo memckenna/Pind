@@ -80,7 +80,7 @@ export const getASingleBoard = (id) => async (dispatch) => {
     const response = await fetch(`/api/boards/${id}`)
     if(response.ok) {
         const board = await response.json();
-        // console.log("THUNK SINGLE BOARD", board)
+        console.log("THUNK SINGLE BOARD", board)
         dispatch(getSingleBoard(board))
         return board;
     }
@@ -158,17 +158,37 @@ const boardReducer = (state = {}, action) => {
         //     return newState
         case GET_SINGLE_BOARD:
             newState = { ...state }
-            newState[action.board.id] = action.board
+            // let singleBoard = [ ...newState.boards]
+            // singleBoard.push(action.board)
+            // newState.boards = singleBoard
+            // newState[action.board.id] = action.board
             return newState
             // console.log("NEWSTATE: ", newState)
             // const newBoard = [...state.boards, action.board]
             // newState.boards = newBoard
         case ADD_BOARD:
-            newState = { ...state, [action.board.id]: action.board }
+            newState = { ...state }
+            let newBoard = [ ...newState.boards]
+            newBoard.push(action.board)
+            newState.boards = newBoard
+            // newState[action.board.id] = action.board
             console.log("ADDD BOARD", newState)
             return newState;
         case EDIT_USER_BOARD:
-            newState = { ...state, [action.board.id]: action.board }
+            newState = { ...state }
+            // let editBoard = [ ...newState.boards ]
+            // editBoard.push(action.board.id)
+            // newState.boards = editBoard
+
+            // for(let i = 0; i < editBoard.length; i++) {
+            //     console.log("EDIT REDUCER", editBoard[i].id)
+            //     if (editBoard[i].id === action.board.id){
+            //         editBoard[i] = action.editBoard;
+            //     }
+            // }
+            console.log("EDITT REDUCER BOARD", newState)
+
+            newState[action.board.boards.id] = action.board.boards
             return newState
 
         default:

@@ -77,8 +77,15 @@ def edit_board(id):
         update_board.title = form.data['title']
         db.session.add(update_board)
         db.session.commit()
-        print("BACKEND EDIT BAORD", update_board.to_dict())
-        return update_board.to_dict()
+        return {'boards': update_board.to_dict()}
+
+    # if form.validate_on_submit():
+    #     update_board = Board.query.get(id)
+    #     update_board.title = form.data['title']
+    #     db.session.add(update_board)
+    #     db.session.commit()
+    #     print("BACKEND EDIT BAORD", update_board.to_dict())
+    #     return update_board.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

@@ -11,9 +11,9 @@ import '../UserProfile.css'
 function GetUserBoards({id}) {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
-    console.log("SESSION USER", sessionUser)
+    // console.log("SESSION USER", sessionUser)
     const boards = useSelector(state => state.board)
-    // console.log("BOARDS.Boards", boards)
+    console.log("BOARDS.Boards", boards)
     // const boardsList = Object.values(boards)
 
 
@@ -46,12 +46,12 @@ function GetUserBoards({id}) {
                         <div className="board-img">
                             <EditUserBoardModal id={board.id} />
                             <NavLink to={`/boards/${board.id}`}>
-                                <img src={board.pins[0]?.photo_url} />
+                            {/* <SingleBoard id={board.id} /> */}
+                                <img src={board?.pins[0]?.photo_url} />
                             </NavLink>
                         </div>
                         <div className="board-title">{board.title}</div>
                     </div>
-                    // <SingleBoard id={id} />
                 ))}
             </div>
         </>

@@ -10,12 +10,16 @@ const EditABoardForm = ({ id, onClose }) => {
     const dispatch = useDispatch();
     const board = useSelector(state => state.board);
     // console.log("MY BOARDDDD IN EDIT", id)
-    console.log("MY BOARDDDD IN EDIT", board.boards[id].title)
+    console.log("MY BOARDDDD IN EDIT TITLE", board.boards[id])
+    console.log("MY BOARDDDD IN EDIT", board)
 
-    const [title, setTitle] = useState(board.boards[id].title || "");
+    const [title, setTitle] = useState(board?.boards[id]?.title || "");
     const [description, setDescription] = useState("")
     const [disabled, setDisabled] = useState(true);
     const [errors, setErrors] = useState([]);
+
+    let boardToEdit = board.boards.filter((board) => board.id === id.id)
+    console.log("IS THIS IS BOARD?", boardToEdit)
 
     useEffect(() => {
         if(title.length > 0) {
