@@ -56,11 +56,12 @@ i {
 .create-board-btn {
     width: 84px;
     height: 48px;
-    border-radius: 50%;
+    border-radius: 25px;
     border: none;
     font-size: 18px;
     font-weight: bold;
     color: gray;
+    background-color: #efefef;
 }
 
 .create-button {
