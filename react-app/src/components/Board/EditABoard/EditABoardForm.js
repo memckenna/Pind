@@ -12,13 +12,15 @@ const EditABoardForm = ({ id, onClose }) => {
     const dispatch = useDispatch();
     const board = useSelector(state => state.board);
     const sessionUser = useSelector(state => state.session.user)
-    console.log("MY BOARDDDD IN EDIT", id)
+    console.log("MY BOARDDDD IN EDIT ID", id)
     // console.log("MY BOARDDDD IN EDIT TITLE", board.boards[id])
-    // console.log("MY BOARDDDD IN EDIT", board)
+    // console.log("MY BOARDDDD IN EDIT", board.boards)
 
 
     let boardToEdit = board.boards.filter((board) => board.id === +id)
+    // let userOfBoard = board.boards.filter((board) => board.user_id === +sessionUser.id)
     // console.log("IS THIS IS BOARD?", boardToEdit[0].description)
+    // console.log("THIS IS USER OF BOARD", userOfBoard)
 
     if(boardToEdit) {
         localStorage.setItem("title", boardToEdit[0].title)

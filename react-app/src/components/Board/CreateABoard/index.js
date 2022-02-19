@@ -12,10 +12,12 @@ function CreateBoardModal() {
     return (
         <>
             <div className="create-board-modal">
-                <i
-                    className="fa-regular fa-square-plus"
-                    onClick={() => setShowModal(true)}
-                ></i>
+                <button className="create-button">
+                    <i
+                        className="fas fa-plus"
+                        onClick={() => setShowModal(true)}
+                    ></i>
+                </button>
                 {/* <button onClick={() => setShowModal(true)}> */}
                 {/* Create post */}
                 {/* </button> */}

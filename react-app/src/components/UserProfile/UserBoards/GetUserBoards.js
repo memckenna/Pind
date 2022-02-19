@@ -8,12 +8,13 @@ import { getASingleBoard, getBoardsByUser } from "../../../store/board";
 import SingleBoard from "../../Board/SingleBoard";
 import '../UserProfile.css'
 
-function GetUserBoards({id}) {
+function GetUserBoards({id}) {    //id = userId
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     // console.log("SESSION USER", sessionUser)
     const boards = useSelector(state => state.board)
     console.log("BOARDS.Boards", boards)
+    console.log("USER ID", id)
     // const boardsList = Object.values(boards)
 
 
@@ -31,12 +32,22 @@ function GetUserBoards({id}) {
     //     dispatch(getASingleBoard(id))
 
     // }
-
+    // let sessionLinks;
+    // if(sessionUser) {
+    //     sessionLinks = (
+    //         <EditUserBoardModal id={board.id} />
+    //     )
+    // }
+    // let boardUser = boards.boards.map(board => {
+    //     console.log(board.user_id)
+    //     board = board.user_id
+    // })
+    // console.log(boardUser)
 
     return (
         <>
             <div className="create-board-profile-modal">
-                <CreateBoardModal />
+                <CreateBoardModal  />
             </div>
             <div className="board-container">
                 {boards.boards?.map(board => (
@@ -44,7 +55,7 @@ function GetUserBoards({id}) {
 
                         {/* {console.log(board.id)} */}
                         <div className="board-img">
-                            <EditUserBoardModal id={board.id} />
+                            <EditUserBoardModal user={board.user_id} board={board} id={board.id} />
                             <NavLink to={`/boards/${board.id}`}>
                             {/* <SingleBoard id={board.id} /> */}
                                 <img src={board?.pins[0]?.photo_url} />
