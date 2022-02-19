@@ -30,7 +30,7 @@ def match_passswords(form, field):
 
 class SignUpForm(FlaskForm):
     first_name = StringField('first name', validators=[DataRequired(),
-        Length(min=2, max=50, message="First name must be between 4 and 50 characters long")])
+        Length(min=4, max=50, message="First name must be between 4 and 50 characters long")])
     last_name = StringField('last name', validators=[DataRequired(),
         Length(min=4, max=50, message="Last name must be between 4 and 50 characters long")])
     username = StringField(

@@ -75,6 +75,7 @@ def edit_board(id):
     if form.validate_on_submit():
         update_board = Board.query.get(id)
         update_board.title = form.data['title']
+        # update_board.description = form.data['description']
         db.session.add(update_board)
         db.session.commit()
         return {'boards': update_board.to_dict()}

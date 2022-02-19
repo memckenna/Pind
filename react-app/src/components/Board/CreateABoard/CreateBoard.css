@@ -56,9 +56,21 @@ i {
 .create-board-btn {
     width: 84px;
     height: 48px;
-    border-radius: 24px;
+    border-radius: 50%;
     border: none;
     font-size: 18px;
     font-weight: bold;
     color: gray;
+}
+
+.create-button {
+    border-radius: 50%;
+    border: none;
+    padding: 8px 10px 8px 10px;
+    font-size: 30px;
+    background-color: white;
+}
+
+.create-button:hover {
+    background-color: #efefef;
 }

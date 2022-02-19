@@ -15,7 +15,7 @@ const CreateBoardForm = ({ onClose }) => {
     const [errors, setErrors] = useState([])
     const [disabled, setDisabled] = useState(true);
     const user = useSelector(state => state.session.user);
-    console.log("USER", user)
+    // console.log("USER", user)
 
     useEffect(() => {
         if(title.length > 0) {
@@ -36,7 +36,7 @@ const CreateBoardForm = ({ onClose }) => {
         // formData.append("description", description)
 
         const data = await dispatch(createBoard(formData))
-        console.log("THIS IS MY COMP DATA", data)
+        // console.log("THIS IS MY COMP DATA", data)
         if (data) {
             setErrors(data)
             onClose()
@@ -44,17 +44,6 @@ const CreateBoardForm = ({ onClose }) => {
         }
         alert("Your board was created: ")
     }
-
-
-
-    // const updateTitle = (e) => {
-    //     setTitle(e.target.value)
-    // }
-
-    // const updateDescription = (e) => {
-    //     setDescription(e.target.value)
-    // }
-
 
     return (
         <>
