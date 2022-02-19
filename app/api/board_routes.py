@@ -26,13 +26,14 @@ board_routes = Blueprint('boards', __name__)
     # return newObj
 
 #Grab a single board by id
-@board_routes.route('/<int:id>')
-# @login_required
-def get_single_board(id):
-    board = Board.query.get(id)
-    print("!!!!!!!!!!!!************!!!!!!!!!!!!!!", board)
-    print("!!!!!!!!!!!!************!!!!!!!!!!!!!!", id)
-    return board.to_dict()
+# @board_routes.route('/<int:id>')
+# # @login_required
+# def get_single_board(id):
+#     board = Board.query.get(id)
+#     print("!!!!!!!!!!!!************!!!!!!!!!!!!!!", board)
+#     print("!!!!!!!!!!!!************!!!!!!!!!!!!!!", id)
+#     return {'boards': board.to_dict()}
+    # return board.to_dict()
 
 
 
@@ -53,8 +54,7 @@ def create_board():
         db.session.add(new_board)
         db.session.commit()
         # print("BACKEND NEWBAORD", new_board.to_dict())
-        return new_board.to_dict()
-
+        return {'boards': new_board.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -99,3 +99,31 @@ def delete_board(id):
     db.session.delete(del_board) # deletes the post from data base
     db.session.commit() # commits the changes in database
     return {"message": "Deleted"}
+
+
+#Grab SINGLE BOARD && ALL PINS FOR THAT BOARD
+# @board_routes.route('/<int:id>/pins')
+@board_routes.route('/<int:id>')
+# @login_required
+def get_pin_by_user_board(id):
+    # user = User.query.get(id)
+    board = Board.query.get(id)
+
+    # pins_by_board_id = db.session.query(Board).all()
+    pins_by_board_id = db.session.query(Board)\
+                        .filter(Board.id == board.id).all()
+    print("\n\n\n\n", pins_by_board_id)
+    # pins_by_board_id = db.session.query(Pin) \
+    #                     .filter(Pin.user_id == user.id) \
+    #                     .options(joinedload(Pin.boards)).all()
+
+    # pins_by_board_id = Pin.query.filter(Pin.user_id == id).all()
+    for pin in pins_by_board_id:
+        print(pin.to_dict(), '\n\n\n******board - pin******\n\n\n')
+
+    return {'pins': [pin.to_dict() for pin in pins_by_board_id]}
+
+    # return {'pins': [pin.to_dict()['pin'] for pin in pins_by_board_id]}
+
+
+#

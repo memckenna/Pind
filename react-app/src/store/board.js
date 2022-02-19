@@ -57,37 +57,13 @@ export const getBoardsByUser = (id) => async (dispatch) => {
     }
 }
 
-// export const getAllBoard = (payload) => async (dispatch) => {
-//     const response = await fetch(`/api/boards/${payload.user_id}`)
-
-//     if(response.ok) {
-//         const boards = await response.json()
-//         dispatch(getBoards(boards))
-//         // console.log()
-//         // console.log("BOARDDS IN THUNK", boards)
-//         // console.log()
-//         return boards
-//     }
-// }
-
-// export const getASingleBoard = (payload) => async (dispatch) => {
-//     // const response = await fetch(`/api/boards/${payload.board_id}`)
-//     const response = await fetch(`/api/users/${payload.id}/boards/${payload.board_id}`)
-
-//     if(response.ok) {
-//         const board = await response.json();
-//         dispatch(getSingleBoard(board))
-//         console.log("THUNK SINGLE BOARD", board)
-//         return board;
-//     }
-// }
-
+//Get Single Board
 export const getASingleBoard = (id) => async (dispatch) => {
 
     const response = await fetch(`/api/boards/${id}`)
     if(response.ok) {
         const board = await response.json();
-        console.log("THUNK SINGLE BOARD", board)
+        console.log("THUNK SINGLE BOARD and PINS", board)
         dispatch(getSingleBoard(board))
         return board;
     }
@@ -174,15 +150,9 @@ const boardReducer = (state = {}, action) => {
         //     }
         //     return { ...state, 'posts': allBoards }
         case GET_SINGLE_BOARD:
-            newState = { ...state }
-            // let singleBoard = [ ...newState.boards]
-            // singleBoard.push(action.board)
-            // newState.boards = singleBoard
-            // newState[action.board.id] = action.board
+            newState = { ...state, ...action.board.pins[0] }
+            console.log("STATE", newState)
             return newState
-            // console.log("NEWSTATE: ", newState)
-            // const newBoard = [...state.boards, action.board]
-            // newState.boards = newBoard
         case ADD_BOARD:
             newState = { ...state }
             let newBoard = [ ...newState.boards]

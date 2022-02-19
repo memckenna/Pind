@@ -1,31 +1,33 @@
-.pin-container {
-    margin-top: 200px;
+.pin-feed-page {
+    margin-top: 100px;
+}
+
+.pin-feed-container {
+    /* margin-top: 200px; */
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
 }
 
-.pin-card {
+.pin-feed-card {
     width: 256px;
     overflow: hidden;
     padding: 8px 8px 8px 8px;
     display: block;
 }
 
-
-
-.pin-image {
+.pin-feed-image {
     width: 256px;
     height: auto;
 }
 
-.pin-image:hover {
+.pin-feed-image:hover {
     cursor: zoom-in;
     filter:brightness(60%);
 }
 
-.pin-title {
+.pin-feed-title {
     font-size: 18px;
     text-align: left;
     -webkit-box-orient: vertical;

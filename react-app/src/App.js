@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage/SplashPage';
 import GetUserBoards from './components/UserProfile/UserBoards/GetUserBoards';
 import SingleBoard from './components/Board/SingleBoard';
+import PinFeedPage from './components/PinFeedPage/PinFeedPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,6 +35,9 @@ function App() {
       <Switch>
         <Route path="/" exact={true}>
           <SplashPage />
+        </Route>
+        <Route path="/pins" exact={true}>
+          <PinFeedPage />
         </Route>
         <Route path="/boards/:boardId" exact={true}>
           <SingleBoard />
