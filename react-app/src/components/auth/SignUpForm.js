@@ -23,7 +23,7 @@ const SignUpForm = () => {
       password.length >= 6 &&
       username.length >= 2 &&
       first_name.length >= 4 &&
-      last_name.length >= 3 &&
+      last_name.length >= 4 &&
       repeat_password === password
     ) {
       setDisableButton(false);
@@ -36,8 +36,8 @@ const SignUpForm = () => {
     e.preventDefault();
     // if (password === repeatPassword) {
       const data = await dispatch(signUp(first_name, last_name, username, email, password, repeat_password));
-      if (data) {
-        setErrors(data)
+      if (data?.errors) {
+        setErrors(data.errors)
       }
     // }
   };
@@ -84,7 +84,7 @@ const SignUpForm = () => {
             placeholder="First Name"
             className="form-input"
             type="text"
-            name="last_name"
+            name="first_name"
             onChange={updateFirstlName}
             value={first_name}
           ></input>
@@ -95,7 +95,7 @@ const SignUpForm = () => {
             placeholder="Last Name"
             className="form-input"
             type="text"
-            name="first_name"
+            name="last_name"
             onChange={updateLastName}
             value={last_name}
           ></input>

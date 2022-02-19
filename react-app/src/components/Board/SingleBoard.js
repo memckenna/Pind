@@ -26,7 +26,7 @@ const SingleBoard = () => {
     return (
         <>
             <div className="single-board">
-                <div>WILL BE ALL USER BOARDS</div>
+                <div>WILL BE ALL USER PINS FOR BOARD</div>
                 {/* ADD PINS  */}
                 {/* {boards.boards?.map((board) => (
                     <div>
