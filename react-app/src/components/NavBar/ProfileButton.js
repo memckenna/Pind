@@ -43,10 +43,18 @@ const sessionUser = useSelector((state) => state.session.user);
       {showMenu && (
         <div className="profile-pic-dropdown">
           <div className="profile">
-            <NavLink to={`/users/${user.id}`} activeClassName="active">
-              <button className="profile-button">
-                <i className="fa-regular fa-user"></i>Profile
-              </button>
+            <NavLink to={`/users/${user.id}`} className="profile-nav" activeClassName="active">
+              <div className="profile-div">
+                <div>
+                  <button className="profile-button">
+                    <img className="profile-pic-nav" src={sessionUser?.profile_img_url} alt="profile-pic" />
+                    {/* <i className="fa-regular fa-user"></i>Profile */}
+                  </button>
+                </div>
+                <div className="profile-name">
+                  {sessionUser.first_name} {sessionUser.last_name}
+                </div>
+              </div>
             </NavLink>
           </div>
           <div className="logout">

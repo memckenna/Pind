@@ -12,42 +12,24 @@ nav {
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-
     height: 80px;
-    /* max-width: 2000px; */
-    /* width: 100%; */
-    /* border-bottom: 1px solid lightgrey; */
     box-shadow: rgb(0 0 0 / 10%) 0px 8px 28px;
     align-items: center;
     padding-left: 30px;
     padding-right: 30px;
 }
 
-
-
-
 .left-bar {
     display: flex;
     align-items: center;
-    /* padding: 8px 8px 8px 8px; */
-    /* flex-direction: row; */
-    /* justify-content: flex-start; */
-    /* align-self:flex-start; */
-    /* margin-left: 24px; */
 }
 
 .right-bar {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-
     justify-content: flex-end;
-
-    /* padding-left: 20px;
-    padding-right: 20px; */
-
 }
-
 
 .logo {
     height: 50px;
@@ -136,11 +118,34 @@ nav {
     font-weight: bold;
 }
 
+
 .profile-btn-container {
     display: flex;
     justify-content: column;
     align-items: center;
     box-sizing: border-box;
+}
+
+.profile-nav {
+    text-decoration: none;
+
+}
+
+.profile-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-button {
+    border: none;
+    background-color: white;
+}
+
+.profile-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
 }
 
 .profile-pic-nav {
@@ -163,6 +168,7 @@ nav {
     /* transform: translate(-100px -10px); */
     transition: all 0.2s;
     box-shadow: 2px 2px 5px lightgray;
+    right: 30px;
   }
 
  .fa-user {
@@ -183,12 +189,9 @@ nav {
  }
 
  .logout {
-     font-size: 16px;
+     font-size: 18px;
      border: none;
      font-weight: bold;
-     padding: 5px 5px 5px 5px;
+     padding: 10px 10px 10px 10px;
+     background-color: white;
  }
-
-  .home-button {
-
-  }

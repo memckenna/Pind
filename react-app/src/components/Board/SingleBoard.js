@@ -28,19 +28,14 @@ const SingleBoard = () => {
 
     return (
         <>
-            <div>WILL BE ALL USER PINS FOR BOARD</div>
             <div className="pin-container">
                 {pinsByBoard.pins?.map(pin => (
-
                     <div key={pin.id} className="pin-card">
                         <div className="pin-image-container">
                             <img className="pin-image" src={pin.photo_url} />
                         </div>
                         <div className="pin-title">{pin.title}</div>
-
-
                     </div>
-
                 ))}
             </div>
         </>
