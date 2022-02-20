@@ -6,6 +6,7 @@ import LogoutButton from '../auth/LogoutButton';
 import LoginFormModal from '../SplashPage/LoginFormModal/LoginPage';
 import SignUpFormModal from '../SplashPage/SignupFormModal/SignUpPage';
 import ProfileButton from './ProfileButton';
+import HomeButton from './HomeButton';
 import logo from '../../images/logo.png';
 import './NavBar.css'
 
@@ -15,54 +16,42 @@ const NavBar = () => {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+        <ProfileButton user={sessionUser} />
+      </>
     );
   } else {
     sessionLinks = (
       <>
         <LoginFormModal />
         <SignUpFormModal />
-        {/* <NavLink to="/signup">Sign Up</NavLink> */}
       </>
     );
+  }
+  let homeLink;
+  if(sessionUser) {
+    homeLink = (
+      <div>
+          <HomeButton />
+      </div>
+    )
   }
 
   return (
     <nav>
       <div className='nav-container'>
-        {/* <div className='nav-bar'> */}
-          <div className='left-bar'>
-            <NavLink to='/' exact={true} activeClassName='active'>
-              <img className='logo' src={logo} alt='logo' />
-            </NavLink>
-            {/* <NavLink to='/' exact={true} activeClassName='active'>
-              <button>Home</button>
-            </NavLink> */}
-          </div>
-
-          <div className='right-bar'>
-            {/* <NavLink to='/login' exact={true} activeClassName='active'>
-              <button className='login'>Log in</button>
-
-            </NavLink> */}
-            {/* <NavLink to='/sign-up' exact={true} activeClassName='active'>
-              <button className='signup'>Sign Up</button>
-            </NavLink> */}
-            {/* <LoginFormModal /> */}
-            <div>{sessionLinks}</div>
-
-
-            {/* <NavLink to='/users' exact={true} activeClassName='active'>
-              Users
-            </NavLink> */}
-            {/* <LogoutButton /> */}
-          </div>
-
-          <div>
-          </div>
-
-        {/* </div> */}
-
+        <div className='left-bar'>
+          <NavLink to='/' exact={true} activeClassName='active'>
+            <img className='logo' src={logo} alt='logo' />
+          </NavLink>
+          {homeLink}
+        </div>
+        <div className='right-bar'>
+          <div>{sessionLinks}</div>
+          {/* <NavLink to='/users' exact={true} activeClassName='active'>
+            Users
+          </NavLink> */}
+        </div>
       </div>
     </nav>
   );

@@ -25,17 +25,26 @@ const sessionUser = useSelector((state) => state.session.user);
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
-  console.log(sessionUser
-    )
 
   return (
-    <div className="profile-btn-container">
-      <img className="profile-pic-nav" src={sessionUser?.profile_img_url} alt="" onClick={openMenu} />
+    <div className="profile-container">
+      <div className="profile-btn-container">
+        <div>
+            <NavLink to={`/users/${user.id}`} exact={true}  activeClassName='active'>
+              <img className="profile-pic-nav" src={sessionUser?.profile_img_url} alt="profile-pic" />
+            </NavLink>
+        </div>
+        <div>
+          <button onClick={openMenu} className="drop-down-button">
+            <i className="fas fa-angle-down"></i>
+          </button>
+        </div>
+      </div>
       {showMenu && (
         <div className="profile-pic-dropdown">
           <div className="profile">
             <NavLink to={`/users/${user.id}`} activeClassName="active">
-              <button>
+              <button className="profile-button">
                 <i className="fa-regular fa-user"></i>Profile
               </button>
             </NavLink>
