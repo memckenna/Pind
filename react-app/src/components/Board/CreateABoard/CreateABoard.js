@@ -36,6 +36,7 @@ const CreateBoardForm = ({ onClose }) => {
         // formData.append("description", description)
 
         const data = await dispatch(createBoard(formData))
+        console.log("BOARD DATA", data)
         await dispatch(getBoardsByUser(user.id));
         // console.log("THIS IS MY COMP DATA", data)
         if (data?.errors) {

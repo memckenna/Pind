@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Redirect, useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { createPin } from "../../../store/pin";
+import { createPin, getAllPinsOnFeed } from "../../../store/pin";
 import { getBoardsByUser } from "../../../store/board";
+
 import './CreatePin.css';
 
 
 
-const CreateAPin = () => {
+const CreateAPin = ({onClose}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
@@ -20,33 +21,59 @@ const CreateAPin = () => {
     const [errors, setErrors] = useState([])
     const [disabled, setDisabled] = useState(true)
 
-    useEffect(() => {
-        if(title.length > 0) setDisabled(false)
-        else setDisabled(true)
+    const boards = useSelector(state => state.boards)
 
-        if(photoUrl.length > 10) setDisabled(false)
-        else setDisabled(true)
-    }, [disabled, title, photoUrl])
+    // useEffect(() => {
+    //     if(title.length > 0) setDisabled(false)
+    //     else setDisabled(true)
+
+    //     // if(photoUrl.length > 10) setDisabled(false)
+    //     // else setDisabled(true)
+    // }, [disabled, title, photoUrl])
 
     if (!sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const formData = new FormData()
-        formData.append("title", title);
-        formData.append("photo_url", photoUrl);
+        // const formData = new FormData()
+        // formData.append("title", title);
+        // formData.append("description", description)
+        // formData.append("source_link", sourceLink)
+        // formData.append("photo_url", photoUrl);
+        const payload = {
+            title,
+            description,
+            sourceLink,
+            photoUrl,
+            // board_id
+        }
 
-        const data = await dispatch(createPin(formData))
+        console.log("FORM DATA", payload)
+
+        // const data = await dispatch(createPin(payload))
+        const data = await dispatch(createPin(payload))
+        console.log("CREATE PIN DATA", data)
         // await dispatch(getBoardsByUser(sessionUser.id))
+        await dispatch(getAllPinsOnFeed())
 
         if(data?.errors) {
-            setErrors(data.errors)
-        } else if (!data?.errors) {
-            // await dispatch(getBoardsByUser(sessionUser.id))
-            history.push(`/users/${sessionUser.id}`)
+            setErrors(data)
+        } else {
+            await dispatch(getAllPinsOnFeed())
+            onClose()
         }
-        alert("Your pin was created: ")
+
+        // if(data?.errors) {
+        //     setErrors(data.errors)
+        // } else if (!data?.errors) {
+        //     // await dispatch(getBoardsByUser(sessionUser.id))
+        //     await dispatch(getAllPinsOnFeed())
+
+        //     // history.push(`/pins`)
+        //     // history.push(`/users/${sessionUser.id}`)
+        // }
+        // alert("Your pin was created: ")
     }
 
 
@@ -104,7 +131,7 @@ const CreateAPin = () => {
                         </div>
 
                         <div className="create-pin-btn-div">
-                                <button type="pin-submit" disabled={disabled} className="create-pin-btn">Save</button>
+                                <button type="pin-submit"  className="create-pin-btn">Save</button>
                         </div>
 
                     </div>

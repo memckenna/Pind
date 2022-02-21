@@ -1,7 +1,7 @@
 const GET_ALL_PINS = 'pins/GET_ALL_PINS';
 const GET_SINGLE_PIN = 'pins/GET_SINGLE_PIN';
 
-const ADD_PIN = 'pins/ADD_PIN';
+const ADD_SINGLE_PIN = 'pins/ADD_SINGLE_PIN';
 
 //Action Creator
 export const getAllPins = (pins) => ({
@@ -14,15 +14,15 @@ export const getSinglePin = (pin) => ({
     pin
 })
 
-export const addPin = (pin) => ({
-    type: ADD_PIN,
+export const addSinglePin = (pin) => ({
+    type: ADD_SINGLE_PIN,
     pin
 })
 
 //Thunk Action Creator
 // GET ALL PINS ON FEED PAGE
 export const getAllPinsOnFeed = () => async (dispatch) => {
-    const response = await fetch('/api/pins')
+    const response = await fetch('/api/pins/')
 
     if(response.ok) {
         const data = await response.json()
@@ -39,22 +39,32 @@ export const getASinglePin = (id) => async (dispatch) => {
     if(response.ok) {
         const data = await response.json()
         dispatch(getSinglePin(data))
-        console.log("PIN THUNK", data)
+        // console.log("PIN THUNK", data)
         // return data
     }
 }
 
 //Create a Pin
-export const createPin = (formData) => async(dispatch) => {
-    const response = await fetch(`/api/pins/create`, {
+export const createPin = (payload) => async(dispatch) => {
+    const response = await fetch(`/api/pins/`, {
         method: 'POST',
-        body: formData
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "title": payload.title,
+            "photo_url": payload.photoUrl,
+            "description": payload.description,
+            "source_link": payload.sourceLink,
+            // "board_id": payload.board_id
+        })
     })
+    console.log("RESPONSE", response)
 
     if(response.ok) {
         const data = await response.json()
-        dispatch(addPin(data))
         console.log("CREATE NEW PIN THUNK", data)
+        dispatch(addSinglePin(data))
         return data
     } else if (response.status < 500) {
         const data = await response.json()
@@ -77,7 +87,7 @@ const pinReducer = (state = {}, action) => {
             newState = { ...state, ...action.pin.pin }
             console.log("PIN STATE", newState)
             return newState
-        case ADD_PIN:
+        case ADD_SINGLE_PIN:
             newState = { ...state, [action.pin.id]: action.pin }
             // let newPin = [...newState.pins]
             // newPin.push(action.pin)

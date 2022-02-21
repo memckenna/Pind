@@ -9,7 +9,7 @@ pin_routes = Blueprint('pins', __name__)
 
 
 #Grab all Pins on Feed page
-@pin_routes.route('')
+@pin_routes.route('/')
 # @login_required
 def get_all_pins_on_feed():
     pins = Pin.query.all()
@@ -32,23 +32,32 @@ def get_pin_by_id(id):
 
 
 #Create a Pin
-@pin_routes.route('/create', methods=["POST"])
+@pin_routes.route('/', methods=["POST"])
 @login_required
 def create_pin():
     form = CreatePinForm()
+    board = Board.query.get(form.data["board_id"])
+
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
 
-        new_pin = Pin(title=form.data["title"], user_id=current_user.id)
+        new_pin = Pin(
+            title=form.data["title"],
+            user_id=current_user.id,
+            photo_url=form.data["photo_url"],
+            )
         # new_pin = Pin(photo_url=form.data["photo_url"], user_id=current_user.id)
         db.session.add(new_pin)
         db.session.commit()
 
-        new_pin = Pin(photo_url=form.data["photo_url"], user_id=current_user.id)
-        db.session.add(new_pin)
-        db.session.commit()
+        #append board and pin
+        #commit
+
+        # new_pin = Pin(photo_url=form.data["photo_url"], user_id=current_user.id)
+        # db.session.add(new_pin)
+        # db.session.commit()
         print("\n\n\n\n\n", new_pin)
         return new_pin.to_dict()
         # return {'pins': new_pin.to_dict()}
