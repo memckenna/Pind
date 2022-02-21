@@ -58,7 +58,7 @@ const CreateAPin = ({onClose}) => {
         await dispatch(getAllPinsOnFeed())
 
         if(data?.errors) {
-            setErrors(data)
+            setErrors(data.errors)
         } else {
             await dispatch(getAllPinsOnFeed())
             onClose()
