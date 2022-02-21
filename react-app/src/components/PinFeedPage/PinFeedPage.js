@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Redirect, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPinsOnFeed } from "../../store/pin";
+import UserFooter from "../Footer/UserFooter";
 
 import './PinFeedPage.css'
 
@@ -18,7 +19,7 @@ const PinFeedPage = () => {
 
 
     return (
-        <>
+        <div>
             {/* <div className="pin-feed-page">PIN FEED PAGE</div> */}
             <div className="pin-feed-container">
                 {pins.pins?.map(pin => (
@@ -34,7 +35,13 @@ const PinFeedPage = () => {
                     </div>
                 ))}
             </div>
-        </>
+            <div className="create-pin-btn-div">
+                <UserFooter />
+                {/* <button className="create-pin-btn">
+                    <i className="fas fa-plus"></i>
+                </button> */}
+            </div>
+        </div>
     )
 }
 

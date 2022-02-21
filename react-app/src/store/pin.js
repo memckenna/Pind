@@ -46,7 +46,7 @@ export const getASinglePin = (id) => async (dispatch) => {
 
 //Create a Pin
 export const createPin = (formData) => async(dispatch) => {
-    const response = await fetch(`/api/pins/create_pin`, {
+    const response = await fetch(`/api/pins/create`, {
         method: 'POST',
         body: formData
     })

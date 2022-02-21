@@ -85,3 +85,19 @@ export function SignUpModal({ onClose, children }) {
         modalNode
     );
 }
+
+
+export function CreatePinModal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+        <div id="create-pin-modal">
+            <div id="create-pin-modal-background" onClick={onClose} />
+            <div id="create-pin-modal-content">
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+}

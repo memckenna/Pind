@@ -32,8 +32,8 @@ def get_pin_by_id(id):
 
 
 #Create a Pin
-@pin_routes.route('/create_pin', methods=["GET", "POST"])
-# @login_required
+@pin_routes.route('/create', methods=["POST"])
+@login_required
 def create_pin():
     form = CreatePinForm()
 

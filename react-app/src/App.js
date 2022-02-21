@@ -44,9 +44,9 @@ function App() {
         <Route path="/pins/:pinId" exact={true}>
           <SinglePin />
         </Route>
-        <Route path="/pins/create_pin" exact={true}>
+        {/* <Route path="/pins/create" exact={true}>
           <CreateAPin />
-        </Route>
+        </Route> */}
         <Route path="/boards/:boardId" exact={true}>
           <SingleBoard />
         </Route>

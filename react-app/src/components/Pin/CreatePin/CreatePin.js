@@ -52,45 +52,65 @@ const CreateAPin = () => {
 
     return (
         <>
-            <div className="create"> CREATE A PIN</div>
-            <form onSubmit={handleSubmit}>
-                <h2>Create a Pin</h2>
-                <div className='login-error-container'>
-                    {errors?.map((error, ind) => (
-                        <div key={error}>{error}</div>
-                    ))}
-                </div>
-                <input
-                    className='title'
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder='Add your title"'
-                />
-                <textarea
-                    className='description'
-                    placeholder="Tell everyone what your Pin is about"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-                <input
-                    className='source-link'
-                    type="text"
-                    value={sourceLink}
-                    onChange={(e) => setSourceLink(e.target.value)}
-                    placeholder='Add a destination link"'
-                />
-                <input
-                    className='photo-url'
-                    type="text"
-                    value={photoUrl}
-                    onChange={(e) => setPhotoUrl(e.target.value)}
-                    placeholder='Click to upload"'
-                />
-                <div className="create-pin-btn-div">
-                        <button type="submit" disabled={disabled} className="create-pin-btn">Save</button>
-                </div>
-            </form>
+            <div className="create-pin-form-container">
+                <form className="create-pin-form" onSubmit={handleSubmit}>
+                    <div className="create-pin-heading">
+                        <h2>Create a Pin</h2>
+                    </div>
+                    <div className='login-error-container'>
+                        {errors?.map((error, ind) => (
+                            <div key={error}>{error}</div>
+                        ))}
+                    </div>
+                    <div className="create-pin-input-container">
+                        <div className="create-pin-photo">
+                            <div className="pin-photo">
+                                <input
+                                    className='pin-photo-url'
+                                    type="text"
+                                    value={photoUrl}
+                                    onChange={(e) => setPhotoUrl(e.target.value)}
+                                    placeholder='Click to upload"'
+                                />
+                            </div>
+                        </div>
+                        <div className="create-pin-input">
+                            <div>
+                                <input
+                                    className='pin-title'
+                                    type="text"
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    placeholder='Add your title"'
+                                />
+                            </div>
+                            <div>
+                                <textarea
+                                    className='pin-description'
+                                    placeholder="Tell everyone what your Pin is about"
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    className='pin-source-link'
+                                    type="text"
+                                    value={sourceLink}
+                                    onChange={(e) => setSourceLink(e.target.value)}
+                                    placeholder='Add a destination link"'
+                                />
+                            </div>
+                        </div>
+
+                        <div className="create-pin-btn-div">
+                                <button type="pin-submit" disabled={disabled} className="create-pin-btn">Save</button>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
 
         </>
     )

@@ -42,3 +42,22 @@
     font-weight: 700;
     -webkit-font-smoothing: antialiased;
 }
+
+/* .create-pin-btn-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 50px;;
+}
+
+.create-pin-btn {
+    border-radius: 50%;
+    padding: 10px 10px 10px 10px;
+
+
+}
+
+.fa-plus {
+    font-size: 30px;
+} */
