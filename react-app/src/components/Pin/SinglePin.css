@@ -1,0 +1,124 @@
+.pin-page {
+    margin-top: 100px;
+}
+
+.outer-single-pin-container {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.arrow {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+
+}
+
+.fa-arrow-left {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.arrow-pin-page {
+    display: flex;
+
+    padding-top: 15px;
+
+    text-decoration: none;
+}
+
+.single-pin-container {
+    display: flex;
+    /* justify-content: center; */
+    /* border: 1px solid red; */
+    background-color: white;
+    border-radius: 24px;
+    max-width: 1016px;
+    max-height: 950px;
+    width: 100%;
+    height: auto;
+    box-shadow: rgb(0 0 0 / 40%) 0px 8px 28px;
+
+}
+
+.single-pin-img-container {
+    display: flex;
+
+    /* justify-content: flex-start; */
+}
+
+
+.single-pin-img {
+    display: flex;
+    /* justify-content: flex-start; */
+    /* border-radius: 24px; */
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+    max-width: 508px;
+    width: 508px;
+    max-height: 950px;
+    /* width: 100%; */
+    height: auto;
+}
+
+.single-pin-content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding-right: 34px;
+    padding-left: 34px;
+    max-width: 508px;
+    width: 508px;
+    max-height: 950px;
+    height: auto;
+}
+
+.single-save-button-div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 28px;
+
+}
+
+.single-save-button {
+    background-color: #e60023;
+    color: white;
+    border-radius: 24px;
+    padding: 12px 16px;
+    border: none;
+    min-width: 69px;
+    box-sizing: border-box;
+    min-height: 48px;
+    /* display: block; */
+    cursor: pointer;
+    line-height: normal;
+    font-size: 16px;
+    font-weight: bold;
+    /* margin-left: 16px; */
+}
+
+.single-pin-title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: left;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    max-width: 100%;
+    overflow: hidden;
+    word-break: break-word;
+    word-wrap: break-word;
+
+    -webkit-font-smoothing: antialiased;
+    padding-top: 36px;
+    padding-bottom: 10px;
+
+}
+
+.single-pin-description {
+    font-size: 14px;
+
+
+}

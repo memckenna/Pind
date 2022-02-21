@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { getASingleBoard } from "../../store/board";
 
 import "./SingleBoard.css"
@@ -31,8 +31,11 @@ const SingleBoard = () => {
             <div className="pin-container">
                 {pinsByBoard.pins?.map(pin => (
                     <div key={pin.id} className="pin-card">
+
                         <div className="pin-image-container">
-                            <img className="pin-image" src={pin.photo_url} />
+                            <NavLink to={`/pins/${pin.id}`}>
+                                <img className="pin-image" src={pin.photo_url} />
+                            </NavLink>
                         </div>
                         <div className="pin-title">{pin.title}</div>
                     </div>

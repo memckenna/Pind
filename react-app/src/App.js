@@ -12,6 +12,8 @@ import SplashPage from './components/SplashPage/SplashPage';
 import GetUserBoards from './components/UserProfile/UserBoards/GetUserBoards';
 import SingleBoard from './components/Board/SingleBoard';
 import PinFeedPage from './components/PinFeedPage/PinFeedPage';
+import SinglePin from './components/Pin/SinglePin';
+import CreateAPin from './components/Pin/CreatePin/CreatePin';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,6 +40,12 @@ function App() {
         </Route>
         <Route path="/pins" exact={true}>
           <PinFeedPage />
+        </Route>
+        <Route path="/pins/:pinId" exact={true}>
+          <SinglePin />
+        </Route>
+        <Route path="/pins/create_pin" exact={true}>
+          <CreateAPin />
         </Route>
         <Route path="/boards/:boardId" exact={true}>
           <SingleBoard />

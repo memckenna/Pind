@@ -24,7 +24,9 @@ const PinFeedPage = () => {
                 {pins.pins?.map(pin => (
                     <div key={pin.id} className="pin-feed-card">
                         <div className="pin-feed-image-container">
-                            <img className="pin-feed-image" src={pin.photo_url} />
+                            <NavLink to={`/pins/${pin.id}`}>
+                                <img className="pin-feed-image" src={pin.photo_url} />
+                            </NavLink>
                         </div>
                         <div className="pin-feed-title">{pin.title}</div>
 

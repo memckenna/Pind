@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import CreateBoardModal from "../../Board/CreateABoard";
 
 import EditUserBoardModal from "../../Board/EditABoard";
-import { getASingleBoard, getBoardsByUser } from "../../../store/board";
+import { getASingleBoard, getBoardsByUser, createBoard } from "../../../store/board";
 import SingleBoard from "../../Board/SingleBoard";
+import  door from '../../../images/door.jpg'
 import '../UserProfile.css'
 
 function GetUserBoards({id}) {    //id = userId
@@ -15,6 +16,8 @@ function GetUserBoards({id}) {    //id = userId
     const boards = useSelector(state => state.board)
     console.log("BOARDS.Boards", boards)
     console.log("USER ID", id)
+    const pins = useSelector(state => state.pinReducer)
+    console.log("MY PINS", pins)
     // const boardsList = Object.values(boards)
 
 
@@ -23,6 +26,7 @@ function GetUserBoards({id}) {    //id = userId
         //     id: sessionUser?.id
         // }
         dispatch(getBoardsByUser(id));
+        // dispatch(createBoard(boards.boards[id]))
     }, [dispatch])
 
     if(!sessionUser) return <Redirect to="/login" />;
@@ -38,11 +42,7 @@ function GetUserBoards({id}) {    //id = userId
     //         <EditUserBoardModal id={board.id} />
     //     )
     // }
-    // let boardUser = boards.boards.map(board => {
-    //     console.log(board.user_id)
-    //     board = board.user_id
-    // })
-    // console.log(boardUser)
+
 
     return (
         <>
@@ -52,13 +52,16 @@ function GetUserBoards({id}) {    //id = userId
             <div className="board-container">
                 {boards.boards?.map(board => (
                     <div key={board.id} className="board-card">
+                        {console.log("BOARD IN COMP", board)}
 
-                        {/* {console.log(board.id)} */}
                         <div className="board-img">
                             <EditUserBoardModal user={board.user_id} board={board} id={board.id} />
                             <NavLink to={`/boards/${board.id}`}>
-                            {/* <SingleBoard id={board.id} /> */}
-                                <img src={board?.pins[0]?.photo_url} />
+                                {/* <SingleBoard id={board.id} /> */}
+                                {!board.pins[0]?.photo_url ?
+                                    <img src={door} /> :
+                                    <img src={board.pins[0]?.photo_url} />
+                                }
                             </NavLink>
                         </div>
                         <div className="board-title">{board.title}</div>

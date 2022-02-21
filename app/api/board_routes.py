@@ -45,16 +45,14 @@ def create_board():
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    # if "title" not in request.files:
-    #     return {"errors": ["Please provide a title"]}
-
     if form.validate_on_submit():
         new_board = Board(title=form.data["title"], user_id=current_user.id)
         # new_board = Board(description=form.data["description"], user_id=current_user.id)
         db.session.add(new_board)
         db.session.commit()
         # print("BACKEND NEWBAORD", new_board.to_dict())
-        return {'boards': new_board.to_dict()}
+        return new_board.to_dict()
+        # return {'boards': new_board.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

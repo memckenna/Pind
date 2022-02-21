@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react' //useEffect,
 import { Redirect, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import "./CreateBoard.css"
-import { createBoard } from '../../../store/board'
+import { createBoard, getBoardsByUser } from '../../../store/board'
 
 
 const CreateBoardForm = ({ onClose }) => {
@@ -36,11 +36,15 @@ const CreateBoardForm = ({ onClose }) => {
         // formData.append("description", description)
 
         const data = await dispatch(createBoard(formData))
+        await dispatch(getBoardsByUser(user.id));
         // console.log("THIS IS MY COMP DATA", data)
-        if (data) {
-            setErrors(data)
+        if (data?.errors) {
+            setErrors(data.errors)
+        } else if (!data?.errors) {
+            await dispatch(getBoardsByUser(user.id));
             onClose()
-            history.push(`/users/${user.id}`)
+            // history.push(`/users/${user.id}`)
+
         }
         alert("Your board was created: ")
     }
@@ -50,9 +54,9 @@ const CreateBoardForm = ({ onClose }) => {
             <form className='create-board-form' onSubmit={handleSubmit}>
                 <h2 className='create-board-text'>Create board</h2>
                 <div className='login-error-container'>
-                    {/* {errors?.map((error, ind) => (
+                    {errors?.map((error, ind) => (
                         <div key={error}>{error}</div>
-                    ))} */}
+                    ))}
                 </div>
                 <input
                     className='title'
