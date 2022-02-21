@@ -112,3 +112,50 @@
   padding: 20px 10px 24px;
   text-align: center;
 }
+
+#signup-modal {
+  position: fixed;
+  top: 30px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  min-height: 400px;
+  /* overflow-y: auto; */
+  /* height: 100%; */
+
+}
+
+#signup-modal-background {
+  position: fixed;
+  /* position: absolute; */
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+
+
+}
+
+#signup-modal-content {
+  /* position: absolute; */
+  position: relative;
+  background-color:white;
+  border-radius: 32px;
+  width: 484px;
+  height: 659px;
+
+  /* min-height: 400px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 20px 10px 24px;
+  text-align: center;
+  /* height: 100%; */
+
+}

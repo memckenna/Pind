@@ -10,6 +10,8 @@ const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
+  const [age, setAge] = useState();
+  const [profileImgUrl, setProfileImageUrl] = useState("")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeat_password, setRepeatPassword] = useState("");
@@ -24,18 +26,20 @@ const SignUpForm = () => {
       username.length >= 2 &&
       first_name.length >= 4 &&
       last_name.length >= 4 &&
+      profileImgUrl.length >= 10 &&
+      age >= 13 &&
       repeat_password === password
     ) {
       setDisableButton(false);
     } else {
       setDisableButton(true);
     }
-  }, [disableButton, email, password, repeat_password, username, first_name, last_name]);
+  }, [disableButton, email, password, repeat_password, username, first_name, last_name, age, profileImgUrl]);
 
   const onSignUp = async (e) => {
     e.preventDefault();
     // if (password === repeatPassword) {
-      const data = await dispatch(signUp(first_name, last_name, username, email, password, repeat_password));
+      const data = await dispatch(signUp(first_name, last_name, age, profileImgUrl, username, email, password, repeat_password));
       if (data?.errors) {
         setErrors(data.errors)
       }
@@ -47,6 +51,14 @@ const SignUpForm = () => {
   const updateLastName = (e) => {
     setLastName(e.target.value);
   };
+
+  const updateAge = (e) => {
+    setAge(e.target.value)
+  }
+
+  const updateProfileImageUrl = (e) => {
+    setProfileImageUrl(e.target.value)
+  }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -70,7 +82,7 @@ const SignUpForm = () => {
 
   return (
     <div className='signup-form-container'>
-      <img className='logo' src={logo} alt='logo' />
+      <img className='logo-signup' src={logo} alt='logo' />
       <h1 className='welcome-header'>Welcome to Pinterest</h1>
       <form autoComplete="off" className="splash-login-form" onSubmit={onSignUp}>
       <div className="login-error-container">
@@ -98,6 +110,28 @@ const SignUpForm = () => {
             name="last_name"
             onChange={updateLastName}
             value={last_name}
+          ></input>
+          <label className="form-label"></label>
+        </div>
+        <div className="input-container">
+          <input
+            placeholder="Age"
+            className="form-input"
+            type="number"
+            name="Age"
+            onChange={updateAge}
+            value={age}
+          ></input>
+          <label className="form-label"></label>
+        </div>
+        <div className="input-container">
+          <input
+            placeholder="Profile Image URL"
+            className="form-input"
+            type="text"
+            name="profile-image-url"
+            onChange={updateProfileImageUrl}
+            value={profileImgUrl}
           ></input>
           <label className="form-label"></label>
         </div>
