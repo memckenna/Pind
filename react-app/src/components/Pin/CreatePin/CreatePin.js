@@ -52,10 +52,9 @@ const CreateAPin = ({onClose}) => {
 
         console.log("FORM DATA", payload)
 
-        // const data = await dispatch(createPin(payload))
         const data = await dispatch(createPin(payload))
         console.log("CREATE PIN DATA", data)
-        // await dispatch(getBoardsByUser(sessionUser.id))
+
         await dispatch(getAllPinsOnFeed())
         // await dispatch(getBoardsByUser(sessionUser.id))
         // await dispatch(getASingleBoard())
@@ -84,31 +83,33 @@ const CreateAPin = ({onClose}) => {
                     <div className="create-pin-heading">
                         <h2>Create a Pin</h2>
                     </div>
-                    <div className='login-error-container'>
+                    <div className='pin-login-error-container'>
                         {errors?.map((error, ind) => (
                             <div key={error}>{error}</div>
                         ))}
                     </div>
                     <div className="create-pin-input-container">
-                        <div className="create-pin-photo">
+
+                        <div className="create-pin-photo-div">
                             <div className="pin-photo">
                                 <input
                                     className='pin-photo-url'
                                     type="text"
                                     value={photoUrl}
                                     onChange={(e) => setPhotoUrl(e.target.value)}
-                                    placeholder='Click to upload"'
+                                    placeholder='Add your image URL'
                                 />
                             </div>
                         </div>
-                        <div className="create-pin-input">
+                        
+                        <div className="create-pin-input-div">
                             <div>
                                 <input
                                     className='pin-title'
                                     type="text"
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
-                                    placeholder='Add your title"'
+                                    placeholder='Add your title'
                                 />
                             </div>
                             <div>
@@ -125,7 +126,7 @@ const CreateAPin = ({onClose}) => {
                                     type="text"
                                     value={sourceLink}
                                     onChange={(e) => setSourceLink(e.target.value)}
-                                    placeholder='Add a destination link"'
+                                    placeholder='Add a destination link'
                                 />
                             </div>
                         </div>

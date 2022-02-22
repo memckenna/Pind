@@ -1,28 +1,15 @@
 .create {
-    margin-top: 400px;
-}
-
-.create-pin-heading {
-    display: flex;
-    flex-direction: row;
-}
-
-.create-pin-input-container {
-    display: flex;
-    /* justify-content: center; */
-    /* border: 1px solid red; */
-    /* background-color: white; */
-    border-radius: 24px;
-    max-width: 1016px;
-    max-height: 950px;
-    width: 100%;
-    height: auto;
-    box-shadow: rgb(0 0 0 / 40%) 0px 8px 28px;
+    /* margin-top: 400px; */
 }
 
 .create-pin-form-container {
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
+    border: 2px solid red;
+    width: 880px;
+    height: 650px;
+    padding: 40px 40px 0;
 }
 
 /* .create-pin-form {
@@ -31,38 +18,83 @@
     flex-direction: row;
 } */
 
-.create-pin-input {
+.create-pin-heading {
+    display: flex;
+    flex-direction: row;
+}
+
+/* .pin-login-error-container {
+
+} */
+
+.create-pin-input-container {
+    display: flex;
+    /* justify-content: center; */
+    border-radius: 24px;
+    width: 800px;
+    height: 550px;
+    box-shadow: rgb(0 0 0 / 40%) 0px 8px 28px;
+    border: 2px solid blue;
+    padding: 0 0 20px;
+}
+
+
+.create-pin-photo-div {
+    display: flex;
+    /* justify-content: column; */
+    border: 2px solid hotpink;
+    /* width: 380px;
+    height: 510px;
+    padding: 0 20px; */
+}
+
+.pin-photo {
+    display: flex;
+    justify-content: center;
+    border: 2px solid orange;
+    width: 380px;
+    height: 510px;
+    padding: 0 20px;
+
+
+    border-radius: 24px;
+
+}
+
+.pin-photo-url {
+    width: 340px;
+    height: 510px;
+    border: 1px dotted black;
+
+}
+
+.create-pin-input-div {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     padding-right: 34px;
     padding-left: 34px;
-    max-width: 508px;
-    width: 508px;
+
+    width: 420px;
     max-height: 950px;
-    height: auto;
+    height: 510px;
+    border: 2px solid yellow;
 }
 
-.create-pin-photo {
-    display: flex;
-    /* justify-content: column; */
+.pin-title {
+    width: 380px;
+    height: 65px
 }
 
-.pin-photo {
-    display: flex;
-    justify-content: flex-start;
-    /* border-radius: 24px; */
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 24px;
-    border-bottom-left-radius: 24px;
-    /* max-width: 508px;
-    width: 508px;
-    max-height: 950px; */
-    /* width: 100%; */
-    /* height: auto; */
+.pin-description {
+    width: 380px;
+    height: 65px
 }
 
+.pin-source-link {
+    width: 380px;
+    height: 65px
+}
 
 
 .create-pin-btn {
