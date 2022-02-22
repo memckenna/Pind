@@ -41,9 +41,9 @@ const CreateAPin = ({onClose}) => {
 
         const payload = {
             title,
+            photoUrl,
             description,
             sourceLink,
-            photoUrl,
             // boardId
         }
 

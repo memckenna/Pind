@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateUserPin, getASinglePin, getAllPinsOnFeed, deleteSinglePin } from '../../../store/pin';
+import { updateUserPin, getASinglePin, getAllPinsOnFeed, deleteUserPin } from '../../../store/pin';
 
 const EditAPinForm = ({onClose}) => {
     const dispatch = useDispatch()
@@ -54,7 +54,7 @@ const EditAPinForm = ({onClose}) => {
         console.log(pin.id)
 
 
-        const data = dispatch(deleteSinglePin(pin.id))
+        const data = dispatch(deleteUserPin(pin.id))
         console.log("DELETE", data)
         dispatch(getAllPinsOnFeed())
         // await dispatch(getASinglePin(payload))
@@ -63,8 +63,8 @@ const EditAPinForm = ({onClose}) => {
         if(data?.errors) {
             setErrors(data.errors)
         } else {
-            onClose()
             dispatch(getAllPinsOnFeed())
+            onClose()
             history.push('/pins')
 
         }

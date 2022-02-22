@@ -121,13 +121,14 @@ export const updateUserPin = (payload) => async (dispatch) => {
     }
 }
 
+//Delete users pin
 export const deleteUserPin = (id) => async (dispatch) => {
     const response = await fetch(`/api/pins/${id}/delete`, {
         method: 'DELETE',
-        // headers: {
-        //     'Content-Type': 'application/json',
-        // },
-        // body: JSON.stringify({ "id": payload.id })
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id })
     })
 
     const data = await response.json()
