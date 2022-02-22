@@ -26,13 +26,13 @@ const CreateAPin = ({onClose}) => {
     const [disabled, setDisabled] = useState(true)
 
 
-    // useEffect(() => {
-    //     if(title.length > 0 && photoUrl.length > 10) setDisabled(false)
-    //     else setDisabled(true)
+    useEffect(() => {
+        if(title.length > 0 && photoUrl.length > 10) setDisabled(false)
+        else setDisabled(true)
 
-    //     // if(photoUrl.length > 10) setDisabled(false)
-    //     // else setDisabled(true)
-    // }, [disabled, title, photoUrl])
+        // if(photoUrl.length > 10) setDisabled(false)
+        // else setDisabled(true)
+    }, [disabled, title, photoUrl])
 
     if (!sessionUser) return <Redirect to="/" />;
 

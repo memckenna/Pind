@@ -91,7 +91,9 @@ def edit_pin(id):
 @pin_routes.route('/<int:id>/delete', methods=["DELETE"])
 @login_required
 def delete_pin(id):
+    # del_pin = Pin.query.filter(Pin.user_id==current_user.id)
     del_pin = Pin.query.get(id)
+    print("\n\n\n\n DELETE PIN \n\n\n\n", del_pin)
 
     db.session.delete(del_pin)
     db.session.commit()

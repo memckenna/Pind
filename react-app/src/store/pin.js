@@ -124,15 +124,16 @@ export const updateUserPin = (payload) => async (dispatch) => {
 export const deleteUserPin = (id) => async (dispatch) => {
     const response = await fetch(`/api/pins/${id}/delete`, {
         method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id })
+        // headers: {
+        //     'Content-Type': 'application/json',
+        // },
+        // body: JSON.stringify({ "id": payload.id })
     })
 
     const data = await response.json()
+    console.log("DATA IN DELETE PIN", data)
     if(data.message === "Deleted") {
-        dispatch(deleteSinglePin(id))
+        dispatch(deleteSinglePin(data))
     }
 }
 
@@ -141,18 +142,18 @@ const pinReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_ALL_PINS:
             newState = { ...state, ...action.pins }
-            console.log("PIN REDUCER", newState)
+            // console.log("PIN REDUCER", newState)
             return newState
         case GET_SINGLE_PIN:
             newState = { ...state, ...action.pin.pin }
-            console.log("PIN STATE", newState)
+            // console.log("PIN STATE", newState)
             return newState
         case ADD_SINGLE_PIN:
             newState = { ...state, [action.pin.id]: action.pin }
             // let newPin = [...newState.pins]
             // newPin.push(action.pin)
             // newState.pins = newPin
-            console.log("CREATE NEW PIN STATE", newState)
+            // console.log("CREATE NEW PIN STATE", newState)
             return newState
         case EDIT_USER_PIN:
             newState = { ...state }
@@ -160,6 +161,8 @@ const pinReducer = (state = {}, action) => {
             return newState
         case DELETE_USER_PIN:
             newState = { ...state }
+            // console.log("DELETE STATE", newState)
+            // console.log("DELETE STATE", action.pin)
             delete newState[action.pin.id]
             return newState
         // case GET_PINS_BY_BOARD:

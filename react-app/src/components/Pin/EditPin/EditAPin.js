@@ -49,20 +49,22 @@ const EditAPinForm = ({onClose}) => {
         }
     }
 
-    const handleDelete = async (e) => {
+    const handleDelete = (e) => {
         e.preventDefault()
+        console.log(pin.id)
 
-        const data = await dispatch(deleteSinglePin(pin.id))
+
+        const data = dispatch(deleteSinglePin(pin.id))
         console.log("DELETE", data)
-        await dispatch(getAllPinsOnFeed())
-        await dispatch(getASinglePin(pin.id))
+        dispatch(getAllPinsOnFeed())
+        // await dispatch(getASinglePin(payload))
 
 
         if(data?.errors) {
             setErrors(data.errors)
         } else {
             onClose()
-            await dispatch(getAllPinsOnFeed())
+            dispatch(getAllPinsOnFeed())
             history.push('/pins')
 
         }
@@ -120,8 +122,8 @@ const EditAPinForm = ({onClose}) => {
                                 />
                             </div>
                         </div>
-                        <div className='edit-btn-div'>
-                            <button onClick={handleDelete} type="submit" className='delete-board-btn'>Delete</button>
+                        <div className='delete-btn-div'>
+                            <button onClick={handleDelete} id={pin.id} type="submit" className='delete-board-btn'>Delete</button>
                         </div>
                         <div className='edit-button-div'>
                             <button type="submit" className='edit-board-btn'>Save</button>
