@@ -34,6 +34,8 @@ const SignUpForm = () => {
     } else {
       setDisableButton(true);
     }
+
+    //ADD MESSAGE FOR ERRORS
   }, [disableButton, email, password, repeat_password, username, first_name, last_name, age, profileImgUrl]);
 
   const onSignUp = async (e) => {

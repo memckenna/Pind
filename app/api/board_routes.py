@@ -8,35 +8,6 @@ from app.api.auth_routes import validation_errors_to_error_messages
 board_routes = Blueprint('boards', __name__)
 
 
-
-#Grad all boards
-# @board_routes.route('/')
-# @login_required
-# def get_all_boards():
-
-#     boards = Board.query.all()
-#     print(boards)
-
-#     return {'boards': [board.to_dict() for board in boards]}
-
-    # newObj = {}
-    # for board in boards:
-    #     newObj[str(board.to_dict()['id'])] = {'Board': {board.to_dict()} }
-
-    # return newObj
-
-#Grab a single board by id
-# @board_routes.route('/<int:id>')
-# # @login_required
-# def get_single_board(id):
-#     board = Board.query.get(id)
-#     print("!!!!!!!!!!!!************!!!!!!!!!!!!!!", board)
-#     print("!!!!!!!!!!!!************!!!!!!!!!!!!!!", id)
-#     return {'boards': board.to_dict()}
-    # return board.to_dict()
-
-
-
 #Create Board
 @board_routes.route('/create_board', methods=["POST"])
 @login_required
@@ -110,7 +81,7 @@ def get_pin_by_user_board(id):
     # pins_by_board_id = db.session.query(Board).all()
     pins_by_board_id = db.session.query(Board)\
                         .filter(Board.id == board.id).all()
-    print("\n\n\n\n", pins_by_board_id)
+    print("\n\n\n\n Board \n\n\n", pins_by_board_id)
     # pins_by_board_id = db.session.query(Pin) \
     #                     .filter(Pin.user_id == user.id) \
     #                     .options(joinedload(Pin.boards)).all()
@@ -123,5 +94,41 @@ def get_pin_by_user_board(id):
 
     # return {'pins': [pin.to_dict()['pin'] for pin in pins_by_board_id]}
 
-
 #
+
+
+
+#Add a Pin to a Board
+
+# @board_routes.route('/<int:id>', methods=["POST"])
+# @login_required
+# def add_pin_to_board(id):
+#     board_pins = Board_Pins.query.all()
+#     print("\n\n\n\n BOARD_PINS \n\n\n\n", board_pins)
+
+
+#     return board_pins.to_dict()
+
+
+
+#Grad all boards
+# @board_routes.route('/')
+# @login_required
+# def get_all_boards():
+#     boards = Board.query.all()
+#     return {'boards': [board.to_dict() for board in boards]}
+
+    # newObj = {}
+    # for board in boards:
+    #     newObj[str(board.to_dict()['id'])] = {'Board': {board.to_dict()} }
+    # return newObj
+
+#Grab a single board by id
+# @board_routes.route('/<int:id>')
+# # @login_required
+# def get_single_board(id):
+#     board = Board.query.get(id)
+#     print("!!!!!!!!!!!!************!!!!!!!!!!!!!!", board)
+#     print("!!!!!!!!!!!!************!!!!!!!!!!!!!!", id)
+#     return {'boards': board.to_dict()}
+    # return board.to_dict()

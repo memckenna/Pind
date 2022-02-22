@@ -10,7 +10,7 @@ const PinFeedPage = () => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const pins = useSelector(state => state.pinReducer)
-    // console.log("PIN IN COMPONENT", pins.pins)
+    console.log("PIN IN COMPONENT", pins.pins)
 
 
     useEffect(() => {

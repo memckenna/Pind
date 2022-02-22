@@ -47,7 +47,7 @@ const CreateBoardForm = ({ onClose }) => {
             // history.push(`/users/${user.id}`)
 
         }
-        alert("Your board was created: ")
+        // alert("Your board was created: ")
     }
 
     return (

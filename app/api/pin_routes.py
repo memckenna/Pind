@@ -13,11 +13,7 @@ pin_routes = Blueprint('pins', __name__)
 # @login_required
 def get_all_pins_on_feed():
     pins = Pin.query.all()
-    print()
-    print(pins)
-    print()
-    # for pin in pins:
-    #     print(pin.to_dict())
+
     return {'pins': [pin.to_dict() for pin in pins]}
 
 
@@ -26,7 +22,7 @@ def get_all_pins_on_feed():
 # @login_required
 def get_pin_by_id(id):
     pin = Pin.query.get(id)
-    print("\n\n\nPIN\n\n\n", pin.to_dict())
+
     return {'pin': pin.to_dict()}
 
 
@@ -35,22 +31,25 @@ def get_pin_by_id(id):
 @pin_routes.route('/', methods=["POST"])
 @login_required
 def create_pin():
+    # data = request.json
     form = CreatePinForm()
     # board = Board.query.get(form.data["board_id"])
     # pin = Pin.query.get(id)
     # print("\n\n\n\n BOARD IN PIN\n\n\n\n", board)
     # print("\n\n\n\n PIN For Board \n\n\n\n", pin)
-
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        # board_options = Board.query.filter(Board.title == form.data['board']).one()
+        # print("\n\n\nBOARD OPTIONS\n\n\n\n", board_options)
+        # form.data.pop('board')
 
         new_pin = Pin(
             title=form.data["title"],
             user_id=current_user.id,
             photo_url=form.data["photo_url"],
             )
-        # new_pin = Pin(photo_url=form.data["photo_url"], user_id=current_user.id)
+
         db.session.add(new_pin)
         db.session.commit()
 
@@ -58,11 +57,23 @@ def create_pin():
         # board.pins.append(new_pin)
         #commit
         # db.session.commit()
-
         print("\n\n\n\n\n", new_pin)
         return new_pin.to_dict()
         # return {'pins': new_pin.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+#Add a pin on a board
+# @pin_routes.route('/<int:id>', methods=["POST"])
+# @login_required
+# def add_pin_to_board(id):
+#     boardObj = {}
+#     pinObj = {}
+#     boards = Board.query.all()
+#     for board in boards:
+#         print("\n\n\nTHIS IS MY BOARDDDDD\n\n\n",board)
+
+
+
 
 
 #Edit a Pin
@@ -81,7 +92,7 @@ def edit_pin(id):
         update_pin.source_link = form.data['source_link']
         db.session.add(update_pin)
         db.session.commit()
-        print("EDIT PIN ROUTE\n\n\n\n", update_pin.to_dict())
+        # print("EDIT PIN ROUTE\n\n\n\n", update_pin.to_dict())
         return {'pins': update_pin.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -93,7 +104,7 @@ def edit_pin(id):
 def delete_pin(id):
     # del_pin = Pin.query.filter(Pin.user_id==current_user.id)
     del_pin = Pin.query.get(id)
-    print("\n\n\n\n DELETE PIN \n\n\n\n", del_pin)
+    # print("\n\n\n\n DELETE PIN \n\n\n\n", del_pin)
 
     db.session.delete(del_pin)
     db.session.commit()

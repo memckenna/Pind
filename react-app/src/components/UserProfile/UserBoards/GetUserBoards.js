@@ -19,7 +19,7 @@ function GetUserBoards({id}) {    //id = userId
     const pins = useSelector(state => state.pinReducer)
     console.log("MY PINS", pins)
     // const boardsList = Object.values(boards)
-
+    
 
     useEffect(() => {
         // const payload = {

@@ -25,6 +25,9 @@ const CreateAPin = ({onClose}) => {
     const [errors, setErrors] = useState([])
     const [disabled, setDisabled] = useState(true)
 
+    // useEffect(() => {
+    //     dispatch(getAllPinsOnFeed())
+    // }, [dispatch])
 
     useEffect(() => {
         if(title.length > 0 && photoUrl.length > 10) setDisabled(false)
