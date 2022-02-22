@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateUserPin, getASinglePin } from '../../../store/pin';
+import { updateUserPin, getASinglePin, getAllPinsOnFeed, deleteSinglePin } from '../../../store/pin';
 
 const EditAPinForm = ({onClose}) => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const pin = useSelector(state => state.pinReducer)
     console.log("EDIT A PIN", pin)
     const sessionUser = useSelector(state => state.session.user)
@@ -46,8 +47,25 @@ const EditAPinForm = ({onClose}) => {
             await dispatch(getASinglePin(pin.id))
             onClose()
         }
+    }
+
+    const handleDelete = async (e) => {
+        e.preventDefault()
+
+        const data = await dispatch(deleteSinglePin(pin.id))
+        console.log("DELETE", data)
+        await dispatch(getAllPinsOnFeed())
+        await dispatch(getASinglePin(pin.id))
 
 
+        if(data?.errors) {
+            setErrors(data.errors)
+        } else {
+            onClose()
+            await dispatch(getAllPinsOnFeed())
+            history.push('/pins')
+
+        }
     }
 
     return (
@@ -101,6 +119,9 @@ const EditAPinForm = ({onClose}) => {
                                     placeholder='Add a destination link"'
                                 />
                             </div>
+                        </div>
+                        <div className='edit-btn-div'>
+                            <button onClick={handleDelete} type="submit" className='delete-board-btn'>Delete</button>
                         </div>
                         <div className='edit-button-div'>
                             <button type="submit" className='edit-board-btn'>Save</button>

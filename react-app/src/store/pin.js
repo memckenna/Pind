@@ -5,6 +5,8 @@ const ADD_SINGLE_PIN = 'pins/ADD_SINGLE_PIN';
 
 const EDIT_USER_PIN = 'pins/EDIT_USER_PIN';
 
+const DELETE_USER_PIN = 'pins/DELETE_USER_PIN';
+
 //Action Creator
 export const getAllPins = (pins) => ({
     type: GET_ALL_PINS,
@@ -23,6 +25,11 @@ export const addSinglePin = (pin) => ({
 
 export const editSinglePin = (pin) => ({
     type: EDIT_USER_PIN,
+    pin
+})
+
+export const deleteSinglePin = (pin) => ({
+    type: DELETE_USER_PIN,
     pin
 })
 
@@ -114,6 +121,21 @@ export const updateUserPin = (payload) => async (dispatch) => {
     }
 }
 
+export const deleteUserPin = (id) => async (dispatch) => {
+    const response = await fetch(`/api/pins/${id}/delete`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id })
+    })
+
+    const data = await response.json()
+    if(data.message === "Deleted") {
+        dispatch(deleteSinglePin(id))
+    }
+}
+
 const pinReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
@@ -135,6 +157,10 @@ const pinReducer = (state = {}, action) => {
         case EDIT_USER_PIN:
             newState = { ...state }
             newState[action.pin.id] = action.pin
+            return newState
+        case DELETE_USER_PIN:
+            newState = { ...state }
+            delete newState[action.pin.id]
             return newState
         // case GET_PINS_BY_BOARD:
         //     const allPins = []
