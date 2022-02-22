@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Modal } from '../../../context/Modal';
 import LoginForm from '../../auth/LoginForm';
 import { login } from '../../../store/session';
-
+import '../../NavBar/NavBar.css';
 
 function LoginFormModal() {
     const dispatch = useDispatch();

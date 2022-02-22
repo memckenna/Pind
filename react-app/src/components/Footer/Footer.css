@@ -1,0 +1,33 @@
+.create-pin-btn-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+    /* margin-bottom: 200px; */
+    /* position: fixed; */
+    z-index: 1;
+}
+
+.create-pin-btn-div {
+    /* display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end; */
+    /* margin-bottom: 200px; */
+    /* position: fixed; */
+    /* z-index: 1; */
+}
+
+.create-pin-btn {
+    border-radius: 50%;
+    padding: 15px 15px 15px 15px;
+    background-color: white;
+    border: none;
+    box-shadow: rgb(0 0 0 / 30%) 0px 8px 28px;
+    /* position: fixed; */
+
+}
+
+.fa-plus {
+    font-size: 30px;
+}

@@ -69,3 +69,50 @@ export function EditBoardModal({ onClose, children }) {
         modalNode
     );
 }
+
+export function EditPinModal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+        <div id="edit-pin-modal">
+            <div id="edit-pin-modal-background" onClick={onClose} />
+            <div id="edit-pin-modal-content">
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+}
+
+
+export function SignUpModal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+        <div id="signup-modal">
+            <div id="signup-modal-background" onClick={onClose} />
+            <div id="signup-modal-content">
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+}
+
+
+export function CreatePinModal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+        <div id="create-pin-modal">
+            <div id="create-pin-modal-background" onClick={onClose} />
+            <div id="create-pin-modal-content">
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+}

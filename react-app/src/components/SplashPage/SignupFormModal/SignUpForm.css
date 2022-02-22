@@ -1,6 +1,11 @@
 .signup-form-container {
-    height: 618px;
+    height: 656px;
     width: 484px;
+}
+
+.logo-signup {
+    width: 34px;
+    height: 34px;
 }
 
 .login-input-container {
@@ -17,8 +22,8 @@
 }
 
 .input-container {
-    margin: 2px 2px;
-    padding-bottom: 10px;
+    margin: 1px 1px;
+    padding-bottom: 5px;
 }
 
 .form-input {
@@ -26,7 +31,7 @@
     min-height: 48px;
     padding: 8px 16px;
     /* width: 100%; */
-    width: 268px;
+    width: 280px;
     overflow: hidden;
     text-overflow: ellipsis;
     border-radius: 15px;
@@ -61,6 +66,6 @@
     font-weight: normal;
     text-align: center;
     color: rgb(118, 118, 118);
-    width: 232px;
+    width: 260px;
 
 }

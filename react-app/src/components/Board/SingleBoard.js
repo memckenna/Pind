@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { getASingleBoard } from "../../store/board";
 
 import "./SingleBoard.css"
@@ -10,12 +10,15 @@ import "./SingleBoard.css"
 const SingleBoard = () => {
     const dispatch = useDispatch();
 
-    const boards = useSelector(state => state.board)
+    const pinsByBoard = useSelector(state => state.board)
     // const sessionUser = useSelector((state) => state.session.user);
     const { boardId } = useParams()
+    // console.log(boardId)
 
     // let board = boards.boards.filter((e) => console.log(e))
-    console.log("SINGLE BOARD", boards.boards)
+    console.log("SINGLE BOARD PINS", pinsByBoard)
+    // let pin = Object.values(pinsByBoard)
+    // console.log(pin)
 
     useEffect(() => {
 
@@ -25,15 +28,18 @@ const SingleBoard = () => {
 
     return (
         <>
-            <div className="single-board">
-                <div>WILL BE ALL USER PINS FOR BOARD</div>
-                {/* ADD PINS  */}
-                {/* {boards.boards?.map((board) => (
-                    <div>
-                        {console.log(board.id.pins.id.title)}
-                        {board.id.pins.id.title}
+            <div className="pin-container">
+                {pinsByBoard.pins?.map(pin => (
+                    <div key={pin.id} className="pin-card">
+
+                        <div className="pin-image-container">
+                            <NavLink to={`/pins/${pin.id}`}>
+                                <img className="pin-image" src={pin.photo_url} />
+                            </NavLink>
+                        </div>
+                        <div className="pin-title">{pin.title}</div>
                     </div>
-                ))} */}
+                ))}
             </div>
         </>
     )
