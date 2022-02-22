@@ -3,9 +3,11 @@
     justify-content: center;
     flex-direction: column;
     align-items: flex-end;
-    /* margin-bottom: 200px; */
-    /* position: fixed; */
+    margin-bottom: 200px;
+    margin-right: 20px;
+    
     z-index: 1;
+
 }
 
 .create-pin-btn-div {

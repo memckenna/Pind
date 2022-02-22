@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { updateUserPin, getASinglePin, getAllPinsOnFeed, deleteUserPin } from '../../../store/pin';
 
+import "./EditAPin.css"
+
 const EditAPinForm = ({onClose}) => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -75,58 +77,57 @@ const EditAPinForm = ({onClose}) => {
             <div className='edit-pin-form-container'>
                 <form className='edit-pin-form' onSubmit={handleSubmit}>
                     <div>
-                        <h2>Edit a pin</h2>
+                        <h2 className='edit-pin-form-header'>Edit this pin</h2>
                     </div>
                     <div className='login-error-container'>
                         {errors?.map((error, ind) => (
                             <div key={error}>{error}</div>
                         ))}
                     </div>
-                    <div className="create-pin-input-container">
+                    <div className="edit-pin-input-container">
                         <div className="create-pin-photo">
-                            <div className="pin-photo">
-                                <input
-                                    className='pin-photo-url'
-                                    type="text"
-                                    value={photoUrl}
-                                    onChange={(e) => setPhotoUrl(e.target.value)}
-                                    placeholder='Click to upload"'
-                                />
+                            <div>
+                                <img src={photoUrl} />
                             </div>
                         </div>
-                        <div className="create-pin-input">
-                            <div>
+                        <div className="edit-pin-input">
+                            <div className='edit-pin-form-title'>
+                                <h4 className='edit-pin-title'>Title</h4>
                                 <input
-                                    className='pin-title'
+                                    className='edit-pin-title-input'
                                     type="text"
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
-                                    placeholder='Add your title"'
+                                    placeholder='Add your title'
                                 />
                             </div>
-                            <div>
+                            <div className='edit-pin-descrip-form'>
+                                <h4 className='edit-pin-descrip'>Description</h4>
                                 <textarea
-                                    className='pin-description'
-                                    placeholder="Tell everyone what your Pin is about"
+                                    className='edit-pin-description'
+                                    placeholder="Tell us about this Pin..."
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
                             </div>
-                            <div>
+                            <div className='edit-pin-sourcelink-form'>
+                                <h4 className='edit-pin-source'>Source Link</h4>
                                 <input
-                                    className='pin-source-link'
+                                    className='edit-pin-source-link'
                                     type="text"
                                     value={sourceLink}
                                     onChange={(e) => setSourceLink(e.target.value)}
-                                    placeholder='Add a destination link"'
+                                    placeholder='Add a destination link'
                                 />
                             </div>
                         </div>
-                        <div className='delete-btn-div'>
-                            <button onClick={handleDelete} id={pin.id} type="submit" className='delete-board-btn'>Delete</button>
-                        </div>
-                        <div className='edit-button-div'>
-                            <button type="submit" className='edit-board-btn'>Save</button>
+                        <div className='edit-delete-btn-form-div'>
+                            <div className='edit-delete-btn-div'>
+                                <button onClick={handleDelete} id={pin.id} type="submit" className='delete-pin-btn-form'>Delete</button>
+                            </div>
+                            <div className='edit-button-form-div'>
+                                <button type="submit" className='edit-pin-btn-form'>Save</button>
+                            </div>
                         </div>
                     </div>
                 </form>

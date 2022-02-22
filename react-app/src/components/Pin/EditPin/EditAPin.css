@@ -1,0 +1,126 @@
+.edit-pin-form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 880px;
+    height: 659px;
+    overflow: auto;
+}
+
+.edit-pin-form-header {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.edit-pin-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-pin-title {
+    display: flex;
+    justify-content: flex-start;
+}
+.edit-pin-form-title {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.edit-pin-descrip-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-pin-title-input {
+    border-radius: 14px;
+    padding-left: 14px;
+    width: 379px;
+    height: 48px;
+    border: 2px solid #ddd;
+    font-size: 18px;
+
+    font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.edit-pin-descrip {
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.edit-pin-description {
+    border-radius: 14px;
+    padding-top: 12px;
+    padding-left: 14px;
+    width: 379px;
+    height: 66px;
+    border: 2px solid #ddd;
+    resize: none;
+
+
+
+    font-size: 18px;
+
+    font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.edit-pin-sourcelink-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-pin-source {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.edit-pin-source-link {
+    border-radius: 14px;
+    padding-left: 14px;
+    width: 379px;
+    height: 48px;
+    border: 2px solid #ddd;
+    font-size: 18px;
+
+    font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+.edit-delete-btn-form-div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}
+
+.edit-pin-btn-form {
+    background-color: #e60023;
+    color: white;
+    border-radius: 24px;
+    padding: 12px 16px;
+    border: none;
+    min-width: 69px;
+    box-sizing: border-box;
+    min-height: 48px;
+    cursor: pointer;
+    line-height: normal;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.delete-pin-btn-form {
+    background-color: #efefef;
+    color: black;
+    border-radius: 24px;
+    padding: 12px 16px;
+    border: none;
+    min-width: 69px;
+    box-sizing: border-box;
+    min-height: 48px;
+    cursor: pointer;
+    line-height: normal;
+    font-size: 16px;
+    font-weight: bold;
+}

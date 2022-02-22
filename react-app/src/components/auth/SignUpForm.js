@@ -31,6 +31,7 @@ const SignUpForm = () => {
       repeat_password === password
     ) {
       setDisableButton(false);
+      
     } else {
       setDisableButton(true);
     }
