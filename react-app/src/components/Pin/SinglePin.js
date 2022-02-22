@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Redirect, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import pinReducer, { getASinglePin } from "../../store/pin";
-
+import EditAPinModal from "./EditPin";
 import './SinglePin.css';
 
 
@@ -33,6 +33,7 @@ const SinglePin = () => {
                     </div>
                     <div className="single-pin-content">
                         <div className="single-save-button-div">
+                            <EditAPinModal />
                             <button className="single-save-button">Save</button>
                         </div>
                         <div className="single-pin-title">{pin.title}</div>

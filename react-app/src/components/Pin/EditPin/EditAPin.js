@@ -1,30 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Redirect, useParams, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { Redirect, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { createPin, getAllPinsOnFeed } from "../../../store/pin";
-import { getBoardsByUser, getASingleBoard } from "../../../store/board";
+import { updateUserPin, getASinglePin } from '../../../store/pin';
 
-
-import './CreatePin.css';
-
-
-
-const CreateAPin = ({onClose}) => {
-    const dispatch = useDispatch();
-    const history = useHistory();
+const EditAPinForm = ({onClose}) => {
+    const dispatch = useDispatch()
+    const pin = useSelector(state => state.pinReducer)
+    console.log("EDIT A PIN", pin)
     const sessionUser = useSelector(state => state.session.user)
-    const boards = useSelector(state => state.board)
-    // console.log("BOARDS IN PINS", boards.boards)
 
-    const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
-    const [sourceLink, setSourceLink] = useState("")
-    const [photoUrl, setPhotoUrl] = useState("")
-    const [boardId, setBoardId] = useState()
+    const [board, setBoard] = useState()
+    const [title, setTitle] = useState(pin.title)
+    const [description, setDescription] = useState(pin.description)
+    const [sourceLink, setSourceLink] = useState(pin.source_link)
+    const [photoUrl, setPhotoUrl] = useState(pin.photo_url)
     const [errors, setErrors] = useState([])
     const [disabled, setDisabled] = useState(true)
-
 
     // useEffect(() => {
     //     if(title.length > 0 && photoUrl.length > 10) setDisabled(false)
@@ -34,52 +26,36 @@ const CreateAPin = ({onClose}) => {
     //     // else setDisabled(true)
     // }, [disabled, title, photoUrl])
 
-    if (!sessionUser) return <Redirect to="/" />;
-
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         const payload = {
             title,
             description,
             sourceLink,
             photoUrl,
-            // boardId
+            id: pin.id
         }
 
-        console.log("FORM DATA", payload)
-
-        // const data = await dispatch(createPin(payload))
-        const data = await dispatch(createPin(payload))
-        console.log("CREATE PIN DATA", data)
-        // await dispatch(getBoardsByUser(sessionUser.id))
-        await dispatch(getAllPinsOnFeed())
-        // await dispatch(getBoardsByUser(sessionUser.id))
-        // await dispatch(getASingleBoard())
+        const data = await dispatch(updateUserPin(payload))
+        await dispatch(getASinglePin(pin.id))
 
         if(data?.errors) {
             setErrors(data.errors)
         } else {
-            await dispatch(getAllPinsOnFeed())
-            // await dispatch(getBoardsByUser(sessionUser.id))
+            await dispatch(getASinglePin(pin.id))
             onClose()
-            //     // history.push(`/pins`)
-            //     // history.push(`/users/${sessionUser.id}`)
         }
-        // alert("Your pin was created: ")
+
+
     }
-
-    // const onChange = (e) => {
-    //     setBoardId({boardId: e.target.value})
-    // }
-
 
     return (
         <>
-            <div className="create-pin-form-container">
-                <form className="create-pin-form" onSubmit={handleSubmit}>
-                    <div className="create-pin-heading">
-                        <h2>Create a Pin</h2>
+            <div className='edit-pin-form-container'>
+                <form className='edit-pin-form' onSubmit={handleSubmit}>
+                    <div>
+                        <h2>Edit a pin</h2>
                     </div>
                     <div className='login-error-container'>
                         {errors?.map((error, ind) => (
@@ -126,30 +102,14 @@ const CreateAPin = ({onClose}) => {
                                 />
                             </div>
                         </div>
-
-                        <div className="create-pin-btn-div">
-                                <button type="pin-submit" disabled={disabled}  className="create-pin-btn">Save</button>
-                                {/* <select onChange={onChange} value={boardId}> */}
-
-                                    {/* {boards.boards?.map((board) => (
-
-                                        <option key={board.id} value={board.title}>
-                                            {board.title}
-                                            {console.log("DROPDOWN", board)}
-                                        </option>
-                                    ))} */}
-
-                                {/* </select> */}
-
+                        <div className='edit-button-div'>
+                            <button type="submit" className='edit-board-btn'>Save</button>
                         </div>
-
                     </div>
                 </form>
-
             </div>
-
         </>
     )
 }
 
-export default CreateAPin;
+export default EditAPinForm;

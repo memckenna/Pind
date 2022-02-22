@@ -36,8 +36,10 @@ def get_pin_by_id(id):
 @login_required
 def create_pin():
     form = CreatePinForm()
-    board = Board.query.get(form.data["board_id"])
-
+    # board = Board.query.get(form.data["board_id"])
+    # pin = Pin.query.get(id)
+    # print("\n\n\n\n BOARD IN PIN\n\n\n\n", board)
+    # print("\n\n\n\n PIN For Board \n\n\n\n", pin)
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -53,11 +55,10 @@ def create_pin():
         db.session.commit()
 
         #append board and pin
+        # board.pins.append(new_pin)
         #commit
-
-        # new_pin = Pin(photo_url=form.data["photo_url"], user_id=current_user.id)
-        # db.session.add(new_pin)
         # db.session.commit()
+
         print("\n\n\n\n\n", new_pin)
         return new_pin.to_dict()
         # return {'pins': new_pin.to_dict()}
@@ -76,8 +77,11 @@ def edit_pin(id):
         update_pin = Pin.query.get(id)
         update_pin.title = form.data['title']
         update_pin.photo_url = form.data['photo_url']
+        update_pin.description = form.data['description']
+        update_pin.source_link = form.data['source_link']
         db.session.add(update_pin)
         db.session.commit()
+        print("EDIT PIN ROUTE\n\n\n\n", update_pin.to_dict())
         return {'pins': update_pin.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

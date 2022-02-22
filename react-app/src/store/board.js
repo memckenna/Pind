@@ -49,9 +49,9 @@ export const getBoardsByUser = (id) => async (dispatch) => {
 
     if(response.ok) {
         const data = await response.json()
-        console.log()
-        console.log("BOARDDS IN THUNK", data)
-        console.log()
+        // console.log()
+        // console.log("BOARDDS IN THUNK", data)
+        // console.log()
         dispatch(getUserBoard(data))
         return data
     }
@@ -63,7 +63,7 @@ export const getASingleBoard = (id) => async (dispatch) => {
     const response = await fetch(`/api/boards/${id}`)
     if(response.ok) {
         const board = await response.json();
-        console.log("THUNK SINGLE BOARD and PINS", board)
+        // console.log("THUNK SINGLE BOARD and PINS", board)
         dispatch(getSingleBoard(board))
         return board;
     }
@@ -78,7 +78,7 @@ export const createBoard = (formData) => async(dispatch) => {
 
     if(response.ok) {
         const data = await response.json()
-        console.log("CREATE", data)
+        // console.log("CREATE", data)
         dispatch(addBoard(data))
         // dispatch(getBoardsByUser(data))
         return data
@@ -105,7 +105,7 @@ export const updateUserBoard = (id, title) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json()
-        console.log("EDITT", data)
+        // console.log("EDITT", data)
         dispatch(editBoard(data))
         return null
     } else if (response.status < 500) {
@@ -141,7 +141,7 @@ const boardReducer = (state = {}, action) => {
         case GET_BOARD_BY_USER:
             newState = {...state, ...action.boards}
 
-            console.log("ALLBOARDS?", action.boards)
+            // console.log("ALLBOARDS?", action.boards)
             return newState
         // case GET_BOARD:
         //     const allBoards = []
@@ -151,7 +151,7 @@ const boardReducer = (state = {}, action) => {
         //     return { ...state, 'posts': allBoards }
         case GET_SINGLE_BOARD:
             newState = { ...state, ...action.board.pins[0] }
-            console.log("STATE", newState)
+            // console.log("STATE", newState)
             return newState
         case ADD_BOARD:
             newState = { ...state }
@@ -163,7 +163,7 @@ const boardReducer = (state = {}, action) => {
             return newState;
         case EDIT_USER_BOARD:
             newState = { ...state }
-            console.log("EDITT REDUCER BOARD", newState)
+            // console.log("EDITT REDUCER BOARD", newState)
             newState[action.board.boards.id] = action.board.boards
             return newState
         case DELETE_USER_BOARD:

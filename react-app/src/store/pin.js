@@ -3,6 +3,8 @@ const GET_SINGLE_PIN = 'pins/GET_SINGLE_PIN';
 
 const ADD_SINGLE_PIN = 'pins/ADD_SINGLE_PIN';
 
+const EDIT_USER_PIN = 'pins/EDIT_USER_PIN';
+
 //Action Creator
 export const getAllPins = (pins) => ({
     type: GET_ALL_PINS,
@@ -16,6 +18,11 @@ export const getSinglePin = (pin) => ({
 
 export const addSinglePin = (pin) => ({
     type: ADD_SINGLE_PIN,
+    pin
+})
+
+export const editSinglePin = (pin) => ({
+    type: EDIT_USER_PIN,
     pin
 })
 
@@ -56,14 +63,14 @@ export const createPin = (payload) => async(dispatch) => {
             "photo_url": payload.photoUrl,
             "description": payload.description,
             "source_link": payload.sourceLink,
-            // "board_id": payload.board_id
+            // "board_id": payload.boardId
         })
     })
     console.log("RESPONSE", response)
 
     if(response.ok) {
         const data = await response.json()
-        console.log("CREATE NEW PIN THUNK", data)
+        // console.log("CREATE NEW PIN THUNK", data)
         dispatch(addSinglePin(data))
         return data
     } else if (response.status < 500) {
@@ -73,6 +80,37 @@ export const createPin = (payload) => async(dispatch) => {
         }
     } else {
         return ['An error occured. Please try again']
+    }
+}
+
+//EDIT PIN
+
+export const updateUserPin = (payload) => async (dispatch) => {
+    const response = await fetch(`/api/pins/${payload.id}/edit`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "title": payload.title,
+            "photo_url": payload.photoUrl,
+            "description": payload.description,
+            "source_link": payload.sourceLink,
+         })
+    })
+
+    if(response.ok) {
+        const data = await response.json()
+        console.log("EDIT PIN THUNK", data)
+        dispatch(editSinglePin(data))
+        return null
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
     }
 }
 
@@ -93,6 +131,10 @@ const pinReducer = (state = {}, action) => {
             // newPin.push(action.pin)
             // newState.pins = newPin
             console.log("CREATE NEW PIN STATE", newState)
+            return newState
+        case EDIT_USER_PIN:
+            newState = { ...state }
+            newState[action.pin.id] = action.pin
             return newState
         // case GET_PINS_BY_BOARD:
         //     const allPins = []
