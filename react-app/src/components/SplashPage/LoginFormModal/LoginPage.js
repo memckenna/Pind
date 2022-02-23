@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { Modal } from '../../../context/Modal';
 import LoginForm from '../../auth/LoginForm';
 import { login } from '../../../store/session';

@@ -31,8 +31,6 @@ const LoginForm = () => {
 
   };
 
-
-
   const handleDemoLogin = () => {
     const email = 'demo@aa.io'
     const password = 'password'
@@ -48,7 +46,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/pins' />;
   }
 
   return (

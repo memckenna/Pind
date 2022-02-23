@@ -10,6 +10,8 @@ import HomeButton from './HomeButton';
 import logo from '../../images/logo.png';
 import './NavBar.css'
 
+import LoggedInLogo from './LoggedInLogo';
+
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
 
@@ -41,9 +43,10 @@ const NavBar = () => {
     <nav>
       <div className='nav-container'>
         <div className='left-bar'>
-          <NavLink to='/' exact={true} activeClassName='active'>
+          <LoggedInLogo />
+          {/* <NavLink to='/' exact={true} activeClassName='active'>
             <img className='logo' src={logo} alt='logo' />
-          </NavLink>
+          </NavLink> */}
           {homeLink}
         </div>
         <div className='right-bar'>
