@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Modal } from '../../../context/Modal';
 import LoginForm from '../../auth/LoginForm';
@@ -9,11 +9,13 @@ import '../../NavBar/NavBar.css';
 function LoginFormModal() {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
+    const history = useHistory()
 
     const handleDemoLogin = () => {
         const email = 'demo@aa.io'
         const password = 'password'
         dispatch(login(email, password));
+        history.push("/pins")
     }
 
     return (

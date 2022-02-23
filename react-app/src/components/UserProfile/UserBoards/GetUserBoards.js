@@ -6,7 +6,8 @@ import CreateBoardModal from "../../Board/CreateABoard";
 import EditUserBoardModal from "../../Board/EditABoard";
 import { getASingleBoard, getBoardsByUser, createBoard } from "../../../store/board";
 import SingleBoard from "../../Board/SingleBoard";
-import  door from '../../../images/door.jpg'
+import kitchen from '../../../images/kitchen.jpg'
+import cake from '../../../images/cake.jpg'
 import '../UserProfile.css'
 
 function GetUserBoards({id}) {    //id = userId
@@ -42,7 +43,7 @@ function GetUserBoards({id}) {    //id = userId
                             <EditUserBoardModal user={board.user_id} board={board} id={board.id} />
                             <NavLink to={`/boards/${board.id}`}>
                                 {!board.pins[0]?.photo_url ?
-                                    <img src={door} /> :
+                                    <img src={kitchen} /> :
                                     <img src={board.pins[0]?.photo_url} />
                                 }
                             </NavLink>

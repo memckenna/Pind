@@ -39,6 +39,7 @@ const LoginForm = () => {
     const email = 'demo@aa.io'
     const password = 'password'
     dispatch(login(email, password));
+    history.push("/pins")
 }
 
   const updateEmail = (e) => {

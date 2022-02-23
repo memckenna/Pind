@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import logo from '../../images/logo.png'
 import * as sessionActions from "../../store/session"
@@ -20,6 +20,7 @@ const SignUpForm = () => {
   const [disableButton, setDisableButton] = useState(true);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   useEffect(() => {
     // if (
@@ -44,7 +45,7 @@ const SignUpForm = () => {
     if(username.length < 2) errorsValidation.push("Username address must be between 2 and 50 characters long")
     if(first_name < 4) errorsValidation.push("First name must be between 4 and 50 characters long")
     if(last_name < 4) errorsValidation.push("Last name must be between 4 and 50 characters long")
-    if(profileImgUrl.startsWith("https://")) errorsValidation.push("Please provide a valid URL for your profile image.")
+    if(profileImgUrl.length < 10) errorsValidation.push("Please provide a valid URL for your profile image.")
     if(age < 13) errorsValidation.push("You must be 13 years or old to create an account.")
     setErrors(errorsValidation)
 
@@ -66,6 +67,8 @@ const SignUpForm = () => {
       const data = await dispatch(signUp(payload));
       if (data) {
         setErrors(data)
+      } else {
+        history.push("/pins")
       }
   };
   const updateFirstlName = (e) => {
