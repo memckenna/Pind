@@ -21,13 +21,13 @@ const EditAPinForm = ({onClose}) => {
     const [errors, setErrors] = useState([])
     const [disabled, setDisabled] = useState(true)
 
-    // useEffect(() => {
-    //     if(title.length > 0 && photoUrl.length > 10) setDisabled(false)
-    //     else setDisabled(true)
+    useEffect(() => {
+        if(title.length > 0 && photoUrl.length > 10) setDisabled(false)
+        else setDisabled(true)
 
-    //     // if(photoUrl.length > 10) setDisabled(false)
-    //     // else setDisabled(true)
-    // }, [disabled, title, photoUrl])
+        // if(photoUrl.length > 10) setDisabled(false)
+        // else setDisabled(true)
+    }, [disabled, title, photoUrl])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -53,22 +53,17 @@ const EditAPinForm = ({onClose}) => {
 
     const handleDelete = (e) => {
         e.preventDefault()
-        console.log(pin.id)
-
 
         const data = dispatch(deleteUserPin(pin.id))
-        console.log("DELETE", data)
+        // console.log("DELETE", data)
         dispatch(getAllPinsOnFeed())
-        // await dispatch(getASinglePin(payload))
-
 
         if(data?.errors) {
             setErrors(data.errors)
         } else {
-            dispatch(getAllPinsOnFeed())
             onClose()
+            dispatch(getAllPinsOnFeed())
             history.push('/pins')
-
         }
     }
 

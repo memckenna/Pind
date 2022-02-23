@@ -1,3 +1,20 @@
+.edit-pin-btn {
+    border: none;
+    background-color: white;
+}
+
+.fa-ellipsis-h {
+    font-size: 30px;
+}
+
+.edit-pin-btn-container {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    padding-right: 338px;
+}
+
+
 .edit-pin-form-container {
     display: flex;
     flex-direction: row;
