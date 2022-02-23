@@ -1,6 +1,16 @@
 .signup-form-container {
     height: 656px;
     width: 484px;
+    overflow: auto;
+}
+
+.signup-error-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 20px 20px 20px;
+    color: black;
+    font-size: 12px;
 }
 
 .logo-signup {
@@ -59,6 +69,25 @@
     -webkit-font-smoothing: antialiased;
     border: none;
     margin-bottom: 10px;
+}
+
+.form-button:disabled {
+    box-sizing: border-box;
+    height: 40px;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 0 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    vertical-align: middle;
+    text-align: center;
+    color: gray;
+    background-color: #efefef;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    border: none;
 }
 
 .small-text {

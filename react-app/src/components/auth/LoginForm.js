@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import logo from '../../images/logo.png'
@@ -13,9 +14,10 @@ const LoginForm = () => {
   const [disableButton, setDisableButton] = useState(true);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   useEffect(() => {
-    if (email.includes("@") && password.length >= 6) {
+    if (email.includes("@") && password.length >= 8) {
       setDisableButton(false);
     } else {
       setDisableButton(true);
@@ -27,15 +29,17 @@ const LoginForm = () => {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else {
+      history.push("/pins")
     }
+
   };
-
-
 
   const handleDemoLogin = () => {
     const email = 'demo@aa.io'
     const password = 'password'
     dispatch(login(email, password));
+    history.push("/pins")
 }
 
   const updateEmail = (e) => {
@@ -47,13 +51,13 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/pins' />;
   }
 
   return (
     <div className='login-form-container'>
       <img className='logo' src={logo} alt='logo' />
-      <h1 className='welcome-header'>Welcome to Pinterest</h1>
+      <h1 className='welcome-header'>Welcome to Pind</h1>
       <form className="splash-login-form" onSubmit={onLogin}>
       <div className="login-error-container">
         {errors.map((error, ind) => (
@@ -69,6 +73,7 @@ const LoginForm = () => {
             placeholder="Email"
             value={email}
             onChange={updateEmail}
+            required={true}
           />
           <label className="form-label" htmlFor="email"></label>
         </div>
@@ -80,6 +85,7 @@ const LoginForm = () => {
             placeholder="Password"
             value={password}
             onChange={updatePassword}
+            required={true}
           />
           <label className="form-label" htmlFor="password"></label>
         </div>

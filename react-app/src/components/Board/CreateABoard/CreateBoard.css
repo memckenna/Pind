@@ -60,6 +60,19 @@ i {
     border: none;
     font-size: 18px;
     font-weight: bold;
+    color: white;
+    /* background-color: #efefef; */
+    background-color: #e60023;
+
+}
+
+.create-board-btn:disabled {
+    width: 84px;
+    height: 48px;
+    border-radius: 25px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
     color: gray;
     background-color: #efefef;
 }

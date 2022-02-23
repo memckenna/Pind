@@ -2,26 +2,72 @@
     /* margin-top: 400px; */
 }
 
-.create-pin-form-container {
-    box-sizing: border-box;
+.heading-save-btn {
     display: flex;
-    justify-content: center;
-    border: 2px solid red;
-    width: 880px;
-    height: 650px;
-    padding: 40px 40px 0;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 10px;
 }
 
-/* .create-pin-form {
+.pin-login-error-container {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-} */
+    flex-direction: column;
+
+}
+
+.save-pin-btn-form {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
 
 .create-pin-heading {
     display: flex;
     flex-direction: row;
 }
+
+.create-pin-form-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid red; */
+    width: 880px;
+    height: 650px;
+    /* padding: 40px 40px 0; */
+}
+
+.save-pin-btn {
+    background-color: #e60023;
+    color: white;
+    border-radius: 24px;
+    padding: 12px 16px;
+    border: none;
+    min-width: 69px;
+    box-sizing: border-box;
+    min-height: 48px;
+    cursor: pointer;
+    line-height: normal;
+    font-size: 16px;
+    font-weight: bold;
+    /* display: block; */
+    /* margin-left: 16px; */
+}
+
+.save-pin-btn:disabled {
+    color: gray;
+    background-color: #efefef;
+    border-radius: 24px;
+    padding: 12px 16px;
+    border: none;
+    min-width: 69px;
+    box-sizing: border-box;
+    min-height: 48px;
+    cursor: pointer;
+    line-height: normal;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 
 /* .pin-login-error-container {
 
@@ -34,15 +80,15 @@
     width: 800px;
     height: 550px;
     box-shadow: rgb(0 0 0 / 40%) 0px 8px 28px;
-    border: 2px solid blue;
-    padding: 0 0 20px;
+    /* border: 2px solid blue; */
+    /* padding: 0 0 20px; */
 }
 
 
 .create-pin-photo-div {
     display: flex;
     /* justify-content: column; */
-    border: 2px solid hotpink;
+    /* border: 2px solid hotpink; */
     /* width: 380px;
     height: 510px;
     padding: 0 20px; */
@@ -51,9 +97,11 @@
 .pin-photo {
     display: flex;
     justify-content: center;
-    border: 2px solid orange;
+    align-items: center;
+    /* border: 2px solid orange; */
+    background-color: #efefef;
     width: 380px;
-    height: 510px;
+    height: 550px;
     padding: 0 20px;
 
 
@@ -63,53 +111,105 @@
 
 .pin-photo-url {
     width: 340px;
-    height: 510px;
-    border: 1px dotted black;
+    height: 410px;
+    border: 3px dashed #ddd;;
+    background-color: #efefef;
+    word-wrap:normal;
+    overflow-wrap: auto;
+    resize: none;
+
 
 }
 
 .create-pin-input-div {
+    padding-top: 40px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding-right: 34px;
-    padding-left: 34px;
+    align-items: center;
+    padding-right: 15px;
+    padding-left: 15px;
 
     width: 420px;
     max-height: 950px;
     height: 510px;
-    border: 2px solid yellow;
+    /* border: 2px solid yellow; */
+}
+
+.pin-title-div {
+    display: flex;
+    width: 380px;
+    height: 65px;
+    /* border: 3px solid lightseagreen; */
+    padding-bottom: 100px;
 }
 
 .pin-title {
+    display: flex;
+
+    width: 350px;
+    height: 65px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    color: #767676;
+    font-size: 36px;
+    font-weight: 700;
+    word-wrap: break-word;
+    overflow: auto;
+    resize: none;
+}
+
+.pin-description-div {
+    display: flex;
+
     width: 380px;
-    height: 65px
+    height: 65px;
+    /* border: 3px solid lightseagreen; */
+    padding-bottom: 100px;
+
 }
 
 .pin-description {
+    display: flex;
+
+    /* align-items: flex-end; */
+
+    width: 350px;
+    height: 40px;
+
+    border: none;
+    border-bottom: 2px solid #ddd;
+
+    word-wrap: break-word;
+    overflow: auto;
+    resize: none;
+
+    font-size: 15px;
+
+    font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.pin-source-link-div {
+    display: flex;
     width: 380px;
-    height: 65px
+    height: 65px;
+    /* border: 3px solid lightseagreen; */
 }
 
 .pin-source-link {
-    width: 380px;
-    height: 65px
-}
+    width: 350px;
+    height: 65px;
 
-
-.create-pin-btn {
-    /* background-color: #e60023;
-    color: white;
-    border-radius: 24px;
-    padding: 12px 16px;
     border: none;
-    min-width: 69px;
-    box-sizing: border-box;
-    min-height: 48px;
-    cursor: pointer;
-    line-height: normal;
-    font-size: 16px;
-    font-weight: bold; */
-    /* display: block; */
-    /* margin-left: 16px; */
+    border-bottom: 2px solid #ddd;
+
+    word-wrap: break-word;
+    overflow: auto;
+    resize: none;
+
+    font-size: 15px;
+    font-family: 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+
+
 }

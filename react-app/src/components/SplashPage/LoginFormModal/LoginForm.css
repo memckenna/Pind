@@ -55,6 +55,25 @@
     border: none;
 }
 
+.form-button:disabled {
+    box-sizing: border-box;
+    height: 40px;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 0 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    vertical-align: middle;
+    text-align: center;
+    color: gray;
+    background-color: #efefef;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    border: none;
+}
+
 .demo-form-button {
     box-sizing: border-box;
     height: 40px;

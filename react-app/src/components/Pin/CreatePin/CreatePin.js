@@ -30,11 +30,12 @@ const CreateAPin = ({onClose}) => {
     // }, [dispatch])
 
     useEffect(() => {
-        if(title.length > 0 && photoUrl.length > 10) setDisabled(false)
-        else setDisabled(true)
+        const validationErrors = [];
 
-        // if(photoUrl.length > 10) setDisabled(false)
-        // else setDisabled(true)
+        if(title.length < 1) validationErrors.push("Please provide a title");
+        if(!photoUrl.startsWith("https://")) validationErrors.push("Please provide the full image URL")
+        setErrors(validationErrors)
+
     }, [disabled, title, photoUrl])
 
     if (!sessionUser) return <Redirect to="/" />;
@@ -47,41 +48,31 @@ const CreateAPin = ({onClose}) => {
             photoUrl,
             description,
             sourceLink,
-            // boardId
         }
 
-        console.log("FORM DATA", payload)
-
         const data = await dispatch(createPin(payload))
-        console.log("CREATE PIN DATA", data)
-
         await dispatch(getAllPinsOnFeed())
-        // await dispatch(getBoardsByUser(sessionUser.id))
-        // await dispatch(getASingleBoard())
 
         if(data?.errors) {
             setErrors(data.errors)
         } else {
             await dispatch(getAllPinsOnFeed())
-            // await dispatch(getBoardsByUser(sessionUser.id))
             onClose()
             //     // history.push(`/pins`)
-            //     // history.push(`/users/${sessionUser.id}`)
         }
-        // alert("Your pin was created: ")
     }
-
-    // const onChange = (e) => {
-    //     setBoardId({boardId: e.target.value})
-    // }
-
 
     return (
         <>
             <div className="create-pin-form-container">
                 <form className="create-pin-form" onSubmit={handleSubmit}>
-                    <div className="create-pin-heading">
-                        <h2>Create a Pin</h2>
+                    <div className="heading-save-btn">
+                        <div className="create-pin-heading">
+                            <h2>Create a Pin</h2>
+                        </div>
+                        <div className="save-pin-btn-form">
+                            <button type="pin-submit" /*disabled={disabled}*/  className="save-pin-btn">Save</button>
+                        </div>
                     </div>
                     <div className='pin-login-error-container'>
                         {errors?.map((error, ind) => (
@@ -98,21 +89,23 @@ const CreateAPin = ({onClose}) => {
                                     value={photoUrl}
                                     onChange={(e) => setPhotoUrl(e.target.value)}
                                     placeholder='Add your image URL'
+                                    required={true}
                                 />
                             </div>
                         </div>
-                        
+
                         <div className="create-pin-input-div">
-                            <div>
+                            <div className="pin-title-div">
                                 <input
                                     className='pin-title'
                                     type="text"
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                     placeholder='Add your title'
+                                    required={true}
                                 />
                             </div>
-                            <div>
+                            <div className="pin-description-div">
                                 <textarea
                                     className='pin-description'
                                     placeholder="Tell everyone what your Pin is about"
@@ -120,7 +113,7 @@ const CreateAPin = ({onClose}) => {
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
                             </div>
-                            <div>
+                            <div className="pin-source-link-div">
                                 <input
                                     className='pin-source-link'
                                     type="text"
@@ -131,21 +124,9 @@ const CreateAPin = ({onClose}) => {
                             </div>
                         </div>
 
-                        <div className="create-pin-btn-div">
+                        {/* <div className="create-pin-btn-div">
                                 <button type="pin-submit" disabled={disabled}  className="create-pin-btn">Save</button>
-                                {/* <select onChange={onChange} value={boardId}> */}
-
-                                    {/* {boards.boards?.map((board) => (
-
-                                        <option key={board.id} value={board.title}>
-                                            {board.title}
-                                            {console.log("DROPDOWN", board)}
-                                        </option>
-                                    ))} */}
-
-                                {/* </select> */}
-
-                        </div>
+                        </div> */}
 
                     </div>
                 </form>

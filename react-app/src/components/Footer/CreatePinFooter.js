@@ -3,7 +3,7 @@ import CreateAPinModal from "../Pin/CreatePin";
 
 import "./Footer.css"
 
-const UserFooter = () => {
+const CreatePinFooter = () => {
 
 
     return (
@@ -21,4 +21,4 @@ const UserFooter = () => {
     )
 }
 
-export default UserFooter;
+export default CreatePinFooter;

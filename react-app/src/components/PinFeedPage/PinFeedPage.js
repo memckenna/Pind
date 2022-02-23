@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Redirect, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPinsOnFeed } from "../../store/pin";
-import UserFooter from "../Footer/UserFooter";
+import CreatePinFooter from "../Footer/CreatePinFooter";
 
 import './PinFeedPage.css'
 
@@ -36,7 +36,7 @@ const PinFeedPage = () => {
                 ))}
             </div>
             <div className="create-pin-btn-div">
-                <UserFooter />
+                <CreatePinFooter />
                 {/* <button className="create-pin-btn">
                     <i className="fas fa-plus"></i>
                 </button> */}

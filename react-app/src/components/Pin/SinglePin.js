@@ -33,7 +33,7 @@ const SinglePin = () => {
                     </div>
                     <div className="single-pin-content">
                         <div className="single-save-button-div">
-                            <EditAPinModal />
+                            <EditAPinModal id={pinId} pin={pin}/>
                             <button className="single-save-button">Save</button>
                         </div>
                         <div className="single-pin-title">{pin.title}</div>

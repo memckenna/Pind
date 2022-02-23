@@ -8,8 +8,9 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    /* margin-left: 30px;
-    margin-right: 30px; */
+
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .pin-feed-card {
