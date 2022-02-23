@@ -70,21 +70,21 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (first_name, last_name, age, profile_img_url, username, email, password, repeat_password) => async (dispatch) => {
+export const signUp = (payload) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      first_name,
-      last_name,
-      age,
-      profile_img_url,
-      username,
-      email,
-      password,
-      repeat_password
+      "first_name": payload.first_name,
+      "last_name": payload.last_name,
+      "age": payload.age,
+      "profile_img_url": payload.profileImgUrl,
+      "username": payload.username,
+      "email": payload.email,
+      "password": payload.password,
+      "repeat_password": payload.repeat_password
     }),
   });
 

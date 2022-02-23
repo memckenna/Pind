@@ -15,7 +15,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (email.includes("@") && password.length >= 6) {
+    if (email.includes("@") && password.length >= 8) {
       setDisableButton(false);
     } else {
       setDisableButton(true);
@@ -28,6 +28,7 @@ const LoginForm = () => {
     if (data) {
       setErrors(data);
     }
+
   };
 
 
@@ -53,7 +54,7 @@ const LoginForm = () => {
   return (
     <div className='login-form-container'>
       <img className='logo' src={logo} alt='logo' />
-      <h1 className='welcome-header'>Welcome to Pinterest</h1>
+      <h1 className='welcome-header'>Welcome to Pind</h1>
       <form className="splash-login-form" onSubmit={onLogin}>
       <div className="login-error-container">
         {errors.map((error, ind) => (
@@ -69,6 +70,7 @@ const LoginForm = () => {
             placeholder="Email"
             value={email}
             onChange={updateEmail}
+            required={true}
           />
           <label className="form-label" htmlFor="email"></label>
         </div>
@@ -80,6 +82,7 @@ const LoginForm = () => {
             placeholder="Password"
             value={password}
             onChange={updatePassword}
+            required={true}
           />
           <label className="form-label" htmlFor="password"></label>
         </div>

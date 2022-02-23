@@ -37,7 +37,7 @@ const SingleBoard = () => {
                                 <img className="pin-image" src={pin.photo_url} />
                             </NavLink>
                         </div>
-                        <div className="pin-title">{pin.title}</div>
+                        <div className="single-board-title">{pin.title}</div>
                     </div>
                 ))}
             </div>

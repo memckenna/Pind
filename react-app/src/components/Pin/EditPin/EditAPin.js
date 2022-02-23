@@ -10,10 +10,8 @@ const EditAPinForm = ({onClose}) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const pin = useSelector(state => state.pinReducer)
-    console.log("EDIT A PIN", pin)
     const sessionUser = useSelector(state => state.session.user)
 
-    const [board, setBoard] = useState()
     const [title, setTitle] = useState(pin.title)
     const [description, setDescription] = useState(pin.description)
     const [sourceLink, setSourceLink] = useState(pin.source_link)
@@ -25,8 +23,6 @@ const EditAPinForm = ({onClose}) => {
         if(title.length > 0 && photoUrl.length > 10) setDisabled(false)
         else setDisabled(true)
 
-        // if(photoUrl.length > 10) setDisabled(false)
-        // else setDisabled(true)
     }, [disabled, title, photoUrl])
 
     const handleSubmit = async (e) => {

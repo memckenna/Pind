@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import logo from '../../images/logo.png'
+import * as sessionActions from "../../store/session"
+
 import "../SplashPage/SignupFormModal/SignUpForm.css"
 
 const SignUpForm = () => {
@@ -20,32 +22,51 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (
-      email.includes("@") &&
-      password.length >= 6 &&
-      username.length >= 2 &&
-      first_name.length >= 4 &&
-      last_name.length >= 4 &&
-      profileImgUrl.length >= 10 &&
-      age >= 13 &&
-      repeat_password === password
-    ) {
-      setDisableButton(false);
-      
-    } else {
-      setDisableButton(true);
-    }
+    // if (
+    //   email.includes("@") &&
+    //   password.length >= 6 &&
+    //   username.length >= 2 &&
+    //   first_name.length >= 4 &&
+    //   last_name.length >= 4 &&
+    //   profileImgUrl.length >= 10 &&
+    //   age >= 13 &&
+    //   repeat_password === password
+    // ) {
+    //   setDisableButton(false);
+
+    // } else {
+    //   setDisableButton(true);
+    // }
+
+
+
+    let errorsValidation = []
+    if(!email.includes("@")) errors.push("Please provide a valid email")
+    setErrors(errorsValidation)
 
     //ADD MESSAGE FOR ERRORS
   }, [disableButton, email, password, repeat_password, username, first_name, last_name, age, profileImgUrl]);
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    // if (password === repeatPassword) {
-      const data = await dispatch(signUp(first_name, last_name, age, profileImgUrl, username, email, password, repeat_password));
-      if (data?.errors) {
-        setErrors(data.errors)
+    const payload = {
+      first_name,
+      last_name,
+      age,
+      profileImgUrl,
+      username,
+      email,
+      password,
+      repeat_password
+    }
+    // if (password === repeat_password) {
+      // setErrors([])
+      const data = await dispatch(signUp(payload));
+      if (data) {
+        setErrors(data)
       }
+    // } else {
+    //   setErrors(["Please provide matching passwords."])
     // }
   };
   const updateFirstlName = (e) => {
@@ -86,10 +107,11 @@ const SignUpForm = () => {
   return (
     <div className='signup-form-container'>
       <img className='logo-signup' src={logo} alt='logo' />
-      <h1 className='welcome-header'>Welcome to Pinterest</h1>
+      <h1 className='welcome-header'>Welcome to Pind</h1>
       <form autoComplete="off" className="splash-login-form" onSubmit={onSignUp}>
-      <div className="login-error-container">
+      <div className="signup-error-container">
         {errors.map((error, ind) => (
+
           <div key={ind}>{error}</div>
         ))}
       </div>
@@ -102,6 +124,7 @@ const SignUpForm = () => {
             name="first_name"
             onChange={updateFirstlName}
             value={first_name}
+            required={true}
           ></input>
           <label className="form-label"></label>
         </div>
@@ -113,6 +136,7 @@ const SignUpForm = () => {
             name="last_name"
             onChange={updateLastName}
             value={last_name}
+            required={true}
           ></input>
           <label className="form-label"></label>
         </div>
@@ -124,6 +148,7 @@ const SignUpForm = () => {
             name="Age"
             onChange={updateAge}
             value={age}
+            required={true}
           ></input>
           <label className="form-label"></label>
         </div>
@@ -135,6 +160,7 @@ const SignUpForm = () => {
             name="profile-image-url"
             onChange={updateProfileImageUrl}
             value={profileImgUrl}
+            required={true}
           ></input>
           <label className="form-label"></label>
         </div>
@@ -146,6 +172,7 @@ const SignUpForm = () => {
             name="username"
             onChange={updateUsername}
             value={username}
+            required={true}
           ></input>
           <label className="form-label"></label>
         </div>
@@ -157,8 +184,9 @@ const SignUpForm = () => {
             name="email"
             onChange={updateEmail}
             value={email}
+            required={true}
           ></input>
-          <label className="form-label"></label>
+          <label className="form-label" htmlFor="email"></label>
         </div>
         <div className="input-container">
           <input
@@ -168,8 +196,9 @@ const SignUpForm = () => {
             name="password"
             onChange={updatePassword}
             value={password}
+            required={true}
           ></input>
-          <label className="form-label"></label>
+          <label className="form-label" htmlFor="password"></label>
         </div>
         <div className="input-container">
           <input
@@ -181,9 +210,9 @@ const SignUpForm = () => {
             value={repeat_password}
             required={true}
           ></input>
-          <label className="form-label"></label>
+          <label className="form-label" htmlFor="password"></label>
         </div>
-        <button disabled={disableButton} className="form-button" type="submit">
+        <button className="form-button" type="submit">
           Sign Up
         </button>
         <div className='small-text'>By continuing, you are not agreeing to any <strong>Terms of Service</strong> and you are not acknowledged to read any <strong>Privacy Policies</strong></div>

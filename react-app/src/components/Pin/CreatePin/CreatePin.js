@@ -98,6 +98,7 @@ const CreateAPin = ({onClose}) => {
                                     value={photoUrl}
                                     onChange={(e) => setPhotoUrl(e.target.value)}
                                     placeholder='Add your image URL'
+                                    required={true}
                                 />
                             </div>
                         </div>
@@ -110,6 +111,7 @@ const CreateAPin = ({onClose}) => {
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                     placeholder='Add your title'
+                                    required={true}
                                 />
                             </div>
                             <div className="pin-description-div">

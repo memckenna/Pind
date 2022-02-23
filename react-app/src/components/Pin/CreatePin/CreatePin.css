@@ -47,6 +47,21 @@
     /* margin-left: 16px; */
 }
 
+.save-pin-btn:disabled {
+    color: gray;
+    background-color: #efefef;
+    border-radius: 24px;
+    padding: 12px 16px;
+    border: none;
+    min-width: 69px;
+    box-sizing: border-box;
+    min-height: 48px;
+    cursor: pointer;
+    line-height: normal;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 
 /* .pin-login-error-container {
 
