@@ -38,8 +38,6 @@ const SignUpForm = () => {
     //   setDisableButton(true);
     // }
 
-
-
     let errorsValidation = []
     if(!email.includes("@")) errors.push("Please provide a valid email")
     setErrors(errorsValidation)
@@ -59,15 +57,10 @@ const SignUpForm = () => {
       password,
       repeat_password
     }
-    // if (password === repeat_password) {
-      // setErrors([])
       const data = await dispatch(signUp(payload));
       if (data) {
         setErrors(data)
       }
-    // } else {
-    //   setErrors(["Please provide matching passwords."])
-    // }
   };
   const updateFirstlName = (e) => {
     setFirstName(e.target.value);

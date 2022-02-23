@@ -1,4 +1,5 @@
 import React from "react";
+import SplashPageFooter from "../Footer/SplashPageFooter";
 import "./SplashPage.css"
 
 
@@ -19,9 +20,10 @@ function SplashPage() {
                     <div className="splash-image" id="col-5"><img src="https://i.pinimg.com/originals/c6/00/72/c60072ab97110193c33048bbd9cfc5cc.jpg" /><img src="https://i.pinimg.com/originals/a3/8a/cc/a38accc3db6548bd18082e2cafad91fd.jpg"/></div>
                     {/* <div className="splash-image" id="col-6"><img src="" /><img src=""/></div> */}
                     {/* <div className="splash-image" id="col-7"><img src="" /><img src=""/></div> */}
-
                 </div>
-
+                <div>
+                    <SplashPageFooter />
+                </div>
             </div>
         </>
     )

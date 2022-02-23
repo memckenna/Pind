@@ -5,25 +5,14 @@ import { getASingleBoard } from "../../store/board";
 
 import "./SingleBoard.css"
 
-
-
 const SingleBoard = () => {
     const dispatch = useDispatch();
-
     const pinsByBoard = useSelector(state => state.board)
     // const sessionUser = useSelector((state) => state.session.user);
     const { boardId } = useParams()
-    // console.log(boardId)
-
-    // let board = boards.boards.filter((e) => console.log(e))
-    console.log("SINGLE BOARD PINS", pinsByBoard)
-    // let pin = Object.values(pinsByBoard)
-    // console.log(pin)
 
     useEffect(() => {
-
         dispatch(getASingleBoard(boardId))
-
     }, [dispatch, boardId])
 
     return (

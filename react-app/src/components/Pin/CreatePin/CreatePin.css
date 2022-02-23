@@ -9,6 +9,12 @@
     margin-bottom: 10px;
 }
 
+.pin-login-error-container {
+    display: flex;
+    flex-direction: column;
+
+}
+
 .save-pin-btn-form {
     display: flex;
     justify-content: flex-end;

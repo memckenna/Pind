@@ -5,7 +5,7 @@
     align-items: flex-end;
     margin-bottom: 200px;
     margin-right: 20px;
-    
+
     z-index: 1;
 
 }
@@ -32,4 +32,36 @@
 
 .fa-plus {
     font-size: 30px;
+}
+
+.splash-footer {
+    height: 80px;
+    box-shadow: rgb(0 0 0 / 30%) 0px 8px 28px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+}
+
+.splash-footer-paragraph {
+    padding: 10px 70px 10px 70px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--gray-secondary);
+    padding-bottom: 1.8rem;
+
+}
+
+.github-links {
+    text-decoration: none;
+    color:black;
+}
+
+.linkedin-links {
+    text-decoration: none;
+    color:black;
+}
+
+.splash-footer-paragraph > a:hover {
+    text-decoration: underline;
 }

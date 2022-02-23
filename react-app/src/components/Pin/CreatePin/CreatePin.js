@@ -30,14 +30,11 @@ const CreateAPin = ({onClose}) => {
     // }, [dispatch])
 
     useEffect(() => {
-        if(title.length > 0 && photoUrl.length > 10) setDisabled(false)
-        else setDisabled(true)
+        const validationErrors = [];
 
-        // const validationErrors = [];
-
-        // if(title.length < 1) validationErrors.push("Please provide a title");
-        // if(!photoUrl.startsWith("https://")) validationErrors.push("Please provide the full image address")
-        // setErrors(validationErrors)
+        if(title.length < 1) validationErrors.push("Please provide a title");
+        if(!photoUrl.startsWith("https://")) validationErrors.push("Please provide the full image URL")
+        setErrors(validationErrors)
 
     }, [disabled, title, photoUrl])
 
@@ -53,23 +50,17 @@ const CreateAPin = ({onClose}) => {
             sourceLink,
         }
 
-        console.log("FORM DATA", payload)
-
         const data = await dispatch(createPin(payload))
-        console.log("CREATE PIN DATA", data)
-
         await dispatch(getAllPinsOnFeed())
 
         if(data?.errors) {
             setErrors(data.errors)
-
         } else {
             await dispatch(getAllPinsOnFeed())
             onClose()
             //     // history.push(`/pins`)
         }
     }
-
 
     return (
         <>
@@ -80,7 +71,7 @@ const CreateAPin = ({onClose}) => {
                             <h2>Create a Pin</h2>
                         </div>
                         <div className="save-pin-btn-form">
-                            <button type="pin-submit" disabled={disabled}  className="save-pin-btn">Save</button>
+                            <button type="pin-submit" /*disabled={disabled}*/  className="save-pin-btn">Save</button>
                         </div>
                     </div>
                     <div className='pin-login-error-container'>
