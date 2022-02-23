@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import logo from '../../images/logo.png'
@@ -13,6 +14,7 @@ const LoginForm = () => {
   const [disableButton, setDisableButton] = useState(true);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   useEffect(() => {
     if (email.includes("@") && password.length >= 8) {
@@ -27,6 +29,8 @@ const LoginForm = () => {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else {
+      history.push("/pins")
     }
 
   };

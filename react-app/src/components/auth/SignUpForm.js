@@ -39,7 +39,13 @@ const SignUpForm = () => {
     // }
 
     let errorsValidation = []
-    if(!email.includes("@")) errors.push("Please provide a valid email")
+    if(!email.includes("@")) errorsValidation.push("Please provide a valid email")
+    if(password !== repeat_password) errorsValidation.push("Password and repeat password input values must match.")
+    if(username.length < 2) errorsValidation.push("Username address must be between 2 and 50 characters long")
+    if(first_name < 4) errorsValidation.push("First name must be between 4 and 50 characters long")
+    if(last_name < 4) errorsValidation.push("Last name must be between 4 and 50 characters long")
+    if(profileImgUrl.startsWith("https://")) errorsValidation.push("Please provide a valid URL for your profile image.")
+    if(age < 13) errorsValidation.push("You must be 13 years or old to create an account.")
     setErrors(errorsValidation)
 
     //ADD MESSAGE FOR ERRORS

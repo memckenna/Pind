@@ -41,6 +41,9 @@ const EditABoardForm = ({ id, onClose }) => {
     //     console.log("sdfghjkls")
     //     setDescription(localStorage.getItem("description"))
     // }
+    useEffect(() => {
+
+    }, [dispatch])
 
     useEffect(() => {
         if(title.length > 0) {
@@ -66,16 +69,16 @@ const EditABoardForm = ({ id, onClose }) => {
         }
     }
 
-    const handleDelete = (e) => {
+    const handleDelete = async(e) => {
         e.preventDefault()
         // const id = e.target.id
-        const data = dispatch(deleteUserBoard(id));
-        dispatch(getBoardsByUser(sessionUser.id));
+        const data = await dispatch(deleteUserBoard(id));
+        await dispatch(getBoardsByUser(sessionUser.id));
 
         if(data?.errors) {
             setErrors(data.errors)
         } else if(!data?.errors) {
-            dispatch(getBoardsByUser(sessionUser.id));
+            await dispatch(getBoardsByUser(sessionUser.id));
             onClose()
         }
     }
