@@ -115,7 +115,7 @@ const CreateAPin = ({onClose}) => {
                             <div className="pin-description-div">
                                 <textarea
                                     className='pin-description'
-                                    placeholder="Tell everyone what your Pin is about"
+                                    placeholder="Tell everyone what your Pin is about (optional)"
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
@@ -126,7 +126,7 @@ const CreateAPin = ({onClose}) => {
                                     type="text"
                                     value={sourceLink}
                                     onChange={(e) => setSourceLink(e.target.value)}
-                                    placeholder='Add a destination link'
+                                    placeholder='Add a destination link (optional)'
                                 />
                             </div>
                         </div>
