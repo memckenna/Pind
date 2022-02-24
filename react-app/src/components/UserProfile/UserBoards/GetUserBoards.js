@@ -34,7 +34,7 @@ function GetUserBoards({id}) {    //id = userId
     return (
         <>
             <div className="create-board-profile-modal">
-                <CreateBoardModal  />
+                <CreateBoardModal id={id} />
             </div>
             <div className="board-container">
                 {boards.boards?.map(board => (

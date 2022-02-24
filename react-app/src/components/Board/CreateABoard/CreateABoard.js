@@ -17,12 +17,20 @@ const CreateBoardForm = ({ onClose }) => {
     const user = useSelector(state => state.session.user);
     // console.log("USER", user)
 
+
     useEffect(() => {
         if(title.length > 0) {
             setDisabled(false)
         } else {
             setDisabled(true)
         }
+
+        const validationErrors = []
+        if(title.length >= 50) {
+            validationErrors.push("Title must be less than 50 characters.")
+            setDisabled(true)
+        }
+        setErrors(validationErrors)
 
     }, [disabled, title])
 
@@ -36,9 +44,8 @@ const CreateBoardForm = ({ onClose }) => {
         // formData.append("description", description)
 
         const data = await dispatch(createBoard(formData))
-        console.log("BOARD DATA", data)
         await dispatch(getBoardsByUser(user.id));
-        // console.log("THIS IS MY COMP DATA", data)
+
         if (data?.errors) {
             setErrors(data.errors)
         } else if (!data?.errors) {

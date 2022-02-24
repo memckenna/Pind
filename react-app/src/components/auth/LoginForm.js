@@ -17,11 +17,16 @@ const LoginForm = () => {
   const history = useHistory()
 
   useEffect(() => {
-    if (email.includes("@") && password.length >= 8) {
-      setDisableButton(false);
-    } else {
-      setDisableButton(true);
-    }
+    // if (email.includes("@") && password.length >= 8) {
+    //   setDisableButton(false);
+    // } else {
+    //   setDisableButton(true);
+    // }
+    let errorsValidation = []
+    if(!email.includes("@")) errorsValidation.push("Email: Please provide a valid email")
+
+    if(!password) errorsValidation.push("Password: Please provide your password")
+    setErrors(errorsValidation)
   }, [disableButton, email, password]);
 
   const onLogin = async (e) => {
@@ -89,7 +94,7 @@ const LoginForm = () => {
           />
           <label className="form-label" htmlFor="password"></label>
         </div>
-        <button className="form-button" disabled={disableButton} type="submit">
+        <button className="form-button" /*disabled={disableButton}*/ type="submit">
           Login
         </button>
         <div className='divider'>OR</div>
