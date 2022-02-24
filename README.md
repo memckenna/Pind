@@ -1,8 +1,18 @@
-# Flask React Project
+# Pind
 
-This is the starter for the Flask React project.
+# Pins at a Glance
 
-## Getting started
+Pind is a full stack application, inspired by Pinterest, that allows users to curate peresonal boards with existing or new pins that have been created by other users or by the user themselves. Logged in users can view the feed page of all the pins that have been created by the user or by other users as well as view single pins to see the pins full details (title, image, description, source link). Users can also edit and delete a pin that they have personally created. Users can navigate to their personal profile page, where they are able to view all the boards that they have created and the pins that have been saved to them as well as create new boards to organize the pins that they save into personal categories or collections. Logged in users can also view other users profiles to see they boards that they have created as well as the pins that have been saved to them.
+
+
+<div align='center'>
+<h1 align='center' style='font-weight: bold'>Technologies Used </h1>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original.svg" height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"  height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain-wordmark.svg" height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"  height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"  height=40/>
+</div>
+
+Pind is developed using React, Redux, Flask, and SQLAlchemy to create a full stack application. Heroku was used for production hosting.
+
+# Clone Pind
 
 1. Clone this repository (only this branch)
 
@@ -53,6 +63,23 @@ This is the starter for the Flask React project.
    psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
    There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
 ***
+
+
+# Key Functionalities
+
+## Pins, Boards, and Save Pins to Boards
+
+Pind allows users to curate personal boards and populate them with pins that interest them and correspond with the boards theme. Users can also create new pins that will include the image that inspired the pin, a title to label the image, an optional description to give more insight on the pin, and an optional source link of where the image was originated.
+
+
+# Features Highlight
+
+
+
+# Conclusion and Next Steps
+
+
+
 
 ## Deploy to Heroku
 
