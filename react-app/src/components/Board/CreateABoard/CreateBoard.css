@@ -24,7 +24,7 @@ i {
     display: flex;
     justify-content: center;
     flex-direction: column;
-
+    
 }
 
 .title {
@@ -63,6 +63,7 @@ i {
     color: white;
     /* background-color: #efefef; */
     background-color: #e60023;
+    cursor: pointer;
 
 }
 
