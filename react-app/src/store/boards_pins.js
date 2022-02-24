@@ -1,13 +1,13 @@
-//ACTIOn
-//GET all boards for pin
+const GET_BOARD_PINS = "board_pin/GET_BOARD_PINS";
 
-//ADD pin to board
+const ADD_BOARD_PIN = "board_pin/ADD_BOARD_PIN";
 
-//DELETE pin from board
-
+const REMOVE_BOARD_PIN = "board_pin/REMOVE_BOARD_PIN";
 
 //ACTION CREATOR
 //GET all boards for pin
+
+
 
 //ADD pin to board
 //EXAMPLE
