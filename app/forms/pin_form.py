@@ -8,7 +8,7 @@ from wtforms.fields import FileField
 
 class CreatePinForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(message='Please provide a title'),
-                        Length(min=10, message='Title must be less than 70 characters.')])
+                        Length(max=50, message='Title must be less than 50 characters.')])
     description = TextAreaField('Description')
     source_link = StringField('Source Link')
     photo_url = StringField('Photo URL',validators=[DataRequired()])

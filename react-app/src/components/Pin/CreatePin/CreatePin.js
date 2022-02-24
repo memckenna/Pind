@@ -33,6 +33,13 @@ const CreateAPin = ({onClose}) => {
         const validationErrors = [];
 
         if(title.length < 1) validationErrors.push("Please provide a title");
+        if(title.length >= 50) {
+            validationErrors.push("Title must be less than 50 characters")
+            setDisabled(true)
+        } else {
+            setDisabled(false)
+        }
+
         if(!photoUrl.startsWith("https://")) validationErrors.push("Please provide the full image URL")
         setErrors(validationErrors)
 
@@ -71,7 +78,7 @@ const CreateAPin = ({onClose}) => {
                             <h2>Create a Pin</h2>
                         </div>
                         <div className="save-pin-btn-form">
-                            <button type="pin-submit" /*disabled={disabled}*/  className="save-pin-btn">Save</button>
+                            <button type="pin-submit" disabled={disabled}  className="save-pin-btn">Save</button>
                         </div>
                     </div>
                     <div className='pin-login-error-container'>

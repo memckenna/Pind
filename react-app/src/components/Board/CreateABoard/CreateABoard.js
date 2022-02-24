@@ -26,8 +26,8 @@ const CreateBoardForm = ({ onClose }) => {
         }
 
         const validationErrors = []
-        if(title.length >= 70) {
-            validationErrors.push("Title must be less than 70 characters.")
+        if(title.length >= 50) {
+            validationErrors.push("Title must be less than 50 characters.")
             setDisabled(true)
         }
         setErrors(validationErrors)
