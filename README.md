@@ -1,8 +1,36 @@
-# Flask React Project
+<h1 align='center' style='font-weight: bold'>Pind</h1>
 
-This is the starter for the Flask React project.
+<br>
+</br>
 
-## Getting started
+<h1 align='center' style='font-weight: bold'>Pind at a Glance</h1>
+
+Pind is a full stack application, inspired by Pinterest, that allows users to curate peresonal boards with existing or new pins that have been created by other users or by the user themselves. Logged in users can view the feed page of all the pins that have been created by the user or by other users as well as view single pins to see the pins full details (title, image, description, source link). Users can also edit and delete a pin that they have personally created. Users can navigate to their personal profile page, where they are able to view all the boards that they have created and the pins that have been saved to them as well as create new boards to organize the pins that they save into personal categories or collections. Logged in users can also view other users profiles to see they boards that they have created as well as the pins that have been saved to them.
+
+<br>
+</br>
+
+<div align='center'>
+<h1 align='center' style='font-weight: bold'>Index</h1>
+<a href='https://github.com/memckenna/Pind/wiki/MVP-Feature-List'>Feature List</a> - <a href='https://github.com/memckenna/Pind/wiki/Database-Schema'>Database Schema</a> - <a href='https://github.com/memckenna/Pind/wiki/API-Documentant'>API Documentation</a> - <a href='https://github.com/memckenna/Pind/wiki/Frontend-Routes'>Frontend Routes</a>
+</div>
+
+<br>
+</br>
+
+
+<div align='center'>
+<h1 align='center' style='font-weight: bold'>Technologies Used </h1>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original.svg" height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"  height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain-wordmark.svg" height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"  height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"  height=40/>
+</div>
+
+Pind is developed using React, Redux, Flask, and SQLAlchemy to create a full stack application. Heroku was used for production hosting.
+
+<br>
+</br>
+
+
+# Clone Pind
 
 1. Clone this repository (only this branch)
 
@@ -38,7 +66,15 @@ This is the starter for the Flask React project.
    flask run
    ```
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+6. To run the React App in development, cd into the `react-app` directory.
+
+     ```bash
+   npm install
+   ```
+
+   ```bash
+   npm start
+   ```
 
 ***
 *IMPORTANT!*
@@ -54,81 +90,67 @@ This is the starter for the Flask React project.
    There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
 ***
 
-## Deploy to Heroku
 
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
+<h1 align='center' style='font-weight: bold'>Features List</h1>
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+## Splash Page & User Authentication
 
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
+Users can either log in with an existing account or sign up to create a new account. If the user doesn't want to make an account, they can log in by using the demo user log in.
 
-   ```bash
-   heroku login
-   ```
+<img src="https://i.postimg.cc/QtGFR2Fd/FBFE1-EF6-B3-F7-4-C9-A-B7-C3-20-EBAF4-D084-A.jpg" />
 
-6. Login to the heroku container registry
+<img src='https://i.postimg.cc/P5zgYcD8/Screen-Shot-2022-02-24-at-11-37-02-AM.png' />
 
-   ```bash
-   heroku container:login
-   ```
+<br>
+</br>
 
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
+## User Feed Page
+When a user logs in or signs up, they will be redirected to the pins feed page, where they will be able to view pins that other useres have created, along with having the ability to create a new pin on the feed page.
 
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
+<img src='https://i.postimg.cc/L4TQyRWv/E492-BFD0-CC56-4670-B18-A-44-BD34691637.jpg' />
 
-9. Release your docker container to heroku
+<br>
+</br>
 
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
+## Pins
+Users can create their own new pins that will include the image that inspired the pin, a title to describe the image, an optional description of the pin, and an optional source link that inspired the pin by clicking the + on the bottom right of feed page. Users can click on a single pin to view full pin details as well as edit or delete the pin.
 
-10. set up your database
+<img src='https://i.postimg.cc/nzd7DddK/265-B1-E38-DDF7-40-A5-A610-BD6-F4-D5738-D0.jpg' />
 
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
+<img src='https://i.postimg.cc/MTXHhzDR/1-B78-F296-2-F65-43-E0-9-B94-DE018-CD2-BFFE.jpg' />
 
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
+<img src='https://i.postimg.cc/Pfw16k59/Screen-Shot-2022-02-24-at-11-29-17-AM.png' />
 
-12. profit
+<br>
+</br>
 
-### For M1 Mac users
+## Boards
+Users can curate their own personal boards on their profile pages that will be populated with pins that interest them and correspond with the boards theme. (Allowing users to populate the board with pins is coming soon to the application). Users can create a new board by clicking on + button on the right side of the page. They can also edit or delete a board by clicking on the edit pen when hovering over a board. Users can also navigate to a single board where they will be able to view all the pins saved to the board.
 
-(Replaces **Step 8**)
+<img src='https://i.postimg.cc/9f9c61wm/Screen-Shot-2022-02-24-at-11-20-02-AM.png' />
+<img src='https://i.postimg.cc/wB8Cmz3z/Screen-Shot-2022-02-24-at-11-33-34-AM.png' />
+<img src='https://i.postimg.cc/9MxgJHXr/Screen-Shot-2022-02-24-at-11-34-23-AM.png' />
+<img src='https://i.postimg.cc/hPMvsCTN/Screen-Shot-2022-02-24-at-11-20-29-AM.png' />
 
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
+<br>
+</br>
 
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
+<h1 align='center' style='font-weight: bold'>Future Implementations</h1>
 
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
+## Save Pins to Boards
 
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+Users will be able to save a pin to a board by hovering over the pin and clicking on the boards button to open a modal and select the board they would like to save the pin to. Also, when users create a new pin, they will be able to select the board that they would like they pin to be saved to. Users will have the option to edit or delete a pin from a board.
 
-3. Use docker to push the image to the Heroku container registry:
+<br>
+</br>
 
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+## Follows
+
+Users will be able to click on a single pin detail modal and will have the option to follow/unfollow a user. They will also be able to go to their profile page at the top and click the following / followers to open a modal to show who all they are following and the people that are following them.
+
+<br>
+</br>
+
+## Set Boards to Public or Private
+
+Users will be able to select the board to be public or private when creating their board.
