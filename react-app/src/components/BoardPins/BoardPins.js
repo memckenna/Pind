@@ -14,7 +14,6 @@ const GetAllBoardsForPin = ({ id, onClose }) => { //id = pin.id
     const boards = useSelector(state => state.board)
 
     console.log("BOARDPINS", boards)
-    // const board_pins = useSelector(state => state.boardPin)
     const { boardId } = useParams()
 
 
@@ -31,19 +30,10 @@ const GetAllBoardsForPin = ({ id, onClose }) => { //id = pin.id
         <>
             <div className="board-pins-container">
                 {boards.boards?.map(board => (
-
                     <div key={board.id} className="board-pin-details-div">
                         {console.log("BOARD IN COMP", board)}
                         <div className="board-pin-details">
-
                             <BoardPinSelectionDetails onClose={onClose} id={id} board={board} />
-                            {/* <div className="boards-on-pin-save-btn-container">
-                                <div className="boards-on-pin-save-btn-div">
-                                    <button className="boards-on-pin-save-btn" onClick={handleSubmit}>Save</button>
-                                </div>
-
-                            </div> */}
-
                         </div>
                     </div>
 

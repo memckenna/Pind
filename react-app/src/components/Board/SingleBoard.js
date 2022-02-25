@@ -12,6 +12,7 @@ const SingleBoard = () => {
     const pinsByBoard = useSelector(state => state.board)
     console.log("Pins By Board", pinsByBoard)
     const sessionUser = useSelector((state) => state.session.user);
+    console.log(sessionUser)
     const { boardId } = useParams()
 
     useEffect(() => {
@@ -28,7 +29,7 @@ const SingleBoard = () => {
                 </div>
             </div>
             <div className="single-board-profile-img-div">
-                <img className="single-board-profile-img" src={sessionUser.profile_img_url} />
+                <img className="single-board-profile-img" src={sessionUser?.profile_img_url} />
             </div>
             <div className="pin-container">
                 {pinsByBoard.pins?.map(pin => (

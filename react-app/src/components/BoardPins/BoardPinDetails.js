@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Redirect, useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createBoard, getBoardsByUser } from "../../store/board";
-import { createBoardPin, getAllBoardsForPin } from "../../store/boards_pins";
+import { createBoardPin, getAllBoardsForPin, removePin } from "../../store/boards_pins";
 import { getAllPinsOnFeed } from "../../store/pin";
 import { getASinglePin } from "../../store/pin";
 import kitchen from '../../images/kitchen.jpg'
@@ -13,34 +13,63 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
     console.log("BOARDDDDDDDDDD", board)
 
     const dispatch = useDispatch()
-    const boards = useSelector(state => state.board)
+    // const { boardId } = useParams()
+    // const boards = useSelector(state => state.board)
     const sessionUser = useSelector(state => state.session.user)
-    console.log("BOARD PIN DETAILS", boards)
+    // console.log("BOARD PIN DETAILS", boards)
+
+    const pinSavedOnBoard = board.pins.map(pin => pin.id)
 
     const [errors, setErrors] = useState([])
-
-
-
+    const [isSaved, setIsSaved] = useState(false)
+    const [unSave, setUnSave] = useState(false)
 
     useEffect(() => {
-        dispatch(getBoardsByUser(sessionUser.id))
-        // dispatch(getAllBoardsForPin(board.id))
+        // dispatch(getBoardsByUser(sessionUser.id))
+        dispatch(getAllPinsOnFeed())
+        dispatch(getAllBoardsForPin(board.id))
         dispatch(getASinglePin(id))
+        return () => {
+            return
+        }
+    }, [dispatch, sessionUser, board])
 
-    }, [dispatch, sessionUser, id])
+    useEffect(() => {
+        setIsSaved(pinSavedOnBoard.includes(id))
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         const data = await dispatch(createBoardPin(board.id, id))
-        await dispatch(getAllPinsOnFeed())
+        dispatch(getAllPinsOnFeed())
+        dispatch(getAllBoardsForPin(board.id))
+
         if(data?.errors) {
             setErrors(data.errors)
         } else {
-            await dispatch(getAllPinsOnFeed())
+            // await dispatch(getAllBoardsForPin(boardId))
+
+            setIsSaved(true)
             onClose()
         }
+    }
 
+    const handleDelete = async (e) => {
+        e.preventDefault()
+
+        const data = await dispatch(removePin(board.id, id))
+        // await dispatch(getAllBoardsForPin(boardId))
+        await dispatch(getAllPinsOnFeed())
+
+
+        if(data?.errors) {
+            setErrors(data.errors)
+        } else {
+            // await dispatch(getAllBoardsForPin(boardId))
+            onClose()
+            setIsSaved(false)
+        }
     }
 
 
@@ -60,8 +89,12 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
 
                 </div>
                 <div className="boards-on-pin-save-btn-container">
+
                     <div className="boards-on-pin-save-btn-div">
-                        <button className="boards-on-pin-save-btn" onClick={handleSubmit}>Save</button>
+                        {isSaved ?
+                            <button className="boards-on-pin-delete-btn" onClick={handleDelete}>Unsave</button> :
+                            <button className="boards-on-pin-save-btn" onClick={handleSubmit}>Save</button>
+                        }
                     </div>
 
                 </div>

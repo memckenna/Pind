@@ -16,11 +16,6 @@ def get_board_with_saved_pins(id):
 
     board_pins = board.pins
 
-    print("\n\n\nboard_pins\n\n\n", board_pins)
-
-    # pins_by_board_id = db.session.query(Board) \
-    #                     .filter(Board.id == board.id).all()
-
     return {"board_pin": [board_pin.to_dict() for board_pin in board_pins]}
 
 
@@ -33,7 +28,6 @@ def get_pin_to_save_to_board(id):
                         .filter(Board.user_id == user.id)\
                         .options(joinedload(Board.pins)).all()
 
-    print('boards', [board.to_dict() for board in boards_by_user])
     return {'boards': [board.to_dict() for board in boards_by_user]}
 
 
@@ -44,21 +38,8 @@ def add_pin_to_board(id):
     print("\n\n\n\n ID \n\n\n\n", id)
     data = request.json
 
-    # pin_id = Pin.query.get(id)
-    # pin = Pin(
-    #     title=data["title"],
-    #     user_id=current_user.id,
-    #     photo_url=data["photo_url"],
-    #     description=data["description"],
-    #     source_link=data["source_link"],
-    #     board=data["boardId"],
-    #     pin_id=data["pinId"]
-    # )
-
     board = Board.query.get(id)
-    # pin = Pin.query.get(id)
     pin = Pin.query.get(data['pinId'])
-    print("\n\n\n\nCREATE PIN ROUTEEEEEE\n\n\n", pin)
 
     board.pins.append(pin)
     db.session.add(board)
