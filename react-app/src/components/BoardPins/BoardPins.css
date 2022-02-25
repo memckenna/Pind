@@ -1,0 +1,9 @@
+.board-pins-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.board-pin-details-div {
+    display: flex;
+    
+}

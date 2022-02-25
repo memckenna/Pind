@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getASingleBoard } from "../../store/board";
+import { getAllBoardPins } from "../../store/boards_pins";
 // import EditSingleBoardPageModal from "./EditABoard/EditSingleBoardPageModal";
 
 import "./SingleBoard.css"
@@ -15,6 +16,7 @@ const SingleBoard = () => {
 
     useEffect(() => {
         dispatch(getASingleBoard(boardId))
+        dispatch(getAllBoardPins(boardId))
     }, [dispatch, boardId])
 
     return (

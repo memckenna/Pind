@@ -41,9 +41,9 @@ const EditABoardForm = ({ id, onClose }) => {
     //     console.log("sdfghjkls")
     //     setDescription(localStorage.getItem("description"))
     // }
-    useEffect(() => {
+    // useEffect(() => {
 
-    }, [dispatch])
+    // }, [dispatch])
 
     useEffect(() => {
         if(title.length > 0) {

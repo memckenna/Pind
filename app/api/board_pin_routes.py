@@ -9,6 +9,7 @@ board_pin_routes = Blueprint('boardpins', __name__)
 
 
 #GET - Get all pins from a specific board
+# @board_pin_routes.route('/')
 @board_pin_routes.route('/<int:id>')
 def get_board_with_saved_pins(id):
     board = Board.query.get(id)
@@ -20,11 +21,32 @@ def get_board_with_saved_pins(id):
     # pins_by_board_id = db.session.query(Board) \
     #                     .filter(Board.id == board.id).all()
 
-    return {"board_pins": [board_pin.to_dict() for board_pin in board_pins]}
+    return {"board_pin": [board_pin.to_dict() for board_pin in board_pins]}
+
+
+#GET - Get a single pin to select from a list boards
+@board_pin_routes.route('/<int:id>/boards')
+def get_pin_to_save_to_board(id):
+    boards = Board.query.all()
+    user = User.query.get(id)
+    pins = Pin.query.all()
+    pin = Pin.query.get(id)
+
+    boards_by_user = db.session.query(Board) \
+                        .filter(Board.user_id == user.id)\
+                        .options(joinedload(Board.pins)).all()
+
+    print("\n\n\n ALL Pins", pin.boards)
+    print("\n\n\n ALL BOARDS", boards)
+    print("\n\n\n ALL BOARDS BY USER", boards_by_user)
+
+    print('boards', [board.to_dict() for board in boards_by_user])
+    return {'boards': [board.to_dict() for board in boards_by_user]}
 
 
 #CREATE - use same create for pin and then add board id and append board.pins.append(new_pin)
 # POST - Add a pin to a specific board
+# @board_pin_routes.route('/', methods=['POST'])
 @board_pin_routes.route('/<int:id>', methods=['POST'])
 def add_pin_to_board(id):
     data = request.json
@@ -41,6 +63,7 @@ def add_pin_to_board(id):
 
 
 #DELETE - Remove a pin from a board
+# @board_pin_routes.route('/', methods=['DELETE'])
 @board_pin_routes.route('/<int:id>', methods=['DELETE'])
 def remove_pin_from_board(id):
 
