@@ -17,7 +17,7 @@ nav {
     align-items: center;
     padding-left: 30px;
     padding-right: 30px;
-    
+
 }
 
 .left-bar {
@@ -32,9 +32,21 @@ nav {
     justify-content: flex-end;
 }
 
+.logo-div {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center
+}
 .logo {
     height: 50px;
     width: 50px;
+}
+
+.pind-logo {
+    padding-left: 10px;
+    height: 35px;
+    width: 140px;
+
 }
 
 .home-button {

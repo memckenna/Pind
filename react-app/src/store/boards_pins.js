@@ -1,5 +1,6 @@
 //CONSTANTS
 const GET_BOARD_PINS = "board_pin/GET_BOARD_PINS";
+const GET_BOARDS_FOR_PIN = "board_pin/GET_BOARDS_FOR_PIN";
 
 const ADD_BOARD_PIN = "board_pin/ADD_BOARD_PIN";
 
@@ -9,6 +10,11 @@ const REMOVE_BOARD_PIN = "board_pin/REMOVE_BOARD_PIN";
 const getBoardPin = (data) => ({
     type: GET_BOARD_PINS,
     data
+})
+
+const getBoardsForAPin = (boards) => ({
+    type: GET_BOARDS_FOR_PIN,
+    boards
 })
 
 const addBoardPin = (data) => ({
@@ -33,10 +39,18 @@ export const getAllBoardPins = (boardId) => async (dispatch) => {
     return pins;
 }
 
+//GET: get all boards for a pin
+export const getAllBoardsForPin = (boardId) => async (dispatch) => {
+    const response = await fetch(`/api/boardpins/${boardId}/boards`)
+    const boards = await response.json()
+    dispatch(getBoardsForAPin(boards))
+    return boards
+}
+
 
 //POST: add a pin to a board
 export const createBoardPin = (boardId, pinId) => async (dispatch) => {
-    const response = await fetch(`/api/boardpins/${boardId}`, {
+    const response = await fetch(`/api/boardpins/${boardId}/boards`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -109,6 +123,9 @@ const boardPinReducer = (state = {}, action) => {
                 newState[pin.id] = pin
             })
             return newState;
+        case GET_BOARDS_FOR_PIN:
+            newState = { ...state, ...action.boards }
+
 
         case ADD_BOARD_PIN:
             newState = { ...state }

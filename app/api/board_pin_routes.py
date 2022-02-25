@@ -47,9 +47,10 @@ def get_pin_to_save_to_board(id):
 #CREATE - use same create for pin and then add board id and append board.pins.append(new_pin)
 # POST - Add a pin to a specific board
 # @board_pin_routes.route('/', methods=['POST'])
-@board_pin_routes.route('/<int:id>', methods=['POST'])
+@board_pin_routes.route('/<int:id>/boards', methods=['POST'])
 def add_pin_to_board(id):
     data = request.json
+ 
 
     board = Board.query.get(id)
     pin = Pin.query.get(data['pinId'])
@@ -57,6 +58,7 @@ def add_pin_to_board(id):
     board.pins.append(pin)
     db.session.add(board)
     db.session.commit()
+
 
     return pin.to_dict()
 
