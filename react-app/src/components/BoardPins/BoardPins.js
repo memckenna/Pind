@@ -3,29 +3,29 @@ import { NavLink, Redirect, useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createBoardPin, getAllBoardsForPin } from "../../store/boards_pins";
 import { getBoardsByUser } from "../../store/board";
+import { getASinglePin } from "../../store/pin";
 import BoardPinSelectionDetails from "./BoardPinDetails";
 import "./BoardPins.css"
 
 
 const GetAllBoardsForPin = ({ id, onClose }) => { //id = pin.id
-    const [boardId, setBoardId] = useState(null)
-
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const boards = useSelector(state => state.board)
 
     console.log("BOARDPINS", boards)
-    // const boardsArr = Object.values(boards)
-    // console.log("BOARDS OBJECT VALUES", boardsArr)
-    const board_pins = useSelector(state => state.boardPin)
-    console.log("THIS IS board_pins", board_pins)
+    // const board_pins = useSelector(state => state.boardPin)
+    const { boardId } = useParams()
+
 
 
     useEffect(() => {
-        dispatch(getAllBoardsForPin(boardId))
+        // dispatch(getAllBoardsForPin(boardId))
         dispatch(getBoardsByUser(sessionUser.id))
-        // dispatch(createBoardPin(boards[id], id))
-    }, [dispatch])
+        dispatch(getASinglePin(id))
+        dispatch(createBoardPin(boardId, id))
+    }, [dispatch, sessionUser, boardId, id])
+
 
     return (
         <>
@@ -35,7 +35,15 @@ const GetAllBoardsForPin = ({ id, onClose }) => { //id = pin.id
                     <div key={board.id} className="board-pin-details-div">
                         {console.log("BOARD IN COMP", board)}
                         <div className="board-pin-details">
-                            <BoardPinSelectionDetails id={id} board={board} />
+
+                            <BoardPinSelectionDetails onClose={onClose} id={id} board={board} />
+                            {/* <div className="boards-on-pin-save-btn-container">
+                                <div className="boards-on-pin-save-btn-div">
+                                    <button className="boards-on-pin-save-btn" onClick={handleSubmit}>Save</button>
+                                </div>
+
+                            </div> */}
+
                         </div>
                     </div>
 

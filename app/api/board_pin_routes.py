@@ -8,7 +8,7 @@ from app.api.auth_routes import validation_errors_to_error_messages
 board_pin_routes = Blueprint('boardpins', __name__)
 
 
-#GET - Get all pins from a specific board
+# GET - Get all pins from a specific board
 # @board_pin_routes.route('/')
 @board_pin_routes.route('/<int:id>')
 def get_board_with_saved_pins(id):
@@ -25,20 +25,13 @@ def get_board_with_saved_pins(id):
 
 
 #GET - Get a single pin to select from a list boards
-@board_pin_routes.route('/<int:id>/boards')
+@board_pin_routes.route('/<int:id>')
 def get_pin_to_save_to_board(id):
-    boards = Board.query.all()
     user = User.query.get(id)
-    pins = Pin.query.all()
-    pin = Pin.query.get(id)
 
     boards_by_user = db.session.query(Board) \
                         .filter(Board.user_id == user.id)\
                         .options(joinedload(Board.pins)).all()
-
-    print("\n\n\n ALL Pins", pin.boards)
-    print("\n\n\n ALL BOARDS", boards)
-    print("\n\n\n ALL BOARDS BY USER", boards_by_user)
 
     print('boards', [board.to_dict() for board in boards_by_user])
     return {'boards': [board.to_dict() for board in boards_by_user]}
@@ -46,19 +39,30 @@ def get_pin_to_save_to_board(id):
 
 #CREATE - use same create for pin and then add board id and append board.pins.append(new_pin)
 # POST - Add a pin to a specific board
-# @board_pin_routes.route('/', methods=['POST'])
-@board_pin_routes.route('/<int:id>/boards', methods=['POST'])
+@board_pin_routes.route('/<int:id>', methods=['POST'])
 def add_pin_to_board(id):
+    print("\n\n\n\n ID \n\n\n\n", id)
     data = request.json
- 
+
+    # pin_id = Pin.query.get(id)
+    # pin = Pin(
+    #     title=data["title"],
+    #     user_id=current_user.id,
+    #     photo_url=data["photo_url"],
+    #     description=data["description"],
+    #     source_link=data["source_link"],
+    #     board=data["boardId"],
+    #     pin_id=data["pinId"]
+    # )
 
     board = Board.query.get(id)
+    # pin = Pin.query.get(id)
     pin = Pin.query.get(data['pinId'])
+    print("\n\n\n\nCREATE PIN ROUTEEEEEE\n\n\n", pin)
 
     board.pins.append(pin)
     db.session.add(board)
     db.session.commit()
-
 
     return pin.to_dict()
 

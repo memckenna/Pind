@@ -48,6 +48,8 @@ def create_pin():
             title=form.data["title"],
             user_id=current_user.id,
             photo_url=form.data["photo_url"],
+            description=form.data["description"],
+            source_link=form.data["source_link"]
             )
 
         db.session.add(new_pin)

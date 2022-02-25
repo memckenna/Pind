@@ -118,6 +118,17 @@
     overflow-wrap: auto;
     resize: none;
 
+    /* text-align: left;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    max-width: 100%;
+    overflow: hidden;
+    word-break: break-word;
+    word-wrap: break-word;
+    padding-top: 20px; */
+
+    display: flex;
+    flex-direction: column;
 
 }
 

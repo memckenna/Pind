@@ -76,6 +76,26 @@
     height: auto;
 }
 
+.single-pin-source-link {
+    display: flex;
+
+    /* inline-size: inherit; */
+    /* overflow-wrap: break-word; */
+    /* word-break: break-all; */
+
+
+    text-align: left;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    max-width: 100%;
+    overflow: hidden;
+    word-break: break-word;
+    word-wrap: break-word;
+    text-decoration: underline;
+    padding-top: 20px;
+
+}
+
 .single-save-button-div {
     display: flex;
     justify-content: flex-end;
@@ -112,13 +132,13 @@
     word-wrap: break-word;
 
     -webkit-font-smoothing: antialiased;
-    padding-top: 36px;
+    padding-top: 26px;
     padding-bottom: 10px;
 
 }
 
 .single-pin-description {
-    font-size: 14px;
+    font-size: 15px;
 
 
 }

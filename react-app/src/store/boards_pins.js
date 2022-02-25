@@ -36,36 +36,44 @@ export const getAllBoardPins = (boardId) => async (dispatch) => {
     const response = await fetch(`/api/boardpins/${boardId}`)
     const pins = await response.json()
     dispatch(getBoardPin(pins))
-    return pins;
+    // return pins;
 }
 
 //GET: get all boards for a pin
 export const getAllBoardsForPin = (boardId) => async (dispatch) => {
-    const response = await fetch(`/api/boardpins/${boardId}/boards`)
+    const response = await fetch(`/api/boardpins/${boardId}`)
     const boards = await response.json()
     dispatch(getBoardsForAPin(boards))
-    return boards
+    // return boards
 }
 
 
 //POST: add a pin to a board
 export const createBoardPin = (boardId, pinId) => async (dispatch) => {
-    const response = await fetch(`/api/boardpins/${boardId}/boards`, {
+    const response = await fetch(`/api/boardpins/${boardId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({pinId})
+        body: JSON.stringify({
+            pinId
+            // "pin_id": payload.pinId,
+            // "title": payload.title,
+            // "photo_url": payload.photoUrl,
+            // "description": payload.description,
+            // "source_link": payload.sourceLink,
+        })
     })
 
     const pin = await response.json();
+    console.log("CREATE PINBOARD THUNK", pin)
     dispatch(addBoardPin(pin))
     return pin;
 }
 
 
 export const removePin = (boardId, pinId) => async (dispatch) => {
-    const response = await fetch(`/api/boardpins/${boardId}/`, {
+    const response = await fetch(`/api/boardpins/${boardId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
