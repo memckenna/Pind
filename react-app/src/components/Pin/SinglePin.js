@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Redirect, useParams } from "react-router-dom";
+import { NavLink, Redirect, useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import pinReducer, { getASinglePin } from "../../store/pin";
 import EditAPinModal from "./EditPin";
@@ -8,6 +8,7 @@ import './SinglePin.css';
 
 const SinglePin = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const pin = useSelector(state => state.pinReducer)
 
     const { pinId } = useParams()
@@ -16,14 +17,20 @@ const SinglePin = () => {
         dispatch(getASinglePin(pinId))
     }, [dispatch, pinId])
 
+    const goBack = () => {
+        history.goBack()
+    }
+
 
     return (
         <>
             <div className="outer-single-pin-container">
             <div className="arrow">
-                <NavLink className="arrow-pin-page" to={`/pins`}>
+                {/* <NavLink className="arrow-pin-page" to={`/pins`}> */}
+                <button className="arrow-pin-page-btn" type="button" onClick={goBack}>
                     <i className="fas fa-arrow-left"></i>
-                </NavLink>
+                </button>
+                {/* </NavLink> */}
             </div>
 
                 <div className="single-pin-container">
