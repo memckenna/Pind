@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from "react";
+
 import { NavLink, Redirect, useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import pinReducer, { getASinglePin } from "../../store/pin";
+import { getASinglePin } from "../../store/pin";
+import { getBoardsByUser } from "../../store/board";
+import GetAllBoardsForPin from "../BoardPins/BoardPins";
 import EditAPinModal from "./EditPin";
 import './SinglePin.css';
+import { getAllBoardsForPin } from "../../store/boards_pins";
+import SinglePinBoardSaveModal from "../BoardPins/SinglePinBoard";
 
 
 const SinglePin = () => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const pin = useSelector(state => state.pinReducer)
+    const sessionUser = useSelector(state => state.session.user)
 
+    const pin = useSelector(state => state.pinReducer)
     const { pinId } = useParams()
 
     useEffect(() => {
+        dispatch(getBoardsByUser(sessionUser.id))
         dispatch(getASinglePin(pinId))
-    }, [dispatch, pinId])
+
+    }, [dispatch, pinId, sessionUser])
 
     const goBack = () => {
         history.goBack()
@@ -40,7 +48,8 @@ const SinglePin = () => {
                     <div className="single-pin-content">
                         <div className="single-save-button-div">
                             <EditAPinModal id={pinId} pin={pin}/>
-                            {/* <button className="single-save-button">Save</button> */}
+                            <SinglePinBoardSaveModal id={pinId} />
+                            <button className="single-save-button">Save</button>
                         </div>
                         <div className="single-pin-source-link">{pin.source_link}</div>
                         <div className="single-pin-title">{pin.title}</div>

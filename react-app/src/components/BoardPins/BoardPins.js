@@ -13,7 +13,7 @@ const GetAllBoardsForPin = ({ id, onClose }) => { //id = pin.id
     const sessionUser = useSelector(state => state.session.user)
     const boards = useSelector(state => state.board)
 
-    console.log("BOARDPINS", boards)
+    // console.log("BOARDPINS", boards)
     const { boardId } = useParams()
 
 
@@ -31,7 +31,7 @@ const GetAllBoardsForPin = ({ id, onClose }) => { //id = pin.id
             <div className="board-pins-container">
                 {boards.boards?.map(board => (
                     <div key={board.id} className="board-pin-details-div">
-                        {console.log("BOARD IN COMP", board)}
+                        {/* {console.log("BOARD IN COMP", board)} */}
                         <div className="board-pin-details">
                             <BoardPinSelectionDetails onClose={onClose} id={id} board={board} />
                         </div>

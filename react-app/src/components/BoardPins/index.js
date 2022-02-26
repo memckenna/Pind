@@ -34,7 +34,7 @@ const GetAllBoardsOnPinModal = ({ id }) => {  //id = pin.id
                         className="fas fa-angle-down"
                         onClick={() => setShowModal(true)}
                     ></i>
-
+                    {/* <div>Save</div> */}
                 </button>
                 {showModal && (
                     <GetAllBoardsModal onClose={() => setShowModal(false)}>

@@ -131,3 +131,19 @@ export function GetAllBoardsModal({ onClose, children }) {
         modalNode
     );
 }
+
+
+export function GetAllBoardsOnSinglePinModal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+        <div id="boardpin-modal">
+            <div id="boardpin-modal-background" onClick={onClose} />
+            <div id="boardpin-modal-content">
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+}

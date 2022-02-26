@@ -13,11 +13,10 @@ const SingleBoard = () => {
     const dispatch = useDispatch();
     const pinsByBoard = useSelector(state => state.board)
     const pins = useSelector(state => state.pinReducer)
-    console.log("PIN", pins)
-    console.log("Pins By Board", pinsByBoard)
+
     //CHECK BOARD PINS REDUCER
     const sessionUser = useSelector((state) => state.session.user);
-    console.log(sessionUser)
+
     const { boardId } = useParams()
 
     useEffect(() => {
