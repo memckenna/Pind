@@ -78,3 +78,60 @@
     margin-bottom: 20px;
 
 }
+
+
+.user-list-profile {
+    list-style: none;
+    padding: 30px 30px 30px 30px;
+
+}
+
+
+.profile-link-username{
+    text-decoration: none;
+    color: black;
+    /* display: flex; */
+    padding-right: 10px;
+
+}
+.profile-link-firstname {
+    text-decoration: none;
+    color: black;
+    /* display: flex;
+    flex-direction: column; */
+    padding-right: 5px;
+    font-size: 24px;
+    font-weight: bolder;
+
+}
+.profile-link-lastname {
+    text-decoration: none;
+    color: black;
+    /* display: flex; */
+    padding-right: 10px;
+    font-size: 24px;
+    font-weight: bolder;
+
+
+}
+
+.profile-link-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    padding-right: 10px;
+}
+
+
+.user-profile-id-list {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.explore-other-users {
+    margin-top: 100px;
+}

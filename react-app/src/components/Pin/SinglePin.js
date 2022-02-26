@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { NavLink, Redirect, useParams, useHistory } from "react-router-dom";
+import { NavLink, Link, Redirect, useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getASinglePin } from "../../store/pin";
 import { getBoardsByUser } from "../../store/board";
@@ -49,12 +49,13 @@ const SinglePin = () => {
                         <div className="single-save-button-div">
                             <EditAPinModal id={pinId} pin={pin}/>
                             <SinglePinBoardSaveModal id={pinId} />
-                            <button className="single-save-button">Save</button>
+                            {/* <button className="single-save-button">Save</button> */}
                         </div>
-                        <div className="single-pin-source-link">{pin.source_link}</div>
+                        {/* <div className="single-pin-source-link">{pin.source_link}</div> */}
+                        {/* <Link to={pin.source_link}>{pin.source_link}</Link> */}
+                        <Link className="github-links" to={{ pathname: "https://github.com/memckenna" }} target="_blank">{pin.source_link}</Link>
                         <div className="single-pin-title">{pin.title}</div>
                         <div className="single-pin-description">{pin.description}</div>
-
                     </div>
                 </div>
             </div>

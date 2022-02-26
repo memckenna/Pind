@@ -19,6 +19,34 @@
     z-index: 100000;
 }
 
+.down-arrow-single {
+    font-size: 25px;
+}
+
+.single-save-drop-down-button {
+    /* position: absolute;
+    background-color: transparent;
+    border: none;
+    padding-top: 20px;
+    padding-left: 20px;
+    color: white;
+    z-index: 100000; */
+    display: flex;
+    justify-content: center;
+    background-color: #e60023;
+    color: white;
+    border-radius: 24px;
+    padding: 12px 16px;
+    border: none;
+    min-width: 69px;
+    box-sizing: border-box;
+    min-height: 48px;
+    cursor: pointer;
+    line-height: normal;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 .board-pins-container {
     display: flex;
     flex-direction: column;
@@ -49,9 +77,6 @@
 .boards-on-pin-left-details {
     display: flex;
     align-items: center;
-
-
-
 }
 
 .boards-on-pin-details:hover {

@@ -29,9 +29,9 @@ const SinglePinBoardSaveModal = ({ id }) => { //id = pinId
     return (
         <>
             <div>
-                <button className="save-drop-down-button">
+                <button className="single-save-drop-down-button" onClick={() => setShowModal(true)}>
                     <i
-                        className="fas fa-angle-down"
+                        className="fas fa-angle-down down-arrow-single"
                         onClick={() => setShowModal(true)}
                     ></i>
                     {/* <div>Save</div> */}

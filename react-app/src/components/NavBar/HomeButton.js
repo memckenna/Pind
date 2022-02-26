@@ -10,6 +10,9 @@ const HomeButton = () => {
             <NavLink to='/pins/' exact={true}  activeClassName='active'>
               <button className="home-button">Home</button>
             </NavLink>
+            <NavLink to='/users' exact={true}>
+                <button className="explore-button">Explore Profiles</button>
+            </NavLink>
         </div>
     )
 }
