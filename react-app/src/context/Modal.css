@@ -290,7 +290,8 @@
   border: 1px solid;
   width: 360px;
   height: 498px;
-
+  padding-left: 10px;
+  padding-right: 10px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

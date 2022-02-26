@@ -24,11 +24,11 @@ const GetAllBoardsForSinglePin = ({ id, onClose }) => {  //id = pinId
 
     return (
         <>
-            <div>
+            <div className="board-pins-container">
                 {boards.boards?.map(board => (
-                    <div key={board.id}>
+                    <div key={board.id} className="board-pin-details-div">
                         {console.log(board)}
-                        <div>
+                        <div className="board-pin-details">
                             <SinglePinBoardSaveDetails onClose={onClose} id={id} board={board}  />
                         </div>
                     </div>

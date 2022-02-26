@@ -46,6 +46,7 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
             setIsSaved(true)
             onClose()
         }
+        alert(`You pin has been saved to ${board.title}`)
     }
 
     const handleDelete = async (e) => {
@@ -66,7 +67,7 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
 
 
     return (
-        <>
+        <div className="boardpins-container">
             <div className="boards-on-pin-details">
                 <div className="boards-on-pin-left-details">
                     <div className="boards-on-pin-img-div">
@@ -78,20 +79,17 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
                     <div className="boards-on-pin-title">
                         {board.title}
                     </div>
-
-                </div>
-                <div className="boards-on-pin-save-btn-container">
-
-                    <div className="boards-on-pin-save-btn-div">
-                        {isSaved ?
-                            <button className="boards-on-pin-delete-btn" onClick={handleDelete}>Unsave</button> :
-                            <button className="boards-on-pin-save-btn" onClick={handleSubmit}>Save</button>
-                        }
-                    </div>
-
                 </div>
             </div>
-        </>
+            <div className="boards-on-pin-save-btn-container">
+                <div className="boards-on-pin-save-btn-div">
+                    {isSaved ?
+                        <button className="boards-on-pin-delete-btn" onClick={handleDelete}>Unsave</button> :
+                        <button className="boards-on-pin-save-btn" onClick={handleSubmit}>Save</button>
+                    }
+                </div>
+            </div>
+        </div>
     )
 }
 

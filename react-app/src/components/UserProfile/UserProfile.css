@@ -115,11 +115,15 @@
 
 }
 
+
+
 .profile-link-image {
     width: 70px;
     height: 70px;
     border-radius: 50%;
     padding-right: 10px;
+    ;
+
 }
 
 
@@ -134,4 +138,16 @@
 
 .explore-other-users {
     margin-top: 100px;
+}
+
+.user-profile-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    /* border: 1px solid red; */
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 20%) 0px 8px 28px;
+    border-radius: 14px;
+    padding: 20px 20px 20px 20px;
+
 }
