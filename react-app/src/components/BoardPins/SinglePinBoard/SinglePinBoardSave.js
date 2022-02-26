@@ -17,7 +17,7 @@ const GetAllBoardsForSinglePin = ({ id, onClose }) => {  //id = pinId
     console.log(sessionUser)
 
     useEffect(() => {
-        dispatch(getBoardsByUser(sessionUser.id))
+        dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(id))
         // dispatch(createBoardPin(boardId, id))
     },[dispatch, sessionUser, id])

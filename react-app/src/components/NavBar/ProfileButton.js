@@ -52,7 +52,7 @@ const sessionUser = useSelector((state) => state.session.user);
                   </button>
                 </div>
                 <div className="profile-name">
-                  {sessionUser.first_name} {sessionUser.last_name}
+                  {sessionUser?.first_name} {sessionUser?.last_name}
                 </div>
               </div>
             </NavLink>

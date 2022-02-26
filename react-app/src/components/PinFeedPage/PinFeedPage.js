@@ -4,17 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPinsOnFeed } from "../../store/pin";
 import CreatePinFooter from "../Footer/CreatePinFooter";
 import GetAllBoardsOnPinModal from "../BoardPins";
+import { getASinglePin } from "../../store/pin";
 import './PinFeedPage.css'
 
 const PinFeedPage = () => {
     const dispatch = useDispatch()
-    const sessionUser = useSelector(state => state.session.user)
+    // const sessionUser = useSelector(state => state.session.user)
     const pins = useSelector(state => state.pinReducer)
     // console.log("PIN IN COMPONENT", pins.pins)
 
 
     useEffect(() => {
         dispatch(getAllPinsOnFeed())
+        dispatch(getASinglePin(pins.id))
     }, [dispatch])
 
 

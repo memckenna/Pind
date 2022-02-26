@@ -59,12 +59,12 @@ const EditABoardForm = ({ id, onClose }) => {
         e.preventDefault();
 
         const data = await dispatch(updateUserBoard(id, title))
-        await dispatch(getBoardsByUser(sessionUser.id));
+        await dispatch(getBoardsByUser(sessionUser?.id));
 
         if(data?.errors) {
             setErrors(data.errors)
         } else if(!data?.errors) {
-            await dispatch(getBoardsByUser(sessionUser.id));
+            await dispatch(getBoardsByUser(sessionUser?.id));
             onClose()
         }
     }
@@ -73,12 +73,12 @@ const EditABoardForm = ({ id, onClose }) => {
         e.preventDefault()
         // const id = e.target.id
         const data = await dispatch(deleteUserBoard(id));
-        await dispatch(getBoardsByUser(sessionUser.id));
+        await dispatch(getBoardsByUser(sessionUser?.id));
 
         if(data?.errors) {
             setErrors(data.errors)
         } else if(!data?.errors) {
-            await dispatch(getBoardsByUser(sessionUser.id));
+            await dispatch(getBoardsByUser(sessionUser?.id));
             onClose()
         }
     }

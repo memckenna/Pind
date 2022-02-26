@@ -9,10 +9,11 @@ import kitchen from "../../../images/kitchen.jpg"
 
 import "../BoardPins.css"
 
+
 const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
     console.log("BOARDDDDD", board)
     const dispatch = useDispatch()
-    const sessionUser = useSelector(state => state.session.user)
+    // const sessionUser = useSelector(state => state.session.user)
     const pinSavedOnBoard = board.pins.map(pin => pin.id)
 
     const [errors, setErrors] = useState([])
@@ -51,6 +52,7 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
             setColor(false)
             onClose()
         }
+        alert(`You pin has been saved to ${board.title}`)
     }
 
     const handleDelete = async (e) => {
@@ -68,6 +70,7 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
             setIsSaved(false)
             setColor(true)
         }
+        alert(`You pin has been removed from ${board.title}`)
     }
 
     return (

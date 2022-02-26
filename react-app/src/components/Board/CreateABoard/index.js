@@ -16,7 +16,7 @@ function CreateBoardModal({ id }) {
     return (
         <>
             <div className="create-board-modal">
-                {sessionUser.id === +id && (
+                {sessionUser?.id === +id && (
                     <button className="create-button">
                         <i
                             className="fas fa-plus"

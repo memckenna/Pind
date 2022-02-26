@@ -138,9 +138,9 @@ export function GetAllBoardsOnSinglePinModal({ onClose, children }) {
     if (!modalNode) return null;
 
     return ReactDOM.createPortal(
-        <div id="boardpin-modal">
-            <div id="boardpin-modal-background" onClick={onClose} />
-            <div id="boardpin-modal-content">
+        <div id="single-boardpin-modal">
+            <div id="single-boardpin-modal-background" onClick={onClose} />
+            <div id="single-boardpin-modal-content">
                 {children}
             </div>
         </div>,

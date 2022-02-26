@@ -16,16 +16,16 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
 
     const [errors, setErrors] = useState([])
     const [isSaved, setIsSaved] = useState(false)
-    // const [unSave, setUnSave] = useState(false)
+
 
     useEffect(() => {
         // dispatch(getBoardsByUser(sessionUser.id))
         dispatch(getAllPinsOnFeed())
         dispatch(getAllBoardsForPin(board.id))
         dispatch(getASinglePin(id))
-        return () => {
-            return
-        }
+        // return () => {
+        //     return
+        // }
     }, [dispatch, sessionUser, board])
 
     useEffect(() => {
@@ -63,6 +63,8 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
             onClose()
             setIsSaved(false)
         }
+        alert(`You pin has been removed from ${board.title}`)
+
     }
 
 

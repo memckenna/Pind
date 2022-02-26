@@ -20,7 +20,7 @@ const SinglePin = () => {
     const { pinId } = useParams()
 
     useEffect(() => {
-        dispatch(getBoardsByUser(sessionUser.id))
+        dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(pinId))
 
     }, [dispatch, pinId, sessionUser])

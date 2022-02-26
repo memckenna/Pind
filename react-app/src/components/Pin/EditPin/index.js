@@ -9,6 +9,7 @@ const EditAPinModal = ({ id, pin }) => {  //should be pinId (check to make sure)
     const [showModal, setShowModal] = useState(false);
 
     const sessionUser = useSelector(state => state.session.user)
+    console.log("SESSIONUSER", sessionUser)
     const onCloseModal = () => {
         setShowModal(false);
     };
@@ -16,7 +17,7 @@ const EditAPinModal = ({ id, pin }) => {  //should be pinId (check to make sure)
     return (
         <>
             <div className="edit-pin-btn-container">
-                {sessionUser.id === pin.user_id && (
+                {sessionUser?.id === pin?.user_id && (
                     <div className="edit-pin-btn-div">
                         <button className="edit-pin-btn" onClick={() => setShowModal(true)}>
                             <i
