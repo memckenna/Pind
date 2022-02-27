@@ -116,8 +116,7 @@
 .boards-on-pin-save-btn-container {
     display: flex;
     flex-direction: row;
-
-    padding-left: 35px;
+    padding-left: 30px;
 }
 
 .boards-on-pin-save-btn-div {
