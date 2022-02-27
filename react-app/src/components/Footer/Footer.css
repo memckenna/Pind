@@ -1,23 +1,31 @@
 .create-pin-btn-container {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-bottom: 200px;
-    margin-right: 20px;
+    /* flex-direction: column; */
+    /* align-items: flex-end; */
+    /* margin-bottom: 200px;
+    margin-right: 20px; */
+    /* position: fixed; */
 
-    z-index: 1;
+    z-index: 6;
 
 }
 
 .create-pin-btn-div {
-    /* display: flex;
+    display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: flex-end; */
-    /* margin-bottom: 200px; */
-    /* position: fixed; */
-    /* z-index: 1; */
+    align-items: flex-end;
+
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    z-index: 5;
+    margin-bottom: 20px;
+    margin-right: 20px;
+
+    transform: translateY(0px) translateZ(0px);
 }
 
 .create-pin-btn {

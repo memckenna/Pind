@@ -3,6 +3,8 @@ import { CreatePinModal } from "../../../context/Modal";
 import CreateAPin from "./CreatePin";
 import './CreatePin.css';
 
+import '../../Footer/Footer.css'
+
 const CreateAPinModal = () => {
     const [showModal, setShowModal] = useState(false);
     const onCloseModal = () => {
