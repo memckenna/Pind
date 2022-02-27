@@ -95,10 +95,10 @@ const boardPinReducer = (state = {}, action) => {
 
         case ADD_BOARD_PIN:
             newState = { ...state }
-            pinArray = [...newState.board_pin]
-            pinArray.push(action.data)
-            newState.board_pin = pinArray
-            // newState[action.data.id] = action.data
+            // pinArray = [...newState.board_pin]
+            // pinArray.push(action.data)
+            // newState.board_pin = pinArray
+            newState[action.data.id] = action.data
             return newState;
 
         case REMOVE_BOARD_PIN:

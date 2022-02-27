@@ -14,12 +14,14 @@ const GetAllBoardsForSinglePin = ({ id, onClose }) => {  //id = pinId
     const sessionUser = useSelector(state => state.session.user)
     const boards = useSelector(state => state.board)
 
+    const { boardId } = useParams()
+
 
     useEffect(() => {
         dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(id))
-        // dispatch(createBoardPin(boardId, id))
-    },[dispatch, sessionUser, id])
+        dispatch(createBoardPin(boardId, id))
+    },[dispatch, sessionUser, boardId, id])
 
     return (
         <>

@@ -2,13 +2,13 @@ from app.models import db, Pin
 
 def seed_pins():
     #Home Decor
-    pin1 = Pin(title='Beautiful Kitchen with Natural Light and Warm Touches', description='This kitchen has natural beauty running through every inch of it', source_link='https://www.instagram.com/p/CDr_hv5pv-S/?igshid=bif2tq8wt4jn', photo_url='https://i.pinimg.com/564x/3c/21/b6/3c21b639a8d687e5f661d752428c986e.jpg', user_id=1)
-    pin2 = Pin(title='Clean Minimalistic Kitchen', description='This kitchen provides all the Golden Coast vibes.', source_link='https://www.bosshunting.com.au/lifestyle/design/the-palms-13-deodar-drive-burleigh-heads/', photo_url='https://www.bosshunting.com.au/wp-content/uploads/2021/06/2017002314_13_1_210513_121520-w5464-h8192.jpg', user_id=1)
+    pin1 = Pin(title='Beautiful Kitchen with Natural Light and Warm Touches', description='This kitchen has natural beauty running through every inch of it', source_link='github.com/memckenna', photo_url='https://i.pinimg.com/564x/3c/21/b6/3c21b639a8d687e5f661d752428c986e.jpg', user_id=1)
+    pin2 = Pin(title='Clean Minimalistic Kitchen', description='This kitchen provides all the Golden Coast vibes.', source_link='github.com/memckenna', photo_url='https://www.bosshunting.com.au/wp-content/uploads/2021/06/2017002314_13_1_210513_121520-w5464-h8192.jpg', user_id=1)
     pin3 = Pin(title='How to Create a Relaxing Space', description='', source_link='', photo_url='https://i.pinimg.com/564x/71/d5/a9/71d5a9fccb32eef68fd7c624f2bf0f07.jpg', user_id=2)
     pin4 = Pin(title='Back Yard Dreams', description='', source_link='', photo_url='https://i.pinimg.com/originals/39/7f/9e/397f9ed06d0f88bd144d6a80ef9808f0.jpg', user_id=2)
     pin5= Pin(title='Clean minimal living room', description='', source_link='', photo_url='https://i.pinimg.com/originals/b1/ba/ce/b1bace8c412a54865319571c3ace9803.jpg', user_id=1)
     pin13 = Pin(title='Simple Clean Open Kitchen', description='Loving this open concept kitchen.', source_link='', photo_url='https://i.pinimg.com/564x/7c/ee/41/7cee41667ed435dcbf51ba156c237903.jpg', user_id=1)
-    pin14 = Pin(title='Hand-Woven Cross Cord Bar Stool', description='Outdoor bar stools.', source_link='https://www.harpersproject.com/collections/all/products/hand-woven-cross-cord-bar-stool', photo_url='https://i.pinimg.com/564x/70/39/bd/7039bdc00dac71f7333d446b2ad23b0f.jpg', user_id=1)
+    pin14 = Pin(title='Hand-Woven Cross Cord Bar Stool', description='Outdoor bar stools.', source_link='github.com/memckenna', photo_url='https://i.pinimg.com/564x/70/39/bd/7039bdc00dac71f7333d446b2ad23b0f.jpg', user_id=1)
     pin18 = Pin(title='Clean Simple Master Bedroom Decor', description='', source_link='', photo_url='https://i.pinimg.com/564x/1c/d0/ea/1cd0ea8b9d0f8e1c9a11caa96b6f90be.jpg', user_id=2)
     pin19 = Pin(title='Living and Dining Inspiration', description='', source_link='', photo_url='https://i.pinimg.com/564x/cc/3c/a4/cc3ca4375d876efc1cb2f2dd58230175.jpg', user_id=1)
     pin20 = Pin(title='Modern Living Decor', description='', source_link='', photo_url='https://i.pinimg.com/564x/b5/41/ec/b541eceb91c8dff2368b914112f6869e.jpg', user_id=1)
@@ -19,8 +19,8 @@ def seed_pins():
 
     #Food/Drinks
     pin6 = Pin(title='Cotton Candy Rose', description='Rose all day', source_link='', photo_url='https://i.pinimg.com/originals/12/23/7b/12237b91c96b2377f0af8bd01d493a3c.jpg', user_id=3)
-    pin7 = Pin(title='Winter White Cheese Board', description='', source_link='https://fashionablehostess.com/wp-content/uploads/2020/01/Soft-Cheeses-on-Cheese-Boards.jpg', photo_url='https://fashionablehostess.com/wp-content/uploads/2020/01/Cheese-Board-DIY.jpg', user_id=3)
-    pin15 = Pin(title='Lemon, Almond, & Raspberry Layer Cake', description='', source_link='thebrickkitchen.com', photo_url='https://i.pinimg.com/564x/e9/2f/76/e92f765e6bbb76b81e879d713f804c60.jpg', user_id=1)
+    pin7 = Pin(title='Winter White Cheese Board', description='', source_link='github.com/memckenna', photo_url='https://fashionablehostess.com/wp-content/uploads/2020/01/Cheese-Board-DIY.jpg', user_id=3)
+    pin15 = Pin(title='Lemon, Almond, & Raspberry Layer Cake', description='', source_link='github.com/memckenna', photo_url='https://i.pinimg.com/564x/e9/2f/76/e92f765e6bbb76b81e879d713f804c60.jpg', user_id=1)
     pin21 = Pin(title='Ice Cream Sammies in All Flavors', description='', source_link='', photo_url='https://i.pinimg.com/564x/d4/1d/4d/d41d4d4b1f65ee926aea8af200f9e588.jpg', user_id=1)
     pin23 = Pin(title='Blackberry Crepes with Blackberry Whip Creme', description='', source_link='', photo_url='https://i.pinimg.com/564x/70/2c/9d/702c9d70dd4c5d465f1ad0c6df6ad0ce.jpg', user_id=1)
     pin26 = Pin(title='Lemon Ricotta Cake with Toasted Pistachio Frosting', description='Vegetarian Gluten free', source_link='', photo_url='https://i.pinimg.com/564x/2c/9b/f1/2c9bf151c650471196b3049bd538d51c.jpg', user_id=1)

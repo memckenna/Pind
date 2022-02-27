@@ -11,9 +11,9 @@ import "../BoardPins.css"
 
 
 const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
-    console.log("BOARDDDDD", board)
+    // console.log("BOARDDDDD", board)
     const dispatch = useDispatch()
-    // const sessionUser = useSelector(state => state.session.user)
+    const sessionUser = useSelector(state => state.session.user)
     const pinSavedOnBoard = board.pins.map(pin => pin.id)
 
     const [errors, setErrors] = useState([])
@@ -22,13 +22,12 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
     useEffect(() => {
         dispatch(getASinglePin(id))
         dispatch(getAllBoardsForPin(board.id))
-        // dispatch(getAllBoardPins(board.id))
+        dispatch(getAllBoardPins(board.id))
         dispatch(getASingleBoard(board.id))
         return () => {
             return
         }
-
-    },[dispatch])
+    },[dispatch, board, sessionUser])
 
     useEffect(() => {
         setIsSaved(pinSavedOnBoard.includes(id))
@@ -38,15 +37,16 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
         e.preventDefault()
 
         const data = await dispatch(createBoardPin(board.id, id))
-        dispatch(getASinglePin(id))
-
+        await dispatch(getASinglePin(id))
+        dispatch(getAllBoardsForPin(board.id))
+        // dispatch(getASingleBoard(board.id))
+        // dispatch(getAllBoardPins(board.id))
 
         if(data?.errors) {
             setErrors(data.errors)
         } else {
             // dispatch(getASinglePin(id))
             setIsSaved(true)
-
             onClose()
         }
         alert(`You pin has been saved to ${board.title}`)
@@ -57,15 +57,17 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
 
         const data = await dispatch(removePin(board.id, id))
         await dispatch(getASinglePin(id))
+        // dispatch(getASingleBoard(board?.id))
+        // dispatch(getAllBoardsForPin(board.id))
+        // dispatch(getAllBoardPins(board.id))
 
         if(data?.errors) {
             setErrors(data.errors)
         } else {
-            // dispatch(getASinglePin(id))
+            // await dispatch(getASinglePin(id))
 
-            setIsSaved(false)
             onClose()
-
+            setIsSaved(false)
         }
         alert(`You pin has been removed from ${board.title}`)
     }
@@ -87,10 +89,9 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
             </div>
             <div className="boards-on-pin-save-btn-container">
                 <div className="boards-on-pin-save-btn-div">
+                    <button className="boards-on-pin-delete-btn" onClick={handleDelete}>Unsave</button>
+                    <button className="boards-on-pin-save-btn" onClick={handleSubmit}>Save</button>
 
-
-                        <button className="boards-on-pin-delete-btn" onClick={handleDelete}>Unsave</button>
-                        <button className="boards-on-pin-save-btn" onClick={handleSubmit}>Save</button>
 
                     {/* {isSaved ?
                         <button className="boards-on-pin-delete-btn" onClick={handleDelete}>Unsave</button> :

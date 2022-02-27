@@ -9,7 +9,7 @@ const EditAPinModal = ({ id, pin }) => {  //should be pinId (check to make sure)
     const [showModal, setShowModal] = useState(false);
 
     const sessionUser = useSelector(state => state.session.user)
-    console.log("SESSIONUSER", sessionUser)
+    // console.log("SESSIONUSER", sessionUser)
     const onCloseModal = () => {
         setShowModal(false);
     };

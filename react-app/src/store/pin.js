@@ -73,7 +73,7 @@ export const createPin = (payload) => async(dispatch) => {
             // "board_id": payload.boardId
         })
     })
-    console.log("RESPONSE", response)
+    
 
     if(response.ok) {
         const data = await response.json()

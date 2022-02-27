@@ -15,10 +15,10 @@ function GetUserBoards({id}) {    //id = userId
     const sessionUser = useSelector(state => state.session.user)
 
     const boards = useSelector(state => state.board)
-    console.log("BOARDS.Boards", boards)
+    // console.log("BOARDS.Boards", boards)
 
     const pins = useSelector(state => state.pinReducer)
-    console.log("MY PINS", pins)
+    // console.log("MY PINS", pins)
 
 
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Redirect, useParams, useHistory } from "react-router-dom";
+// import { NavLink, Redirect, useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBoardsByUser } from "../../store/board";
 import { createBoardPin, getAllBoardsForPin, removePin } from "../../store/boards_pins";
