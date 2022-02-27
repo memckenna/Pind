@@ -43,8 +43,8 @@ function GetUserBoards({id}) {    //id = userId
                             <EditUserBoardModal user={board.user_id} board={board} id={board.id} />
                             <NavLink to={`/boards/${board.id}`}>
                                 {!board.pins[0]?.photo_url ?
-                                    <img src={kitchen} /> :
-                                    <img src={board.pins[0]?.photo_url} />
+                                    <img className="board-image" src={kitchen} /> :
+                                    <img className="board-image" src={board.pins[0]?.photo_url} />
                                 }
                             </NavLink>
                         </div>

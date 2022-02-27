@@ -26,7 +26,7 @@ function CreateBoardModal({ id }) {
                 )}
                 {showModal && (
                     <BoardModal onClose={() => setShowModal(false)}>
-                        <CreateBoardForm onClose={onCloseModal} />
+                        <CreateBoardForm id={id} onClose={onCloseModal} />
                     </BoardModal>
                 )}
             </div>

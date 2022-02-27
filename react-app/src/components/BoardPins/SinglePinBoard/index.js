@@ -17,13 +17,13 @@ const SinglePinBoardSaveModal = ({ id }) => { //id = pinId
         setShowModal(false);
     };
 
-    const { boardId } = useParams();
+    // const { boardId } = useParams();
 
     useEffect(() => {
         dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(id))
 
-    }, [dispatch, showModal, boardId])
+    }, [dispatch, showModal])
 
 
     return (

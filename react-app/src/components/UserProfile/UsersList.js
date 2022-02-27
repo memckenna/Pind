@@ -28,8 +28,11 @@ function UsersList() {
             <NavLink className="profile-link-firstname" to={`/users/${user.id}`}>{user.first_name}</NavLink>
             <NavLink className="profile-link-lastname" to={`/users/${user.id}`}>{user.last_name}</NavLink>
           </div>
-          <div>
+          <div className='username-div'>
             <NavLink className="profile-link-username" to={`/users/${user.id}`}>@{user.username}</NavLink>
+          </div>
+          <div className='user-bio'>
+            <strong>Bio:</strong> {user.bio}
           </div>
         </div>
 

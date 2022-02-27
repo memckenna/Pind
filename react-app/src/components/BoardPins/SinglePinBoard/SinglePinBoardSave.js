@@ -14,7 +14,6 @@ const GetAllBoardsForSinglePin = ({ id, onClose }) => {  //id = pinId
     const sessionUser = useSelector(state => state.session.user)
     const boards = useSelector(state => state.board)
 
-    console.log(sessionUser)
 
     useEffect(() => {
         dispatch(getBoardsByUser(sessionUser?.id))
