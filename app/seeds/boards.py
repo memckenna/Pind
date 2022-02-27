@@ -1,6 +1,5 @@
 from app.models import db, Board, Pin
 from app.models import Board_Pins
-# from app.seeds.pins import pin1, pin2, pin3, pin4, pin5, pin6, pin7, pin8, pin9, pin10, pin11, pin12
 
 def seed_boards():
     #Home Decor / DIY

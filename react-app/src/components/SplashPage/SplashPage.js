@@ -7,10 +7,10 @@ function SplashPage() {
 
 
     return (
-        <>
+        <div className="splash">
             <div className="splash-container">
                 <div className="splash-header">
-                    Get inspired for <br/> your next idea
+                    Get inspired <br/> for your next idea
                 </div>
                 <div className="splash-image-container">
                     <div className="splash-image" id="col-1">
@@ -43,6 +43,18 @@ function SplashPage() {
                         <img src="https://i.pinimg.com/564x/a3/70/89/a3708983b662bad1cb446a1d7624c8e9.jpg" />
                         <img src="https://i.pinimg.com/564x/1c/e7/78/1ce7786a03631cf62174d504dc58e760.jpg"/>
                     </div>
+                    <div className="splash-image" id="col-6">
+                        <img src="https://i.etsystatic.com/5570408/r/il/6f2cac/2017679087/il_fullxfull.2017679087_3e7g.jpg" />
+                        <img src="https://i.pinimg.com/564x/0d/b2/e7/0db2e788711ba2b56d7c82d0df9f325a.jpg"/>
+                        <img src="https://i.pinimg.com/564x/91/6e/69/916e694d3b6c4b7fb89383c4b2bebf22.jpg" />
+                        <img src="https://i.pinimg.com/564x/54/b6/37/54b6371467646d0687d1a547e9ad489f.jpg"/>
+                    </div>
+                    <div className="splash-image" id="col-7">
+                        <img src="https://i.pinimg.com/564x/b6/83/e9/b683e9e6c40adc74b44fc8a88dc38cbf.jpg" />
+                        <img src="https://i.pinimg.com/564x/64/c2/0a/64c20a5ef76aecdfcb31ead1611f06f8.jpg"/>
+                        <img src="https://i.pinimg.com/564x/65/a5/ce/65a5cea4127a0781f444b0413c20c893.jpg" />
+                        <img src="https://i.pinimg.com/564x/f9/28/77/f92877a47e5fc176d968610aa79a1168.jpg"/>
+                    </div>
                 </div>
                 {/* <div className="splash-image-container"> */}
                     {/* <div className="splash-image" id="col-6"><img src="https://i.pinimg.com/564x/4a/d8/ef/4ad8ef7f67d8b50cf8357c22229a45ee.jpg" /><img src="https://i.pinimg.com/564x/09/1c/9c/091c9c71eacc122e4898bb18bfefcebf.jpg"/></div> */}
@@ -56,7 +68,7 @@ function SplashPage() {
                     <SplashPageFooter />
                 </div>
             </div>
-        </>
+        </div>
     )
 
 }
