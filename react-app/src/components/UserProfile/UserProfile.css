@@ -39,17 +39,35 @@
     flex-direction: row;
     justify-content: center;
     padding-bottom: 100px;
+    margin-left: 135px;
+    margin-right: 135px;
+
+
 }
 
 .board-card {
     /* border: 1px solid red; */
+
+    box-sizing: border-box;
+    max-width: 252px;
     width: 256px;
+
     overflow: hidden;
     padding: 8px 8px 8px 8px;
     display: block;
+
+
 }
 
 .board-img img{
+    width: 100%;
+    width: 235px;
+    height: 156px;
+    object-fit: cover;
+}
+
+.board-image {
+    max-width: 252px;
     width: 235px;
     height: 156px;
 }
@@ -76,5 +94,90 @@
     font-weight: 700;
     margin-top: 40px;
     margin-bottom: 20px;
+
+}
+
+
+.user-list-profile {
+    list-style: none;
+    padding: 30px 30px 30px 30px;
+
+}
+
+.username-div {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.profile-link-username{
+    text-decoration: none;
+    color: black;
+    /* display: flex; */
+    padding-top: 20px;
+    color: gray;
+
+
+}
+.profile-link-firstname {
+    text-decoration: none;
+    color: black;
+    /* display: flex;
+    flex-direction: column; */
+    padding-right: 5px;
+    font-size: 24px;
+    font-weight: bolder;
+
+}
+.profile-link-lastname {
+    text-decoration: none;
+    color: black;
+    /* display: flex; */
+    padding-right: 10px;
+    font-size: 24px;
+    font-weight: bolder;
+
+
+}
+
+
+
+.profile-link-image {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    padding-right: 10px;
+
+}
+
+
+.user-profile-id-list {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 500px;
+    height: 200px;
+}
+
+.explore-other-users {
+    margin-top: 120px;
+    margin-left: 40px;
+}
+
+.user-profile-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    /* border: 1px solid red; */
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 20%) 0px 8px 28px;
+    border-radius: 14px;
+    padding: 20px 20px 20px 20px;
+
+}
+
+.user-bio {
 
 }

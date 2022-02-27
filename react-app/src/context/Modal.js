@@ -116,3 +116,34 @@ export function CreatePinModal({ onClose, children }) {
         modalNode
     );
 }
+
+export function GetAllBoardsModal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+        <div id="boardpin-modal">
+            <div id="boardpin-modal-background" onClick={onClose} />
+            <div id="boardpin-modal-content">
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+}
+
+
+export function GetAllBoardsOnSinglePinModal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+        <div id="single-boardpin-modal">
+            <div id="single-boardpin-modal-background" onClick={onClose} />
+            <div id="single-boardpin-modal-content">
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+}

@@ -85,7 +85,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 1000000;
   min-height: 400px;
 }
 
@@ -170,7 +170,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 999999;
   min-height: 400px;
   /* overflow-y: auto; */
   /* height: 100%; */
@@ -253,4 +253,137 @@
   padding: 20px 10px 24px;
   text-align: center;
   /* height: 100%; */
+}
+
+
+#boardpin-modal {
+  position: fixed;
+  /* position: relative; */
+  top: 30px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  min-height: 400px;
+  /* overflow-y: auto; */
+  /* height: 100%; */
+}
+
+#boardpin-modal-background {
+  position: fixed;
+  /* position: absolute; */
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#boardpin-modal-content {
+  /* position: absolute; */
+  position: relative;
+  background-color:white;
+  border-radius: 16px;
+  border: 1px solid;
+  width: 360px;
+  height: 498px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+  /* height: 100%; */
+  overflow: auto;
+}
+#boardpin-modal {
+  position: fixed;
+  /* position: relative; */
+  top: 30px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  min-height: 400px;
+  /* overflow-y: auto; */
+  /* height: 100%; */
+}
+
+#boardpin-modal-background {
+  position: fixed;
+  /* position: absolute; */
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#boardpin-modal-content {
+  /* position: absolute; */
+  position: relative;
+  background-color:white;
+  border-radius: 16px;
+  border: 1px solid;
+  width: 360px;
+  height: 498px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+  /* height: 100%; */
+  overflow: auto;
+}
+
+
+#single-boardpin-modal {
+  position: fixed;
+  /* position: relative; */
+  top: 30px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  min-height: 400px;
+  /* overflow-y: auto; */
+  /* height: 100%; */
+}
+
+#single-boardpin-modal-background {
+  position: fixed;
+  /* position: absolute; */
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#single-boardpin-modal-content {
+  /* position: absolute; */
+  position: relative;
+  background-color:white;
+  border-radius: 16px;
+  border: 1px solid;
+  width: 420px;
+  height: 510px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+  /* height: 100%; */
+  overflow: auto;
 }

@@ -26,7 +26,7 @@ const EditUserBoardModal = ({id, user, board}) => {    //id = boardId
     return (
         <>
             {/* <div className="edit-board-modal"> */}
-                {sessionUser.id === board.user_id && (
+                {sessionUser?.id === board.user_id && (
                     <button className="edit-pen-btn">
                         <i
                             className="fas fa-pen"

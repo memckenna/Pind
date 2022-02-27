@@ -1,3 +1,7 @@
+.splash {
+    margin-left: 0;
+}
+
 .splash-container {
     display: flex;
     justify-content: center;
@@ -6,12 +10,17 @@
     position: relative;
     margin-top: 10%;
 
+    width: 100%;
+
 }
 
 .splash-header {
     font-size: 60px;
     font-weight: bold;
     align-self: center;
+    display: flex;
+    text-align: center;
+    /* justify-content: center; */
 
 }
 
@@ -21,10 +30,12 @@
     /* grid-auto-rows: minmax(125px, auto); */
     /* grid-auto-columns: minmax(125px, auto); */
 
-    grid-template-columns: 125px 125px 125px 125px 125px;
-    grid-gap: 10.3rem;
+    grid-template-columns: 125px 125px 125px 125px 125px 125px 125px;
+    grid-gap: 10.5rem;
     /* justify-content: center; */
     align-items: center;
+    /* overflow-wrap: normal; */
+    overflow-x:hidden;
 }
 
 img {
@@ -53,9 +64,17 @@ img {
 }
 
 #col-4 {
-    margin-top: 200px;
+    margin-top: 450px;
 }
 
 #col-5 {
+    margin-top: 350px;
+}
+
+#col-6 {
+    margin-top: 200px;
+}
+
+#col-7 {
     margin-top: 0px;
 }

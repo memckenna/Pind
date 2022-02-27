@@ -24,6 +24,10 @@ def user_age_confirmed(form, field):
     age = field.data
     if age < 13:
         raise ValidationError('Must be 13 years or older to create an account.')
+    if age > 110:
+        raise ValidationError('Please enter your correct age.')
+
+
 
 # def profile_img_url_check(form, field):
 #     profile_img_url = field.data

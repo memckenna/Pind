@@ -15,10 +15,10 @@ function GetUserBoards({id}) {    //id = userId
     const sessionUser = useSelector(state => state.session.user)
 
     const boards = useSelector(state => state.board)
-    console.log("BOARDS.Boards", boards)
+    // console.log("BOARDS.Boards", boards)
 
     const pins = useSelector(state => state.pinReducer)
-    console.log("MY PINS", pins)
+    // console.log("MY PINS", pins)
 
 
 
@@ -43,8 +43,8 @@ function GetUserBoards({id}) {    //id = userId
                             <EditUserBoardModal user={board.user_id} board={board} id={board.id} />
                             <NavLink to={`/boards/${board.id}`}>
                                 {!board.pins[0]?.photo_url ?
-                                    <img src={kitchen} /> :
-                                    <img src={board.pins[0]?.photo_url} />
+                                    <img className="board-image" src={kitchen} /> :
+                                    <img className="board-image" src={board.pins[0]?.photo_url} />
                                 }
                             </NavLink>
                         </div>

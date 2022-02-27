@@ -3,18 +3,20 @@ import { NavLink, Redirect, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPinsOnFeed } from "../../store/pin";
 import CreatePinFooter from "../Footer/CreatePinFooter";
-
+import GetAllBoardsOnPinModal from "../BoardPins";
+import { getASinglePin } from "../../store/pin";
 import './PinFeedPage.css'
 
 const PinFeedPage = () => {
     const dispatch = useDispatch()
-    const sessionUser = useSelector(state => state.session.user)
+    // const sessionUser = useSelector(state => state.session.user)
     const pins = useSelector(state => state.pinReducer)
-    console.log("PIN IN COMPONENT", pins.pins)
+    // console.log("PIN IN COMPONENT", pins.pins)
 
 
     useEffect(() => {
         dispatch(getAllPinsOnFeed())
+        dispatch(getASinglePin(pins.id))
     }, [dispatch])
 
 
@@ -25,6 +27,7 @@ const PinFeedPage = () => {
                 {pins.pins?.map(pin => (
                     <div key={pin.id} className="pin-feed-card">
                         <div className="pin-feed-image-container">
+                            <GetAllBoardsOnPinModal id={pin.id} />
                             <NavLink to={`/pins/${pin.id}`}>
                                 <img className="pin-feed-image" src={pin.photo_url} />
                             </NavLink>

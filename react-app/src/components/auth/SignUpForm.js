@@ -47,6 +47,7 @@ const SignUpForm = () => {
     if(last_name < 4) errorsValidation.push("Last name must be between 4 and 50 characters long")
     if(profileImgUrl.length < 10) errorsValidation.push("Please provide a valid URL for your profile image.")
     if(age < 13) errorsValidation.push("You must be 13 years or old to create an account.")
+    if(age > 110) errorsValidation.push("Please enter a valid age.")
     setErrors(errorsValidation)
 
     //ADD MESSAGE FOR ERRORS

@@ -159,7 +159,7 @@ const boardReducer = (state = {}, action) => {
             newBoard.push(action.board)
             newState.boards = newBoard
             // newState[action.board.id] = action.board
-            console.log("ADDD BOARD", newState)
+            // console.log("ADDD BOARD", newState)
             return newState;
         case EDIT_USER_BOARD:
             newState = { ...state }

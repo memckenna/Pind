@@ -6,13 +6,13 @@
     margin-top: 100px;
     display: flex;
     justify-content: center;
+
+    padding-bottom: 100px;
 }
 
 .arrow {
     display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-
+    flex-direction: row;
 }
 
 .fa-arrow-left {
@@ -20,12 +20,25 @@
     font-weight: bolder;
 }
 
-.arrow-pin-page {
+.arrow-pin-page-btn {
     display: flex;
+    flex-direction: row;
 
     padding-top: 15px;
 
+    /* padding-right: 15px; */
+    margin-right: 15px;
     text-decoration: none;
+
+    border: none;
+
+    background-color: white;
+    /* background-color:violet; */
+}
+
+
+.arrow-pin-page-btn:hover {
+    cursor: pointer;
 }
 
 .single-pin-container {
@@ -76,6 +89,26 @@
     height: auto;
 }
 
+.single-pin-source-link {
+    display: flex;
+
+    /* inline-size: inherit; */
+    /* overflow-wrap: break-word; */
+    /* word-break: break-all; */
+
+
+    text-align: left;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    max-width: 100%;
+    overflow: hidden;
+    word-break: break-word;
+    word-wrap: break-word;
+    text-decoration: underline;
+    padding-top: 20px;
+
+}
+
 .single-save-button-div {
     display: flex;
     justify-content: flex-end;
@@ -112,13 +145,17 @@
     word-wrap: break-word;
 
     -webkit-font-smoothing: antialiased;
-    padding-top: 36px;
+    padding-top: 26px;
     padding-bottom: 10px;
 
 }
 
 .single-pin-description {
-    font-size: 14px;
+    font-size: 15px;
 
 
+}
+
+.github-links {
+    text-decoration: underline;
 }

@@ -16,7 +16,7 @@ function CreateBoardModal({ id }) {
     return (
         <>
             <div className="create-board-modal">
-                {sessionUser.id === +id && (
+                {sessionUser?.id === +id && (
                     <button className="create-button">
                         <i
                             className="fas fa-plus"
@@ -26,7 +26,7 @@ function CreateBoardModal({ id }) {
                 )}
                 {showModal && (
                     <BoardModal onClose={() => setShowModal(false)}>
-                        <CreateBoardForm onClose={onCloseModal} />
+                        <CreateBoardForm id={id} onClose={onCloseModal} />
                     </BoardModal>
                 )}
             </div>
