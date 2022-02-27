@@ -120,7 +120,7 @@ const CreateAPin = ({onClose}) => {
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
                             </div>
-                            <div className="pin-source-link-div">
+                            {/* <div className="pin-source-link-div">
                                 <input
                                     className='pin-source-link'
                                     type="text"
@@ -128,7 +128,7 @@ const CreateAPin = ({onClose}) => {
                                     onChange={(e) => setSourceLink(e.target.value)}
                                     placeholder='Add a destination link (optional)'
                                 />
-                            </div>
+                            </div> */}
                         </div>
 
                         {/* <div className="create-pin-btn-div">

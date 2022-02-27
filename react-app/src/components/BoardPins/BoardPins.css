@@ -19,6 +19,10 @@
     z-index: 100000;
 }
 
+.down-arrow {
+    font-size: 25px;
+}
+
 .down-arrow-single {
     font-size: 25px;
 }
@@ -95,6 +99,7 @@
 
 .boards-on-pin-title {
     font-weight: bolder;
+    font-size: 16px;
 }
 
 .bards-on-pin-img-div {
@@ -103,16 +108,15 @@
 }
 
 .boards-on-pin-img {
-    width: 48px;
-    height: 48px;
+    width: 58px;
+    height: 58px;
     margin-right: 10px;
 }
 
 .boards-on-pin-save-btn-container {
     display: flex;
     flex-direction: row;
-
-    padding-left: 20px;
+    padding-left: 30px;
 }
 
 .boards-on-pin-save-btn-div {

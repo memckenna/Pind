@@ -53,7 +53,8 @@ const SinglePin = () => {
                         </div>
                         {/* <div className="single-pin-source-link">{pin.source_link}</div> */}
                         {/* <Link to={pin.source_link}>{pin.source_link}</Link> */}
-                        <Link className="github-links" to={{ pathname: "https://github.com/memckenna" }} target="_blank">{pin.source_link}</Link>
+                        {/* <Link className="github-links" to={{ pathname: "https://github.com/memckenna" }} target="_blank">{pin.source_link}</Link> */}
+                        {/* <Link className="github-links" to={{ pathname: pin.source_link }} target="_blank">{pin.source_link}</Link> */}
                         <div className="single-pin-title">{pin.title}</div>
                         <div className="single-pin-description">{pin.description}</div>
                     </div>

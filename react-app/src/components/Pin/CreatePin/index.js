@@ -3,6 +3,8 @@ import { CreatePinModal } from "../../../context/Modal";
 import CreateAPin from "./CreatePin";
 import './CreatePin.css';
 
+import '../../Footer/Footer.css'
+
 const CreateAPinModal = () => {
     const [showModal, setShowModal] = useState(false);
     const onCloseModal = () => {
@@ -20,9 +22,6 @@ const CreateAPinModal = () => {
                         ></i>
                     </button>
                 </div>
-                {/* <button onClick={() => setShowModal(true)}> */}
-                {/* Create post */}
-                {/* </button> */}
                 {showModal && (
                     <CreatePinModal onClose={() => setShowModal(false)}>
                         <CreateAPin onClose={onCloseModal} />
