@@ -22,7 +22,7 @@ const EditAPinForm = ({onClose}) => {
     useEffect(() => {
 
     }, [dispatch])
-    
+
     useEffect(() => {
         if(title.length > 0 && photoUrl.length > 10) setDisabled(false)
         else setDisabled(true)
@@ -105,7 +105,7 @@ const EditAPinForm = ({onClose}) => {
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
                             </div>
-                            <div className='edit-pin-sourcelink-form'>
+                            {/* <div className='edit-pin-sourcelink-form'>
                                 <h4 className='edit-pin-source'>Source Link</h4>
                                 <input
                                     className='edit-pin-source-link'
@@ -114,7 +114,7 @@ const EditAPinForm = ({onClose}) => {
                                     onChange={(e) => setSourceLink(e.target.value)}
                                     placeholder='Add a destination link'
                                 />
-                            </div>
+                            </div> */}
                         </div>
                         <div className='edit-delete-btn-form-div'>
                             <div className='edit-delete-btn-div'>

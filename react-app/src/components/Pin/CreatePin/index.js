@@ -22,9 +22,6 @@ const CreateAPinModal = () => {
                         ></i>
                     </button>
                 </div>
-                {/* <button onClick={() => setShowModal(true)}> */}
-                {/* Create post */}
-                {/* </button> */}
                 {showModal && (
                     <CreatePinModal onClose={() => setShowModal(false)}>
                         <CreateAPin onClose={onCloseModal} />
