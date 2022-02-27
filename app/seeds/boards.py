@@ -8,14 +8,18 @@ def seed_boards():
     board2 = Board(title='living room decor', description='', user_id=1)
     board3 = Board(title='outdoor spaces', description='', user_id=2)
     board4 = Board(title='home decor', description='', user_id=2)
+    board13 = Board(title='outdoor living', description='', user_id=1)
     #Food
     board5 = Board(title='food', description='', user_id=3)
     board6 = Board(title='cocktails', description='', user_id=3)
+    board10 = Board(title='desserts', description='', user_id=1)
     #Fashion / Pretty Things
     board7 = Board(title='style inspo', description='', user_id=1)
     board8 = Board(title='fashion', description='', user_id=1)
+    board11 = Board(title='flowers', description='', user_id=1)
     #Travel
     board9 = Board(title='travel', description='', user_id=4)
+    board12 = Board(title='travel inspo', description='', user_id=1)
 
     db.session.add(board1)
     db.session.add(board2)
@@ -26,6 +30,10 @@ def seed_boards():
     db.session.add(board7)
     db.session.add(board8)
     db.session.add(board9)
+    db.session.add(board10)
+    db.session.add(board11)
+    db.session.add(board12)
+    db.session.add(board13)
 
     p = Pin()
     # b = Board()

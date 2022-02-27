@@ -25,6 +25,7 @@
     grid-gap: 10.3rem;
     /* justify-content: center; */
     align-items: center;
+    overflow-wrap: normal;
 }
 
 img {

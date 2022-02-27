@@ -18,8 +18,6 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
 
     const [errors, setErrors] = useState([])
     const [isSaved, setIsSaved] = useState(false)
-    const [color, setColor] = useState(false)
-    // const [unSave, setUnSave] = useState(false)
 
     useEffect(() => {
         dispatch(getASinglePin(id))
@@ -34,7 +32,6 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
 
     useEffect(() => {
         setIsSaved(pinSavedOnBoard.includes(id))
-        setColor(pinSavedOnBoard.includes(id))
     }, [])
 
     const handleSubmit = async (e) => {
@@ -49,7 +46,7 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
         } else {
             // dispatch(getASinglePin(id))
             setIsSaved(true)
-            setColor(false)
+
             onClose()
         }
         alert(`You pin has been saved to ${board.title}`)
@@ -59,16 +56,16 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
         e.preventDefault()
 
         const data = await dispatch(removePin(board.id, id))
-        // await dispatch(getASinglePin(id))
+        await dispatch(getASinglePin(id))
 
         if(data?.errors) {
             setErrors(data.errors)
         } else {
             // dispatch(getASinglePin(id))
 
-            onClose()
             setIsSaved(false)
-            setColor(true)
+            onClose()
+
         }
         alert(`You pin has been removed from ${board.title}`)
     }
