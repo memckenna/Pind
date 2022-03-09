@@ -46,7 +46,7 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
             setIsSaved(true)
             onClose()
         }
-        alert(`You pin has been saved to ${board.title}`)
+        alert(`Your pin has been saved to ${board.title}`)
     }
 
     const handleDelete = async (e) => {
@@ -63,7 +63,7 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
             onClose()
             setIsSaved(false)
         }
-        alert(`You pin has been removed from ${board.title}`)
+        alert(`Your pin has been removed from ${board.title}`)
 
     }
 

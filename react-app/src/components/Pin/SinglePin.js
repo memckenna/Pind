@@ -48,7 +48,7 @@ const SinglePin = () => {
                     <div className="single-pin-content">
                         <div className="single-save-button-div">
                             <EditAPinModal id={pinId} pin={pin}/>
-                            {/* <SinglePinBoardSaveModal id={pinId} /> */}
+                            <SinglePinBoardSaveModal id={pinId} />
                             {/* <button className="single-save-button">Save</button> */}
                         </div>
                         {/* <div className="single-pin-source-link">{pin.source_link}</div> */}

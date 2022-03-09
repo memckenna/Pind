@@ -48,7 +48,7 @@ img {
     width: 250px;
     height: 350px;
     border-radius: 12px;
-    box-shadow: rgb(0 0 0 / 15%) 0px 8px 28px;
+    /* box-shadow: rgb(0 0 0 / 15%) 0px 8px 28px; */
 }
 
 .splash-image {

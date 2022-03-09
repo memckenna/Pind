@@ -22,15 +22,15 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
     useEffect(() => {
         dispatch(getASinglePin(id))
         dispatch(getAllBoardsForPin(board.id))
-        dispatch(getAllBoardPins(board.id))
+        // dispatch(getAllBoardPins(board.id))
         dispatch(getASingleBoard(board.id))
         return () => {
             return
         }
-    },[dispatch, board, sessionUser])
+    },[dispatch, sessionUser, board])
 
     useEffect(() => {
-        setIsSaved(pinSavedOnBoard.includes(id))
+        setIsSaved(pinSavedOnBoard?.includes(id))
     }, [])
 
     const handleSubmit = async (e) => {
@@ -49,14 +49,14 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
             setIsSaved(true)
             onClose()
         }
-        alert(`You pin has been saved to ${board.title}`)
+        alert(`Your pin has been saved to ${board.title}`)
     }
 
     const handleDelete = async (e) => {
         e.preventDefault()
 
         const data = await dispatch(removePin(board.id, id))
-        await dispatch(getASinglePin(id))
+        dispatch(getASinglePin(id))
         // dispatch(getASingleBoard(board?.id))
         // dispatch(getAllBoardsForPin(board.id))
         // dispatch(getAllBoardPins(board.id))
@@ -69,7 +69,7 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
             onClose()
             setIsSaved(false)
         }
-        alert(`You pin has been removed from ${board.title}`)
+        alert(`Your pin has been removed from ${board.title}`)
     }
 
     return (
@@ -89,14 +89,15 @@ const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
             </div>
             <div className="boards-on-pin-save-btn-container">
                 <div className="boards-on-pin-save-btn-div">
+                    {console.log(isSaved)}
+
+                    {/* {isSaved ? (
+                        <button className="boards-on-pin-delete-btn" onClick={handleDelete}>Unsave</button>
+                        ) : (
+                        <button className="boards-on-pin-save-btn" onClick={handleSubmit}>Save</button>
+                    )} */}
                     <button className="boards-on-pin-delete-btn" onClick={handleDelete}>Unsave</button>
                     <button className="boards-on-pin-save-btn" onClick={handleSubmit}>Save</button>
-
-
-                    {/* {isSaved ?
-                        <button className="boards-on-pin-delete-btn" onClick={handleDelete}>Unsave</button> :
-                        <button className="boards-on-pin-save-btn" onClick={handleSubmit}>Save</button>
-                    } */}
                 </div>
             </div>
         </div>
