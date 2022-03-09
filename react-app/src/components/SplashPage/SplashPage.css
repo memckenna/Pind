@@ -1,5 +1,8 @@
+
+
 .splash {
     margin-left: 0;
+    margin-right: 0;
 }
 
 .splash-container {
@@ -7,7 +10,7 @@
     justify-content: center;
     flex-direction: column;
     /* top: 20%; */
-    position: relative;
+
     margin-top: 10%;
 
     width: 100%;
@@ -21,6 +24,8 @@
     display: flex;
     text-align: center;
     /* justify-content: center; */
+    position: absolute;
+    top: 250px;
 
 }
 
@@ -30,23 +35,26 @@
     /* grid-auto-rows: minmax(125px, auto); */
     /* grid-auto-columns: minmax(125px, auto); */
 
-    grid-template-columns: 125px 125px 125px 125px 125px 125px 125px;
+    grid-template-columns: 107px 107px 107px 107px 107px 107px 107px;
     grid-gap: 10.5rem;
-    /* justify-content: center; */
     align-items: center;
+    /* justify-content: center; */
     /* overflow-wrap: normal; */
     overflow-x:hidden;
+
 }
 
 img {
     width: 250px;
     height: 350px;
     border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 8px 28px;
 }
 
 .splash-image {
     display: grid;
     grid-gap: 2rem;
+
 
 }
 
@@ -56,23 +64,24 @@ img {
 }
 
 #col-2 {
-    margin-top: 200px;
+    margin-top: 250px;
+
 }
 
 #col-3 {
-    margin-top: 350px;
+    margin-top: 400px;
 }
 
 #col-4 {
-    margin-top: 450px;
+    margin-top: 550px;
 }
 
 #col-5 {
-    margin-top: 350px;
+    margin-top: 400px;
 }
 
 #col-6 {
-    margin-top: 200px;
+    margin-top: 250px;
 }
 
 #col-7 {
