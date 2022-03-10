@@ -22,7 +22,6 @@ const EditUserBoardModal = ({id, user, board}) => {    //id = boardId
         // }
     }
 
-    console.log("MODAL", id)
     return (
         <>
             {/* <div className="edit-board-modal"> */}
