@@ -44,14 +44,11 @@ const deleteBoard = (board) => ({
 // GET
 // Get All User Boards
 export const getBoardsByUser = (id) => async (dispatch) => {
-    // console.log(id)
     const response = await fetch(`/api/users/${id}/boards`)
 
     if(response.ok) {
         const data = await response.json()
-        // console.log()
-        // console.log("BOARDDS IN THUNK", data)
-        // console.log()
+
         dispatch(getUserBoard(data))
         return data
     }

@@ -49,6 +49,7 @@ const SingleBoard = () => {
 
                         <div className="pin-image-container">
                             {/* <GetAllBoardsOnPinModal /> */}
+                            <GetAllBoardsOnPinModal id={pin.id} />
                             <NavLink to={`/pins/${pin.id}`}>
                                 <img className="pin-image" src={pin.photo_url} />
                             </NavLink>
