@@ -17,8 +17,6 @@ const SinglePinBoardSaveModal = ({ id }) => { //id = pinId
         setShowModal(false);
     };
 
-    // const { boardId } = useParams();
-
     useEffect(() => {
         dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(id))

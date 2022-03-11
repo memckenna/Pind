@@ -5,9 +5,6 @@ import { getASingleBoard } from "../../store/board";
 import { getAllBoardPins } from "../../store/boards_pins";
 import { getASinglePin } from "../../store/pin";
 import GetAllBoardsOnPinModal from "../BoardPins";
-// import EditSingleBoardPageModal from "./EditABoard/EditSingleBoardPageModal";
-// import { getBoardsByUser } from "../../store/board";
-// import { getAllPinsOnFeed } from "../../store/pin";
 
 import "./SingleBoard.css"
 

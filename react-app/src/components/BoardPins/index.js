@@ -21,7 +21,6 @@ const GetAllBoardsOnPinModal = ({ id }) => {  //id = pin.id
     };
 
     const { boardId } = useParams()
-    // console.log(boardId)
 
     useEffect(() => {
         dispatch(getBoardsByUser(sessionUser?.id))
