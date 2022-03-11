@@ -6,7 +6,7 @@ import { createBoardPin, getAllBoardsForPin, removePin } from "../../store/board
 import { getAllPinsOnFeed } from "../../store/pin";
 import { getASinglePin } from "../../store/pin";
 import kitchen from '../../images/kitchen.jpg'
-
+import { getASingleBoard } from "../../store/board";
 import "./BoardPins.css"
 
 const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
@@ -26,7 +26,7 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
         return () => {
             return
         }
-    }, [dispatch, sessionUser, board])
+    }, [dispatch, sessionUser, board, id])
 
     useEffect(() => {
         setIsSaved(pinSavedOnBoard.includes(id))
@@ -36,7 +36,7 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
         e.preventDefault()
 
         const data = await dispatch(createBoardPin(board.id, id))
-        dispatch(getAllPinsOnFeed())
+        await dispatch(getAllPinsOnFeed())
         dispatch(getAllBoardsForPin(board.id))
 
         if(data?.errors) {
@@ -55,11 +55,14 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
         const data = await dispatch(removePin(board.id, id))
         // await dispatch(getAllBoardsForPin(boardId))
         await dispatch(getAllPinsOnFeed())
+        dispatch(getASingleBoard(board.id))
 
         if(data?.errors) {
             setErrors(data.errors)
         } else {
             // await dispatch(getAllBoardsForPin(boardId))
+            dispatch(getASingleBoard(board.id))
+
             onClose()
             setIsSaved(false)
         }

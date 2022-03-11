@@ -11,9 +11,12 @@ const PinFeedPage = () => {
     const dispatch = useDispatch()
     // const sessionUser = useSelector(state => state.session.user)
     const pins = useSelector(state => state.pinReducer)
+    // const pinId = useSelector(state => state.pinReducer?.id)
+    // console.log(pinId)
     useEffect(() => {
         dispatch(getAllPinsOnFeed())
-        dispatch(getASinglePin(pins.id))
+        // dispatch(getASinglePin(pinId))
+        dispatch(getASinglePin(pins?.id))
     }, [dispatch])
 
 

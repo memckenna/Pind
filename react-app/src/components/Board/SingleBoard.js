@@ -6,6 +6,8 @@ import { getAllBoardPins } from "../../store/boards_pins";
 import { getASinglePin } from "../../store/pin";
 import GetAllBoardsOnPinModal from "../BoardPins";
 // import EditSingleBoardPageModal from "./EditABoard/EditSingleBoardPageModal";
+// import { getBoardsByUser } from "../../store/board";
+// import { getAllPinsOnFeed } from "../../store/pin";
 
 import "./SingleBoard.css"
 
@@ -14,6 +16,7 @@ const SingleBoard = () => {
     const history = useHistory();
     const pinsByBoard = useSelector(state => state.board)
     const pins = useSelector(state => state.pinReducer)
+    const boardPins = useSelector(state => state.boardPin)
 
     //CHECK BOARD PINS REDUCER
     const sessionUser = useSelector((state) => state.session.user);
@@ -23,7 +26,6 @@ const SingleBoard = () => {
     useEffect(() => {
         dispatch(getASingleBoard(boardId))
         dispatch(getAllBoardPins(boardId))
-        // dispatch(getASinglePin(pins.id))
 
     }, [dispatch, boardId])
 
@@ -48,7 +50,6 @@ const SingleBoard = () => {
                     <div key={pin.id} className="pin-card">
 
                         <div className="pin-image-container">
-                            {/* <GetAllBoardsOnPinModal /> */}
                             <GetAllBoardsOnPinModal id={pin.id} />
                             <NavLink to={`/pins/${pin.id}`}>
                                 <img className="pin-image" src={pin.photo_url} />

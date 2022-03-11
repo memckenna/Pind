@@ -20,17 +20,14 @@ const GetAllBoardsOnPinModal = ({ id }) => {  //id = pin.id
         setShowModal(false);
     };
 
-    // const { boardId } = useParams()
+    const { boardId } = useParams()
     // console.log(boardId)
 
     useEffect(() => {
-        // dispatch(getAllBoardsForPin(boardId))
-        // dispatch(getAllPinsOnFeed())
         dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(id))
 
         // dispatch(getASingleBoard(boardId))
-
         // dispatch(createBoardPin(boardId, id))
     }, [dispatch, showModal, sessionUser])
 
