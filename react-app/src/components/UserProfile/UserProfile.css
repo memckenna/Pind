@@ -178,6 +178,17 @@
 
 }
 
-.user-bio {
+.follows-div {
+    display: flex;
+    justify-content: center;
+}
 
+.followers-btn {
+    padding: 5px 10px 5px 10px;
+    margin-right: 5px;
+}
+
+.following-btn {
+    padding: 5px 10px 5px 10px;
+    margin-left: 5px;
 }

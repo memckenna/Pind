@@ -4,11 +4,16 @@ import { useParams } from 'react-router-dom';
 // import { getAllBoard } from '../../store/board';
 import GetUserBoards from './UserBoards/GetUserBoards';
 import { getBoardsByUser } from '../../store/board';
+import RenderFollowUser from '../Follow/RenderUser/RenderFollowUser';
 import './UserProfile.css'
+
+import { GetAllFollowsModal } from '../../context/Modal';
+import FollowerModal from '../Follow/FollowerModal/FollowerModal';
+import FollowingModal from '../Follow/FollowingModal/FollowingModal';
 
 function User() {
   const [user, setUser] = useState({});
-  const { userId }  = useParams();
+  const { userId } = useParams();
   const sessionUser = useSelector(state => state.session.user)
   const dispatch = useDispatch()
 
@@ -30,6 +35,19 @@ function User() {
       setUser(user);
     })();
   }, [userId]);
+
+  const [showFollowerModal, setShowFollwerModal] = useState(false);
+  const [showFollowingModal, setShowFollwingModal] = useState(false);
+
+  const handleFollower = () => setShowFollwerModal(true);
+  const handleFollowing = () => setShowFollwingModal(true);
+
+  const onCloseModal = () => {
+    setShowFollwerModal(false);
+    setShowFollwingModal(false);
+  }
+
+
 
   if (!user) {
     return null;
@@ -56,9 +74,28 @@ function User() {
           </li> */}
         </ul>
       </div>
+      <div className='follows-div'>
+      {/* <b>{user?.followers.length}</b> */}
+        {/* <span onClick={() => handleFollower()}>followers</span> */}
+        <button className='followers-btn' onClick={() => handleFollower()}>followers</button>
+        {showFollowerModal && (
+          <GetAllFollowsModal onClose={onCloseModal}>
+            <FollowerModal followers={user?.followers} />
+          </GetAllFollowsModal>
+        )}
+        {/* <b>{user?.following.length}</b> */}
+        {/* <span onClick={() => handleFollowing()}>following</span> */}
+        
+        <button className='following-btn' onClick={() => handleFollowing()}>following</button>
+        {showFollowingModal && (
+          <GetAllFollowsModal onClose={onCloseModal}>
+            <FollowingModal followers={user?.following} />
+          </GetAllFollowsModal>
+        )}
+      </div>
       <div>
         <div className='saved-boards'>Saved</div>
-        <GetUserBoards id={userId} />
+        <GetUserBoards id={userId} user={user} />
       </div>
 
     </>

@@ -23,6 +23,18 @@ def seed_users():
     db.session.add(chloe)
 
 
+    #.followers means users is followed by the appended user
+    # user_being_followed.followers.append(user_following)
+    demo.followers.append(kelly)
+    demo.followers.append(marnie)
+    demo.followers.append(chloe)
+    kelly.followers.append(demo)
+    kelly.followers.append(marnie)
+    kelly.followers.append(chloe)
+    marnie.followers.append(demo)
+    marnie.followers.append(kelly)
+    chloe.followers.append(demo)
+
     db.session.commit()
 
 

@@ -45,3 +45,28 @@ def get_boards_by_user(id):
 #     for pin in pins_by_id:
 #         print(pin.to_dict(), '******new pin******')
 #     return {'pins': [pin.to_dict()['pin'] for pin in pins_by_id]}
+
+@user_routes.route('/<int:id>/follow', methods=["POST"])
+@login_required
+def follow_user(id):
+    user = User.query.get(id)
+
+    if(user in current_user.following):
+        return {'users': [*current_user.to_dict()["following"]]}
+    else:
+        current_user.following.append(user)
+        db.session.commit()
+        return {'users': [*current_user.to_dict()["following"]]}
+
+
+@user_routes.route('/<int:id>/unfollow')
+@login_required
+def unfollow_user(id):
+    user = User.query.get(id)
+
+    if(user in current_user.following):
+        current_user.following.remove(user)
+        db.session.commit()
+        return {'users': [*current_user.to_dict()["following"]]}
+    else:
+        return {'users': [*current_user.to_dict()["following"]]}
