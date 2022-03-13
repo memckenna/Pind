@@ -15,17 +15,12 @@ function GetUserBoards({id}) {    //id = userId
     const sessionUser = useSelector(state => state.session.user)
 
     const boards = useSelector(state => state.board)
-    // console.log("BOARDS.Boards", boards)
-
-    const pins = useSelector(state => state.pinReducer)
-    // console.log("MY PINS", pins)
-
-
+    // const pins = useSelector(state => state.pinReducer)
 
     useEffect(() => {
         dispatch(getBoardsByUser(id));
         // dispatch(createBoard(boards.boards[id]))
-    }, [dispatch])
+    }, [dispatch, id])
 
     if(!sessionUser) return <Redirect to="/login" />;
     if(!boards) return null;

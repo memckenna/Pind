@@ -7,6 +7,7 @@ import { getBoardsByUser } from "../../../store/board";
 import { getASinglePin } from "../../../store/pin";
 
 import "../BoardPins.css"
+import { useParams } from "react-router-dom";
 
 
 const SinglePinBoardSaveModal = ({ id }) => { //id = pinId
@@ -17,13 +18,13 @@ const SinglePinBoardSaveModal = ({ id }) => { //id = pinId
         setShowModal(false);
     };
 
-    // const { boardId } = useParams();
+    // const { boardId } = useParams()
 
     useEffect(() => {
         dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(id))
 
-    }, [dispatch, showModal])
+    }, [dispatch, showModal, sessionUser])
 
 
     return (
