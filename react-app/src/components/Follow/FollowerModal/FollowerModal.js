@@ -21,14 +21,21 @@ const FollowerModal = ({ followers }) => {   //id = userId
 
     return (
         <>
-            <div>
-                <div>{followers.length}</div>
-                <div>Followers</div>
+            <div className="followers-header">
+                <div className="followers-title-section">
+                    <div className="followers-count">{followers?.length}</div>
+                    <div className="followers-title">Followers</div>
+                </div>
+                <div>
+                    <div className="exit-modal-div">
+                        <i className="fas fa-times"></i>
+                    </div>
+                </div>
             </div>
             {followers?.map(user =>
-                <div key={user.id}>
+                <div key={user?.id}>
                     {console.log(user)}
-                    <RenderFollowUser user={user} id={user.id}  />
+                    <RenderFollowUser user={user} id={user?.id}  />
                 </div>
             )}
 

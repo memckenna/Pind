@@ -80,16 +80,15 @@ function User() {
         <button className='followers-btn' onClick={() => handleFollower()}>followers</button>
         {showFollowerModal && (
           <GetAllFollowsModal onClose={onCloseModal}>
-            <FollowerModal followers={user?.followers} />
+            <FollowerModal followers={user?.followers} id={user.id} user={user} />
           </GetAllFollowsModal>
         )}
         {/* <b>{user?.following.length}</b> */}
         {/* <span onClick={() => handleFollowing()}>following</span> */}
-        
         <button className='following-btn' onClick={() => handleFollowing()}>following</button>
         {showFollowingModal && (
           <GetAllFollowsModal onClose={onCloseModal}>
-            <FollowingModal followers={user?.following} />
+            <FollowingModal followers={user?.following} id={user.id} user={user} />
           </GetAllFollowsModal>
         )}
       </div>

@@ -23,7 +23,7 @@ const RenderFollowUser = ({ user, id }) => {
     }, [dispatch, sessionUser])
 
     useEffect(() => {
-        setIsFollowing(followingList.includes(user.id))
+        setIsFollowing(followingList.includes(user?.id))
     }, [])
 
     const followUser = (id) => {
@@ -52,7 +52,7 @@ const RenderFollowUser = ({ user, id }) => {
                 {sessionUser.id === user.id ?
                     <></> :
                     (isFollowing ?
-                        <button className="follow-modal-button" onClick={() => unfollowUser(user.id)}>Following</button> :
+                        <button className="unfollow-modal-button" onClick={() => unfollowUser(user.id)}>Following</button> :
                         <button className="follow-modal-button" onClick={() => followUser(user.id)}>Follow</button>
                     )
                 }

@@ -1,0 +1,39 @@
+.followers-header {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    font-size: 28px;
+    font-weight: bolder;
+}
+
+.followers-title-section {
+    display: flex;
+
+    margin-left: 34px;
+    margin-right: 34px;
+}
+
+.followers-title {
+    padding-left: 10px;
+}
+
+
+.fa-times {
+
+    font-size: 25px;
+    color: #767676;
+}
+
+
+.exit-modal-div {
+    display: flex;
+    justify-content: flex-end;
+
+    display: block;
+    cursor: pointer;
+    border: 1px solid red;
+
+}
