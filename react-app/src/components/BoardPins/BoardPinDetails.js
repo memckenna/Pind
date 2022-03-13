@@ -89,7 +89,7 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
             <div className="boards-on-pin-save-btn-container">
                 <div className="boards-on-pin-save-btn-div">
                     {isSaved ?
-                        <button className="boards-on-pin-delete-btn" onClick={handleDelete}>Unsave</button> :
+                        <button className="boards-on-pin-delete-btn" onClick={handleDelete}>Saved</button> :
                         <button className="boards-on-pin-save-btn" onClick={handleSubmit}>Save</button>
                     }
                 </div>
