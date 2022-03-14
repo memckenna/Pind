@@ -2,10 +2,12 @@ const GET_BOARD_BY_USER = 'userBoard/GET_BOARD_BY_USER';
 const GET_SINGLE_BOARD = 'userBoard/GET_SINGLE_BOARD';
 
 const ADD_BOARD = 'userBoard/ADD_BOARD';
+const FOLLOW_USER = 'user/FOLLOW_USER';
 
 const EDIT_USER_BOARD = 'userBoard/EDIT_USER_BOARD';
 
 const DELETE_USER_BOARD = 'userBoard/DELETE_USER_BOARD';
+const UNFOLLOW_USER = 'user/UNFOLLOW_USER';
 
 const GET_BOARD = 'board/GET_BOARD';
 
@@ -30,6 +32,11 @@ const addBoard = (board) => ({
     board
 })
 
+const followUser = (user) => ({
+    type: FOLLOW_USER,
+    user
+})
+
 const editBoard = (board) => ({
     type: EDIT_USER_BOARD,
     board
@@ -40,10 +47,16 @@ const deleteBoard = (board) => ({
     board
 })
 
+const unfollowUser = (user) => ({
+    type: UNFOLLOW_USER,
+    user
+})
+
 // CRUD FEATRURE WITH REDUX
 // GET
 // Get All User Boards
 export const getBoardsByUser = (id) => async (dispatch) => {
+    console.log("BOARD THUNK", id)
     const response = await fetch(`/api/users/${id}/boards`)
 
     if(response.ok) {
@@ -89,6 +102,22 @@ export const createBoard = (formData) => async(dispatch) => {
     }
 }
 
+export const followAUser = (id) => async (dispatch) => {
+    const response = await fetch(`/api/users/${id}/follow`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id })
+    })
+    if(response.ok) {
+        const data = await response.json()
+
+        dispatch(followUser(data))
+        return data
+    }
+}
+
 //EDIT BOARD
 
 export const updateUserBoard = (id, title) => async (dispatch) => {
@@ -131,14 +160,22 @@ export const deleteUserBoard = (id) => async (dispatch) => {
     }
 }
 
+export const unfollowAUser = (id) => async (dispatch) => {
+    const response = await fetch(`/api/users/${id}/unfollow`)
+    if(response.ok) {
+        const data = await response.json()
+
+        dispatch(unfollowUser(data))
+        return data
+    }
+}
+
 
 const boardReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
         case GET_BOARD_BY_USER:
             newState = {...state, ...action.boards}
-
-            // console.log("ALLBOARDS?", action.boards)
             return newState
         // case GET_BOARD:
         //     const allBoards = []
@@ -158,26 +195,23 @@ const boardReducer = (state = {}, action) => {
             // newState[action.board.id] = action.board
             // console.log("ADDD BOARD", newState)
             return newState;
+        case FOLLOW_USER:
+            newState = { ...state }
+            console.log("FOLLLOW STATE", newState)
+            return newState;
         case EDIT_USER_BOARD:
             newState = { ...state }
             // console.log("EDITT REDUCER BOARD", newState)
             newState[action.board.boards.id] = action.board.boards
-            return newState
+            return newState;
         case DELETE_USER_BOARD:
             newState = { ...state }
             delete newState[action.board.id]
-            return newState
-
-            // let editBoard = [ ...newState.boards ]
-            // editBoard.push(action.board.id)
-            // newState.boards = editBoard
-
-            // for(let i = 0; i < editBoard.length; i++) {
-            //     console.log("EDIT REDUCER", editBoard[i].id)
-            //     if (editBoard[i].id === action.board.id){
-            //         editBoard[i] = action.editBoard;
-            //     }
-            // }
+            return newState;
+        case UNFOLLOW_USER:
+            newState = { ...state }
+            console.log("UNFOLLOW STATE", newState)
+            return newState;
         default:
             return state
     }

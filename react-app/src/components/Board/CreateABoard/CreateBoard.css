@@ -24,7 +24,7 @@ i {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    
+
 }
 
 .title {
@@ -84,6 +84,7 @@ i {
     padding: 8px 10px 8px 10px;
     font-size: 30px;
     background-color: white;
+    cursor: pointer;
 }
 
 .create-button:hover {

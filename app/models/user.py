@@ -3,6 +3,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
 
+follows = db.Table(
+    "follows",
+    db.Column("follower_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("followed_id", db.Integer, db.ForeignKey("users.id"))
+)
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -36,6 +41,31 @@ class User(db.Model, UserMixin):
     #One user can have many boards
     boards = db.relationship('Board', back_populates='user')
 
+    # User to user many to many for follows and following
+    followers = db.relationship(
+        "User",
+        secondary=follows,
+        primaryjoin=(follows.c.follower_id == id),
+        secondaryjoin=(follows.c.followed_id == id),
+        backref=db.backref("following", lazy="dynamic"),
+        lazy="dynamic"
+    )
+
+    def f_to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'bio': self.bio,
+            'age': self.age,
+            'profile_img_url': self.profile_img_url,
+            'created_at': self.created_at,
+            'boards': [board.to_dict() for board in self.boards],
+            'pins': [pin.to_dict() for pin in self.pins],
+        }
+
 
     def to_dict(self):
         return {
@@ -49,5 +79,7 @@ class User(db.Model, UserMixin):
             'profile_img_url': self.profile_img_url,
             'created_at': self.created_at,
             'boards': [board.to_dict() for board in self.boards],
-            'pins': [pin.to_dict() for pin in self.pins]
+            'pins': [pin.to_dict() for pin in self.pins],
+            'followers': [follower.f_to_dict() for follower in self.followers],
+            'following': [follow.f_to_dict() for follow in self.following],
         }

@@ -20,7 +20,7 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
 
     useEffect(() => {
         // dispatch(getBoardsByUser(sessionUser.id))
-        dispatch(getAllPinsOnFeed())
+        // dispatch(getAllPinsOnFeed())
         dispatch(getAllBoardsForPin(board.id))
         dispatch(getASinglePin(id))
         return () => {

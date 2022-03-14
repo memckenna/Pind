@@ -19,7 +19,7 @@ def get_board_with_saved_pins(id):
     return {"board_pin": [board_pin.to_dict() for board_pin in board_pins]}
 
 
-#GET - Get a single pin to select from a list boards
+#GET - Get a single pin to save to a list of boards
 @board_pin_routes.route('/<int:id>')
 def get_pin_to_save_to_board(id):
     user = User.query.get(id)

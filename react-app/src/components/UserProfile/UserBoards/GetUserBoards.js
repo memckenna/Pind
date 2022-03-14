@@ -10,7 +10,7 @@ import kitchen from '../../../images/kitchen.jpg'
 import cake from '../../../images/cake.jpg'
 import '../UserProfile.css'
 
-function GetUserBoards({id}) {    //id = userId
+function GetUserBoards({ id, user }) {    //id = userId  user = userboard
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
 
