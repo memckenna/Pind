@@ -41,10 +41,12 @@ def get_boards_by_user(id):
 # @user_routes.route('/<int:id>/pins')
 # @login_required
 # def get_pin_by_user(id):
-#     pins_by_id = Pin.query.filter(Pin.user_id == id).all()
-#     for pin in pins_by_id:
-#         print(pin.to_dict(), '******new pin******')
-#     return {'pins': [pin.to_dict()['pin'] for pin in pins_by_id]}
+#     user = User.query.get(id)
+
+#     pin_by_id = Pin.query.filter(Pin.user_id == user.id).one()
+#     print(pin_by_id)
+#     return {'pin': pin_by_id.to_dict()}
+
 
 @user_routes.route('/<int:id>/follow', methods=["POST"])
 @login_required

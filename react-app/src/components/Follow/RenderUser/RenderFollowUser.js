@@ -11,7 +11,7 @@ import './RenderFollowUser.css'
 const RenderFollowUser = ({ user, id }) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
- 
+
     const followingList = sessionUser?.following.map(user => user?.id)
 
     const [isFollowing, setIsFollowing] = useState(false);
@@ -25,7 +25,7 @@ const RenderFollowUser = ({ user, id }) => {
     }, [dispatch, sessionUser])
 
     useEffect(() => {
-        setIsFollowing(followingList.includes(user.id))
+        setIsFollowing(followingList.includes(user?.id))
     }, [])
 
     const followUser = (id) => {
@@ -44,16 +44,16 @@ const RenderFollowUser = ({ user, id }) => {
     return (
         <div className="follow-modal-container">
             <div className="follow-modal-div">
-                <Link to={`/users/${user.id}`}>
-                    <img className="follow-modal-img" src={user.profile_img_url} />
+                <Link to={`/users/${user?.id}`}>
+                    <img className="follow-modal-img" src={user?.profile_img_url} />
                 </Link>
                 <div className="follow-modal-name">
-                    <Link to={`/users/${user.id}`}></Link>
-                    <p>{user.first_name}{user.last_name}</p>
+                    <Link to={`/users/${user?.id}`}></Link>
+                    <p>{user?.first_name}{user?.last_name}</p>
                 </div>
             </div>
             <div className="follow-modal-button-div">
-                {sessionUser.id === user.id ?
+                {sessionUser?.id === user?.id ?
                     <></> :
                     (isFollowing ?
                         <button className="unfollow-modal-button" onClick={() => unfollowUser(user?.id)}>Following</button> :

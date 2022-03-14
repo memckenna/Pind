@@ -34,7 +34,6 @@ const FollowerModal = ({ followers, onClose }) => {   //id = userId
             </div>
             {followers?.map(user =>
                 <div key={user?.id}>
-                    {console.log(user)}
                     <RenderFollowUser user={user} id={user?.id}  />
                 </div>
             )}

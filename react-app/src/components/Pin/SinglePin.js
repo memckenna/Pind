@@ -10,8 +10,7 @@ import './SinglePin.css';
 import { getAllBoardsForPin } from "../../store/boards_pins";
 import SinglePinBoardSaveModal from "../BoardPins/SinglePinBoard";
 
-// import GetAllBoardsOnPinModal from "../BoardPins";
-// import { getAllBoardPins } from "../../store/boards_pins";
+
 
 
 const SinglePin = () => {

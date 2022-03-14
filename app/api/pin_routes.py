@@ -25,6 +25,12 @@ def get_pin_by_id(id):
 
     return {'pin': pin.to_dict()}
 
+# @pin_routes.route('/<int:id>')
+# # @login_required
+# def get_a_pin_by_user(id):
+#     user = User.query.get(id)
+#     following = [u.id for u in user.following]
+
 
 
 #Create a Pin
@@ -35,13 +41,10 @@ def create_pin():
     form = CreatePinForm()
     # board = Board.query.get(form.data["board_id"])
     # pin = Pin.query.get(id)
-    # print("\n\n\n\n BOARD IN PIN\n\n\n\n", board)
-    # print("\n\n\n\n PIN For Board \n\n\n\n", pin)
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         # board_options = Board.query.filter(Board.title == form.data['board']).one()
-        # print("\n\n\nBOARD OPTIONS\n\n\n\n", board_options)
         # form.data.pop('board')
 
         new_pin = Pin(
@@ -63,19 +66,6 @@ def create_pin():
         return new_pin.to_dict()
         # return {'pins': new_pin.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
-#Add a pin on a board
-# @pin_routes.route('/<int:id>', methods=["POST"])
-# @login_required
-# def add_pin_to_board(id):
-#     boardObj = {}
-#     pinObj = {}
-#     boards = Board.query.all()
-#     for board in boards:
-#         print("\n\n\nTHIS IS MY BOARDDDDD\n\n\n",board)
-
-
-
 
 
 #Edit a Pin

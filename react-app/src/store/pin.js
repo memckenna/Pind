@@ -73,7 +73,7 @@ export const createPin = (payload) => async(dispatch) => {
             // "board_id": payload.boardId
         })
     })
-    
+
 
     if(response.ok) {
         const data = await response.json()
@@ -162,7 +162,6 @@ const pinReducer = (state = {}, action) => {
             return newState
         case DELETE_USER_PIN:
             newState = { ...state }
-            // console.log("DELETE STATE", newState)
             // console.log("DELETE STATE", action.pin)
             delete newState[action.pin.id]
             return newState
@@ -171,7 +170,6 @@ const pinReducer = (state = {}, action) => {
         //     for (let pin of action.pins['pins']) {
         //         allPins.push(pin)
         //     }
-        //     console.log("ALLLL PINS", allPins)
         //     return { ...state, 'pins': allPins}
 
 

@@ -44,9 +44,6 @@ function User() {
     return null;
   }
 
-  let userFollowers = user?.followers
-  console.log(userFollowers)
-
   return (
     <>
       <div className='profile-detail-container'>
