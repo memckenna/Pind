@@ -26,7 +26,7 @@ def user(id):
 def get_boards_by_user(id):
     print('in route ****************************************')
     user = User.query.get(id)
-
+    
     boards_by_id = db.session.query(Board) \
                         .filter(Board.user_id == user.id)\
                         .options(joinedload(Board.pins)).all()

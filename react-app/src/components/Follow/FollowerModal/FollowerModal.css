@@ -7,13 +7,17 @@
 
     font-size: 28px;
     font-weight: bolder;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    /* border-bottom: 1px solid #efefef; */
 }
 
 .followers-title-section {
+
     display: flex;
 
-    margin-left: 34px;
-    margin-right: 34px;
+    margin-left: 64px;
+    margin-right: 64px;
 }
 
 .followers-title {
@@ -27,13 +31,16 @@
     color: #767676;
 }
 
+.exit-followers-modal {
 
-.exit-modal-div {
     display: flex;
     justify-content: flex-end;
 
     display: block;
     cursor: pointer;
-    border: 1px solid red;
+    /* border: 1px solid red; */
+}
+
+.exit-modal-div {
 
 }

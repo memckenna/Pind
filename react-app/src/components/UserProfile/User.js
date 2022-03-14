@@ -17,13 +17,6 @@ function User() {
   const sessionUser = useSelector(state => state.session.user)
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   const payload = {
-  //     id: sessionUser?.id
-  // }
-  //   dispatch(getBoardsByUser(payload))
-  // }, [dispatch, sessionUser])
-
 
   useEffect(() => {
     if (!userId) {
@@ -36,6 +29,7 @@ function User() {
     })();
   }, [userId]);
 
+
   const [showFollowerModal, setShowFollwerModal] = useState(false);
   const [showFollowingModal, setShowFollwingModal] = useState(false);
 
@@ -47,6 +41,13 @@ function User() {
     setShowFollwingModal(false);
   }
 
+  // useEffect(() => {
+  //   const payload = {
+  //     user_id: sessionUser?.id
+  // }
+  // dispatch(getBoardsByUser(payload))
+
+  // }, [dispatch, sessionUser])
 
 
   if (!user) {
@@ -80,7 +81,7 @@ function User() {
         <button className='followers-btn' onClick={() => handleFollower()}>followers</button>
         {showFollowerModal && (
           <GetAllFollowsModal onClose={onCloseModal}>
-            <FollowerModal followers={user?.followers} id={user.id} user={user} />
+            <FollowerModal onClose={onCloseModal} followers={user?.followers} id={user?.id} user={user} />
           </GetAllFollowsModal>
         )}
         {/* <b>{user?.following.length}</b> */}
@@ -88,7 +89,7 @@ function User() {
         <button className='following-btn' onClick={() => handleFollowing()}>following</button>
         {showFollowingModal && (
           <GetAllFollowsModal onClose={onCloseModal}>
-            <FollowingModal followers={user?.following} id={user.id} user={user} />
+            <FollowingModal onClose={onCloseModal} following={user?.following} id={user.id} user={user} />
           </GetAllFollowsModal>
         )}
       </div>

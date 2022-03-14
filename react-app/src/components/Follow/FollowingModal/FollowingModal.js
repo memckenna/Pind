@@ -6,24 +6,32 @@ import RenderFollowUser from "../RenderUser/RenderFollowUser";
 
 import './FollowingModal.css';
 
-const FollowingModal = ({ followers }) => {   //id = userId
+const FollowingModal = ({ following, onClose }) => {   //id = userId
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    console.log("USER", followers)
+    console.log("USER", following)
 
     useEffect(() => {
         const payload = {
             user_id: sessionUser?.id
         }
-        dispatch(getBoardsByUser(payload))
+        // dispatch(getBoardsByUser(payload))
     }, [dispatch, sessionUser])
 
     return (
         <>
-            <div>
-                <div>Following</div>
+            <div className="following-header">
+                <div className="following-title-section">
+                    <div className="following-count">{following.length}</div>
+                    <div className="following-title">Following</div>
+                </div>
+                <div className="exit-following-modal">
+                    <div onClick={onClose} className="exit-modal-div">
+                        <i className="fas fa-times"></i>
+                    </div>
+                </div>
             </div>
-            {followers?.map(user =>
+            {following?.map(user =>
                 <div key={user.id}>
                     {console.log(user)}
                     <RenderFollowUser user={user} id={user.id}  />

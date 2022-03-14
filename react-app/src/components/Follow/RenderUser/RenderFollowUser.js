@@ -4,14 +4,15 @@ import { Link } from 'react-router-dom';
 
 import { followAUser, unfollowAUser } from "../../../store/board";
 import { getBoardsByUser } from "../../../store/board";
+import { getASinglePin } from "../../../store/pin";
 
 import './RenderFollowUser.css'
 
 const RenderFollowUser = ({ user, id }) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
-
-    const followingList = sessionUser?.following.map(user => user.id)
+ 
+    const followingList = sessionUser?.following.map(user => user?.id)
 
     const [isFollowing, setIsFollowing] = useState(false);
 
@@ -19,11 +20,12 @@ const RenderFollowUser = ({ user, id }) => {
         const payload = {
             user_id: sessionUser?.id
         }
-        dispatch(getBoardsByUser(payload))
+        // dispatch(getBoardsByUser(payload))
+        // dispatch(getASinglePin(pin.id))
     }, [dispatch, sessionUser])
 
     useEffect(() => {
-        setIsFollowing(followingList.includes(user?.id))
+        setIsFollowing(followingList.includes(user.id))
     }, [])
 
     const followUser = (id) => {
@@ -42,7 +44,9 @@ const RenderFollowUser = ({ user, id }) => {
     return (
         <div className="follow-modal-container">
             <div className="follow-modal-div">
-                <img className="follow-modal-img" src={user.profile_img_url} />
+                <Link to={`/users/${user.id}`}>
+                    <img className="follow-modal-img" src={user.profile_img_url} />
+                </Link>
                 <div className="follow-modal-name">
                     <Link to={`/users/${user.id}`}></Link>
                     <p>{user.first_name}{user.last_name}</p>
@@ -52,11 +56,10 @@ const RenderFollowUser = ({ user, id }) => {
                 {sessionUser.id === user.id ?
                     <></> :
                     (isFollowing ?
-                        <button className="unfollow-modal-button" onClick={() => unfollowUser(user.id)}>Following</button> :
-                        <button className="follow-modal-button" onClick={() => followUser(user.id)}>Follow</button>
+                        <button className="unfollow-modal-button" onClick={() => unfollowUser(user?.id)}>Following</button> :
+                        <button className="follow-modal-button" onClick={() => followUser(user?.id)}>Follow</button>
                     )
                 }
-
             </div>
         </ div>
     )

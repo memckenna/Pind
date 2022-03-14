@@ -56,6 +56,7 @@ const unfollowUser = (user) => ({
 // GET
 // Get All User Boards
 export const getBoardsByUser = (id) => async (dispatch) => {
+    console.log("BOARD THUNK", id)
     const response = await fetch(`/api/users/${id}/boards`)
 
     if(response.ok) {

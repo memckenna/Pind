@@ -1,0 +1,46 @@
+.following-header {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    font-size: 28px;
+    font-weight: bolder;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    
+}
+
+.following-title-section {
+    display: flex;
+
+    margin-left: 64px;
+    margin-right: 64px;
+}
+
+
+
+.following-title {
+    padding-left: 10px;
+}
+
+.fa-times {
+
+    font-size: 25px;
+    color: #767676;
+}
+
+.exit-following-modal {
+    display: flex;
+    justify-content: flex-end;
+
+    display: block;
+    cursor: pointer;
+    /* border: 1px solid red; */
+
+}
+
+.exit-modal-div {
+
+}
