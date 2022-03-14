@@ -1,11 +1,15 @@
 const GET_ALL_PINS = 'pins/GET_ALL_PINS';
 const GET_SINGLE_PIN = 'pins/GET_SINGLE_PIN';
+const GET_PIN_COMMTENTS = 'pins/GET_PIN_COMMENTS';
 
 const ADD_SINGLE_PIN = 'pins/ADD_SINGLE_PIN';
+const ADD_PIN_COMMENT = 'pins/ADD_PIN_COMMENT';
 
 const EDIT_USER_PIN = 'pins/EDIT_USER_PIN';
+const EDIT_PIN_COMMENT = 'pins/EDIT_PIN_COMMENT';
 
 const DELETE_USER_PIN = 'pins/DELETE_USER_PIN';
+const DELETE_PIN_COMMENT = 'pins/DELETE_PIN_COMMENT';
 
 //Action Creator
 export const getAllPins = (pins) => ({
@@ -18,9 +22,19 @@ export const getSinglePin = (pin) => ({
     pin
 })
 
+export const getPinComments = (comments) => ({
+    type: GET_PIN_COMMTENTS,
+    comments
+})
+
 export const addSinglePin = (pin) => ({
     type: ADD_SINGLE_PIN,
     pin
+})
+
+export const addPinComment = (comment) => ({
+    type: ADD_PIN_COMMENT,
+    comment
 })
 
 export const editSinglePin = (pin) => ({
@@ -28,9 +42,19 @@ export const editSinglePin = (pin) => ({
     pin
 })
 
+export const editPinComment = (comment) => ({
+    type: EDIT_PIN_COMMENT,
+    comment
+})
+
 export const deleteSinglePin = (pin) => ({
     type: DELETE_USER_PIN,
     pin
+})
+
+export const deletePinComment = (comment) => ({
+    type: DELETE_PIN_COMMENT,
+    comment
 })
 
 //Thunk Action Creator
@@ -55,6 +79,15 @@ export const getASinglePin = (id) => async (dispatch) => {
         dispatch(getSinglePin(data))
         // console.log("PIN THUNK", data)
         // return data
+    }
+}
+
+export const getAllPinComments = (id) => async (dispatch) => {
+    const response = await fetch(`/api/pins/${id}/comments`)
+
+    if(response.ok) {
+        const data = await response.json()
+        dispatch(getPinComments(data))
     }
 }
 
@@ -149,6 +182,10 @@ const pinReducer = (state = {}, action) => {
             newState = { ...state, ...action.pin.pin }
             // console.log("PIN STATE", newState)
             return newState
+        // case GET_PIN_COMMTENTS:
+        //     newState = {}
+
+
         case ADD_SINGLE_PIN:
             newState = { ...state, [action.pin.id]: action.pin }
             // let newPin = [...newState.pins]

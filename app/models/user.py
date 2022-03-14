@@ -41,6 +41,9 @@ class User(db.Model, UserMixin):
     #One user can have many boards
     boards = db.relationship('Board', back_populates='user')
 
+    # One user can have many comments
+    comments = db.relationship('Comment', back_populates='user')
+
     # User to user many to many for follows and following
     followers = db.relationship(
         "User",

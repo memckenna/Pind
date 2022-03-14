@@ -18,6 +18,8 @@ class Pin(db.Model):
     #One user can have many pins
     user = db.relationship('User', back_populates='pins')
 
+    comments = db.relationship('Comment', back_populates='pin', cascade="all, delete-orphan")
+
     #Many boards can have many pins
     boards = db.relationship(
         'Board',
@@ -34,6 +36,7 @@ class Pin(db.Model):
             'photo_url': self.photo_url,
             'user_id': self.user_id,
             'created_at': self.created_at,
+            'comments':[comment.to_dict() for comment in self.comments],
             # 'boards': [board.to_dict() for board in self.boards]
             # 'users': self.user.to_dict(),
 

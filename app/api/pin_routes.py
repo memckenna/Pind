@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user
 from app.forms.pin_form import CreatePinForm, EditPinForm
-from app.models import User, db, Board, Pin, Board_Pins
+from app.forms.comment_form import CreateCommentForm
+from app.models import User, db, Board, Pin, Board_Pins, Comment
 from sqlalchemy.orm import joinedload
 from app.api.auth_routes import validation_errors_to_error_messages
 
@@ -30,7 +31,6 @@ def get_pin_by_id(id):
 # def get_a_pin_by_user(id):
 #     user = User.query.get(id)
 #     following = [u.id for u in user.following]
-
 
 
 #Create a Pin
@@ -101,3 +101,26 @@ def delete_pin(id):
     db.session.delete(del_pin)
     db.session.commit()
     return {"message": "Deleted"}
+
+
+# Get all comments on a specific pin
+@pin_routes.route('/<int:id>/comments')
+@login_required
+def get_comments_by_pin(id):
+    comments_by_pin_id = Comment.query.filter(Comment.pin_id == id).all()
+    return {'comments': [comment.to_dict() for comment in comments_by_pin_id]}
+
+
+#create a comment on a pin
+@pin_routes.route('/<int:id>/comments', methods=['POST'])
+@login_required
+def comment_on_pin(id):
+    form = CreateCommentForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        content = Comment(content=form.data['content'], user_id=current_user.id, pin_id=id)
+        db.session.add(content)
+        db.session.commit()
+        return content.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
