@@ -3,10 +3,12 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
+
 }
 
 .user-profile {
     margin-top: 100px;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -41,13 +43,10 @@
     padding-bottom: 100px;
     margin-left: 135px;
     margin-right: 135px;
-
-
 }
 
 .board-card {
     /* border: 1px solid red; */
-
     box-sizing: border-box;
     max-width: 252px;
     width: 256px;
@@ -55,8 +54,6 @@
     overflow: hidden;
     padding: 8px 8px 8px 8px;
     display: block;
-
-
 }
 
 .board-img img{
@@ -94,14 +91,11 @@
     font-weight: 700;
     margin-top: 40px;
     margin-bottom: 20px;
-
 }
-
 
 .user-list-profile {
     list-style: none;
     padding: 30px 30px 30px 30px;
-
 }
 
 .username-div {
@@ -115,8 +109,6 @@
     /* display: flex; */
     padding-top: 20px;
     color: gray;
-
-
 }
 .profile-link-firstname {
     text-decoration: none;
@@ -126,7 +118,6 @@
     padding-right: 5px;
     font-size: 24px;
     font-weight: bolder;
-
 }
 .profile-link-lastname {
     text-decoration: none;
@@ -146,9 +137,7 @@
     height: 75px;
     border-radius: 50%;
     padding-right: 10px;
-
 }
-
 
 .user-profile-id-list {
     padding-top: 15px;
@@ -175,20 +164,39 @@
     box-shadow: rgb(0 0 0 / 20%) 0px 8px 28px;
     border-radius: 14px;
     padding: 20px 20px 20px 20px;
-
 }
 
 .follows-div {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .followers-btn {
-    padding: 5px 10px 5px 10px;
-    margin-right: 5px;
+    padding: 5px 10px 5px 7px;
+    font-size: 16px;
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: white;
+    border: none;
 }
 
+
 .following-btn {
-    padding: 5px 10px 5px 10px;
-    margin-left: 5px;
+    padding: 5px 10px 5px 7px;
+    font-size: 16px;
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+}
+
+.dot-separator {
+    display: flex;
+    align-self: center;
+    margin-right: 10px;
+}
+
+.fa-circle {
+    font-size: 3px;
 }

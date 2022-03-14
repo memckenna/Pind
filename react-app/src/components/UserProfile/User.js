@@ -17,7 +17,6 @@ function User() {
   const sessionUser = useSelector(state => state.session.user)
   const dispatch = useDispatch()
 
-
   useEffect(() => {
     if (!userId) {
       return;
@@ -41,42 +40,30 @@ function User() {
     setShowFollwingModal(false);
   }
 
-  // useEffect(() => {
-  //   const payload = {
-  //     user_id: sessionUser?.id
-  // }
-  // dispatch(getBoardsByUser(payload))
-
-  // }, [dispatch, sessionUser])
-
-
   if (!user) {
     return null;
   }
 
+  let userFollowers = user?.followers
+  console.log(userFollowers)
+
   return (
     <>
       <div className='profile-detail-container'>
-        <ul className='user-profile'>
-          <li>
+        <div className='user-profile'>
+          <div>
             <img className='profile-img' src={user.profile_img_url} />
-          </li>
-          {/* <li>
-            <strong>User Id</strong> {userId}
-          </li> */}
-          <li className='full-name'>
+          </div>
+          <div className='full-name'>
             {user.first_name} {user.last_name}
-          </li>
-          <li className='username'>
+          </div>
+          <div className='username'>
             @{user.username}
-          </li>
-          {/* <li>
-             {user.email}
-          </li> */}
-        </ul>
+            </div>
+        </div>
       </div>
       <div className='follows-div'>
-      {/* <b>{user?.followers.length}</b> */}
+        <b className='follower-count-user-profile'>{user?.followers?.length}</b>
         {/* <span onClick={() => handleFollower()}>followers</span> */}
         <button className='followers-btn' onClick={() => handleFollower()}>followers</button>
         {showFollowerModal && (
@@ -84,7 +71,10 @@ function User() {
             <FollowerModal onClose={onCloseModal} followers={user?.followers} id={user?.id} user={user} />
           </GetAllFollowsModal>
         )}
-        {/* <b>{user?.following.length}</b> */}
+        <div className='dot-separator'>
+          <i className="fas fa-circle"></i>
+        </div>
+        <b>{user?.following?.length}</b>
         {/* <span onClick={() => handleFollowing()}>following</span> */}
         <button className='following-btn' onClick={() => handleFollowing()}>following</button>
         {showFollowingModal && (
