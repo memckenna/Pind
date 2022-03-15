@@ -47,13 +47,13 @@ const EditCommentOnAPin = ({ id, comment, onClose }) => {
 
         const data = await dispatch(deleteACommentOnPin(id));
         await dispatch(getASinglePin(pin.id))
-        dispatch(getPinComments(pin.id))
+        await dispatch(getPinComments(pin.id))
 
         if(data?.errors){
             setErrors(data.errors)
         } else {
             onClose()
-            dispatch(getASinglePin(pin.id))
+            await dispatch(getASinglePin(pin.id))
         }
     }
 
@@ -74,14 +74,14 @@ const EditCommentOnAPin = ({ id, comment, onClose }) => {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
-                <div>
+                <div className="edit-comment-button-section">
                     <div className='create-comment-button-div'>
                         <button className='create-comment-button' type='submit'>
                             Save
                         </button>
                     </div>
                     <div>
-                        <button onClick={handleDelete} id={comment?.id} type='submit'>Delete</button>
+                        <button className='delete-comment-button' onClick={handleDelete} id={comment?.id} type='submit'>Delete</button>
                     </div>
                 </div>
             </form>
