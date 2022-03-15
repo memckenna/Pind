@@ -103,7 +103,6 @@ export const createPin = (payload) => async(dispatch) => {
             "photo_url": payload.photoUrl,
             "description": payload.description,
             "source_link": payload.sourceLink,
-            // "board_id": payload.boardId
         })
     })
     if(response.ok) {
@@ -122,12 +121,14 @@ export const createPin = (payload) => async(dispatch) => {
 }
 
 export const createCommentOnPin = (payload) => async (dispatch) => {
-    const response = await fetch(`/api/pins/${payload.post_id}/comments`, {
+    const response = await fetch(`/api/pins/${payload.pin_id}/comments`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({
+            "content": payload.content
+        })
     })
     if(response.ok) {
         const data = await response.json()
@@ -204,7 +205,7 @@ const pinReducer = (state = {}, action) => {
             return newState
         case GET_PIN_COMMTENTS:
             newState = { ...state, ...action.comments }
-            console.log("PIN COMMENT STATE", newState)
+            // console.log("PIN COMMENT STATE", newState)
             return newState
         case ADD_SINGLE_PIN:
             newState = { ...state, [action.pin.id]: action.pin }
@@ -214,13 +215,18 @@ const pinReducer = (state = {}, action) => {
             // console.log("CREATE NEW PIN STATE", newState)
             return newState
         case ADD_PIN_COMMENT:
+            // newState = { ...state, [action.comment.id]: action.comment}
             newState = { ...state }
-            for (let pin in newState) {
-                if(newState[pin].id === action.comment.post_id) {
-                    newState[pin].comments.push(action.comment)
-                    return newState
-                }
-            }
+            let newComment = [...newState.comments]
+            newComment.push(action.comment)
+            newState.comments = newComment
+            console.log("ADDDD PIN STATE", newState)
+            // for (let pin in newState) {
+            //     if(newState[pin].id === action.comment.post_id) {
+            //         newState[pin].comments.push(action.comment)
+            //         return newState
+            //     }
+            // }
             return newState
         case EDIT_USER_PIN:
             newState = { ...state }

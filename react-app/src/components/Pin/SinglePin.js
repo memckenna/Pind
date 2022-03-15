@@ -10,8 +10,9 @@ import './SinglePin.css';
 import { getAllBoardsForPin } from "../../store/boards_pins";
 import SinglePinBoardSaveModal from "../BoardPins/SinglePinBoard";
 import DisplayAllPinComments from "../PinComments/DisplayPinComments";
+import CreateCommentOnAPin from "../PinComments/CreatePinComment";
 
-
+import { getPinComments } from "../../store/pin";
 
 const SinglePin = () => {
     const dispatch = useDispatch()
@@ -19,12 +20,13 @@ const SinglePin = () => {
     const sessionUser = useSelector(state => state.session.user)
 
     const pin = useSelector(state => state.pinReducer)
-    console.log("A SINGLE PIN", pin)
+    // console.log("A SINGLE PIN", pin)
     const { pinId } = useParams()
 
     useEffect(() => {
         dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(pinId))
+        dispatch(getPinComments(pinId))
         // dispatch(getASinglePin(pin.id))
         // dispatch(getAllBoardPins(boardId))
 
@@ -63,6 +65,7 @@ const SinglePin = () => {
                         <div className="comments-div-container">
                             <div className="comments-section">Comments</div>
                             <DisplayAllPinComments comments={pin.comments} pindId={pinId} />
+                            <CreateCommentOnAPin pinId={pinId} />
                         </div>
                     </div>
                 </div>

@@ -162,7 +162,7 @@
     width: 444px;
     height: auto;
     margin-top: 30px;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .comments-section {

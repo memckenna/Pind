@@ -105,7 +105,7 @@ def delete_pin(id):
 
 # Get all comments on a specific pin
 @pin_routes.route('/<int:id>/comments')
-@login_required
+# @login_required
 def get_comments_by_pin(id):
     comments_by_pin_id = Comment.query.filter(Comment.pin_id == id).all()
     return {'comments': [comment.to_dict() for comment in comments_by_pin_id]}
@@ -119,7 +119,11 @@ def comment_on_pin(id):
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        content = Comment(content=form.data['content'], user_id=current_user.id, pin_id=id)
+        content = Comment(
+            content=form.data['content'],
+            user_id=current_user.id,
+            pin_id=id
+            )
         db.session.add(content)
         db.session.commit()
         return content.to_dict()
