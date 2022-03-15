@@ -3,8 +3,8 @@ from app.models import db, Comment
 
 def seed_comments():
     comment1 = Comment(content="Wow, I love the natural light in this kitchen", user_id=2, pin_id=1)
-    # comment2 = Comment(content="", user_id= , pin_id= )
-    # comment2 = Comment(content="", user_id= , pin_id= )
+    comment2 = Comment(content="I love the rustic wood mixed in with the white finishes", user_id= 3, pin_id=1 )
+    comment3 = Comment(content="Dream kitchen", user_id=4 , pin_id=1 )
     # comment2 = Comment(content="", user_id= , pin_id= )
     # comment2 = Comment(content="", user_id= , pin_id= )
     # comment2 = Comment(content="", user_id= , pin_id= )
@@ -12,6 +12,8 @@ def seed_comments():
     # comment2 = Comment(content="", user_id= , pin_id= )
 
     db.session.add(comment1)
+    db.session.add(comment2)
+    db.session.add(comment3)
 
     db.session.commit()
 

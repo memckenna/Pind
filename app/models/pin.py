@@ -38,6 +38,6 @@ class Pin(db.Model):
             'created_at': self.created_at,
             'comments':[comment.to_dict() for comment in self.comments],
             # 'boards': [board.to_dict() for board in self.boards]
-            # 'users': self.user.to_dict(),
+            'users': self.user.to_dict(),
 
         }

@@ -18,7 +18,7 @@ class Comment(db.Model):
             'created_at': self.created_at,
             'user_id': self.user_id,
             'pin_id': self.pin_id,
-            # 'user': self.user.to_dict()
+            'user': self.user.to_dict()
         }
 
     # comments belongs to 1 user

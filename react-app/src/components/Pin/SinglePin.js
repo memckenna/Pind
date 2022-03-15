@@ -9,7 +9,7 @@ import EditAPinModal from "./EditPin";
 import './SinglePin.css';
 import { getAllBoardsForPin } from "../../store/boards_pins";
 import SinglePinBoardSaveModal from "../BoardPins/SinglePinBoard";
-
+import DisplayAllPinComments from "../PinComments/DisplayPinComments";
 
 
 
@@ -60,6 +60,10 @@ const SinglePin = () => {
                         {/* <Link className="github-links" to={{ pathname: pin.source_link }} target="_blank">{pin.source_link}</Link> */}
                         <div className="single-pin-title">{pin.title}</div>
                         <div className="single-pin-description">{pin.description}</div>
+                        <div className="comments-div-container">
+                            <div className="comments-section">Comments</div>
+                            <DisplayAllPinComments comments={pin.comments} pindId={pinId} />
+                        </div>
                     </div>
                 </div>
             </div>

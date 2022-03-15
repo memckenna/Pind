@@ -106,12 +106,32 @@ export const createPin = (payload) => async(dispatch) => {
             // "board_id": payload.boardId
         })
     })
-
-
     if(response.ok) {
         const data = await response.json()
         // console.log("CREATE NEW PIN THUNK", data)
         dispatch(addSinglePin(data))
+        return data
+    } else if (response.status < 500) {
+        const data = await response.json()
+        if(data.errors) {
+            return data.errors
+        }
+    } else {
+        return ['An error occured. Please try again']
+    }
+}
+
+export const createCommentOnPin = (payload) => async (dispatch) => {
+    const response = await fetch(`/api/pins/${payload.post_id}/comments`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    if(response.ok) {
+        const data = await response.json()
+        dispatch(addPinComment(data))
         return data
     } else if (response.status < 500) {
         const data = await response.json()
@@ -182,16 +202,25 @@ const pinReducer = (state = {}, action) => {
             newState = { ...state, ...action.pin.pin }
             // console.log("PIN STATE", newState)
             return newState
-        // case GET_PIN_COMMTENTS:
-        //     newState = {}
-
-
+        case GET_PIN_COMMTENTS:
+            newState = { ...state, ...action.comments }
+            console.log("PIN COMMENT STATE", newState)
+            return newState
         case ADD_SINGLE_PIN:
             newState = { ...state, [action.pin.id]: action.pin }
             // let newPin = [...newState.pins]
             // newPin.push(action.pin)
             // newState.pins = newPin
             // console.log("CREATE NEW PIN STATE", newState)
+            return newState
+        case ADD_PIN_COMMENT:
+            newState = { ...state }
+            for (let pin in newState) {
+                if(newState[pin].id === action.comment.post_id) {
+                    newState[pin].comments.push(action.comment)
+                    return newState
+                }
+            }
             return newState
         case EDIT_USER_PIN:
             newState = { ...state }
