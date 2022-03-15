@@ -2,6 +2,7 @@ const GET_ALL_PINS = 'pins/GET_ALL_PINS';
 const GET_SINGLE_PIN = 'pins/GET_SINGLE_PIN';
 const GET_PIN_COMMTENTS = 'pins/GET_PIN_COMMENTS';
 
+
 const ADD_SINGLE_PIN = 'pins/ADD_SINGLE_PIN';
 const ADD_PIN_COMMENT = 'pins/ADD_PIN_COMMENT';
 
@@ -52,9 +53,9 @@ export const deleteSinglePin = (pin) => ({
     pin
 })
 
-export const deletePinComment = (comment) => ({
+export const deletePinComment = (id) => ({
     type: DELETE_PIN_COMMENT,
-    comment
+    id
 })
 
 //Thunk Action Creator
@@ -216,6 +217,21 @@ export const deleteUserPin = (id) => async (dispatch) => {
     }
 }
 
+export const deleteACommentOnPin = (id) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${id}/delete`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id })
+    })
+
+    const data = await response.json()
+    if(data.message === "Deleted") {
+        dispatch(deletePinComment(data))
+    }
+}
+
 const pinReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
@@ -258,6 +274,10 @@ const pinReducer = (state = {}, action) => {
             newState = { ...state }
             // console.log("DELETE STATE", action.pin)
             delete newState[action.pin.id]
+            return newState
+        case DELETE_PIN_COMMENT:
+            newState = { ...state }
+            delete newState[action.id]
             return newState
         default:
             return state

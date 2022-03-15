@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import { getASinglePin, createCommentOnPin, getPinComments, updatePinOnComment } from '../../store/pin';
+import { getASinglePin, createCommentOnPin, getPinComments, updatePinOnComment, deleteACommentOnPin } from '../../store/pin';
 import "./Comments.css"
 
-const EditCommentOnAPin = ({ comment, onClose }) => {
+const EditCommentOnAPin = ({ id, comment, onClose }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user);
@@ -28,12 +28,32 @@ const EditCommentOnAPin = ({ comment, onClose }) => {
 
         const data = await dispatch(updatePinOnComment(payload))
         await dispatch(getASinglePin(pin.id))
-        dispatch(getPinComments(pin.id))
+        await dispatch(getPinComments(pin.id))
+
         if(data?.errors){
             setErrors(data.errors)
         } else {
-            dispatch(getASinglePin(pin.id))
+            await dispatch(getASinglePin(pin.id))
             onClose()
+        }
+    }
+
+    const handleDelete = async(e) => {
+        e.preventDefault()
+
+        // const payload = {
+        //     id: comment?.id
+        // }
+
+        const data = await dispatch(deleteACommentOnPin(id));
+        await dispatch(getASinglePin(pin.id))
+        dispatch(getPinComments(pin.id))
+
+        if(data?.errors){
+            setErrors(data.errors)
+        } else {
+            onClose()
+            dispatch(getASinglePin(pin.id))
         }
     }
 
@@ -61,7 +81,7 @@ const EditCommentOnAPin = ({ comment, onClose }) => {
                         </button>
                     </div>
                     <div>
-                        <button>Delete</button>
+                        <button onClick={handleDelete} id={comment?.id} type='submit'>Delete</button>
                     </div>
                 </div>
             </form>

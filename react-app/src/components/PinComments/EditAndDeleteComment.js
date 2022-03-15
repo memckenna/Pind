@@ -30,7 +30,7 @@ const EditAndDeleteCommentOnAPin = ({comment}) => { //id = comment.id
                 )}
                 {showModal && (
                     <EditAndDeleteCommentModal onClose={() => setShowModal(false)}>
-                        <EditCommentOnAPin comment={comment} onClose={onCloseModal} />
+                        <EditCommentOnAPin id={comment.id} comment={comment} onClose={onCloseModal} />
                     </EditAndDeleteCommentModal >
                 )}
 
