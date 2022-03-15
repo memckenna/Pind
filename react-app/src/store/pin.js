@@ -175,6 +175,30 @@ export const updateUserPin = (payload) => async (dispatch) => {
     }
 }
 
+export const updatePinOnComment = (payload) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${payload.id}/edit`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "content": payload.content
+        })
+    })
+    if(response.ok) {
+        const data = await response.json()
+        dispatch(editPinComment(data))
+        return null
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
 //Delete users pin
 export const deleteUserPin = (id) => async (dispatch) => {
     const response = await fetch(`/api/pins/${id}/delete`, {
@@ -221,31 +245,20 @@ const pinReducer = (state = {}, action) => {
             newComment.push(action.comment)
             newState.comments = newComment
             console.log("ADDDD PIN STATE", newState)
-            // for (let pin in newState) {
-            //     if(newState[pin].id === action.comment.post_id) {
-            //         newState[pin].comments.push(action.comment)
-            //         return newState
-            //     }
-            // }
             return newState
         case EDIT_USER_PIN:
             newState = { ...state }
             newState[action.pin.id] = action.pin
+            return newState
+        case EDIT_PIN_COMMENT:
+            newState = { ...state }
+            newState[action.comment.id] = action.comment
             return newState
         case DELETE_USER_PIN:
             newState = { ...state }
             // console.log("DELETE STATE", action.pin)
             delete newState[action.pin.id]
             return newState
-        // case GET_PINS_BY_BOARD:
-        //     const allPins = []
-        //     for (let pin of action.pins['pins']) {
-        //         allPins.push(pin)
-        //     }
-        //     return { ...state, 'pins': allPins}
-
-
-
         default:
             return state
     }

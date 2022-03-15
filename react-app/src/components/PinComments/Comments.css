@@ -4,7 +4,9 @@
     display: flex;
     margin-top: 16px;
     flex-direction: column;
-
+    max-height: 200px;
+    height: auto;
+    overflow: scroll;
 
 }
 
@@ -57,12 +59,12 @@
 .create-comment-input {
     width: 380px;
     border-radius: 16px;
-    height: auto;
     min-height: 30px;
-    max-height: 200px;
+    max-height: 100px;
     padding: 12px 12px 12px 12px;
     border: 1px solid #cdcdcd;
-    overflow: visible;
+    /* height: auto; */
+    /* overflow: visible; */
     flex: 1 1 auto;
 
 

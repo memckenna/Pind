@@ -163,3 +163,33 @@ export function GetAllFollowsModal({ onClose, children }) {
         modalNode
     );
 }
+
+// export function EditAndDeleteCommentModal({ onClose, children }) {
+//     const modalNode = useContext(ModalContext);
+//     if (!modalNode) return null;
+
+//     return ReactDOM.createPortal(
+//         <div id="edit-delete-comment-modal">
+//             <div id="edit-delete-comment-modal-background" onClick={onClose} />
+//             <div id="edit-delete-comment-modal-content">
+//                 {children}
+//             </div>
+//         </div>,
+//         modalNode
+//     );
+// }
+
+export function EditAndDeleteCommentModal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+        <div id="edit-board-modal">
+            <div id="edit-board-modal-background" onClick={onClose} />
+            <div id="edit-board-modal-content">
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+}

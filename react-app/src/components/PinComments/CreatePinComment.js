@@ -10,13 +10,15 @@ const CreateCommentOnAPin = ({ pinId }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const pins = useSelector(state => state.pinReducer);
-    // console.log(pins)
+    console.log(pins)
     const [content, setContent] = useState("");
 
-    useEffect(() => {
-        dispatch(getASinglePin(pinId))
-        dispatch(getPinComments(pinId))
-    }, [])
+    // useEffect(() => {
+    //     dispatch(getASinglePin(pinId))
+    //     dispatch(getPinComments(pinId))
+    // }, [])
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -35,7 +37,7 @@ const CreateCommentOnAPin = ({ pinId }) => {
     return (
         <div className='create-comment-form-container'>
             <form className='create-comment-form' onSubmit={handleSubmit}>
-                <input
+                <textarea
                     className='create-comment-input'
                     placeholder='Add a comment'
                     value={content}
