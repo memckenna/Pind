@@ -29,7 +29,7 @@ const SinglePin = () => {
         // dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(pinId))
         dispatch(getPinComments(pinId))
-        // dispatch(followAUser(pin?.users?.id))
+        // dispatch(followAUser(pin?.user_id))
         // dispatch(getAllBoardPins(boardId))
 
     }, [dispatch, pinId, sessionUser])

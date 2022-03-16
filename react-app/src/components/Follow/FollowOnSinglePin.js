@@ -3,6 +3,7 @@ import { NavLink, Link, Redirect, useParams, useHistory } from "react-router-dom
 import { useDispatch, useSelector } from "react-redux";
 
 import { followAUser, unfollowAUser } from "../../store/board";
+import { getAllPinComments } from "../../store/pin";
 import { getASinglePin } from "../../store/pin";
 
 import './FollowOnSinglePin.css'
@@ -19,12 +20,13 @@ const FollowAUserOnSinglePin = () => {
 
     const [isFollowing, setIsFollowing] = useState(false);
 
-    // useEffect(() => {
-    //     dispatch(getASinglePin(pin?.id))
-    // }, [dispatch])
+    useEffect(() => {
+        // dispatch(getASinglePin(pin.id))
+        // dispatch(getAllPinComments(pin.id))
+    }, [dispatch, sessionUser])
 
     useEffect(() => {
-        setIsFollowing(followingList.includes(pin?.users?.id))
+        setIsFollowing(followingList.includes(pin.user_id))
     }, [])
 
     const followUser = (id) => {
@@ -56,11 +58,13 @@ const FollowAUserOnSinglePin = () => {
 
             </div>
             <div className="single-pin-follow-btn">
-                {sessionUser?.id === pin?.users?.id ?
+                {console.log("SESHH", sessionUser?.id)}
+                {console.log("USSSSSER", pin.user_id)}
+                {sessionUser?.id === pin?.user_id ?
                     <></> :
                     (isFollowing ?
-                        <button className="unfollow-modal-button" onClick={() => unfollowUser(pin.users.id)}>Following</button> :
-                        <button className="follow-modal-button" onClick={() => followUser(pin.users.id)}>Follow</button>
+                        <button className="unfollow-modal-button" onClick={() => unfollowUser(pin.user_id)}>Following</button> :
+                        <button className="follow-modal-button" onClick={() => followUser(pin.user_id)}>Follow</button>
                     )
                 }
             </div>

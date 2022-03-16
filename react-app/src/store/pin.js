@@ -5,6 +5,7 @@ const GET_PIN_COMMTENTS = 'pins/GET_PIN_COMMENTS';
 
 const ADD_SINGLE_PIN = 'pins/ADD_SINGLE_PIN';
 const ADD_PIN_COMMENT = 'pins/ADD_PIN_COMMENT';
+// const FOLLOW_USER_ON_PIN = ''
 
 const EDIT_USER_PIN = 'pins/EDIT_USER_PIN';
 const EDIT_PIN_COMMENT = 'pins/EDIT_PIN_COMMENT';

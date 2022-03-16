@@ -10,7 +10,6 @@ const CreateCommentOnAPin = ({ pinId }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const pins = useSelector(state => state.pinReducer);
-    console.log(pins)
     const [content, setContent] = useState("");
     const [disabled, setDisabled] = useState(true);
     const [showResults, setShowResults] = useState(false)

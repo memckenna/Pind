@@ -2,12 +2,12 @@ const GET_BOARD_BY_USER = 'userBoard/GET_BOARD_BY_USER';
 const GET_SINGLE_BOARD = 'userBoard/GET_SINGLE_BOARD';
 
 const ADD_BOARD = 'userBoard/ADD_BOARD';
-const FOLLOW_USER = 'user/FOLLOW_USER';
+const FOLLOW_USER = 'userBoard/FOLLOW_USER';
 
 const EDIT_USER_BOARD = 'userBoard/EDIT_USER_BOARD';
 
 const DELETE_USER_BOARD = 'userBoard/DELETE_USER_BOARD';
-const UNFOLLOW_USER = 'user/UNFOLLOW_USER';
+const UNFOLLOW_USER = 'userBoard/UNFOLLOW_USER';
 
 const GET_BOARD = 'board/GET_BOARD';
 
@@ -197,6 +197,7 @@ const boardReducer = (state = {}, action) => {
             return newState;
         case FOLLOW_USER:
             newState = { ...state }
+            // newState[action.user.id] = action.user
             console.log("FOLLLOW STATE", newState)
             return newState;
         case EDIT_USER_BOARD:
@@ -210,6 +211,7 @@ const boardReducer = (state = {}, action) => {
             return newState;
         case UNFOLLOW_USER:
             newState = { ...state }
+            // delete newState[action.user.id]
             console.log("UNFOLLOW STATE", newState)
             return newState;
         default:
