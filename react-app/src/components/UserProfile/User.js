@@ -40,6 +40,10 @@ function User() {
     setShowFollwingModal(false);
   }
 
+  useEffect(() => {
+    
+  }, [])
+
   if (!user) {
     return null;
   }

@@ -11,6 +11,7 @@ import './RenderFollowUser.css'
 const RenderFollowUser = ({ user, id }) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
+    const pin = useSelector(state => state.pinReducer)
 
     const followingList = sessionUser?.following.map(user => user?.id)
 
@@ -20,8 +21,9 @@ const RenderFollowUser = ({ user, id }) => {
         const payload = {
             user_id: sessionUser?.id
         }
-        // dispatch(getBoardsByUser(payload))
-        // dispatch(getASinglePin(pin.id))
+        dispatch(getBoardsByUser(payload))
+        dispatch(getASinglePin(pin.id))
+        dispatch(followAUser(pin.id))
     }, [dispatch, sessionUser])
 
     useEffect(() => {

@@ -3,11 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { GetAllBoardsModal } from "../../context/Modal";
 import { getBoardsByUser, getASingleBoard } from "../../store/board";
-// import { getAllPinsOnFeed } from "../../store/pin";
-// import { getASingleBoard } from "../../store/board";
 import { getASinglePin } from "../../store/pin";
-import { getAllBoardsForPin } from "../../store/boards_pins";
-import { createBoardPin } from "../../store/boards_pins";
 import GetAllBoardsForPin from "./BoardPins";
 import "./BoardPins.css"
 
@@ -24,10 +20,8 @@ const GetAllBoardsOnPinModal = ({ id }) => {  //id = pin.id
 
     useEffect(() => {
         dispatch(getBoardsByUser(sessionUser?.id))
-        dispatch(getASinglePin(id))
+        // dispatch(getASinglePin(id))
 
-        // dispatch(getASingleBoard(boardId))
-        // dispatch(createBoardPin(boardId, id))
     }, [dispatch, showModal, sessionUser])
 
     return (

@@ -26,7 +26,7 @@ const FollowAUserOnSinglePin = () => {
     }, [dispatch, sessionUser])
 
     useEffect(() => {
-        setIsFollowing(followingList.includes(pin.user_id))
+        setIsFollowing(followingList.includes(pin?.user_id))
     }, [])
 
     const followUser = (id) => {
@@ -45,7 +45,7 @@ const FollowAUserOnSinglePin = () => {
     return (
         <div className="single-pin-follow-container">
             <div className="single-pin-follow-user">
-                <Link to={`/users/${pin.user_id}`}>
+                <Link to={`/users/${pin?.user_id}`}>
                     <img className="single-pin-follow-img" src={pin?.users?.profile_img_url} />
                 </Link>
                 <div className="single-pin-follow-user-info">
@@ -63,8 +63,8 @@ const FollowAUserOnSinglePin = () => {
                 {sessionUser?.id === pin?.user_id ?
                     <></> :
                     (isFollowing ?
-                        <button className="unfollow-modal-button" onClick={() => unfollowUser(pin.user_id)}>Following</button> :
-                        <button className="follow-modal-button" onClick={() => followUser(pin.user_id)}>Follow</button>
+                        <button className="unfollow-modal-button" onClick={() => unfollowUser(pin?.user_id)}>Following</button> :
+                        <button className="follow-modal-button" onClick={() => followUser(pin?.user_id)}>Follow</button>
                     )
                 }
             </div>

@@ -12,7 +12,7 @@ import SinglePinBoardSaveModal from "../BoardPins/SinglePinBoard";
 import DisplayAllPinComments from "../PinComments/DisplayPinComments";
 import CreateCommentOnAPin from "../PinComments/CreatePinComment";
 
-import { getPinComments } from "../../store/pin";
+import { getAllPinComments } from "../../store/pin";
 import { followAUser } from "../../store/board";
 import FollowAUserOnSinglePin from "../Follow/FollowOnSinglePin";
 
@@ -26,10 +26,11 @@ const SinglePin = () => {
     const { pinId } = useParams()
 
     useEffect(() => {
-        // dispatch(getBoardsByUser(sessionUser?.id))
+        dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(pinId))
-        dispatch(getPinComments(pinId))
-        // dispatch(followAUser(pin?.user_id))
+        dispatch(getAllPinComments(pinId))
+        dispatch(followAUser(sessionUser?.id))
+        // dispatch(followAUser(pin.user_id))
         // dispatch(getAllBoardPins(boardId))
 
     }, [dispatch, pinId, sessionUser])
@@ -65,7 +66,7 @@ const SinglePin = () => {
                         <div className="single-pin-title">{pin.title}</div>
                         <div className="single-pin-description">{pin.description}</div>
                         <div>
-                            <FollowAUserOnSinglePin />
+                            <FollowAUserOnSinglePin  />
                         </div>
                         <div className="comments-div-container">
                             <div className="comments-section">Comments</div>

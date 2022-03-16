@@ -9,13 +9,12 @@ import './PinFeedPage.css'
 
 const PinFeedPage = () => {
     const dispatch = useDispatch()
-    // const sessionUser = useSelector(state => state.session.user)
     const pins = useSelector(state => state.pinReducer)
 
     useEffect(() => {
         dispatch(getAllPinsOnFeed())
         // dispatch(getASinglePin(pinId))
-        dispatch(getASinglePin(pins?.id))
+        // dispatch(getASinglePin(pins?.id))
     }, [dispatch])
 
 
@@ -32,8 +31,6 @@ const PinFeedPage = () => {
                             </NavLink>
                         </div>
                         <div className="pin-feed-title">{pin.title}</div>
-
-
                     </div>
                 ))}
             </div>
