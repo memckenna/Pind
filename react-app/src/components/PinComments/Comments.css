@@ -15,7 +15,8 @@
     display: flex;
     align-items: center;
     padding-top: 16px;
-    padding-bottom: 16px;
+    padding-bottom: 5px;
+    /* padding-bottom: 16px; */
 
 }
 
@@ -57,24 +58,54 @@
 }
 
 .create-comment-input {
+    border-radius: 56px;
     width: 380px;
+    height: 28px;
+    padding: 12px 12px 10px 12px;
+    border: 1px solid #cdcdcd;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    display: block;
+    font-size: 16px;
+    outline: 0px;
+    overflow-x: hidden;
+    resize: none;
+    white-space: pre-wrap;
+    overflow: auto;
+}
+
+.create-comment-input:focus {
     border-radius: 16px;
+
+    width: 380px;
     min-height: 30px;
     max-height: 100px;
     padding: 12px 12px 12px 12px;
     border: 1px solid #cdcdcd;
-    /* height: auto; */
-    /* overflow: visible; */
-    flex: 1 1 auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
+    display: block;
+    font-size: 16px;
+    outline: 0px;
+    overflow-x: hidden;
+    resize: none;
+    white-space: pre-wrap;
+    overflow: auto;
 
+}
+
+.done-cancel-btn-div {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .create-comment-button-div {
     display: flex;
-    justify-content: flex-end;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-left: 8px;
+    /* justify-content: flex-end; */
 }
 
 .create-comment-button {
@@ -85,7 +116,23 @@
     font-weight: bold;
     background-color: #efefef;
     border: none;
+    cursor: pointer;
 }
+.delete-comment-btn {
+    width: 65px;
+    height: 40px;
+    border-radius: 24px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #efefef;
+    border: none;
+    cursor: pointer;
+
+}
+
+
+
+
 
 .edit-comment-button-section {
     display: flex;
@@ -103,4 +150,23 @@
     background-color: red;
     border: none;
     color: white;
+}
+
+
+.comment-feed-edit-btn-div {
+    display: flex;
+    padding-left: 70px;
+    margin-top: 0;
+
+}
+
+.comment-feed-edit-btn {
+    background-color: white;
+    border: none;
+
+}
+
+.comment-edit-icon {
+    font-size: 18px;
+    color: #767676;
 }

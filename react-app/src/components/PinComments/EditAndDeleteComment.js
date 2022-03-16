@@ -19,10 +19,10 @@ const EditAndDeleteCommentOnAPin = ({comment}) => { //id = comment.id
         <>
             <div>
                 {sessionUser?.id === comment?.user_id && (
-                    <div>
-                        <button onClick={() => setShowModal(true)}>
+                    <div className="comment-feed-edit-btn-div">
+                        <button className="comment-feed-edit-btn" onClick={() => setShowModal(true)}>
                             <i
-                                className="fas fa-ellipsis-h"
+                                className="fas fa-ellipsis-h comment-edit-icon"
                                 onClick={() => setShowModal(true)}
                             ></i>
                         </button>
