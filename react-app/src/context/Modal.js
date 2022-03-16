@@ -154,9 +154,9 @@ export function GetAllFollowsModal({ onClose, children }) {
     if (!modalNode) return null;
 
     return ReactDOM.createPortal(
-        <div id="boardpin-modal">
-            <div id="boardpin-modal-background" onClick={onClose} />
-            <div id="boardpin-modal-content">
+        <div id="follows-modal">
+            <div id="follows-modal-background" onClick={onClose} />
+            <div id="follows-modal-content">
                 {children}
             </div>
         </div>,

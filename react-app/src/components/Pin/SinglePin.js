@@ -13,6 +13,8 @@ import DisplayAllPinComments from "../PinComments/DisplayPinComments";
 import CreateCommentOnAPin from "../PinComments/CreatePinComment";
 
 import { getPinComments } from "../../store/pin";
+import { followAUser } from "../../store/board";
+import FollowAUserOnSinglePin from "../Follow/FollowOnSinglePin";
 
 const SinglePin = () => {
     const dispatch = useDispatch()
@@ -24,10 +26,10 @@ const SinglePin = () => {
     const { pinId } = useParams()
 
     useEffect(() => {
-        dispatch(getBoardsByUser(sessionUser?.id))
+        // dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(pinId))
         dispatch(getPinComments(pinId))
-        // dispatch(getASinglePin(pin.id))
+        // dispatch(followAUser(pin?.users?.id))
         // dispatch(getAllBoardPins(boardId))
 
     }, [dispatch, pinId, sessionUser])
@@ -62,6 +64,9 @@ const SinglePin = () => {
                         {/* <Link className="github-links" to={{ pathname: pin.source_link }} target="_blank">{pin.source_link}</Link> */}
                         <div className="single-pin-title">{pin.title}</div>
                         <div className="single-pin-description">{pin.description}</div>
+                        <div>
+                            <FollowAUserOnSinglePin />
+                        </div>
                         <div className="comments-div-container">
                             <div className="comments-section">Comments</div>
                             <DisplayAllPinComments comments={pin.comments} pindId={pinId} />

@@ -12,12 +12,15 @@
     /* border-bottom: 1px solid #efefef; */
 }
 
-.followers-title-section {
-
+.follower-header-sec {
     display: flex;
+    align-items: center;
+}
 
-    margin-left: 64px;
-    margin-right: 64px;
+.followers-title-section {
+    display: flex;
+    margin-left: 154px;
+    margin-right: 154px;
 }
 
 .followers-title {

@@ -72,7 +72,8 @@
     border-bottom-left-radius: 24px;
     max-width: 508px;
     width: 508px;
-    max-height: 950px;
+    max-height: 700px;
+    /* max-height: 950px; */
     /* width: 100%; */
     height: auto;
 }

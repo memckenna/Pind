@@ -13,13 +13,8 @@ const CreateCommentOnAPin = ({ pinId }) => {
     console.log(pins)
     const [content, setContent] = useState("");
     const [disabled, setDisabled] = useState(true);
-
-    // useEffect(() => {
-        //     dispatch(getASinglePin(pinId))
-        //     dispatch(getPinComments(pinId))
-        // }, [])
-    const [hidden, setHidden] = useState(true)
     const [showResults, setShowResults] = useState(false)
+
     const onClick = () => setShowResults(true)
     const onCancel = () => {
         setShowResults(false)
@@ -27,12 +22,8 @@ const CreateCommentOnAPin = ({ pinId }) => {
     }
 
     useEffect(() => {
-        if(content.length > 0) {
-            setDisabled(false)
-        } else {
-            setDisabled(true)
-        }
-
+        if(content.length > 0) setDisabled(false)
+        else setDisabled(true)
     }, [disabled, content])
 
 

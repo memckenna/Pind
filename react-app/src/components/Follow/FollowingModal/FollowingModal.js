@@ -21,14 +21,17 @@ const FollowingModal = ({ following, onClose }) => {   //id = userId
     return (
         <>
             <div className="following-header">
-                <div className="following-title-section">
-                    <div className="following-count">{following.length}</div>
-                    <div className="following-title">Following</div>
-                </div>
-                <div className="exit-following-modal">
-                    <div onClick={onClose} className="exit-modal-div">
-                        <i className="fas fa-times"></i>
+                <div className="following-header-sec">
+                    <div className="following-title-section">
+                        <div className="following-count">{following.length}</div>
+                        <div className="following-title">Following</div>
                     </div>
+                    <div className="exit-following-modal">
+                        <div onClick={onClose} className="exit-modal-div">
+                            <i className="fas fa-times"></i>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             {following?.map(user =>

@@ -49,7 +49,7 @@ const RenderFollowUser = ({ user, id }) => {
                 </Link>
                 <div className="follow-modal-name">
                     <Link to={`/users/${user?.id}`}></Link>
-                    <p>{user?.first_name}{user?.last_name}</p>
+                    <p>{user?.first_name} {user?.last_name}</p>
                 </div>
             </div>
             <div className="follow-modal-button-div">
