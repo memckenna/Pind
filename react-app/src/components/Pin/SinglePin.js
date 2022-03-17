@@ -7,13 +7,13 @@ import { getBoardsByUser } from "../../store/board";
 import GetAllBoardsForPin from "../BoardPins/BoardPins";
 import EditAPinModal from "./EditPin";
 import './SinglePin.css';
-import { getAllBoardsForPin } from "../../store/boards_pins";
-import SinglePinBoardSaveModal from "../BoardPins/SinglePinBoard";
+// import { getAllBoardsForPin } from "../../store/boards_pins";
+// import SinglePinBoardSaveModal from "../BoardPins/SinglePinBoard";
 import DisplayAllPinComments from "../PinComments/DisplayPinComments";
 import CreateCommentOnAPin from "../PinComments/CreatePinComment";
 
 import { getAllPinComments } from "../../store/pin";
-import { followAUser } from "../../store/board";
+// import { followAUser } from "../../store/session";
 import FollowAUserOnSinglePin from "../Follow/FollowOnSinglePin";
 
 const SinglePin = () => {
@@ -29,10 +29,6 @@ const SinglePin = () => {
         dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(pinId))
         dispatch(getAllPinComments(pinId))
-        dispatch(followAUser(sessionUser?.id))
-        // dispatch(followAUser(pin.user_id))
-        // dispatch(getAllBoardPins(boardId))
-
     }, [dispatch, pinId, sessionUser])
 
     const goBack = () => {
@@ -66,7 +62,7 @@ const SinglePin = () => {
                         <div className="single-pin-title">{pin.title}</div>
                         <div className="single-pin-description">{pin.description}</div>
                         <div>
-                            <FollowAUserOnSinglePin  />
+                            <FollowAUserOnSinglePin sessionUser={sessionUser} pinId={pin.user_id}   />
                         </div>
                         <div className="comments-div-container">
                             <div className="comments-section">Comments</div>

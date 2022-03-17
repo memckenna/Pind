@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 
-import { followAUser, unfollowAUser } from "../../../store/board";
+import { followAUser, unfollowAUser } from "../../../store/session";
 import { getBoardsByUser } from "../../../store/board";
 import { getASinglePin } from "../../../store/pin";
 
@@ -18,12 +18,8 @@ const RenderFollowUser = ({ user, id }) => {
     const [isFollowing, setIsFollowing] = useState(false);
 
     useEffect(() => {
-        const payload = {
-            user_id: sessionUser?.id
-        }
-        dispatch(getBoardsByUser(payload))
-        dispatch(getASinglePin(pin.id))
-        // dispatch(followAUser(pin.id))
+        dispatch(getBoardsByUser(sessionUser?.id))
+        // dispatch(getASinglePin(pin?.id))
     }, [dispatch, sessionUser])
 
     useEffect(() => {

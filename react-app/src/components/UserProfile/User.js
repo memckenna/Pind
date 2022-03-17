@@ -41,8 +41,9 @@ function User() {
   }
 
   useEffect(() => {
-    
-  }, [])
+
+  }, [dispatch])
+
 
   if (!user) {
     return null;
@@ -60,11 +61,16 @@ function User() {
           </div>
           <div className='username'>
             @{user.username}
-            </div>
+          </div>
         </div>
       </div>
       <div className='follows-div'>
-        <b className='follower-count-user-profile'>{user?.followers?.length}</b>
+        <b className='follower-count-user-profile'>
+          {user?.id === sessionUser?.id ?
+            sessionUser?.followers?.length :
+            user?.followers?.length
+          }
+        </b>
         {/* <span onClick={() => handleFollower()}>followers</span> */}
         <button className='followers-btn' onClick={() => handleFollower()}>followers</button>
         {showFollowerModal && (
@@ -75,7 +81,12 @@ function User() {
         <div className='dot-separator'>
           <i className="fas fa-circle"></i>
         </div>
-        <b>{user?.following?.length}</b>
+        <b>
+          {user?.id === sessionUser?.id ?
+            sessionUser?.following?.length :
+            user?.following?.length
+          }
+        </b>
         {/* <span onClick={() => handleFollowing()}>following</span> */}
         <button className='following-btn' onClick={() => handleFollowing()}>following</button>
         {showFollowingModal && (

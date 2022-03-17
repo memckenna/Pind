@@ -26,7 +26,7 @@ def user(id):
 def get_boards_by_user(id):
     print('in route ****************************************')
     user = User.query.get(id)
-    
+
     boards_by_id = db.session.query(Board) \
                         .filter(Board.user_id == user.id)\
                         .options(joinedload(Board.pins)).all()
@@ -69,6 +69,8 @@ def unfollow_user(id):
     if(user in current_user.following):
         current_user.following.remove(user)
         db.session.commit()
-        return {'users': [*current_user.to_dict()["following"]]}
+        # return {'users': [*current_user.to_dict()["following"]]}
+        return user.to_dict()
     else:
-        return {'users': [*current_user.to_dict()["following"]]}
+        # return {'users': [*current_user.to_dict()["following"]]}
+        return user.to_dict()
