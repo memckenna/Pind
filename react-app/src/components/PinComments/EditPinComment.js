@@ -59,7 +59,8 @@ const EditCommentOnAPin = ({ id, comment, onClose }) => {
 
 
     return (
-        <div>
+        <div className='edit-comment-form'>
+            <h2>Edit comment</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     {errors?.map((error, ind) => (
@@ -75,8 +76,8 @@ const EditCommentOnAPin = ({ id, comment, onClose }) => {
                     onChange={(e) => setContent(e.target.value)}
                 />
                 <div className="edit-comment-button-section">
-                    <div className='create-comment-button-div'>
-                        <button className='create-comment-button' type='submit'>
+                    <div className='edit-comment-button-div'>
+                        <button className='edit-comment-button' type='submit'>
                             Save
                         </button>
                     </div>

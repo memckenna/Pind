@@ -23,7 +23,7 @@ const RenderFollowUser = ({ user, id }) => {
         }
         dispatch(getBoardsByUser(payload))
         dispatch(getASinglePin(pin.id))
-        dispatch(followAUser(pin.id))
+        // dispatch(followAUser(pin.id))
     }, [dispatch, sessionUser])
 
     useEffect(() => {
