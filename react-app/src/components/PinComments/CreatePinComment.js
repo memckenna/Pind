@@ -13,7 +13,7 @@ const CreateCommentOnAPin = ({ pinId }) => {
     const [content, setContent] = useState("");
     const [disabled, setDisabled] = useState(true);
     const [showResults, setShowResults] = useState(false)
-
+    console.log(pins)
     const onClick = () => setShowResults(true)
     const onCancel = () => {
         setShowResults(false)
@@ -36,7 +36,7 @@ const CreateCommentOnAPin = ({ pinId }) => {
         };
         dispatch(createCommentOnPin(payload))
         dispatch(getPinComments(pinId))
-        dispatch(getASinglePin(pinId))
+        // dispatch(getASinglePin(pinId))
         setContent("");
     }
 

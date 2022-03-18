@@ -261,7 +261,7 @@ const pinReducer = (state = {}, action) => {
             let newComment = [...newState.comments]
             newComment.push(action.comment)
             newState.comments = newComment
-            console.log("ADDDD PIN STATE", newState)
+            console.log("ADDDD PIN COMMENT STATE", newState)
             return newState
         case EDIT_USER_PIN:
             newState = { ...state }

@@ -13,7 +13,7 @@ const EditABoardForm = ({ id, onClose }) => {
     const board = useSelector(state => state.board);
     const sessionUser = useSelector(state => state.session.user)
 
-    let boardToEdit = board.boards.filter((board) => board.id === +id)
+    let boardToEdit = board.boards.filter((board) => board?.id === +id)
 
     if(boardToEdit) {
         localStorage.setItem("title", boardToEdit[0].title)
@@ -25,18 +25,6 @@ const EditABoardForm = ({ id, onClose }) => {
     // const [description, setDescription] = useState("")
     const [disabled, setDisabled] = useState(true);
     const [errors, setErrors] = useState([]);
-
-    // const name = localStorage.getItem("description")
-    // console.log(name)
-
-    // if(name !== "null") {
-    //     console.log(typeof name)
-    //     console.log("sdfghjkls")
-    //     setDescription(localStorage.getItem("description"))
-    // }
-    // useEffect(() => {
-
-    // }, [dispatch])
 
     useEffect(() => {
         if(title.length > 0) {

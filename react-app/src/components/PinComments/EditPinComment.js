@@ -15,6 +15,7 @@ const EditCommentOnAPin = ({ id, comment, onClose }) => {
     const [content, setContent] = useState(comment?.content);
     const [errors, setErrors] = useState([])
 
+    useEffect(() => {},[dispatch])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -27,13 +28,13 @@ const EditCommentOnAPin = ({ id, comment, onClose }) => {
         }
 
         const data = await dispatch(updatePinOnComment(payload))
-        await dispatch(getASinglePin(pin.id))
-        await dispatch(getPinComments(pin.id))
+        dispatch(getASinglePin(pin?.id))
+        dispatch(getPinComments(pin?.id))
 
         if(data?.errors){
             setErrors(data.errors)
         } else {
-            await dispatch(getASinglePin(pin.id))
+            dispatch(getASinglePin(pin?.id))
             onClose()
         }
     }
@@ -41,19 +42,15 @@ const EditCommentOnAPin = ({ id, comment, onClose }) => {
     const handleDelete = async(e) => {
         e.preventDefault()
 
-        // const payload = {
-        //     id: comment?.id
-        // }
-
         const data = await dispatch(deleteACommentOnPin(id));
-        await dispatch(getASinglePin(pin.id))
-        await dispatch(getPinComments(pin.id))
+        dispatch(getASinglePin(pin?.id))
+        dispatch(getPinComments(pin?.id))
 
         if(data?.errors){
             setErrors(data.errors)
         } else {
             onClose()
-            await dispatch(getASinglePin(pin.id))
+            dispatch(getASinglePin(pin?.id))
         }
     }
 

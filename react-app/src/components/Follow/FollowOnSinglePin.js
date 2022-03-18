@@ -19,9 +19,9 @@ const FollowAUserOnSinglePin = ({ sessionUser, pinId }) => {
 
     useEffect(() => {
 
-        console.log("first useEffect")
+        // console.log("first useEffect")
         setIsFollowing(followingList?.includes(pin?.user_id))
-        console.log(followingList, pinId)
+        // console.log(followingList, pinId)
     }, [dispatch, sessionUser, followingList, pin])
 
 
