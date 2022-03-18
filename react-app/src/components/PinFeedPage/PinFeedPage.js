@@ -9,14 +9,12 @@ import './PinFeedPage.css'
 
 const PinFeedPage = () => {
     const dispatch = useDispatch()
-    // const sessionUser = useSelector(state => state.session.user)
     const pins = useSelector(state => state.pinReducer)
-    // const pinId = useSelector(state => state.pinReducer?.id)
-    // console.log(pinId)
+
     useEffect(() => {
         dispatch(getAllPinsOnFeed())
         // dispatch(getASinglePin(pinId))
-        dispatch(getASinglePin(pins?.id))
+        // dispatch(getASinglePin(pins?.id))
     }, [dispatch])
 
 
@@ -28,13 +26,11 @@ const PinFeedPage = () => {
                     <div key={pin.id} className="pin-feed-card">
                         <div className="pin-feed-image-container">
                             <GetAllBoardsOnPinModal id={pin.id} />
-                            <NavLink to={`/pins/${pin.id}`}>
+                            <NavLink to={`/pins/${pin?.id}`}>
                                 <img className="pin-feed-image" src={pin.photo_url} />
                             </NavLink>
                         </div>
                         <div className="pin-feed-title">{pin.title}</div>
-
-
                     </div>
                 ))}
             </div>

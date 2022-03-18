@@ -8,17 +8,13 @@ import './EditBoard.css';
 const EditUserBoardModal = ({id, user, board}) => {    //id = boardId
     const [showModal, setShowModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
-    // console.log("ID", id)
-    // console.log("BOARD", board)
-    // console.log("USER", user)
+
     // let userOfBoard = board.boards.filter((board) => board.user_id === +sessionUser.id)
-    // console.log("THIS IS USER OF BOARD", userOfBoard[0].user_id)
 
     const onCloseModal = () => {
         setShowModal(false)
         // if (onCloseMenuModal) {
         //     onCloseMenuModal()
-
         // }
     }
 

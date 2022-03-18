@@ -1,6 +1,8 @@
 .follow-modal-container {
     display: flex;
-    padding: 10px 5px;
+    padding: 10px 10px;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .follow-modal-div {

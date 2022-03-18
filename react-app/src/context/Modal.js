@@ -154,9 +154,39 @@ export function GetAllFollowsModal({ onClose, children }) {
     if (!modalNode) return null;
 
     return ReactDOM.createPortal(
-        <div id="boardpin-modal">
-            <div id="boardpin-modal-background" onClick={onClose} />
-            <div id="boardpin-modal-content">
+        <div id="follows-modal">
+            <div id="follows-modal-background" onClick={onClose} />
+            <div id="follows-modal-content">
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+}
+
+// export function EditAndDeleteCommentModal({ onClose, children }) {
+//     const modalNode = useContext(ModalContext);
+//     if (!modalNode) return null;
+
+//     return ReactDOM.createPortal(
+//         <div id="edit-delete-comment-modal">
+//             <div id="edit-delete-comment-modal-background" onClick={onClose} />
+//             <div id="edit-delete-comment-modal-content">
+//                 {children}
+//             </div>
+//         </div>,
+//         modalNode
+//     );
+// }
+
+export function EditAndDeleteCommentModal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+        <div id="edit-comment-modal">
+            <div id="edit-comment-modal-background" onClick={onClose} />
+            <div id="edit-comment-modal-content">
                 {children}
             </div>
         </div>,

@@ -41,6 +41,9 @@ class User(db.Model, UserMixin):
     #One user can have many boards
     boards = db.relationship('Board', back_populates='user')
 
+    # One user can have many comments
+    comments = db.relationship('Comment', back_populates='user')
+
     # User to user many to many for follows and following
     followers = db.relationship(
         "User",
@@ -62,8 +65,8 @@ class User(db.Model, UserMixin):
             'age': self.age,
             'profile_img_url': self.profile_img_url,
             'created_at': self.created_at,
-            'boards': [board.to_dict() for board in self.boards],
-            'pins': [pin.to_dict() for pin in self.pins],
+            # 'boards': [board.to_dict() for board in self.boards],
+            # 'pins': [pin.to_dict() for pin in self.pins],
         }
 
 
@@ -78,8 +81,8 @@ class User(db.Model, UserMixin):
             'age': self.age,
             'profile_img_url': self.profile_img_url,
             'created_at': self.created_at,
-            'boards': [board.to_dict() for board in self.boards],
-            'pins': [pin.to_dict() for pin in self.pins],
+            # 'boards': [board.to_dict() for board in self.boards],
+            # 'pins': [pin.to_dict() for pin in self.pins],
             'followers': [follower.f_to_dict() for follower in self.followers],
             'following': [follow.f_to_dict() for follow in self.following],
         }

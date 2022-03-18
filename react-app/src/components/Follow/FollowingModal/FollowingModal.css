@@ -9,14 +9,18 @@
     font-weight: bolder;
     padding-bottom: 20px;
     border-bottom: 1px solid #ddd;
-    
+
+}
+.following-header-sec {
+    display: flex;
+    align-items: center;
 }
 
 .following-title-section {
     display: flex;
 
-    margin-left: 64px;
-    margin-right: 64px;
+    margin-left: 154px;
+    margin-right: 154px;
 }
 
 
@@ -33,14 +37,15 @@
 
 .exit-following-modal {
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
 
-    display: block;
+    /* display: block; */
     cursor: pointer;
     /* border: 1px solid red; */
 
 }
 
 .exit-modal-div {
-
+    display: flex;
+    justify-content: flex-end;
 }

@@ -7,12 +7,14 @@ import { getBoardsByUser } from "../../store/board";
 import GetAllBoardsForPin from "../BoardPins/BoardPins";
 import EditAPinModal from "./EditPin";
 import './SinglePin.css';
-import { getAllBoardsForPin } from "../../store/boards_pins";
-import SinglePinBoardSaveModal from "../BoardPins/SinglePinBoard";
+// import { getAllBoardsForPin } from "../../store/boards_pins";
+// import SinglePinBoardSaveModal from "../BoardPins/SinglePinBoard";
+import DisplayAllPinComments from "../PinComments/DisplayPinComments";
+import CreateCommentOnAPin from "../PinComments/CreatePinComment";
 
-// import GetAllBoardsOnPinModal from "../BoardPins";
-// import { getAllBoardPins } from "../../store/boards_pins";
-
+import { getAllPinComments } from "../../store/pin";
+// import { followAUser } from "../../store/session";
+import FollowAUserOnSinglePin from "../Follow/FollowOnSinglePin";
 
 const SinglePin = () => {
     const dispatch = useDispatch()
@@ -20,15 +22,13 @@ const SinglePin = () => {
     const sessionUser = useSelector(state => state.session.user)
 
     const pin = useSelector(state => state.pinReducer)
-    console.log("A SINGLE PIN", pin)
+    // console.log("A SINGLE PIN", pin)
     const { pinId } = useParams()
 
     useEffect(() => {
         dispatch(getBoardsByUser(sessionUser?.id))
         dispatch(getASinglePin(pinId))
-        // dispatch(getASinglePin(pin.id))
-        // dispatch(getAllBoardPins(boardId))
-
+        dispatch(getAllPinComments(pinId))
     }, [dispatch, pinId, sessionUser])
 
     const goBack = () => {
@@ -61,6 +61,14 @@ const SinglePin = () => {
                         {/* <Link className="github-links" to={{ pathname: pin.source_link }} target="_blank">{pin.source_link}</Link> */}
                         <div className="single-pin-title">{pin.title}</div>
                         <div className="single-pin-description">{pin.description}</div>
+                        <div>
+                            <FollowAUserOnSinglePin sessionUser={sessionUser} pinId={pin.user_id}   />
+                        </div>
+                        <div className="comments-div-container">
+                            <div className="comments-section">Comments</div>
+                            <DisplayAllPinComments comments={pin.comments} pindId={pinId} />
+                            <CreateCommentOnAPin pinId={pinId} />
+                        </div>
                     </div>
                 </div>
             </div>

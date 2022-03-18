@@ -2,30 +2,32 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 
-import { followAUser, unfollowAUser } from "../../../store/board";
+import { followAUser, unfollowAUser } from "../../../store/session";
 import { getBoardsByUser } from "../../../store/board";
 import { getASinglePin } from "../../../store/pin";
 
 import './RenderFollowUser.css'
 
-const RenderFollowUser = ({ user, id }) => {
+const RenderFollowUser = ({ sessionUser, user, id }) => {
     const dispatch = useDispatch()
-    const sessionUser = useSelector(state => state.session.user)
- 
-    const followingList = sessionUser?.following.map(user => user?.id)
+    // const sessionUser = useSelector(state => state.session.user)
+    const pin = useSelector(state => state.pinReducer)
+    // console.log(sessionUser)
+    // const followingList = sessionUser?.following.map(user => user?.id)
 
     const [isFollowing, setIsFollowing] = useState(false);
+    const [followingList, setFollowingList] = useState([])
+
 
     useEffect(() => {
-        const payload = {
-            user_id: sessionUser?.id
-        }
-        // dispatch(getBoardsByUser(payload))
-        // dispatch(getASinglePin(pin.id))
-    }, [dispatch, sessionUser])
+        // dispatch(getBoardsByUser(sessionUser?.id))
+        setIsFollowing(followingList?.includes(user?.id))
+
+    }, [dispatch, sessionUser, followingList, user])
 
     useEffect(() => {
-        setIsFollowing(followingList.includes(user.id))
+        setIsFollowing(followingList?.includes(user?.id))
+        setFollowingList(sessionUser?.following?.map(user => user?.id))
     }, [])
 
     const followUser = (id) => {
@@ -34,26 +36,28 @@ const RenderFollowUser = ({ user, id }) => {
         return dispatch(followAUser(id))
     }
 
+
     const unfollowUser = (id) => {
         const index = followingList.indexOf(id)
         followingList.splice(index, 1)
-        setIsFollowing(false)
+        // setIsFollowing(false)
+        setIsFollowing(followingList?.includes(user?.id))
         return dispatch(unfollowAUser(id))
     }
 
     return (
         <div className="follow-modal-container">
             <div className="follow-modal-div">
-                <Link to={`/users/${user.id}`}>
-                    <img className="follow-modal-img" src={user.profile_img_url} />
+                <Link to={`/users/${user?.id}`}>
+                    <img className="follow-modal-img" src={user?.profile_img_url} />
                 </Link>
                 <div className="follow-modal-name">
-                    <Link to={`/users/${user.id}`}></Link>
-                    <p>{user.first_name}{user.last_name}</p>
+                    <Link to={`/users/${user?.id}`}></Link>
+                    <p>{user?.first_name} {user?.last_name}</p>
                 </div>
             </div>
             <div className="follow-modal-button-div">
-                {sessionUser.id === user.id ?
+                {sessionUser?.id === user?.id ?
                     <></> :
                     (isFollowing ?
                         <button className="unfollow-modal-button" onClick={() => unfollowUser(user?.id)}>Following</button> :

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Redirect, useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createBoardPin, getAllBoardsForPin } from "../../store/boards_pins";
 import { getBoardsByUser } from "../../store/board";
 import { getASinglePin } from "../../store/pin";
 import BoardPinSelectionDetails from "./BoardPinDetails";
@@ -19,8 +18,7 @@ const GetAllBoardsForPin = ({ id, onClose }) => { //id = pin.id
 
     useEffect(() => {
         dispatch(getBoardsByUser(sessionUser?.id))
-        dispatch(getASinglePin(id))
-        // dispatch(createBoardPin(boardId, id))
+        // dispatch(getASinglePin(id))
     }, [dispatch, sessionUser, boardId, id])
 
 
@@ -29,7 +27,6 @@ const GetAllBoardsForPin = ({ id, onClose }) => { //id = pin.id
             <div className="board-pins-container">
                 {boards.boards?.map(board => (
                     <div key={board.id} className="board-pin-details-div">
-                        {/* {console.log("BOARD IN COMP", board)} */}
                         <div className="board-pin-details">
                             <BoardPinSelectionDetails onClose={onClose} id={id} board={board} />
                         </div>

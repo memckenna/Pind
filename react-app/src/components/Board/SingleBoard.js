@@ -5,6 +5,7 @@ import { getASingleBoard } from "../../store/board";
 import { getAllBoardPins } from "../../store/boards_pins";
 import { getASinglePin } from "../../store/pin";
 import GetAllBoardsOnPinModal from "../BoardPins";
+// import EditSingleBoardPageModal from "./EditABoard/EditSingleBoardPageModal";
 
 import "./SingleBoard.css"
 
@@ -14,7 +15,7 @@ const SingleBoard = () => {
     const pinsByBoard = useSelector(state => state.board)
     const pins = useSelector(state => state.pinReducer)
     const boardPins = useSelector(state => state.boardPin)
-
+    console.log(pinsByBoard)
     //CHECK BOARD PINS REDUCER
     const sessionUser = useSelector((state) => state.session.user);
 
@@ -32,10 +33,11 @@ const SingleBoard = () => {
 
     return (
         <>
-            <div>
+            <div className="board-page-header">
                 <div className="board-title-header">{pinsByBoard.title}</div>
-                <div>
-
+                {/* <EditSingleBoardPageModal /> */}
+                <div className="board-profile-img-div">
+                    <img className="board-profile-img" src={pinsByBoard?.users?.profile_img_url} />
                 </div>
             </div>
             <div onClick={goBack} className="single-board-profile-img-div">

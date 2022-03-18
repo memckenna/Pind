@@ -72,7 +72,8 @@
     border-bottom-left-radius: 24px;
     max-width: 508px;
     width: 508px;
-    max-height: 950px;
+    max-height: 700px;
+    /* max-height: 950px; */
     /* width: 100%; */
     height: auto;
 }
@@ -152,10 +153,22 @@
 
 .single-pin-description {
     font-size: 15px;
-
-
 }
 
 .github-links {
     text-decoration: underline;
+}
+
+.comments-div-container {
+    width: 444px;
+    height: auto;
+    margin-top: 30px;
+    overflow: scroll;
+}
+
+.comments-section {
+    margin-top: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }

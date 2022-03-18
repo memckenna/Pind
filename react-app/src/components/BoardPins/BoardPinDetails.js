@@ -12,17 +12,21 @@ import "./BoardPins.css"
 const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
-    const pinSavedOnBoard = board.pins.map(pin => pin.id)
+    const pinSavedOnBoard = board?.pins?.map(pin => pin?.id)
+    console.log(board)
+    console.log(pinSavedOnBoard)
 
     const [errors, setErrors] = useState([])
     const [isSaved, setIsSaved] = useState(false)
+    // const [pinSavedOnBoard, setPinSavedOnBoard]  = useState([])
 
 
     useEffect(() => {
-        // dispatch(getBoardsByUser(sessionUser.id))
+        // dispatch(getBoardsByUser(sessionUser?.id))
         // dispatch(getAllPinsOnFeed())
-        dispatch(getAllBoardsForPin(board.id))
-        dispatch(getASinglePin(id))
+        dispatch(getAllBoardsForPin(board?.id))
+        setIsSaved(pinSavedOnBoard?.includes(id))
+        // dispatch(getASinglePin(id))
         return () => {
             return
         }
@@ -36,8 +40,8 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
         e.preventDefault()
 
         const data = await dispatch(createBoardPin(board.id, id))
-        await dispatch(getAllPinsOnFeed())
-        dispatch(getAllBoardsForPin(board.id))
+        // await dispatch(getAllPinsOnFeed())
+        // dispatch(getAllBoardsForPin(board.id))
 
         if(data?.errors) {
             setErrors(data.errors)
@@ -54,22 +58,20 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
 
         const data = await dispatch(removePin(board.id, id))
         // await dispatch(getAllBoardsForPin(boardId))
-        await dispatch(getAllPinsOnFeed())
+        // await dispatch(getAllPinsOnFeed())
         dispatch(getASingleBoard(board.id))
 
         if(data?.errors) {
             setErrors(data.errors)
         } else {
             // await dispatch(getAllBoardsForPin(boardId))
-            dispatch(getASingleBoard(board.id))
+            // dispatch(getASingleBoard(board.id))
 
             onClose()
             setIsSaved(false)
         }
         alert(`Your pin has been removed from ${board.title}`)
-
     }
-
 
     return (
         <div className="boardpins-container">

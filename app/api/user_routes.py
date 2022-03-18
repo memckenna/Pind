@@ -26,7 +26,7 @@ def user(id):
 def get_boards_by_user(id):
     print('in route ****************************************')
     user = User.query.get(id)
-    
+
     boards_by_id = db.session.query(Board) \
                         .filter(Board.user_id == user.id)\
                         .options(joinedload(Board.pins)).all()
@@ -41,10 +41,12 @@ def get_boards_by_user(id):
 # @user_routes.route('/<int:id>/pins')
 # @login_required
 # def get_pin_by_user(id):
-#     pins_by_id = Pin.query.filter(Pin.user_id == id).all()
-#     for pin in pins_by_id:
-#         print(pin.to_dict(), '******new pin******')
-#     return {'pins': [pin.to_dict()['pin'] for pin in pins_by_id]}
+#     user = User.query.get(id)
+
+#     pin_by_id = Pin.query.filter(Pin.user_id == user.id).one()
+#     print(pin_by_id)
+#     return {'pin': pin_by_id.to_dict()}
+
 
 @user_routes.route('/<int:id>/follow', methods=["POST"])
 @login_required
@@ -67,6 +69,8 @@ def unfollow_user(id):
     if(user in current_user.following):
         current_user.following.remove(user)
         db.session.commit()
-        return {'users': [*current_user.to_dict()["following"]]}
+        # return {'users': [*current_user.to_dict()["following"]]}
+        return user.to_dict()
     else:
-        return {'users': [*current_user.to_dict()["following"]]}
+        # return {'users': [*current_user.to_dict()["following"]]}
+        return user.to_dict()

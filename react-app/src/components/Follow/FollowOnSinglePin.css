@@ -1,0 +1,48 @@
+.single-pin-follow-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.single-pin-follow-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+
+.single-pin-follow-user {
+    display: flex;
+    align-items: center;
+}
+
+.single-pin-follow-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.single-pin-follow-user-name {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-weight: bolder;
+    text-decoration: none;
+    color: black;
+}
+
+.single-pin-followers-count {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+
+}
+
+.single-pin-follow-user-first {
+    padding-right: 5px;
+}
+
+.single-pin-follow-btn {
+    display: flex;
+    justify-content: flex-end;
+}

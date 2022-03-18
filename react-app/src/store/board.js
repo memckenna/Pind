@@ -2,12 +2,12 @@ const GET_BOARD_BY_USER = 'userBoard/GET_BOARD_BY_USER';
 const GET_SINGLE_BOARD = 'userBoard/GET_SINGLE_BOARD';
 
 const ADD_BOARD = 'userBoard/ADD_BOARD';
-const FOLLOW_USER = 'user/FOLLOW_USER';
+// const FOLLOW_USER = 'userBoard/FOLLOW_USER';
 
 const EDIT_USER_BOARD = 'userBoard/EDIT_USER_BOARD';
 
 const DELETE_USER_BOARD = 'userBoard/DELETE_USER_BOARD';
-const UNFOLLOW_USER = 'user/UNFOLLOW_USER';
+// const UNFOLLOW_USER = 'userBoard/UNFOLLOW_USER';
 
 const GET_BOARD = 'board/GET_BOARD';
 
@@ -32,10 +32,10 @@ const addBoard = (board) => ({
     board
 })
 
-const followUser = (user) => ({
-    type: FOLLOW_USER,
-    user
-})
+// const followUser = (user) => ({
+//     type: FOLLOW_USER,
+//     user
+// })
 
 const editBoard = (board) => ({
     type: EDIT_USER_BOARD,
@@ -47,10 +47,10 @@ const deleteBoard = (board) => ({
     board
 })
 
-const unfollowUser = (user) => ({
-    type: UNFOLLOW_USER,
-    user
-})
+// const unfollowUser = (user) => ({
+//     type: UNFOLLOW_USER,
+//     user
+// })
 
 // CRUD FEATRURE WITH REDUX
 // GET
@@ -102,21 +102,21 @@ export const createBoard = (formData) => async(dispatch) => {
     }
 }
 
-export const followAUser = (id) => async (dispatch) => {
-    const response = await fetch(`/api/users/${id}/follow`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id })
-    })
-    if(response.ok) {
-        const data = await response.json()
+// export const followAUser = (id) => async (dispatch) => {
+//     const response = await fetch(`/api/users/${id}/follow`, {
+//         method: "POST",
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ id })
+//     })
+//     if(response.ok) {
+//         const data = await response.json()
 
-        dispatch(followUser(data))
-        return data
-    }
-}
+//         dispatch(followUser(data))
+//         return data
+//     }
+// }
 
 //EDIT BOARD
 
@@ -160,15 +160,15 @@ export const deleteUserBoard = (id) => async (dispatch) => {
     }
 }
 
-export const unfollowAUser = (id) => async (dispatch) => {
-    const response = await fetch(`/api/users/${id}/unfollow`)
-    if(response.ok) {
-        const data = await response.json()
+// export const unfollowAUser = (id) => async (dispatch) => {
+//     const response = await fetch(`/api/users/${id}/unfollow`)
+//     if(response.ok) {
+//         const data = await response.json()
 
-        dispatch(unfollowUser(data))
-        return data
-    }
-}
+//         dispatch(unfollowUser(data))
+//         return data
+//     }
+// }
 
 
 const boardReducer = (state = {}, action) => {
@@ -195,10 +195,11 @@ const boardReducer = (state = {}, action) => {
             // newState[action.board.id] = action.board
             // console.log("ADDD BOARD", newState)
             return newState;
-        case FOLLOW_USER:
-            newState = { ...state }
-            console.log("FOLLLOW STATE", newState)
-            return newState;
+        // case FOLLOW_USER:
+        //     newState = { ...state }
+        //     // newState[action.user.id] = action.user
+        //     console.log("FOLLLOW STATE", newState)
+        //     return newState;
         case EDIT_USER_BOARD:
             newState = { ...state }
             // console.log("EDITT REDUCER BOARD", newState)
@@ -208,10 +209,11 @@ const boardReducer = (state = {}, action) => {
             newState = { ...state }
             delete newState[action.board.id]
             return newState;
-        case UNFOLLOW_USER:
-            newState = { ...state }
-            console.log("UNFOLLOW STATE", newState)
-            return newState;
+        // case UNFOLLOW_USER:
+        //     newState = { ...state }
+        //     // delete newState[action.user.id]
+        //     console.log("UNFOLLOW STATE", newState)
+        //     return newState;
         default:
             return state
     }
