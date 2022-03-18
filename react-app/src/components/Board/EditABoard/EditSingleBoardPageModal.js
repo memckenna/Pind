@@ -8,6 +8,7 @@ import './EditBoard.css';
 const EditSingleBoardPageModal = () => {
     const [showModal, setShowModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
+    const board = useSelector(state => state.board)
 
     const onCloseModal = () => {
         setShowModal(false)
@@ -20,7 +21,7 @@ const EditSingleBoardPageModal = () => {
     return (
         <>
             {/* <div className="edit-board-modal"> */}
-                {/* {sessionUser.id === board.user_id && (
+                {sessionUser?.id === board?.user_id && (
                     <button className="edit-pen-btn">
                         <i
                             className="fas fa-ellipsis-h"
@@ -30,9 +31,9 @@ const EditSingleBoardPageModal = () => {
                  )}
                 {showModal && (
                     <EditBoardModal onClose={() => setShowModal(false)}>
-                        <EditABoardForm id={id} onClose={onCloseModal} />
+                        <EditABoardForm onClose={onCloseModal} />
                     </EditBoardModal>
-                )} */}
+                )}
             {/* </div> */}
         </>
     )

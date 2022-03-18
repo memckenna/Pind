@@ -13,10 +13,10 @@ const EditABoardForm = ({ id, onClose }) => {
     const board = useSelector(state => state.board);
     const sessionUser = useSelector(state => state.session.user)
 
-    let boardToEdit = board.boards.filter((board) => board?.id === +id)
+    let boardToEdit = board?.boards?.filter((board) => board?.id === +id)
 
     if(boardToEdit) {
-        localStorage.setItem("title", boardToEdit[0].title)
+        localStorage.setItem("title", boardToEdit[0]?.title)
         // localStorage.setItem("description", boardToEdit[0].description)
     }
 

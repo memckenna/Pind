@@ -59,7 +59,7 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
         const data = await dispatch(removePin(board.id, id))
         // await dispatch(getAllBoardsForPin(boardId))
         // await dispatch(getAllPinsOnFeed())
-        // dispatch(getASingleBoard(board.id))
+        dispatch(getASingleBoard(board.id))
 
         if(data?.errors) {
             setErrors(data.errors)
@@ -71,9 +71,7 @@ const BoardPinSelectionDetails = ({ id, board, onClose }) => { //id = pin.id
             setIsSaved(false)
         }
         alert(`Your pin has been removed from ${board.title}`)
-
     }
-
 
     return (
         <div className="boardpins-container">

@@ -4,6 +4,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 100px;
 }
 
 .pin-card {
@@ -38,12 +39,27 @@
     -webkit-font-smoothing: antialiased;
 }
 
+
+
 .board-title-header {
     margin-top: 150px;
     display: flex;
     justify-content: center;
     font-size: 36px;
     font-weight: bolder;
+}
+
+.board-profile-img-div {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+
+}
+
+.board-profile-img {
+    width:48px;
+    height: 48px;
+    border-radius: 50%;
 }
 
 .single-board-profile-img {

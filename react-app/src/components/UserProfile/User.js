@@ -42,7 +42,7 @@ function User() {
 
   useEffect(() => {
 
-  }, [dispatch])
+  }, [dispatch, showFollowingModal, showFollowerModal, sessionUser])
 
 
   if (!user) {
@@ -54,13 +54,13 @@ function User() {
       <div className='profile-detail-container'>
         <div className='user-profile'>
           <div>
-            <img className='profile-img' src={user.profile_img_url} />
+            <img className='profile-img' src={user?.profile_img_url} />
           </div>
           <div className='full-name'>
-            {user.first_name} {user.last_name}
+            {user?.first_name} {user?.last_name}
           </div>
           <div className='username'>
-            @{user.username}
+            @{user?.username}
           </div>
         </div>
       </div>
@@ -91,7 +91,7 @@ function User() {
         <button className='following-btn' onClick={() => handleFollowing()}>following</button>
         {showFollowingModal && (
           <GetAllFollowsModal onClose={onCloseModal}>
-            <FollowingModal onClose={onCloseModal} following={user?.following} id={user.id} user={user} />
+            <FollowingModal onClose={onCloseModal} following={user?.following} id={user?.id} user={user} />
           </GetAllFollowsModal>
         )}
       </div>

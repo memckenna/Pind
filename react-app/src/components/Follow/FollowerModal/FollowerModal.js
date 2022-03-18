@@ -10,13 +10,13 @@ import './FollowerModal.css';
 const FollowerModal = ({ followers, onClose }) => {   //id = userId
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    console.log("USER", followers)
+    // console.log("USER FOLLOWER", followers)
 
     useEffect(() => {
         const payload = {
             user_id: sessionUser?.id
         }
-        // dispatch(getBoardsByUser(payload))
+        // dispatch(getBoardsByUser(id))
     }, [dispatch, sessionUser])
 
     return (
@@ -37,7 +37,7 @@ const FollowerModal = ({ followers, onClose }) => {   //id = userId
             </div>
             {followers?.map(user =>
                 <div key={user?.id}>
-                    <RenderFollowUser user={user} id={user?.id}  />
+                    <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id}  />
                 </div>
             )}
 
