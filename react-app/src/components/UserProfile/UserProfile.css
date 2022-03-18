@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-
+    /* align-items: center; */
 }
 
 .user-profile {
@@ -146,7 +146,7 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    width: 500px;
+    width: 700px;
     height: 200px;
 }
 
@@ -155,16 +155,6 @@
     margin-left: 40px;
 }
 
-.user-profile-info {
-    display: flex;
-    flex-direction: column;
-    padding-left: 20px;
-    /* border: 1px solid red; */
-    background-color: white;
-    box-shadow: rgb(0 0 0 / 20%) 0px 8px 28px;
-    border-radius: 14px;
-    padding: 20px 20px 20px 20px;
-}
 
 .follows-div {
     display: flex;
@@ -199,4 +189,32 @@
 
 .fa-circle {
     font-size: 3px;
+}
+
+.explore-users-container {
+    display: flex;
+    justify-content: center;
+}
+
+.user-profile-info {
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+    /* border: 1px solid red; */
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 20%) 0px 8px 28px;
+    border-radius: 14px;
+    padding: 20px 20px 20px 20px;
+    width: 900px;
+    height: 100px;
+}
+
+.user-profile-name-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-profile-bio {
+    display: flex;
+    padding-left: 30px;
 }

@@ -32,7 +32,7 @@ const SingleBoard = () => {
     }
 
     return (
-        <>
+        <div className="single-board-page">
             <div className="board-page-header">
                 <div className="board-title-header">{pinsByBoard.title}</div>
                 {/* <EditSingleBoardPageModal /> */}
@@ -58,7 +58,7 @@ const SingleBoard = () => {
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     )
 
 }
