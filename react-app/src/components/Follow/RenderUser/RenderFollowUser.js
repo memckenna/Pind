@@ -15,9 +15,6 @@ const RenderFollowUser = ({ sessionUser, user, id }) => {
     const [isFollowing, setIsFollowing] = useState(false);
     const [followingList, setFollowingList] = useState([])
     const [followersList, setFollowersList] = useState([])
-    // const followers = sessionUser.followers.map(follower => follower.id)
-    // console.log("FOLLOWERRR", followers)
-
 
     useEffect(() => {
         setIsFollowing(followingList?.includes(user?.id))
@@ -38,7 +35,6 @@ const RenderFollowUser = ({ sessionUser, user, id }) => {
         }
     }
 
-
     const unfollowUser = async (id) => {
         let unfollow = await dispatch(unfollowAUser(id))
         if(unfollow) {
@@ -50,7 +46,6 @@ const RenderFollowUser = ({ sessionUser, user, id }) => {
     console.log("FOLLOWING LIST", followingList)
 
     // const followUser = (id) => {
-    //     console.log(id)
     //     followingList.push(id)
     //     setIsFollowing(true)
     //     dispatch(followAUser(id))

@@ -41,14 +41,20 @@ const FollowingModal = ({ following, onClose, user }) => {   //id = userId
                 </div>
             </div>
             {console.log("FOLLOWING MODAL", sessionUser?.following)}
-            {sessionUser?.id === user?.id &&
+            {sessionUser?.id === user?.id ?
                 sessionUser?.following?.map(user =>
                     <div key={user.id}>
                         {/* {console.log("RENDER USER", user)} */}
                         <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id}  />
                     </div>
-
-            )}
+                ) :
+                following?.map(user =>
+                    <div key={user.id}>
+                        {/* {console.log("RENDER USER", user)} */}
+                        <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id}  />
+                    </div>
+                )
+            }
 
         </>
     )
