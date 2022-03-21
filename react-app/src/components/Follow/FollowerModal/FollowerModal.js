@@ -54,13 +54,6 @@ const FollowerModal = ({ followers, onClose, user }) => {   //id = userId
                     </div>
                 )
             }
-            {/* {sessionUser?.id === user?.id &&
-                sessionUser?.followers?.map(user =>
-                    <div key={user?.id}>
-                        <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id} />
-                    </div>
-            )} */}
-
         </>
     )
 }
