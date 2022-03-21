@@ -7,7 +7,7 @@ import RenderFollowUser from "../RenderUser/RenderFollowUser";
 import './FollowerModal.css';
 
 
-const FollowerModal = ({ followers, onClose }) => {   //id = userId
+const FollowerModal = ({ followers, onClose, user }) => {   //id = userId
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     // console.log("USER FOLLOWER", followers)
@@ -17,14 +17,20 @@ const FollowerModal = ({ followers, onClose }) => {   //id = userId
             user_id: sessionUser?.id
         }
         // dispatch(getBoardsByUser(id))
-    }, [dispatch, sessionUser])
+    }, [dispatch, sessionUser, user])
 
     return (
         <>
             <div className="followers-header">
                 <div className="follower-header-sec">
                     <div className="followers-title-section">
-                        <div className="followers-count">{followers?.length}</div>
+                        <div className="followers-count">
+                            {user?.id === sessionUser?.id ?
+                                sessionUser?.followers.length :
+                                user.followers?.length
+                            }
+                            {/* {followers?.length} */}
+                        </div>
                         <div className="followers-title">Followers</div>
                     </div>
                     <div className="exit-followers-modal">
@@ -35,12 +41,19 @@ const FollowerModal = ({ followers, onClose }) => {   //id = userId
                 </div>
 
             </div>
-            {followers?.map(user =>
-                <div key={user?.id}>
-                    <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id}  />
-                </div>
-            )}
-
+            {console.log("FOLLOWER MODAL", sessionUser?.followers)}
+            {sessionUser?.id === user?.id ?
+                sessionUser?.followers?.map(user =>
+                    <div key={user?.id}>
+                        <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id} />
+                    </div>
+                ) :
+                followers?.map(user =>
+                    <div key={user?.id}>
+                        <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id} />
+                    </div>
+                )
+            }
         </>
     )
 }

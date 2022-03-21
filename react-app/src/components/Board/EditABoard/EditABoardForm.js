@@ -59,8 +59,8 @@ const EditABoardForm = ({ id, onClose }) => {
         if(data?.errors) {
             setErrors(data.errors)
         } else if(!data?.errors) {
-            await dispatch(getBoardsByUser(sessionUser?.id));
             onClose()
+            await dispatch(getBoardsByUser(sessionUser?.id));
         }
     }
 

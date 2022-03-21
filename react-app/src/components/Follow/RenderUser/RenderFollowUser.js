@@ -10,40 +10,54 @@ import './RenderFollowUser.css'
 
 const RenderFollowUser = ({ sessionUser, user, id }) => {
     const dispatch = useDispatch()
-    // const sessionUser = useSelector(state => state.session.user)
-    const pin = useSelector(state => state.pinReducer)
-    // console.log(sessionUser)
-    // const followingList = sessionUser?.following.map(user => user?.id)
-
+    // const followingList = sessionUser.following.map(following => following.id)
+    // const followingCheck = followingList.includes(user?.id)
     const [isFollowing, setIsFollowing] = useState(false);
     const [followingList, setFollowingList] = useState([])
-
-
-    useEffect(() => {
-        // dispatch(getBoardsByUser(sessionUser?.id))
-        setIsFollowing(followingList?.includes(user?.id))
-
-    }, [dispatch, sessionUser, followingList, user])
+    const [followersList, setFollowersList] = useState([])
 
     useEffect(() => {
         setIsFollowing(followingList?.includes(user?.id))
-        setFollowingList(sessionUser?.following?.map(user => user?.id))
+
+    }, [dispatch, sessionUser, followingList])
+
+    useEffect(() => {
+        setIsFollowing(followingList?.includes(user?.id))
+        setFollowingList(sessionUser.following.map(following => following.id))
     }, [])
 
-    const followUser = (id) => {
-        followingList.push(id)
-        setIsFollowing(true)
-        return dispatch(followAUser(id))
+    const followUser = async (id) => {
+        let follow = await dispatch(followAUser(id))
+        if(follow) {
+            followingList.push(id)
+            setIsFollowing(followingList?.includes(id))
+            // setIsFollowing(true)
+        }
     }
 
-
-    const unfollowUser = (id) => {
-        const index = followingList.indexOf(id)
-        followingList.splice(index, 1)
-        // setIsFollowing(false)
-        setIsFollowing(followingList?.includes(user?.id))
-        return dispatch(unfollowAUser(id))
+    const unfollowUser = async (id) => {
+        let unfollow = await dispatch(unfollowAUser(id))
+        if(unfollow) {
+            const index = followingList.indexOf(id)
+            followingList.splice(index, 1)
+            setIsFollowing(followingList?.includes(id))
+        }
     }
+    console.log("FOLLOWING LIST", followingList)
+
+    // const followUser = (id) => {
+    //     followingList.push(id)
+    //     setIsFollowing(true)
+    //     dispatch(followAUser(id))
+    // }
+
+    // const unfollowUser = (id) => {
+    //     const index = followingList.indexOf(id)
+    //     followingList.splice(index, 1)
+    //     // setIsFollowing(false)
+    //     setIsFollowing(followingList?.includes(id))
+    //     dispatch(unfollowAUser(id))
+    // }
 
     return (
         <div className="follow-modal-container">
@@ -52,8 +66,9 @@ const RenderFollowUser = ({ sessionUser, user, id }) => {
                     <img className="follow-modal-img" src={user?.profile_img_url} />
                 </Link>
                 <div className="follow-modal-name">
-                    <Link to={`/users/${user?.id}`}></Link>
-                    <p>{user?.first_name} {user?.last_name}</p>
+                    <Link className="follow-modal-name-link" to={`/users/${user?.id}`}>
+                        <p>{user?.first_name} {user?.last_name}</p>
+                    </Link>
                 </div>
             </div>
             <div className="follow-modal-button-div">
