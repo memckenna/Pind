@@ -2,6 +2,8 @@
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
 
+// const LOAD_ALL_USERS = 'users/LOAD_ALL_USERS';
+
 const FOLLOW_USER = 'session/FOLLOW_USER';
 const UNFOLLOW_USER = 'session/UNFOLLOW_USER';
 
@@ -14,6 +16,11 @@ const setUser = (user) => ({
 const removeUser = () => ({
   type: REMOVE_USER,
 })
+
+// const loadUsers = (users) => ({
+//   type: LOAD_ALL_USERS,
+//   users
+// })
 
 const followUser = (user) => ({
   type: FOLLOW_USER,
@@ -142,6 +149,15 @@ export const unfollowAUser = (id) => async (dispatch) => {
   }
 }
 
+// export const loadAllUsers = () => async dispatch => {
+//   const response = await fetch('/api/users/');
+//   if (response.ok) {
+//     const users = await response.json();
+//     dispatch(loadUsers(users));
+//     return users;
+//   }
+// }
+
 
 export default function reducer(state = initialState, action) {
   let newState = {}
@@ -150,6 +166,12 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    // case LOAD_ALL_USERS:
+    //   const allUsers = {}
+    //   action.users.users.forEach(user => {
+    //     allUsers[user.id] = user;
+    //   });
+    //   return { ...allUsers };
     case FOLLOW_USER:
       newState = { ...state }
       newState.user.following.push(action.user)
@@ -160,7 +182,7 @@ export default function reducer(state = initialState, action) {
       // console.log(newState.user.following)
       // console.log(action.user.id)
       newState.user.following = newState.user.following.filter(u => u.id !== action.user.id)
-      // delete newState[action.user.id]
+      // delete newState.user.following[action.user.id]
       console.log("UNFOLLOW STATE", newState)
       return newState;
     default:
