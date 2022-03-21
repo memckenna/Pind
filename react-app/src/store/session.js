@@ -174,7 +174,13 @@ export default function reducer(state = initialState, action) {
     //   return { ...allUsers };
     case FOLLOW_USER:
       newState = { ...state }
+      // let newFollow = [ ...newState.user.following ]
+      // newFollow.push(action.user)
+      // newState.user.following = newFollow
+      // newState.user.following[action.user] = action.user
+      // console.log(newState.user.following)
       newState.user.following.push(action.user)
+
       console.log("FOLLLOW STATE", newState)
       return newState;
     case UNFOLLOW_USER:

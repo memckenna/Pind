@@ -25,6 +25,11 @@
     padding-right: 10px;
 }
 
+.follow-modal-name-link {
+    text-decoration: none;
+    color: black;
+}
+
 .follow-modal-button-div {
     display: flex;
 

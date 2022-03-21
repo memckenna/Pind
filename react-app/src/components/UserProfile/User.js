@@ -42,7 +42,7 @@ function User() {
 
   useEffect(() => {
 
-  }, [dispatch, showFollowingModal, showFollowerModal, sessionUser])
+  }, [dispatch, showFollowingModal, showFollowerModal, sessionUser, user])
 
 
   if (!user) {

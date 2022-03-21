@@ -54,11 +54,14 @@ def follow_user(id):
     user = User.query.get(id)
 
     if(user in current_user.following):
-        return {'users': [*current_user.to_dict()["following"]]}
+        # return {'users': [*current_user.to_dict()["following"]]}
+        return user.to_dict()
     else:
         current_user.following.append(user)
         db.session.commit()
-        return {'users': [*current_user.to_dict()["following"]]}
+        # return {'users': [*current_user.to_dict()["following"]]}
+        return user.to_dict()
+
 
 
 @user_routes.route('/<int:id>/unfollow')
