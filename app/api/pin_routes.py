@@ -26,26 +26,16 @@ def get_pin_by_id(id):
 
     return {'pin': pin.to_dict()}
 
-# @pin_routes.route('/<int:id>')
-# # @login_required
-# def get_a_pin_by_user(id):
-#     user = User.query.get(id)
-#     following = [u.id for u in user.following]
-
 
 #Create a Pin
 @pin_routes.route('/', methods=["POST"])
 @login_required
 def create_pin():
-    # data = request.json
     form = CreatePinForm()
-    # board = Board.query.get(form.data["board_id"])
-    # pin = Pin.query.get(id)
+
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        # board_options = Board.query.filter(Board.title == form.data['board']).one()
-        # form.data.pop('board')
 
         new_pin = Pin(
             title=form.data["title"],
@@ -58,11 +48,6 @@ def create_pin():
         db.session.add(new_pin)
         db.session.commit()
 
-        #append board and pin
-        # board.pins.append(new_pin)
-        #commit
-        # db.session.commit()
-        print("\n\n\n\n\n", new_pin)
         return new_pin.to_dict()
         # return {'pins': new_pin.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -84,7 +69,7 @@ def edit_pin(id):
         update_pin.source_link = form.data['source_link']
         db.session.add(update_pin)
         db.session.commit()
-        # print("EDIT PIN ROUTE\n\n\n\n", update_pin.to_dict())
+
         return {'pins': update_pin.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -94,9 +79,7 @@ def edit_pin(id):
 @pin_routes.route('/<int:id>/delete', methods=["DELETE"])
 @login_required
 def delete_pin(id):
-    # del_pin = Pin.query.filter(Pin.user_id==current_user.id)
     del_pin = Pin.query.get(id)
-    # print("\n\n\n\n DELETE PIN \n\n\n\n", del_pin)
 
     db.session.delete(del_pin)
     db.session.commit()
