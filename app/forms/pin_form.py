@@ -13,9 +13,6 @@ class CreatePinForm(FlaskForm):
     source_link = StringField('Source Link')
     photo_url = StringField('Photo URL',validators=[DataRequired()])
                 # Length(min=10, message='Must be a valid URL')])
-    # board = SelectField("board", choices=[], validators=[DataRequired()])
-    # validators=[DataRequired(),
-    #             Length(min=10, message='Must be a valid URL')])
 
 class EditPinForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(message='Please provide a title')])

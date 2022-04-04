@@ -31,13 +31,6 @@ def edit_comment(id):
         return {'comments': update_comment.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-    # req = request.json
-    # comment = Comment.query.get(id)
-    # if(len(req['content'])):
-    #     comment.content = req['content']
-    #     db.session.commit()
-    # return comment.to_dict()
-
 
 #Delete a comment
 @comments_router.route('/<int:id>/delete', methods=['DELETE'])

@@ -24,28 +24,14 @@ def user(id):
 @user_routes.route('/<int:id>/boards')
 # @login_required
 def get_boards_by_user(id):
-    print('in route ****************************************')
     user = User.query.get(id)
 
     boards_by_id = db.session.query(Board) \
                         .filter(Board.user_id == user.id)\
                         .options(joinedload(Board.pins)).all()
 
-    print("\n\n\nALLLLLLLL BOARDS\n\n\n\n", boards_by_id)
-    # for board in boards_by_id:
-    #     print(board.to_dict(), '\n\n********NEW BOARD*********\n\n')
     return {'boards': [board.to_dict() for board in boards_by_id]}
 
-
-
-# @user_routes.route('/<int:id>/pins')
-# @login_required
-# def get_pin_by_user(id):
-#     user = User.query.get(id)
-
-#     pin_by_id = Pin.query.filter(Pin.user_id == user.id).one()
-#     print(pin_by_id)
-#     return {'pin': pin_by_id.to_dict()}
 
 
 @user_routes.route('/<int:id>/follow', methods=["POST"])

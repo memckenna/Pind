@@ -27,8 +27,6 @@ def user_age_confirmed(form, field):
     if age > 110:
         raise ValidationError('Please enter your correct age.')
 
-
-
 # def profile_img_url_check(form, field):
 #     profile_img_url = field.data
 #     if profile_img_url < 10:
