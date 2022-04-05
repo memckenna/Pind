@@ -9,8 +9,7 @@ import './FollowingModal.css';
 const FollowingModal = ({ following, onClose, user }) => {   //id = userId
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    // console.log("USER FOLLOWING", following)
-    // console.log("USER IN FOLLOWING", user)
+
     useEffect(() => {
         const payload = {
             user_id: sessionUser?.id
@@ -44,13 +43,11 @@ const FollowingModal = ({ following, onClose, user }) => {   //id = userId
             {sessionUser?.id === user?.id ?
                 sessionUser?.following?.map(user =>
                     <div key={user.id}>
-                        {/* {console.log("RENDER USER", user)} */}
                         <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id}  />
                     </div>
                 ) :
                 following?.map(user =>
                     <div key={user.id}>
-                        {/* {console.log("RENDER USER", user)} */}
                         <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id}  />
                     </div>
                 )

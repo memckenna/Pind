@@ -43,7 +43,6 @@ const RenderFollowUser = ({ sessionUser, user, id }) => {
             setIsFollowing(followingList?.includes(id))
         }
     }
-    console.log("FOLLOWING LIST", followingList)
 
     // const followUser = (id) => {
     //     followingList.push(id)

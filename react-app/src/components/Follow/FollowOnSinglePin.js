@@ -18,10 +18,8 @@ const FollowAUserOnSinglePin = ({ sessionUser, pinId }) => {
     const [followingList, setFollowingList] = useState([])
 
     useEffect(() => {
-
-        // console.log("first useEffect")
         setIsFollowing(followingList?.includes(pin?.user_id))
-        // console.log(followingList, pinId)
+
     }, [dispatch, sessionUser, followingList, pin])
 
 

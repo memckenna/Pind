@@ -10,7 +10,6 @@ import './FollowerModal.css';
 const FollowerModal = ({ followers, onClose, user }) => {   //id = userId
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    // console.log("USER FOLLOWER", followers)
 
     useEffect(() => {
         const payload = {
