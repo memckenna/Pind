@@ -13,9 +13,7 @@ import '../UserProfile.css'
 function GetUserBoards({ id, user }) {    //id = userId  user = userboard
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
-
     const boards = useSelector(state => state.board)
-    // const pins = useSelector(state => state.pinReducer)
 
     useEffect(() => {
         dispatch(getBoardsByUser(id));

@@ -20,7 +20,6 @@ const PinFeedPage = () => {
 
     return (
         <div>
-            {/* <div className="pin-feed-page">PIN FEED PAGE</div> */}
             <div className="pin-feed-container">
                 {pins.pins?.map(pin => (
                     <div key={pin.id} className="pin-feed-card">

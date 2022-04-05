@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import { getASinglePin, createCommentOnPin, getPinComments, updatePinOnComment, deleteACommentOnPin } from '../../store/pin';
 import "./Comments.css"
@@ -53,7 +53,6 @@ const EditCommentOnAPin = ({ id, comment, onClose }) => {
             dispatch(getASinglePin(pin?.id))
         }
     }
-
 
     return (
         <div className='edit-comment-form'>

@@ -19,7 +19,6 @@ const DisplayAllPinComments = ({ pinId, comments }) => {
                         <NavLink to={`/users/${comment?.user?.id}`}>
                             <img className='comment-profile-img' src={comment?.user?.profile_img_url} />
                         </NavLink>
-                        {/* {console.log(comment)} */}
                         <div className='comment-info'>
                             <NavLink className="comment-username" to={`/users/${comment?.user?.id}`}>
                                 {comment?.user?.username}
