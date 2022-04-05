@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Redirect, useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createPin, getAllPinsOnFeed } from "../../../store/pin";
-// import { getBoardsByUser, getASingleBoard } from "../../../store/board";
 
 import './CreatePin.css';
 

@@ -1,16 +1,15 @@
-
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 import LoginFormModal from '../SplashPage/LoginFormModal/LoginPage';
 import SignUpFormModal from '../SplashPage/SignupFormModal/SignUpPage';
 import ProfileButton from './ProfileButton';
 import HomeButton from './HomeButton';
+import LoggedInLogo from './LoggedInLogo';
 import logo from '../../images/logo.png';
 import './NavBar.css'
 
-import LoggedInLogo from './LoggedInLogo';
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)

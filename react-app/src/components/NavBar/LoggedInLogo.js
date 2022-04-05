@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import logo from '../../images/logo.png';
 import pind from '../../images/pind.png'
 
-
 import './NavBar.css'
 
 
