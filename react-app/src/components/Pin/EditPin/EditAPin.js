@@ -55,7 +55,6 @@ const EditAPinForm = ({onClose}) => {
         e.preventDefault()
 
         const data = await dispatch(deleteUserPin(pin.id))
-        // console.log("DELETE", data)
         await dispatch(getAllPinsOnFeed())
 
         if(data?.errors) {

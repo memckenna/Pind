@@ -11,7 +11,6 @@ const CreateAPin = ({onClose}) => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
     const boards = useSelector(state => state.board)
-    // console.log("BOARDS IN PINS", boards.boards)
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
