@@ -1,28 +1,21 @@
 import React, { useEffect, useState } from "react";
-
 import { NavLink, Link, Redirect, useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getASinglePin } from "../../store/pin";
 import { getBoardsByUser } from "../../store/board";
+import { getAllPinComments } from "../../store/pin";
 import GetAllBoardsForPin from "../BoardPins/BoardPins";
 import EditAPinModal from "./EditPin";
-import './SinglePin.css';
-// import { getAllBoardsForPin } from "../../store/boards_pins";
-// import SinglePinBoardSaveModal from "../BoardPins/SinglePinBoard";
 import DisplayAllPinComments from "../PinComments/DisplayPinComments";
 import CreateCommentOnAPin from "../PinComments/CreatePinComment";
-
-import { getAllPinComments } from "../../store/pin";
-// import { followAUser } from "../../store/session";
 import FollowAUserOnSinglePin from "../Follow/FollowOnSinglePin";
+import './SinglePin.css';
 
 const SinglePin = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
-
     const pin = useSelector(state => state.pinReducer)
-    // console.log("A SINGLE PIN", pin)
     const { pinId } = useParams()
 
     useEffect(() => {
@@ -34,7 +27,6 @@ const SinglePin = () => {
     const goBack = () => {
         history.goBack()
     }
-
 
     return (
         <>
