@@ -11,7 +11,6 @@ import "../BoardPins.css"
 
 
 const SinglePinBoardSaveDetails = ({ id, board, onClose }) => { //id = pinId
-    // console.log("BOARDDDDD", board)
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const pinSavedOnBoard = board.pins.map(pin => pin.id)
