@@ -9,8 +9,6 @@ const EditUserBoardModal = ({id, user, board}) => {    //id = boardId
     const [showModal, setShowModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
 
-    // let userOfBoard = board.boards.filter((board) => board.user_id === +sessionUser.id)
-
     const onCloseModal = () => {
         setShowModal(false)
         // if (onCloseMenuModal) {

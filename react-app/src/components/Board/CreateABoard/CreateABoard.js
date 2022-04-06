@@ -15,8 +15,6 @@ const CreateBoardForm = ({ onClose }) => {
     const [errors, setErrors] = useState([])
     const [disabled, setDisabled] = useState(true);
     const user = useSelector(state => state.session.user);
-    // console.log("USER", user)
-
 
     useEffect(() => {
         if(title.length > 0) {
@@ -52,7 +50,6 @@ const CreateBoardForm = ({ onClose }) => {
             await dispatch(getBoardsByUser(user.id));
             onClose()
             // history.push(`/users/${user.id}`)
-
         }
         // alert("Your board was created: ")
     }

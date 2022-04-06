@@ -14,7 +14,6 @@ const EditSingleBoardPageModal = () => {
         setShowModal(false)
         // if (onCloseMenuModal) {
         //     onCloseMenuModal()
-
         // }
     }
 

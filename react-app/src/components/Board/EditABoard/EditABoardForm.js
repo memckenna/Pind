@@ -34,8 +34,6 @@ const EditABoardForm = ({ id, onClose }) => {
         }
     }, [disabled, title])
 
-    // useEffect(())
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
