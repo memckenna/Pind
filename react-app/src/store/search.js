@@ -13,6 +13,7 @@ export const getBoardsBySearch = (query) => async (dispatch) => {
     if(response.ok) {
         const data = await response.json();
 
+        // dispatch(getSearchedBoards(data))
         dispatch(getSearchedBoards(data.boards))
         return data
     }
@@ -23,7 +24,8 @@ const searchReducer = (state = {}, action) => {
     let newState = {}
     switch(action.type) {
         case GET_BOARD_SEARCH:
-            return { ...action.boards }
+            newState = {...state, ...action.boards}
+            return newState
         default:
             return state;
     }

@@ -13,21 +13,22 @@ const SearchResultPage = () => {
 
     const searchBoards = useSelector(state => state.search)
     const boards = Object.values(searchBoards)
+    console.log(boards)
 
     useEffect(() => {
         dispatch(getBoardsBySearch(queryParams))
     }, [dispatch, queryParams])
 
     return (
-        <div>
+        <div className='search-results-container'>
             <div>
                 <div>Search Results</div>
-                <div>{queryParams}</div>
-                <div>
+                {/* <div>{queryParams}</div> */}
+                <div >
                     {boards.length ? (
                         <>
                             {boards.length > 0 && boards.map(board => (
-                                <div>
+                                <div key={board?.id}>
                                     <div>{board.title}</div>
                                 </div>
                             ))}

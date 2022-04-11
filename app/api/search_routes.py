@@ -13,6 +13,12 @@ search_routes = Blueprint("search", __name__)
 @search_routes.route('/<string:query>')
 def get_boards_by_search(query):
     lowercase_query = query.lower()
-    boards = Board.query.filter(func.lower(Board.title).contains(lowercase_query)).all()
+    # boards = Board.query.filter(func.lower(Board.title).contains(lowercase_query)).all()
+    boards = Board.query.filter(Board.title.like("%" + lowercase_query + "%")).all()
 
+    # boards = Board.query.filter(Board.title.contains(lowercase_query)).all()
+
+
+    for board in boards:
+        print("BOARD \n\n\n\n\n", board)
     return {"board search": [board.to_dict() for board in boards]}
