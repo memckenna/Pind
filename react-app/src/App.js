@@ -14,6 +14,7 @@ import SingleBoard from './components/Board/SingleBoard';
 import PinFeedPage from './components/PinFeedPage/PinFeedPage';
 import SinglePin from './components/Pin/SinglePin';
 import CreateAPin from './components/Pin/CreatePin/CreatePin';
+import SearchResultPage from './components/Search/SearchResultPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +48,9 @@ function App() {
         </Route>
         <Route path="/boards/:boardId" exact={true}>
           <SingleBoard />
+        </Route>
+        <Route path="/search" exact={true}>
+          <SearchResultPage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
