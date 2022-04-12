@@ -21,10 +21,11 @@ export const getBoardsBySearch = (query) => async (dispatch) => {
 
 
 const searchReducer = (state = {}, action) => {
-    let newState = {}
+    let newState;
     switch(action.type) {
         case GET_BOARD_SEARCH:
             newState = {...state, ...action.boards}
+            // newState = action.boards
             return newState
         default:
             return state;

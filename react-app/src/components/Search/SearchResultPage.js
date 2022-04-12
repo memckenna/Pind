@@ -12,6 +12,7 @@ const SearchResultPage = () => {
     // const title = queryParams.get("title")
 
     const searchBoards = useSelector(state => state.search)
+    console.log(searchBoards)
     const boards = Object.values(searchBoards)
     console.log(boards)
 
