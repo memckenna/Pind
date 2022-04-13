@@ -12,15 +12,20 @@ search_routes = Blueprint("search", __name__)
 
 @search_routes.route('/boards/<query>/all')
 def get_boards_by_search(query):
-    print("QUERYY \n\n\n\n\n", query)
-    # lowercase_query = query.lower()
-    # boards = Board.query.filter(func.lower(Board.title).contains(lowercase_query)).all()
     # boards = Board.query.filter(Board.title.like("%" + lowercase_query + "%")).all()
     boards = Board.query.filter(Board.title.ilike(f'%{query}%')).all()
+    print("QUERYY \n\n\n\n\n", query)
+    search_results = list(set(boards))
+    print("\n\n\n\n\n", search_results, "\n\n\n\n")
+    return {"board search": [board.to_dict() for board in search_results]}
+    # return {"board search": [board.to_dict() for board in boards]}
 
-    print("BOARDS \n\n\n\n\n", boards)
-    return {"board search": [board.to_dict() for board in boards]}
+    # board_search = db.session.query(Board) \
+    #                     .filter(Board.title.ilike(f'%{query}%')) \
+    #                     .options(joinedload(Board.pins)).all()
 
+    # print("BOARDS \n\n\n\n\n", board_search)
+    # return {"board search": [board.to_dict() for board in board_search]}
     # pins = db.session.query(Pin).filter(Pin.title.ilike("%" + query + "%")).all()
     # pins = Pin.query.filter(Pin.title.ilike(f'%{query}%')).all()
     # print("PINS \n\n\n\n", pins)

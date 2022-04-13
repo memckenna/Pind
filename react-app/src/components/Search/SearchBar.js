@@ -13,7 +13,9 @@ const SearchBar = () => {
     const [query, setQuery] = useState("")
     const [errors, setErrors] = useState([])
 
-    console.log(query)
+    const search = useSelector(state => state.search)
+    console.log(search)
+
     const handleSubmit = async(e) => {
         e.preventDefault()
 
@@ -30,8 +32,8 @@ const SearchBar = () => {
 
     return (
         <div>
-            <form action="/search/boards" method="get">
-            {/* <form onSubmit={handleSubmit}> */}
+            {/* <form action="/search/boards" method="get"> */}
+            <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     placeholder="Search"

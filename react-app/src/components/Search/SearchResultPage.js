@@ -30,11 +30,16 @@ const SearchResultPage = () => {
                 <div >
                     {boards.length ? (
                         <>
-                            {boards.length > 0 && boards.map(board => (
+                            {searchBoards.map(board => (
                                 <div key={board?.id}>
                                     <div>{board.title}</div>
                                 </div>
                             ))}
+                            {/* {boards.length > 0 && boards.map(board => (
+                                <div key={board?.id}>
+                                    <div>{board.title}</div>
+                                </div>
+                            ))} */}
                         </>
                     ) : (
                         <div>
