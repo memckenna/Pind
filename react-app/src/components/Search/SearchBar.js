@@ -9,19 +9,28 @@ import './Search.css'
 
 const SearchBar = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const [query, setQuery] = useState("")
+    const [errors, setErrors] = useState([])
 
-    useEffect(() => {
-        if(query) {
-            dispatch(getBoardsBySearch(query))
+    console.log(query)
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+
+        const data = await dispatch(getBoardsBySearch(query))
+
+        if(data?.errors) {
+            setErrors(data.errors)
+        } else {
+            history.push("/search")
         }
-
-    }, [dispatch, query])
+    }
 
 
     return (
         <div>
-            <form action="/search" method="get">
+            {/* <form action="/search" method="get"> */}
+            <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     placeholder="Search"
