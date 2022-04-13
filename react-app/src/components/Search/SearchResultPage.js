@@ -7,14 +7,16 @@ import "./Search.css"
 
 const SearchResultPage = () => {
     const dispatch = useDispatch()
+    const location = useLocation()
 
-    const queryParams = new URLSearchParams(window.location.search).get("q")
-    // const title = queryParams.get("title")
+    const queryParams = new URLSearchParams(window.location.search).get("query")
+
+
 
     const searchBoards = useSelector(state => state.search)
+    const boards = useSelector(state => state.board)
     console.log(searchBoards)
-    const boards = Object.values(searchBoards)
-    console.log(boards)
+
 
     useEffect(() => {
         dispatch(getBoardsBySearch(queryParams))

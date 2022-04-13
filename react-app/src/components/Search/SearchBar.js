@@ -22,6 +22,7 @@ const SearchBar = () => {
         if(data?.errors) {
             setErrors(data.errors)
         } else {
+            setQuery("")
             history.push("/search")
         }
     }
@@ -29,8 +30,8 @@ const SearchBar = () => {
 
     return (
         <div>
-            {/* <form action="/search" method="get"> */}
-            <form onSubmit={handleSubmit}>
+            <form action="/search" method="get">
+            {/* <form onSubmit={handleSubmit}> */}
                 <input
                     type="text"
                     placeholder="Search"

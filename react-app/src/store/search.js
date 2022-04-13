@@ -8,6 +8,7 @@ const getSearchedBoards = (boards) => ({
 
 
 export const getBoardsBySearch = (query) => async (dispatch) => {
+    console.log("QUERY IN THUNK", query)
     const response = await fetch(`/api/search/${query}`);
 
     if(response.ok) {
@@ -15,6 +16,7 @@ export const getBoardsBySearch = (query) => async (dispatch) => {
 
         // dispatch(getSearchedBoards(data))
         dispatch(getSearchedBoards(data.boards))
+        console.log("SEARCH THUNK", data)
         return data
     }
 }
@@ -25,6 +27,7 @@ const searchReducer = (state = {}, action) => {
     switch(action.type) {
         case GET_BOARD_SEARCH:
             newState = {...state, ...action.boards}
+            console.log("SEARCH STATE", newState)
             // newState = action.boards
             return newState
         default:
