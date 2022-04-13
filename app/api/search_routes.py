@@ -10,7 +10,7 @@ from app.api.auth_routes import validation_errors_to_error_messages
 search_routes = Blueprint("search", __name__)
 
 
-@search_routes.route('/<query>')
+@search_routes.route('/boards/<query>/all')
 def get_boards_by_search(query):
     print("QUERYY \n\n\n\n\n", query)
     # lowercase_query = query.lower()

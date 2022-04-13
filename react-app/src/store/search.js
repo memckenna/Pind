@@ -8,8 +8,8 @@ const getSearchedBoards = (boards) => ({
 
 
 export const getBoardsBySearch = (query) => async (dispatch) => {
-    console.log("QUERY IN THUNK", query)
-    const response = await fetch(`/api/search/${query}`);
+    // console.log("QUERY IN THUNK", query)
+    const response = await fetch(`/api/search/boards/${query}/all`);
 
     if(response.ok) {
         const data = await response.json();

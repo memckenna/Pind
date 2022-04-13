@@ -30,7 +30,7 @@ const SearchBar = () => {
 
     return (
         <div>
-            <form action="/search" method="get">
+            <form action="/search/boards" method="get">
             {/* <form onSubmit={handleSubmit}> */}
                 <input
                     type="text"
