@@ -22,22 +22,21 @@ const SearchResultPage = () => {
 
     return (
         <div className='search-results-container'>
-            <div>
-                <div>Search Results</div>
+            <div className='search-results'>
+                <div className='search-results-text'>Search Results</div>
                 {/* <div>{queryParams}</div> */}
-                <div>
+                <div className='each-search-result'>
                     {search[0]?.length ? (
                         <>
                             {search[0]?.map(board => (
-                                <div>
+                                <div key={board?.id} className='each-board'>
                                     <NavLink to={`/boards/${board?.id}`}>
                                         {!board.pins[0]?.photo_url ?
-                                            <img  src={kitchen} /> :
-                                            <img  src={board?.pins[0]?.photo_url} />
+                                            <img className='search-img' src={kitchen} /> :
+                                            <img className='search-img' src={board?.pins[0]?.photo_url} />
                                         }
-
                                     </NavLink>
-                                    <div>{board.title}</div>
+                                    <div  className='search-board-title'>{board?.title}</div>
                                 </div>
 
                             ))}

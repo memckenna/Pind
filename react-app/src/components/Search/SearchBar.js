@@ -33,16 +33,17 @@ const SearchBar = () => {
     return (
         <div>
             {/* <form action="/search/boards" method="get"> */}
-            <form onSubmit={handleSubmit}>
+            <form className="search-bar-form" onSubmit={handleSubmit}>
+                <button className="search-bar-btn" type="submit">
+                    <i className="fas fa-search"></i>
+                </button>
                 <input
                     type="text"
                     placeholder="Search"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
+                    className="search-bar-input"
                 />
-                <button type="submit">
-                    Search
-                </button>
 
             </form>
         </div>
