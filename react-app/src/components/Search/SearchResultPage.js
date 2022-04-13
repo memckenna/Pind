@@ -10,25 +10,25 @@ const SearchResultPage = () => {
     const dispatch = useDispatch()
 
     const searchBoards = useSelector(state => state.search)
-    const boards = useSelector(state => state.board)
     console.log(searchBoards)
-    const search = Object.values(searchBoards)
-    console.log(search[0])
+    const searchObj = Object.values(searchBoards)
+    console.log(searchObj[0])
 
+    // const { search } = window.location;
+    // const query = new URLSearchParams(search).get("q")
 
-    // useEffect(() => {
-    //     dispatch(getBoardsBySearch(queryParams))
-    // }, [dispatch, queryParams])
+    useEffect(() => {
+        // dispatch(getBoardsBySearch(query))
+    }, [dispatch])
 
     return (
         <div className='search-results-container'>
             <div className='search-results'>
                 <div className='search-results-text'>Search Results</div>
-                {/* <div>{queryParams}</div> */}
                 <div className='each-search-result'>
-                    {search[0]?.length ? (
+                    {searchObj[0]?.length ? (
                         <>
-                            {search[0]?.map(board => (
+                            {searchObj[0]?.map(board => (
                                 <div key={board?.id} className='each-board'>
                                     <NavLink to={`/boards/${board?.id}`}>
                                         {!board.pins[0]?.photo_url ?

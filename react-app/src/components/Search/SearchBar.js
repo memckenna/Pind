@@ -15,6 +15,9 @@ const SearchBar = () => {
 
     const search = useSelector(state => state.search)
     console.log(search)
+    // useEffect(() => {
+    //     // dispatch(getBoardsBySearch(query))
+    // },[dispatch, search])
 
     const handleSubmit = async(e) => {
         e.preventDefault()

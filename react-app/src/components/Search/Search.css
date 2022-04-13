@@ -3,7 +3,7 @@
     width: 729px;
     height: 48px;
     align-items: center;
-
+    
 }
 
 .search-bar-input {
@@ -17,6 +17,15 @@
     padding-left: 45px;
     font-size: 16px;
 
+}
+
+.search-bar-input:hover {
+    background-color: rgb(226, 223, 223);
+}
+
+.search-bar-btn:hover {
+    /* background-color: rgb(226, 223, 223); */
+    cursor: pointer;
 }
 
 .search-bar-btn {
