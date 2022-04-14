@@ -14,8 +14,10 @@ const SearchResultPage = () => {
     const searchObj = Object.values(searchBoards)
     console.log(searchObj[0])
 
-    // const { search } = window.location;
-    // const query = new URLSearchParams(search).get("q")
+    const { search } = window.location;
+    console.log(window.location)
+    const query = new URLSearchParams(search).get("q")
+    console.log(query)
 
     useEffect(() => {
         // dispatch(getBoardsBySearch(query))

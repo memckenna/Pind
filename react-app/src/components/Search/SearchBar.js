@@ -15,9 +15,9 @@ const SearchBar = () => {
 
     const search = useSelector(state => state.search)
     console.log(search)
-    // useEffect(() => {
-    //     // dispatch(getBoardsBySearch(query))
-    // },[dispatch, search])
+    useEffect(() => {
+        dispatch(getBoardsBySearch(query))
+    },[dispatch, search])
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -28,13 +28,13 @@ const SearchBar = () => {
             setErrors(data.errors)
         } else {
             setQuery("")
-            history.push("/search/boards")
+            history.push("/search")
         }
     }
 
 
     return (
-        <div>
+        <div className="search-bar-container">
             {/* <form action="/search/boards" method="get"> */}
             <form className="search-bar-form" onSubmit={handleSubmit}>
                 <button className="search-bar-btn" type="submit">
