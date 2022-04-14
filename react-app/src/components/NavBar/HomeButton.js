@@ -14,7 +14,7 @@ const HomeButton = () => {
             {/* <NavLink to='/users' exact={true}>
                 <button className="explore-button">Explore Profiles</button>
             </NavLink> */}
-            <SearchBar />
+            {/* <SearchBar /> */}
         </div>
     )
 }

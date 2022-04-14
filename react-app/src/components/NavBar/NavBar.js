@@ -6,6 +6,7 @@ import LoginFormModal from '../SplashPage/LoginFormModal/LoginPage';
 import SignUpFormModal from '../SplashPage/SignupFormModal/SignUpPage';
 import ProfileButton from './ProfileButton';
 import HomeButton from './HomeButton';
+import SearchBar from '../Search/SearchBar';
 import LoggedInLogo from './LoggedInLogo';
 import logo from '../../images/logo.png';
 import './NavBar.css'
@@ -30,10 +31,10 @@ const NavBar = () => {
     );
   }
   let homeLink;
-  if(sessionUser) {
+  if (sessionUser) {
     homeLink = (
       <div>
-          <HomeButton />
+        <HomeButton />
       </div>
     )
   }
@@ -47,6 +48,10 @@ const NavBar = () => {
             <img className='logo' src={logo} alt='logo' />
           </NavLink> */}
           {homeLink}
+        </div>
+        <div>
+          <SearchBar />
+
         </div>
         <div className='right-bar'>
           <div>{sessionLinks}</div>
