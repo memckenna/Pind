@@ -4,12 +4,14 @@ import session from './session';
 import boardReducer from './board'
 import pinReducer from './pin';
 import boardPinReducer from './boards_pins';
+import searchReducer from './search';
 
 const rootReducer = combineReducers({
   session,
   board: boardReducer,
   pinReducer,
-  boardPin: boardPinReducer
+  boardPin: boardPinReducer,
+  search: searchReducer
 });
 
 

@@ -69,3 +69,4 @@ def get_pin_by_user_board(id):
 
     return {'pins': [pin.to_dict() for pin in pins_by_board_id]}
 
+
