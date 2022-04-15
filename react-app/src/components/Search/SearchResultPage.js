@@ -9,6 +9,7 @@ import "./Search.css"
 const SearchResultPage = () => {
     const dispatch = useDispatch()
 
+
     const searchBoards = useSelector(state => state.search)
     console.log(searchBoards)
     const searchObj = Object.values(searchBoards)
@@ -16,11 +17,11 @@ const SearchResultPage = () => {
 
     const { search } = window.location;
     console.log(window.location)
-    const query = new URLSearchParams(search).get("q")
+    const query = new URLSearchParams(search)
     console.log(query)
 
     useEffect(() => {
-        // dispatch(getBoardsBySearch(query))
+        dispatch(getBoardsBySearch(query))
     }, [dispatch])
 
     return (
