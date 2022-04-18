@@ -49,7 +49,7 @@ function App() {
         <Route path="/boards/:boardId" exact={true}>
           <SingleBoard />
         </Route>
-        <Route path="/search" exact={true}>
+        <Route path="/search/:query" exact={true}>
           <SearchResultPage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >

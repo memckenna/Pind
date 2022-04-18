@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react' //useEffect,
-import { Redirect, useHistory, useLocation, NavLink } from 'react-router-dom'
+import { Redirect, useHistory, useLocation, NavLink, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBoardsBySearch } from '../../store/search'
 import kitchen from "../../images/kitchen.jpg"
@@ -8,19 +8,14 @@ import "./Search.css"
 
 const SearchResultPage = () => {
     const dispatch = useDispatch()
-
-    const searchBoards = useSelector(state => state.search)
-    console.log(searchBoards)
-    const searchObj = Object.values(searchBoards)
-    console.log(searchObj[0])
-
-    const { search } = window.location;
-    console.log(window.location)
-    const query = new URLSearchParams(search).get("q")
+    const { query } = useParams()
     console.log(query)
 
+    const searchBoards = useSelector(state => state.search)
+    const searchObj = Object.values(searchBoards)
+
     useEffect(() => {
-        // dispatch(getBoardsBySearch(query))
+        dispatch(getBoardsBySearch(query))
     }, [dispatch])
 
     return (

@@ -14,7 +14,7 @@ const SearchBar = () => {
     const [errors, setErrors] = useState([])
 
     const search = useSelector(state => state.search)
-    console.log(search)
+
     useEffect(() => {
         dispatch(getBoardsBySearch(query))
     },[dispatch, search])
@@ -28,7 +28,7 @@ const SearchBar = () => {
             setErrors(data.errors)
         } else {
             setQuery("")
-            history.push("/search")
+            history.push(`/search/${query}`)
         }
     }
 
