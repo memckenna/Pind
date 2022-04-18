@@ -12,9 +12,7 @@ const SearchResultPage = () => {
     console.log(query)
 
     const searchBoards = useSelector(state => state.search)
-    console.log(searchBoards)
     const searchObj = Object.values(searchBoards)
-    console.log(searchObj[0])
 
     useEffect(() => {
         dispatch(getBoardsBySearch(query))
