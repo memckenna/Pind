@@ -49,7 +49,7 @@ const NavBar = () => {
           </NavLink> */}
           {homeLink}
         </div>
-        <div>
+        <div className='search-bar-div'>
           <SearchBar />
 
         </div>
