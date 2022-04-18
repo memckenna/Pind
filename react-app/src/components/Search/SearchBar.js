@@ -28,7 +28,7 @@ const SearchBar = () => {
             setErrors(data.errors)
         } else {
             setQuery("")
-            history.push("/search")
+            history.push(`/search/${query}`)
         }
     }
 
