@@ -8,7 +8,7 @@ import { getASinglePin } from "../../../store/pin";
 
 import './RenderFollowUser.css'
 
-const RenderFollowUser = ({ sessionUser, user, id }) => {
+const RenderFollowUser = ({ sessionUser, user, id, onClose }) => {
     const dispatch = useDispatch()
     // const followingList = sessionUser.following.map(following => following.id)
     // const followingCheck = followingList.includes(user?.id)
@@ -66,7 +66,7 @@ const RenderFollowUser = ({ sessionUser, user, id }) => {
                 </Link>
                 <div className="follow-modal-name">
                     <Link className="follow-modal-name-link" to={`/users/${user?.id}`}>
-                        <p>{user?.first_name} {user?.last_name}</p>
+                        <p onClick={onClose}>{user?.first_name} {user?.last_name}</p>
                     </Link>
                 </div>
             </div>

@@ -44,12 +44,12 @@ const FollowerModal = ({ followers, onClose, user }) => {   //id = userId
             {sessionUser?.id === user?.id ?
                 sessionUser?.followers?.map(user =>
                     <div key={user?.id}>
-                        <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id} />
+                        <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id} onClose={onClose} />
                     </div>
                 ) :
                 followers?.map(user =>
                     <div key={user?.id}>
-                        <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id} />
+                        <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id} onClose={onClose} />
                     </div>
                 )
             }

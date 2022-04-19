@@ -43,12 +43,12 @@ const FollowingModal = ({ following, onClose, user }) => {   //id = userId
             {sessionUser?.id === user?.id ?
                 sessionUser?.following?.map(user =>
                     <div key={user.id}>
-                        <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id}  />
+                        <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id} onClose={onClose} />
                     </div>
                 ) :
                 following?.map(user =>
                     <div key={user.id}>
-                        <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id}  />
+                        <RenderFollowUser sessionUser={sessionUser} user={user} id={user?.id} onClose={onClose} />
                     </div>
                 )
             }
