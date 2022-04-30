@@ -1,6 +1,5 @@
 .single-board-page {
     padding-bottom: 100px;
-
 }
 
 .pin-container {
@@ -17,8 +16,6 @@
     padding: 8px 8px 8px 8px;
     display: block;
 }
-
-
 
 .pin-image {
     width: 256px;
@@ -43,8 +40,6 @@
     -webkit-font-smoothing: antialiased;
 }
 
-
-
 .board-title-header {
     margin-top: 150px;
     display: flex;
@@ -57,7 +52,6 @@
     display: flex;
     justify-content: center;
     padding-top: 10px;
-
 }
 
 .board-profile-img {
