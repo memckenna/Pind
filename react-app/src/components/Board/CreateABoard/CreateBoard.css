@@ -7,7 +7,6 @@
 }
 i {
     border-radius: 50%;
-
 }
 .create-board-text {
     font-size: 28px;
@@ -17,14 +16,12 @@ i {
     display: flex;
     justify-content: flex-end;
     margin-right: 25px;
-
 }
 
 .create-board-form {
     display: flex;
     justify-content: center;
     flex-direction: column;
-
 }
 
 .title {
@@ -64,7 +61,6 @@ i {
     /* background-color: #efefef; */
     background-color: #e60023;
     cursor: pointer;
-
 }
 
 .create-board-btn:disabled {
