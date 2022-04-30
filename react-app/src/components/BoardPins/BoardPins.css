@@ -60,10 +60,7 @@
 .board-pin-details-div {
     display: flex;
     align-content: space-between;
-
 }
-
-
 
 
 /* Inside Board Details Contianer */
@@ -74,12 +71,10 @@
 
 .boards-on-pin-details {
     display: flex;
-
     width: 208px;
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 10px;
-
 }
 
 .boards-on-pin-left-details {
@@ -89,7 +84,6 @@
 
 .board-pin-details {
     display: flex;
-
 }
 
 .board-pin-details-div:hover {
@@ -104,7 +98,6 @@
 
 .bards-on-pin-img-div {
     display: flex;
-
 }
 
 .boards-on-pin-img {
@@ -122,10 +115,8 @@
 .boards-on-pin-save-btn-div {
     display: flex;
     align-self: center;
-
     flex-direction: row;
     justify-content: flex-end;
-
 }
 
 /* .buttonTrue {
@@ -177,7 +168,6 @@
     font-size: 16px;
     font-weight: bold;
     box-shadow: rgb(0 0 0 / 30%) 0px 8px 28px;
-
 }
 
 .boards-on-pin-delete-btn {
@@ -194,5 +184,4 @@
     font-size: 16px;
     font-weight: bold;
     box-shadow: rgb(0 0 0 / 30%) 0px 8px 28px;
-
 }
