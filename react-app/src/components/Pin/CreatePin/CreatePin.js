@@ -23,21 +23,21 @@ const CreateAPin = ({onClose}) => {
     //     dispatch(getAllPinsOnFeed())
     // }, [dispatch])
 
-    useEffect(() => {
-        const validationErrors = [];
+    // useEffect(() => {
+    //     const validationErrors = [];
 
-        if(title.length < 1) validationErrors.push("Please provide a title");
-        if(title.length >= 50) {
-            validationErrors.push("Title must be less than 50 characters")
-            setDisabled(true)
-        } else {
-            setDisabled(false)
-        }
+    //     if(title.length < 1) validationErrors.push("Please provide a title");
+    //     if(title.length >= 50) {
+    //         validationErrors.push("Title must be less than 50 characters")
+    //         setDisabled(true)
+    //     } else {
+    //         setDisabled(false)
+    //     }
 
-        if(!photoUrl.startsWith("https://")) validationErrors.push("Please provide the full image URL")
-        setErrors(validationErrors)
+    //     if(!photoUrl.startsWith("https://")) validationErrors.push("Please provide the full image URL")
+    //     setErrors(validationErrors)
 
-    }, [disabled, title, photoUrl])
+    // }, [disabled, title, photoUrl])
 
     if (!sessionUser) return <Redirect to="/" />;
 
@@ -51,15 +51,30 @@ const CreateAPin = ({onClose}) => {
             sourceLink,
         }
 
-        const data = await dispatch(createPin(payload))
-        await dispatch(getAllPinsOnFeed())
+        const validationErrors = [];
 
-        if(data?.errors) {
-            setErrors(data.errors)
+        if(title.length <= 1) validationErrors.push("Please provide a title");
+        if(title.length >= 50) {
+            validationErrors.push("Title must be less than 50 characters")
+            setDisabled(true)
         } else {
+            setDisabled(false)
+        }
+
+        if(!photoUrl.startsWith("https://")) validationErrors.push("Please provide the full image URL")
+        setErrors(validationErrors)
+
+        if(!validationErrors.length) {
+            const data = await dispatch(createPin(payload))
             await dispatch(getAllPinsOnFeed())
-            onClose()
-            //     // history.push(`/pins`)
+
+            if(data?.errors) {
+                setErrors(data.errors)
+            } else {
+                await dispatch(getAllPinsOnFeed())
+                onClose()
+                //     // history.push(`/pins`)
+            }
         }
     }
 
@@ -72,14 +87,19 @@ const CreateAPin = ({onClose}) => {
                             <h2>Create a Pin</h2>
                         </div>
                         <div className="save-pin-btn-form">
-                            <button type="pin-submit" disabled={disabled}  className="save-pin-btn">Save</button>
+                            <button type="pin-submit" className="save-pin-btn">Save</button>
+                            {/* <button type="pin-submit" disabled={disabled}  className="save-pin-btn">Save</button> */}
                         </div>
                     </div>
-                    <div className='pin-login-error-container'>
-                        {errors?.map((error, ind) => (
-                            <div key={error}>{error}</div>
-                        ))}
-                    </div>
+                    {errors.length ?
+                        <div className='pin-login-error-container'>
+                            {errors.length > 0 &&
+                                errors?.map((error, ind) => (
+                                    <div key={error}>{error}</div>
+                            ))}
+                        </div> :
+                        <></>
+                    }
                     <div className="create-pin-input-container">
 
                         <div className="create-pin-photo-div">
