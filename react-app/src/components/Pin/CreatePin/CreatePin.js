@@ -73,7 +73,6 @@ const CreateAPin = ({onClose}) => {
             } else {
                 await dispatch(getAllPinsOnFeed())
                 onClose()
-                //     // history.push(`/pins`)
             }
         }
     }
